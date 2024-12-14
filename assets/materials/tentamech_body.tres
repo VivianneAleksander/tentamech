@@ -1,0 +1,32 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://cuakkhn75dlen"]
+
+[ext_resource type="Material" uid="uid://bu5yffwr8mhn2" path="res://assets/materials/outline.tres" id="1_2ljqs"]
+[ext_resource type="Shader" path="res://assets/shaders/tentamech.gdshader" id="1_km5sj"]
+[ext_resource type="Texture2D" uid="uid://8gm3qd3natwa" path="res://assets/materials/tentamech_Body.jpg" id="2_14arj"]
+
+[sub_resource type="Gradient" id="Gradient_a7fjg"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.983607)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qhbpk"]
+gradient = SubResource("Gradient_a7fjg")
+
+[sub_resource type="Gradient" id="Gradient_rytbr"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.295082)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wdq6n"]
+gradient = SubResource("Gradient_rytbr")
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_2ljqs")
+shader = ExtResource("1_km5sj")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = null
+shader_parameter/normal_scale = null
+shader_parameter/texture_albedo = ExtResource("2_14arj")
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_qhbpk")
+shader_parameter/light_gradient = SubResource("GradientTexture1D_wdq6n")

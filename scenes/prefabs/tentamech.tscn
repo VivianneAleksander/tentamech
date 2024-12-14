@@ -1,0 +1,120 @@
+[gd_scene load_steps=10 format=3 uid="uid://d43jvw5r31qx"]
+
+[ext_resource type="PackedScene" uid="uid://cvr5boa1aydjj" path="res://assets/meshes/tentamech.glb" id="1_s52cm"]
+[ext_resource type="Material" uid="uid://cuakkhn75dlen" path="res://assets/materials/tentamech_body.tres" id="2_tn5em"]
+[ext_resource type="Shader" path="res://assets/shaders/tentamech_windshield.gdshader" id="3_ahr3a"]
+
+[sub_resource type="Gradient" id="Gradient_i7aix"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.989071)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4yche"]
+gradient = SubResource("Gradient_i7aix")
+
+[sub_resource type="Gradient" id="Gradient_oe3mx"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.907104)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xqv8m"]
+gradient = SubResource("Gradient_oe3mx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4g38i"]
+render_priority = 0
+shader = ExtResource("3_ahr3a")
+shader_parameter/albedo = Color(0.886275, 0.678431, 0.909804, 0.690196)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/normal_scale = null
+shader_parameter/light_gradient = SubResource("GradientTexture1D_xqv8m")
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_4yche")
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dfymt"]
+
+[node name="Tentamech" type="Node3D"]
+
+[node name="Mesh" parent="." instance=ExtResource("1_s52cm")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Mesh/TentamechArmature" index="0"]
+bones/1/rotation = Quaternion(0.0789854, 0.817031, -0.506102, 0.264733)
+bones/2/rotation = Quaternion(-3.19602e-07, 0.263952, -9.45771e-07, 0.964536)
+bones/4/rotation = Quaternion(1.71493e-07, -0.0389012, -1.34212e-07, 0.999243)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(1.13211e-07, -0.797962, -2.68439e-07, 0.602708)
+bones/7/rotation = Quaternion(2.28233e-07, -0.865084, -3.73031e-07, 0.501627)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(5.59808e-08, 0.998189, 2.70574e-07, -0.0601529)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(2.08054e-07, 0.931082, 3.21083e-07, 0.36481)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(2.55908e-07, 0.627263, 1.17191e-07, 0.778808)
+bones/11/rotation = Quaternion(1.14005e-07, -0.576757, -2.78171e-07, 0.816916)
+bones/12/rotation = Quaternion(1.68804e-07, 0.937923, 2.05543e-07, 0.346844)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(2.38239e-07, 0.598147, 1.11565e-07, 0.801386)
+bones/14/rotation = Quaternion(-0.171383, -0.301566, 0.929432, -0.125865)
+bones/14/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(0.837839, -9.76837e-09, 2.50313e-08, 0.545918)
+bones/19/rotation = Quaternion(0.167816, 0.941281, 0.0898998, -0.278829)
+bones/20/rotation = Quaternion(-0.233967, -0.211305, -0.0592159, 0.947155)
+bones/21/rotation = Quaternion(-0.369293, 0.335881, -0.0954373, 0.861219)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/rotation = Quaternion(-0.307072, 0.0169314, -0.130164, 0.942591)
+bones/23/rotation = Quaternion(-0.268049, 0.0307013, -0.0559465, 0.961289)
+bones/24/rotation = Quaternion(-0.207096, 0.0236261, -0.030923, 0.977546)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(-0.150308, 0.0851001, 0.00671555, 0.984947)
+bones/25/scale = Vector3(1, 1, 1)
+bones/27/rotation = Quaternion(0.0250115, 0.910008, 0.0986306, 0.401911)
+bones/28/scale = Vector3(1, 1, 1)
+bones/29/rotation = Quaternion(-0.237678, 0.402921, 0.0997834, 0.878184)
+bones/30/rotation = Quaternion(-0.177916, 0.00268864, 0.00586869, 0.984024)
+bones/30/scale = Vector3(1, 1, 1)
+bones/31/rotation = Quaternion(-0.181401, 0.00922487, 0.0175228, 0.98321)
+bones/32/rotation = Quaternion(-0.248612, 0.0181534, 0.0401322, 0.967601)
+bones/33/rotation = Quaternion(-0.171959, 0.0865086, -0.0232057, 0.981024)
+bones/35/rotation = Quaternion(-0.0123094, 0.798844, 0.127111, 0.587825)
+bones/36/rotation = Quaternion(-0.224264, -0.103326, 0.296783, 0.922469)
+bones/37/rotation = Quaternion(-0.256838, 0.377722, 0.186592, 0.869795)
+bones/38/rotation = Quaternion(-0.164918, -0.0123021, 0.0387534, 0.985469)
+bones/38/scale = Vector3(1, 1, 1)
+bones/39/rotation = Quaternion(-0.150399, -0.0118598, 0.0336439, 0.987982)
+bones/40/rotation = Quaternion(-0.246903, -0.0233441, 0.0367915, 0.96806)
+bones/40/scale = Vector3(1, 1, 1)
+bones/41/rotation = Quaternion(-0.237833, 0.0497241, 0.10435, 0.964403)
+bones/44/rotation = Quaternion(-0.133904, -0.00271921, 0.13252, 0.98209)
+bones/46/rotation = Quaternion(-0.264717, 0.00319783, -0.0184236, 0.964145)
+bones/46/scale = Vector3(1, 1, 1)
+bones/47/rotation = Quaternion(-0.169231, 0.00329108, -0.00580901, 0.985554)
+bones/47/scale = Vector3(1, 1, 1)
+bones/48/rotation = Quaternion(-0.173139, 0.00433356, 0.0211243, 0.984661)
+bones/48/scale = Vector3(1, 1, 1)
+bones/49/scale = Vector3(1, 1, 1)
+bones/51/rotation = Quaternion(-0.0789854, 0.817031, -0.506102, -0.264733)
+bones/52/rotation = Quaternion(-3.19602e-07, -0.263952, 9.45771e-07, 0.964536)
+bones/54/rotation = Quaternion(1.71493e-07, 0.0389012, 1.34212e-07, 0.999243)
+bones/55/scale = Vector3(1, 1, 1)
+bones/56/rotation = Quaternion(1.13211e-07, 0.797962, 2.68439e-07, 0.602708)
+bones/57/rotation = Quaternion(2.28233e-07, 0.865084, 3.73031e-07, 0.501627)
+bones/57/scale = Vector3(1, 1, 1)
+bones/58/rotation = Quaternion(-5.59808e-08, 0.998189, 2.70574e-07, 0.0601529)
+bones/58/scale = Vector3(1, 1, 1)
+bones/59/rotation = Quaternion(-2.08054e-07, 0.931082, 3.21083e-07, -0.36481)
+bones/59/scale = Vector3(1, 1, 1)
+bones/60/rotation = Quaternion(2.55908e-07, -0.627263, -1.17191e-07, 0.778808)
+bones/61/rotation = Quaternion(1.14005e-07, 0.576757, 2.78171e-07, 0.816916)
+bones/62/rotation = Quaternion(-1.68804e-07, 0.937923, 2.05543e-07, -0.346844)
+bones/62/scale = Vector3(1, 1, 1)
+bones/63/rotation = Quaternion(2.38239e-07, -0.598147, -1.11565e-07, 0.801386)
+bones/64/rotation = Quaternion(0.171383, -0.301566, 0.929432, 0.125865)
+bones/64/scale = Vector3(1, 1, 1)
+
+[node name="Tentamech" parent="Mesh/TentamechArmature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_tn5em")
+surface_material_override/1 = SubResource("ShaderMaterial_4g38i")
+
+[node name="AnimationTree" type="AnimationTree" parent="Mesh"]
+tree_root = SubResource("AnimationNodeBlendTree_dfymt")
+
+[editable path="Mesh"]
