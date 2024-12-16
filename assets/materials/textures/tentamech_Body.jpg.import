@@ -2,26 +2,29 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpwvjq8u3vnkx"
-path="res://.godot/imported/tentamech_Body.jpg-5f1eb94c7d70d9890905eb8c30127a7a.ctex"
+uid="uid://8gm3qd3natwa"
+path="res://.godot/imported/tentamech_Body.jpg-38de60f24103273145269d0dfb1f2ae3.ctex"
 metadata={
 "vram_texture": false
+}
+generator_parameters={
+"md5": "040a0bc05b35df2897cc06f2878e972c"
 }
 
 [deps]
 
-source_file="res://assets/meshes/tentamech_Body.jpg"
-dest_files=["res://.godot/imported/tentamech_Body.jpg-5f1eb94c7d70d9890905eb8c30127a7a.ctex"]
+source_file="res://assets/materials/textures/tentamech_Body.jpg"
+dest_files=["res://.godot/imported/tentamech_Body.jpg-38de60f24103273145269d0dfb1f2ae3.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +34,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

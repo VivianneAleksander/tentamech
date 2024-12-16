@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="1_62y2j"]
 [ext_resource type="Shader" path="res://assets/shaders/tentamech.gdshader" id="1_km5sj"]
-[ext_resource type="Texture2D" uid="uid://8gm3qd3natwa" path="res://assets/materials/tentamech_Body.jpg" id="2_14arj"]
+[ext_resource type="Texture2D" uid="uid://8gm3qd3natwa" path="res://assets/materials/textures/tentamech_Body.jpg" id="2_14arj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cyge1"]
 render_priority = 0
