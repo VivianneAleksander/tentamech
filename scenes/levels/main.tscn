@@ -5,13 +5,13 @@
 [node name="Main" type="Node3D"]
 
 [node name="Tentamech" parent="." instance=ExtResource("1_ldlc1")]
-transform = Transform3D(0.487586, 0, -0.873075, 0, 1, 0, 0.873075, 0, 0.487586, 0, 0, 0)
+transform = Transform3D(0.322265, 0, 0.946649, 0, 1, 0, -0.946649, 0, 0.322265, 0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.737)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(0.435371, 0.784036, -0.442425, -0.0332345, 0.505109, 0.862415, 0.899638, -0.360767, 0.245967, -0.596435, 1.9079, 1.09866)
+[node name="SpotLight3D" type="SpotLight3D" parent="Tentamech"]
+transform = Transform3D(0.960852, 0.253628, -0.11152, -0.0332345, 0.505109, 0.862416, 0.275063, -0.824947, 0.493764, -0.810652, 1.9079, 1.56003)
 spot_range = 14.139
 spot_attenuation = -0.15
 spot_angle = 55.32
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.737)

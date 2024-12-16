@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix,depth_draw_opaque,cull_back,shadows_disabled,diffuse_toon,specular_toon;
+render_mode blend_mix, depth_draw_always, cull_back, shadows_disabled, diffuse_toon, specular_toon;
 
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
