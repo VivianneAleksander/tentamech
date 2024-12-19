@@ -1,0 +1,8 @@
+[gd_resource type="SphereMesh" load_steps=2 format=3 uid="uid://ccgjbieape2y0"]
+
+[ext_resource type="Material" uid="uid://cyifjsnlp3n21" path="res://assets/materials/tentamech_rockets.tres" id="1_f7bkl"]
+
+[resource]
+material = ExtResource("1_f7bkl")
+radial_segments = 16
+rings = 8
