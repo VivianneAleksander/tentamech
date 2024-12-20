@@ -23,10 +23,10 @@ void vertex() {
 
 void fragment() {
 	vec2 base_uv = UV;
-	
+
 	ALBEDO = albedo.rgb;
 	ALPHA = albedo.a;
-	
+
 	SPECULAR = specular;
 	METALLIC = metallic;
 	ROUGHNESS = roughness;

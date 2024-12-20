@@ -15,7 +15,7 @@ particles_anim_loop = false
 [sub_resource type="SphereMesh" id="SphereMesh_iue33"]
 material = SubResource("StandardMaterial3D_jfyi3")
 
-[node name="TentamechParticles" type="GPUParticles3D"]
+[node name="TentamechRocketParticles" type="GPUParticles3D"]
 amount = 100
 preprocess = 1.0
 randomness = 1.0
