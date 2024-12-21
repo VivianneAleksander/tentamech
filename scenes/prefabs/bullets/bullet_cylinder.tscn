@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://bb41irm4fr4tw"]
+
+[ext_resource type="PackedScene" uid="uid://b03p0txueqmlp" path="res://scenes/prefabs/bullets/bullet_base.tscn" id="1_2r7oy"]
+[ext_resource type="ArrayMesh" uid="uid://cxmvsu8exns5j" path="res://assets/meshes/bullets/bullet_cylinder.res" id="2_sea1k"]
+[ext_resource type="Material" uid="uid://te8a1w8xfkh0" path="res://assets/materials/bullets/bullet_cylinder.tres" id="3_iwehe"]
+[ext_resource type="Material" uid="uid://ci1q2jprxnvbm" path="res://assets/materials/bullets/bullet_cylinder_shell.tres" id="4_udss4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uk7sa"]
+height = 1.5
+
+[node name="Bullet" instance=ExtResource("1_2r7oy")]
+
+[node name="MeshInstance3D" parent="." index="0"]
+mesh = ExtResource("2_sea1k")
+surface_material_override/0 = ExtResource("3_iwehe")
+surface_material_override/1 = ExtResource("4_udss4")
+
+[node name="CollisionShape3D" parent="." index="1"]
+shape = SubResource("CapsuleShape3D_uk7sa")

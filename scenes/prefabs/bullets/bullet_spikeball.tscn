@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://5uuqixv3d1in"]
+
+[ext_resource type="PackedScene" uid="uid://b03p0txueqmlp" path="res://scenes/prefabs/bullets/bullet_base.tscn" id="1_gcc37"]
+[ext_resource type="ArrayMesh" uid="uid://rjsh5b10n42a" path="res://assets/meshes/bullets/bullet_spikeball.res" id="2_sxaju"]
+[ext_resource type="Material" uid="uid://beummj6ikk2k6" path="res://assets/materials/bullets/bullet_spikeball.tres" id="3_8egnd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lu8f"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0usyy"]
+
+[node name="Bullet" instance=ExtResource("1_gcc37")]
+
+[node name="MeshInstance3D" parent="." index="0"]
+mesh = ExtResource("2_sxaju")
+surface_material_override/0 = ExtResource("3_8egnd")
+surface_material_override/1 = SubResource("StandardMaterial3D_6lu8f")
+
+[node name="CollisionShape3D" parent="." index="1"]
+shape = SubResource("SphereShape3D_0usyy")

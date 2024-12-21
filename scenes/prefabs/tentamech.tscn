@@ -1,14 +1,15 @@
-[gd_scene load_steps=24 format=3 uid="uid://d43jvw5r31qx"]
+[gd_scene load_steps=25 format=3 uid="uid://d43jvw5r31qx"]
 
 [ext_resource type="PackedScene" uid="uid://dee56bhfxqip5" path="res://assets/meshes/tentamech.glb" id="1_ik0fc"]
 [ext_resource type="Material" uid="uid://cuakkhn75dlen" path="res://assets/materials/tentamech_body.tres" id="2_6kx7t"]
 [ext_resource type="Material" uid="uid://bcebdedm6l3i1" path="res://assets/materials/tentamech_windshield.tres" id="3_pvmjk"]
 [ext_resource type="PackedScene" uid="uid://bgcae7sh45881" path="res://scenes/prefabs/tentamech_particles.tscn" id="4_6yynb"]
 [ext_resource type="Script" path="res://scripts/player_control/mouse_follow_behavior.gd" id="5_jmmn4"]
-[ext_resource type="PackedScene" uid="uid://3n4rcjl27tv0" path="res://scenes/prefabs/tentamech_bullets_01.tscn" id="5_sw3cs"]
 [ext_resource type="Script" path="res://scripts/util/animation_values_manager.gd" id="6_4hkth"]
 [ext_resource type="Script" path="res://scripts/player_control/animation_values/turned.gd" id="7_p6gu3"]
 [ext_resource type="Script" path="res://scripts/player_control/animation_values/firing.gd" id="8_02dgv"]
+[ext_resource type="Script" path="res://scripts/bullets/bullet_spawner.gd" id="9_8d87e"]
+[ext_resource type="PackedScene" uid="uid://bb41irm4fr4tw" path="res://scenes/prefabs/bullets/bullet_cylinder.tscn" id="10_k7l4a"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p5rrw"]
 animation = &"Fire"
@@ -65,7 +66,6 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(83, 38)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_4rd6t"]
-graph_offset = Vector2(-145.739, 196.364)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_fixs7")
 nodes/StateMachine/position = Vector2(32, 192)
 node_connections = [&"output", 0, &"StateMachine"]
@@ -79,103 +79,102 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.8324
 
 [node name="Skeleton3D" parent="tentamech/TentamechArmature" index="0"]
 bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/1/position = Vector3(1.37323, -0.79134, -0.497546)
-bones/1/rotation = Quaternion(0.00431485, 0.9579, -0.0781388, 0.276231)
-bones/1/scale = Vector3(1, 1.00028, 1)
-bones/2/rotation = Quaternion(-2.34527e-08, 0.519371, -9.92075e-07, 0.854549)
-bones/3/scale = Vector3(1, 1.01448, 1)
+bones/1/position = Vector3(1.3825, -0.865141, -0.50751)
+bones/1/rotation = Quaternion(0.00267171, 0.958348, -0.0724397, 0.276252)
+bones/1/scale = Vector3(1, 1.01239, 1)
+bones/2/rotation = Quaternion(-2.01217e-07, 0.366683, -9.76413e-07, 0.930346)
+bones/3/scale = Vector3(1, 1.03945, 1)
 bones/4/rotation = Quaternion(7.36302e-08, -0.0389013, -1.67765e-07, 0.999243)
-bones/4/scale = Vector3(1, 0.843162, 1)
-bones/5/scale = Vector3(1, 0.865699, 1)
-bones/6/scale = Vector3(1, 0.955081, 1)
-bones/7/scale = Vector3(1, 1.10367, 1)
+bones/4/scale = Vector3(1, 0.955081, 1)
+bones/5/scale = Vector3(1, 1.10367, 1)
+bones/6/scale = Vector3(1, 1.07982, 1)
+bones/7/scale = Vector3(1, 0.575977, 1)
 bones/8/rotation = Quaternion(6.3321e-08, 0.998189, 3.45878e-07, -0.0601528)
-bones/8/scale = Vector3(1, 1.09213, 1)
-bones/9/scale = Vector3(1, 0.645561, 1)
-bones/10/scale = Vector3(1, 1.28661, 1)
-bones/11/scale = Vector3(1, 1.28661, 1)
+bones/8/scale = Vector3(1, 0.386916, 1)
+bones/9/scale = Vector3(1, 1.68631, 1)
+bones/10/scale = Vector3(1, 1.09097, 1)
+bones/11/scale = Vector3(1, 1.09097, 1)
 bones/12/rotation = Quaternion(9.33385e-08, 0.937923, 2.22424e-07, 0.346844)
-bones/12/scale = Vector3(1, 1.09097, 1)
-bones/13/scale = Vector3(1, 1.09097, 1)
-bones/14/position = Vector3(0.653014, -0.76031, 0.799028)
-bones/14/rotation = Quaternion(-0.183771, -0.322766, 0.922418, -0.105808)
+bones/12/scale = Vector3(1, 0.843162, 1)
+bones/13/scale = Vector3(1, 0.889746, 1)
+bones/14/position = Vector3(0.660456, -0.809339, 0.788574)
+bones/14/rotation = Quaternion(-0.180486, -0.353446, 0.911, -0.112159)
 bones/14/scale = Vector3(1, 1, 1)
-bones/16/position = Vector3(0, 0.260263, 0.100756)
+bones/16/position = Vector3(0, 0.219806, 0.137495)
 bones/16/rotation = Quaternion(0.697305, 0, 0, 0.716774)
 bones/16/scale = Vector3(1, 0.984433, 1)
 bones/18/rotation = Quaternion(0.837847, -9.76767e-09, 2.50319e-08, 0.545905)
 bones/18/scale = Vector3(1, 1.0026, 1.01325)
-bones/19/rotation = Quaternion(0.172223, 0.940749, 0.103963, -0.272987)
-bones/20/rotation = Quaternion(-0.234847, -0.214789, -0.0589098, 0.946172)
-bones/21/rotation = Quaternion(-0.356279, 0.335913, -0.0972036, 0.866475)
+bones/19/rotation = Quaternion(0.172686, 0.940483, 0.105671, -0.272957)
+bones/20/rotation = Quaternion(-0.235774, -0.214551, -0.0587149, 0.946008)
+bones/21/rotation = Quaternion(-0.356338, 0.335981, -0.0971738, 0.866428)
 bones/21/scale = Vector3(1, 1, 1)
-bones/22/rotation = Quaternion(-0.285369, 0.0184051, -0.124541, 0.950113)
-bones/23/rotation = Quaternion(-0.246519, 0.0327218, -0.0491612, 0.967337)
+bones/22/rotation = Quaternion(-0.284427, 0.0185672, -0.124211, 0.950436)
+bones/23/rotation = Quaternion(-0.245725, 0.0328024, -0.0488987, 0.96755)
 bones/23/scale = Vector3(1, 1, 1)
-bones/24/rotation = Quaternion(-0.193731, 0.024282, -0.0261515, 0.980406)
+bones/24/rotation = Quaternion(-0.192769, 0.0243263, -0.0258206, 0.980603)
 bones/24/scale = Vector3(1, 1, 1)
 bones/25/rotation = Quaternion(0.0324097, 0.0968653, 0.00575754, 0.994753)
-bones/27/rotation = Quaternion(0.0136742, 0.911124, 0.0658024, 0.406616)
+bones/27/rotation = Quaternion(0.0176268, 0.910451, 0.0778705, 0.405838)
 bones/27/scale = Vector3(1, 1, 1)
-bones/28/rotation = Quaternion(-0.235536, -0.0776972, 0.198297, 0.948243)
+bones/28/rotation = Quaternion(-0.239513, -0.0774123, 0.202603, 0.946358)
 bones/28/scale = Vector3(1, 1, 1)
-bones/29/rotation = Quaternion(-0.259276, 0.397542, 0.108858, 0.873434)
+bones/29/rotation = Quaternion(-0.259853, 0.397388, 0.109076, 0.873305)
 bones/29/scale = Vector3(1, 1, 1)
-bones/30/rotation = Quaternion(-0.213751, -6.67191e-05, 0.00641005, 0.976867)
+bones/30/rotation = Quaternion(-0.210648, -8.77266e-05, 0.00600102, 0.977544)
 bones/30/scale = Vector3(1, 1, 1)
-bones/31/rotation = Quaternion(-0.217719, 0.00701772, 0.0184535, 0.975812)
-bones/32/rotation = Quaternion(-0.27307, 0.017187, 0.0408134, 0.960974)
+bones/31/rotation = Quaternion(-0.213315, 0.00708436, 0.0179045, 0.976794)
+bones/32/rotation = Quaternion(-0.269429, 0.0172479, 0.0403882, 0.962018)
 bones/33/rotation = Quaternion(-0.0811961, 0.0753542, -0.000420136, 0.993845)
-bones/35/rotation = Quaternion(0.00517126, 0.782544, 0.239047, 0.574851)
-bones/35/scale = Vector3(1, 1, 1)
-bones/36/rotation = Quaternion(-0.238971, -0.104806, 0.314301, 0.912756)
-bones/37/rotation = Quaternion(-0.23311, 0.379787, 0.168678, 0.879187)
+bones/35/rotation = Quaternion(0.00735896, 0.779908, 0.252759, 0.57254)
+bones/36/rotation = Quaternion(-0.241259, -0.104922, 0.31704, 0.911192)
+bones/37/rotation = Quaternion(-0.231325, 0.379892, 0.167263, 0.879883)
 bones/37/scale = Vector3(1, 1, 1)
-bones/38/rotation = Quaternion(-0.114858, -0.0140408, 0.0273246, 0.992907)
-bones/39/rotation = Quaternion(-0.095185, -0.0135874, 0.020979, 0.995146)
-bones/40/rotation = Quaternion(-0.206759, -0.0243884, 0.0276349, 0.977697)
+bones/38/rotation = Quaternion(-0.110385, -0.0141904, 0.026287, 0.99344)
+bones/39/rotation = Quaternion(-0.0899961, -0.0137351, 0.0198057, 0.995651)
+bones/40/rotation = Quaternion(-0.202713, -0.0244805, 0.0267547, 0.978566)
 bones/40/scale = Vector3(1, 1, 1)
 bones/41/rotation = Quaternion(-0.0600113, 0.0502932, 0.148343, 0.985831)
-bones/43/rotation = Quaternion(0.13002, 0.837395, 0.376698, 0.374115)
-bones/44/rotation = Quaternion(-0.130953, -0.00245749, 0.129339, 0.982912)
+bones/43/rotation = Quaternion(0.140407, 0.827301, 0.400264, 0.368304)
+bones/44/rotation = Quaternion(-0.136264, -0.0024163, 0.135309, 0.981386)
 bones/44/scale = Vector3(1, 1, 1)
-bones/45/rotation = Quaternion(-0.259954, 0.412998, 0.0956564, 0.867586)
+bones/45/rotation = Quaternion(-0.253879, 0.41391, 0.0930829, 0.869229)
 bones/45/scale = Vector3(1, 1, 1)
-bones/46/rotation = Quaternion(-0.258594, 0.00357029, -0.0179424, 0.965813)
-bones/47/rotation = Quaternion(-0.16414, 0.00359542, -0.00538717, 0.986416)
+bones/46/rotation = Quaternion(-0.242055, 0.0039785, -0.0174097, 0.970098)
+bones/47/rotation = Quaternion(-0.145908, 0.00420375, -0.00503497, 0.989276)
 bones/47/scale = Vector3(1, 1, 1)
-bones/48/rotation = Quaternion(-0.169621, 0.00446581, 0.0214316, 0.985266)
+bones/48/rotation = Quaternion(-0.155218, 0.00479943, 0.0215116, 0.987634)
 bones/49/rotation = Quaternion(0.0487354, 0.0449402, 0.0616017, 0.995897)
 bones/49/scale = Vector3(1, 1, 1)
-bones/51/position = Vector3(-1.23464, 0.497357, -0.376851)
-bones/51/rotation = Quaternion(0.000151637, 0.959038, -0.0626419, -0.276265)
-bones/51/scale = Vector3(1, 1.05771, 1)
-bones/52/rotation = Quaternion(-5.45673e-07, 0.0118795, 8.3191e-07, 0.999929)
-bones/53/scale = Vector3(1, 1.01448, 1)
+bones/51/position = Vector3(-1.2315, 0.513581, -0.372904)
+bones/51/rotation = Quaternion(-0.00501901, 0.957697, -0.0805805, -0.276219)
+bones/51/scale = Vector3(1, 1.01033, 1)
+bones/52/rotation = Quaternion(-3.96897e-07, -0.158127, 9.11171e-07, 0.987419)
+bones/53/scale = Vector3(1, 1.03945, 1)
 bones/54/rotation = Quaternion(7.36302e-08, 0.0389013, 1.67765e-07, 0.999243)
-bones/54/scale = Vector3(1, 1.09097, 1)
-bones/55/scale = Vector3(1, 1.28661, 1)
-bones/56/scale = Vector3(1, 1.28661, 1)
-bones/57/scale = Vector3(1, 0.985003, 1)
+bones/54/scale = Vector3(1, 0.843162, 1)
+bones/55/scale = Vector3(1, 1.09097, 1)
+bones/56/scale = Vector3(1, 1.09097, 1)
+bones/57/scale = Vector3(1, 0.906693, 1)
 bones/58/rotation = Quaternion(-7.4641e-08, 0.998189, 3.61076e-07, 0.0601527)
-bones/58/scale = Vector3(1, 1.10367, 1)
+bones/58/scale = Vector3(1, 0.386916, 1)
 bones/59/rotation = Quaternion(-1.68337e-07, 0.931082, 2.09405e-07, -0.36481)
-bones/59/scale = Vector3(1, 0.978798, 1)
-bones/60/scale = Vector3(1, 0.955081, 1)
-bones/61/scale = Vector3(1, 0.865699, 1)
+bones/59/scale = Vector3(1, 0.92776, 1)
+bones/60/scale = Vector3(1, 1.07982, 1)
+bones/61/scale = Vector3(1, 1.10367, 1)
 bones/62/rotation = Quaternion(-8.87828e-08, 0.937923, 2.32095e-07, -0.346844)
-bones/62/scale = Vector3(1, 0.843162, 1)
-bones/63/scale = Vector3(1, 1.09097, 1)
-bones/64/position = Vector3(-0.658589, -0.158284, 1.36764)
-bones/64/rotation = Quaternion(0.155543, -0.299852, 0.925117, 0.173358)
+bones/62/scale = Vector3(1, 0.955081, 1)
+bones/63/scale = Vector3(1, 0.889746, 1)
+bones/64/position = Vector3(-0.656955, -0.214818, 1.37811)
+bones/64/rotation = Quaternion(0.153503, -0.319024, 0.918246, 0.177442)
 bones/64/scale = Vector3(1, 1, 1)
-bones/66/position = Vector3(1.38563, 0.469363, -1.99356)
-bones/67/position = Vector3(-0.266552, -0.0414818, -2.3325)
+bones/66/position = Vector3(1.38498, 0.445828, -1.94957)
+bones/67/position = Vector3(-0.268897, -0.00375685, -2.28233)
 bones/67/rotation = Quaternion(-0.0219391, 0.706766, 0.706766, -0.0219391)
-bones/68/position = Vector3(-1.18898, 0.380358, -1.77473)
+bones/68/position = Vector3(-1.19218, 0.390191, -1.72456)
 bones/68/rotation = Quaternion(-0.110506, 0.698419, 0.698419, -0.110506)
 bones/68/scale = Vector3(1, 1, 1)
-bones/69/position = Vector3(0.011574, 0.831427, -1.79856)
+bones/69/position = Vector3(0.00901753, 0.881535, -1.77767)
 bones/69/rotation = Quaternion(-0.0180203, 0.706877, 0.706877, -0.0180203)
 bones/69/scale = Vector3(1, 1, 1)
 
@@ -184,34 +183,34 @@ surface_material_override/0 = ExtResource("2_6kx7t")
 surface_material_override/1 = ExtResource("3_pvmjk")
 
 [node name="RocketFlameRAttachment" type="BoneAttachment3D" parent="tentamech/TentamechArmature/Skeleton3D" index="1"]
-transform = Transform3D(-0.910066, 0.313829, -0.270724, -0.407329, -0.556561, 0.724101, 0.0765692, 0.769254, 0.634339, 0.978823, 0.13834, 1.82019)
+transform = Transform3D(-0.90969, 0.331938, -0.249561, -0.40813, -0.603492, 0.685001, 0.07677, 0.724992, 0.684465, 1.00506, 0.0791627, 1.82327)
 bone_name = "RocketFlame.R"
 bone_idx = 15
 
 [node name="TentamechRocketParticles" parent="tentamech/TentamechArmature/Skeleton3D/RocketFlameRAttachment" instance=ExtResource("4_6yynb")]
 
 [node name="RocketFlameLAttachment" type="BoneAttachment3D" parent="tentamech/TentamechArmature/Skeleton3D" index="2"]
-transform = Transform3D(-0.891506, -0.414033, 0.183828, 0.391755, -0.500867, 0.771791, -0.227473, 0.760072, 0.608725, -1.08843, 0.764774, 1.20863)
+transform = Transform3D(-0.889903, -0.423812, 0.16869, 0.395123, -0.531409, 0.749321, -0.227928, 0.733476, 0.64036, -1.09695, 0.743534, 1.23756)
 bone_name = "RocketFlame.L"
 bone_idx = 65
 
 [node name="TentamechRocketParticles" parent="tentamech/TentamechArmature/Skeleton3D/RocketFlameLAttachment" instance=ExtResource("4_6yynb")]
 
 [node name="MinigunRootRAttachment" type="BoneAttachment3D" parent="tentamech/TentamechArmature/Skeleton3D" index="3"]
-transform = Transform3D(-0.859367, 0.0514474, -0.508767, 0.49734, -0.147355, -0.854957, -0.118922, -0.988024, 0.101017, 1.41636, -0.703975, 0.22421)
+transform = Transform3D(-0.98049, 0.0457015, -0.191315, 0.183599, -0.139071, -0.973356, -0.0702201, -1.00175, 0.126401, 1.42082, -0.706994, 0.286501)
 bone_name = "MinigunRoot.R"
 bone_idx = 2
 
-[node name="TentamechBullets01" parent="tentamech/TentamechArmature/Skeleton3D/MinigunRootRAttachment" instance=ExtResource("5_sw3cs")]
-transform = Transform3D(1, 0, 0, 0, 0.992546, 0.121869, 0, -0.121869, 0.992546, 0, 0, 0)
+[node name="BulletPlaceholderR" type="Node3D" parent="tentamech/TentamechArmature/Skeleton3D/MinigunRootRAttachment"]
+transform = Transform3D(1, 0, 0, 0, 0.989016, 0.147809, 0, -0.147809, 0.989016, 0, 0, 0)
 
 [node name="MinigunRootLAttachment" type="BoneAttachment3D" parent="tentamech/TentamechArmature/Skeleton3D" index="4"]
-transform = Transform3D(-0.834527, -0.0362995, -0.549898, 0.549673, -0.127175, -0.826682, -0.0377468, -1.04941, 0.119204, -1.26507, -0.566361, -1.11596)
+transform = Transform3D(-0.969943, -0.0546864, -0.237235, 0.242811, -0.153137, -0.958159, 0.0159045, -0.99716, 0.160158, -1.27735, -0.584181, -1.08837)
 bone_name = "MinigunRoot.L"
 bone_idx = 52
 
-[node name="TentamechBullets02" parent="tentamech/TentamechArmature/Skeleton3D/MinigunRootLAttachment" instance=ExtResource("5_sw3cs")]
-transform = Transform3D(1, 0, 0, 0, 0.992546, 0.121869, 0, -0.121869, 0.992546, 0, 0, 0)
+[node name="BulletPlaceholderL" type="Node3D" parent="tentamech/TentamechArmature/Skeleton3D/MinigunRootLAttachment"]
+transform = Transform3D(1, 0, 0, 0, 0.989016, 0.147809, 0, -0.147809, 0.989016, 0, 0, 0)
 
 [node name="AnimationTree" type="AnimationTree" parent="tentamech"]
 tree_root = SubResource("AnimationNodeBlendTree_4rd6t")
@@ -248,5 +247,12 @@ spot_range = 45.102
 spot_attenuation = -0.1
 spot_angle = 37.91
 spot_angle_attenuation = 2.37842
+
+[node name="BulletSpawner" type="Node" parent="." node_paths=PackedStringArray("_location_placeholders")]
+script = ExtResource("9_8d87e")
+_bullet_prefab = ExtResource("10_k7l4a")
+_location_placeholders = [NodePath("../tentamech/TentamechArmature/Skeleton3D/MinigunRootRAttachment/BulletPlaceholderR"), NodePath("../tentamech/TentamechArmature/Skeleton3D/MinigunRootLAttachment/BulletPlaceholderL")]
+_velocity = Vector3(30, 0, 0)
+_scale = Vector3(0.5, 0.5, 0.5)
 
 [editable path="tentamech"]
