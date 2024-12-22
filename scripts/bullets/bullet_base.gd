@@ -10,10 +10,8 @@ var forces : Array[Vector3] = []
 signal bullet_destroyed
 
 func prepare(args : BulletArgs) -> void:
-	global_position = args.origin
-	global_basis = args.basis
-	global_scale(args.scale)
-	velocity = args.velocity
+	transform = args.transform
+	velocity = args.transform.orthonormalized() * (args.direction.normalized() * args.velocity)
 	damage = args.damage
 	collision_layer = args.alliance
 	collision_mask = args.alliance
@@ -37,10 +35,10 @@ func add_force(force: Vector3):
 	forces.append(force)
 
 class BulletArgs :
-	var origin : Vector3 = Vector3.ZERO
-	var basis : Basis = Basis()
-	var scale : Vector3 = Vector3.ONE
-	var velocity : Vector3 = Vector3.RIGHT
+	var transform : Transform3D = Transform3D()
+	#TODO: Scale
+	var direction : Vector3 = Vector3.RIGHT
+	var velocity : float = 1.0
 	## Use a low number for bullets that will collide with the player. Use a higher number for bullets
 	## that collide with enemies.
 	var damage : int = 1

@@ -5,15 +5,16 @@
 [ext_resource type="Material" uid="uid://te8a1w8xfkh0" path="res://assets/materials/bullets/bullet_cylinder.tres" id="3_iwehe"]
 [ext_resource type="Material" uid="uid://ci1q2jprxnvbm" path="res://assets/materials/bullets/bullet_cylinder_shell.tres" id="4_udss4"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uk7sa"]
-height = 1.5
+[sub_resource type="SphereShape3D" id="SphereShape3D_5u20b"]
+radius = 0.25
 
 [node name="Bullet" instance=ExtResource("1_2r7oy")]
 
 [node name="MeshInstance3D" parent="." index="0"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0)
 mesh = ExtResource("2_sea1k")
 surface_material_override/0 = ExtResource("3_iwehe")
 surface_material_override/1 = ExtResource("4_udss4")
 
 [node name="CollisionShape3D" parent="." index="1"]
-shape = SubResource("CapsuleShape3D_uk7sa")
+shape = SubResource("SphereShape3D_5u20b")

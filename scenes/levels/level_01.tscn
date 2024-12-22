@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8oq5yx625dfi"]
+[gd_scene load_steps=4 format=3 uid="uid://c8oq5yx625dfi"]
 
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="1_8r7up"]
 [ext_resource type="PackedScene" uid="uid://d43jvw5r31qx" path="res://scenes/prefabs/tentamech.tscn" id="2_vajby"]
 
-[node name="Level01" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_kmi7r"]
+size = Vector3(25.6679, 25.6679, 4)
+
+[node name="Level01" type="Node3D" node_paths=PackedStringArray("camera3D", "area3D", "collision_shape3D")]
 script = ExtResource("1_8r7up")
+camera3D = NodePath("Camera3D")
+area3D = NodePath("Area3D")
+collision_shape3D = NodePath("Area3D/CollisionShape3D")
+level_margin = Vector3(3, 3, 3)
 
 [node name="Tentamech" parent="." instance=ExtResource("2_vajby")]
 
@@ -12,3 +19,8 @@ script = ExtResource("1_8r7up")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42.852)
 fov = 20.0
 size = 14.839
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_kmi7r")
