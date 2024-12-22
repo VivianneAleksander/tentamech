@@ -1,3 +1,4 @@
+@icon("res://assets/icons/animation_interpolation_editor.svg")
 extends Node
 class_name AnimationInterpolationEditor
 

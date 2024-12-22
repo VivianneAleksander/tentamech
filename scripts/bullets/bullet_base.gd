@@ -10,18 +10,27 @@ var forces : Array[Vector3] = []
 signal bullet_destroyed
 
 func prepare(args : BulletArgs) -> void:
-	transform = args.transform
-	velocity = args.transform.orthonormalized() * (args.direction.normalized() * args.velocity)
+	var fwd := args.transform.basis.y
+	fwd.z = 0
+
+	var dir := fwd.normalized()
+	var pos := args.transform.origin
+
+	global_position = pos
+	look_at(pos+dir)
+	
+	velocity = dir * args.velocity
 	damage = args.damage
 	collision_layer = args.alliance
 	collision_mask = args.alliance
 
 func _physics_process(delta):
+	# If the bullet is not aligned with the global plane XY normal ZERO, this will move it to that plane.
 	if abs(global_position.z) <= align_speed * delta:
 		global_position.z = 0
 	else:
-		global_position += Vector3.FORWARD * sign(global_position.z) * align_speed * delta
-
+		global_position.z -= sign(global_position.z) * align_speed * delta
+	
 	for force in forces:
 		velocity += force
 	forces.clear()

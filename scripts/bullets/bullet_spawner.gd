@@ -1,3 +1,4 @@
+@icon("res://assets/icons/bullet_spawner.svg")
 extends Node
 class_name BulletSpawner
 

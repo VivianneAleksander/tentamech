@@ -1,3 +1,4 @@
+@icon("res://assets/icons/mouse_follow_behavior.svg")
 extends Node
 class_name MouseFollowControl
 

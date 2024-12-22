@@ -11,11 +11,10 @@ radius = 0.25
 [node name="Bullet" instance=ExtResource("1_agagi")]
 
 [node name="MeshInstance3D" parent="." index="0"]
-transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0.102977, 4.50128e-09)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.102977, 4.50128e-09)
 mesh = ExtResource("2_jlshr")
 surface_material_override/0 = ExtResource("3_dlyrd")
 surface_material_override/1 = ExtResource("4_1xji5")
 
 [node name="CollisionShape3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("SphereShape3D_br5a2")

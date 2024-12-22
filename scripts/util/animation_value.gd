@@ -1,3 +1,4 @@
+@icon("res://assets/icons/animation_value.svg")
 extends Node
 class_name AnimationValue
 
