@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmacpy5lq41ek"]
+
+[ext_resource type="PackedScene" uid="uid://ccms4re0dq53k" path="res://scenes/prefabs/enemies/enemy_base.tscn" id="1_c4xgp"]
+[ext_resource type="PackedScene" uid="uid://cinndwls1qq0g" path="res://assets/meshes/enemies/gunpunch.glb" id="2_yrie7"]
+[ext_resource type="Material" uid="uid://dmxiitiapp0hp" path="res://assets/materials/enemies/gunpunch.tres" id="3_4bqif"]
+
+[node name="Gunpunch" instance=ExtResource("1_c4xgp")]
+
+[node name="Mesh" parent="." index="2" instance=ExtResource("2_yrie7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="NeedlerMesh" parent="Mesh/NeedlerArmature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_4bqif")
+
+[editable path="Mesh"]

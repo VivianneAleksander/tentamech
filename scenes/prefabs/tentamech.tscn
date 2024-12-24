@@ -1,5 +1,6 @@
-[gd_scene load_steps=40 format=3 uid="uid://d43jvw5r31qx"]
+[gd_scene load_steps=42 format=3 uid="uid://d43jvw5r31qx"]
 
+[ext_resource type="Script" path="res://scripts/player_control/area_character.gd" id="1_dap5o"]
 [ext_resource type="PackedScene" uid="uid://dee56bhfxqip5" path="res://assets/meshes/tentamech.glb" id="1_ik0fc"]
 [ext_resource type="Material" uid="uid://cuakkhn75dlen" path="res://assets/materials/tentamech_body.tres" id="2_6kx7t"]
 [ext_resource type="Material" uid="uid://bcebdedm6l3i1" path="res://assets/materials/tentamech_windshield.tres" id="3_pvmjk"]
@@ -11,8 +12,9 @@
 [ext_resource type="Script" path="res://scripts/util/animation_interpolation_editor.gd" id="8_mce31"]
 [ext_resource type="Script" path="res://scripts/bullets/bullet_spawner.gd" id="9_8d87e"]
 [ext_resource type="PackedScene" uid="uid://bb41irm4fr4tw" path="res://scenes/prefabs/bullets/bullet_cylinder.tscn" id="10_k7l4a"]
-[ext_resource type="Script" path="res://scripts/util/follow_node_3D.gd" id="10_lgp52"]
+[ext_resource type="Script" path="res://scripts/util/follow_node_3D.gd" id="10_r5w1d"]
 [ext_resource type="PackedScene" uid="uid://cenqggv5fq243" path="res://scenes/prefabs/bullets/bullet_cone.tscn" id="13_7fcwo"]
+[ext_resource type="Script" path="res://scripts/values/health_component.gd" id="15_pu5cx"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p5rrw"]
 animation = &"Fire"
@@ -129,14 +131,15 @@ node_connections = [&"output", 0, &"StateMachine"]
 [sub_resource type="SphereShape3D" id="SphereShape3D_in1du"]
 
 [node name="Tentamech" type="Node3D"]
+script = ExtResource("1_dap5o")
 
-[node name="tentamech" parent="." instance=ExtResource("1_ik0fc")]
+[node name="Mesh" parent="." instance=ExtResource("1_ik0fc")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.832464, 0.333301, 0.130519)
 
-[node name="Skeleton3D" parent="tentamech/TentamechArmature" index="0"]
+[node name="Skeleton3D" parent="Mesh/TentamechArmature" index="0"]
 bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/1/position = Vector3(1.30609, -1.03443, -0.374173)
-bones/1/rotation = Quaternion(0.107527, 0.858796, -0.431448, 0.25448)
+bones/1/position = Vector3(1.30296, -0.977977, -0.389895)
+bones/1/rotation = Quaternion(0.10538, 0.862399, -0.4242, 0.255377)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/rotation = Quaternion(-2.9817e-07, 0.263952, -9.64352e-07, 0.964536)
 bones/3/scale = Vector3(1, 1, 1)
@@ -153,60 +156,58 @@ bones/11/scale = Vector3(1, 1, 1)
 bones/12/rotation = Quaternion(9.33385e-08, 0.937923, 2.22424e-07, 0.346844)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/scale = Vector3(1, 1, 1)
-bones/14/position = Vector3(0.615866, -0.49731, 0.976639)
-bones/14/rotation = Quaternion(-0.154566, -0.349235, 0.915517, -0.126388)
+bones/14/position = Vector3(0.628192, -0.525581, 0.880329)
+bones/14/rotation = Quaternion(-0.289076, -0.363759, 0.88301, -0.0663924)
 bones/14/scale = Vector3(1, 1, 1)
-bones/16/position = Vector3(0, 0.212887, 0.092447)
-bones/16/rotation = Quaternion(0.69335, -0.106459, -0.106459, 0.704698)
-bones/16/scale = Vector3(1, 1, 1)
+bones/16/position = Vector3(0, 0.250872, 0.109656)
+bones/16/rotation = Quaternion(0.694863, -0.106458, -0.106458, 0.703206)
 bones/18/rotation = Quaternion(0.837847, -3.72233e-09, 2.00946e-08, 0.545905)
 bones/18/scale = Vector3(1, 1, 1)
-bones/19/rotation = Quaternion(0.188919, 0.928279, 0.169285, -0.271939)
-bones/20/rotation = Quaternion(-0.276929, -0.204893, -0.0502743, 0.937444)
-bones/21/rotation = Quaternion(-0.37041, 0.334815, -0.0955003, 0.861148)
+bones/19/rotation = Quaternion(0.190936, 0.926994, 0.178688, -0.26888)
+bones/20/rotation = Quaternion(-0.278642, -0.206013, -0.0500793, 0.936702)
+bones/21/rotation = Quaternion(-0.364099, 0.335296, -0.0961126, 0.86358)
 bones/21/scale = Vector3(1, 1, 1)
-bones/22/rotation = Quaternion(-0.273126, 0.0182685, -0.12189, 0.95405)
-bones/23/rotation = Quaternion(-0.223676, 0.0335431, -0.0442087, 0.973083)
+bones/22/rotation = Quaternion(-0.262002, 0.0191562, -0.118707, 0.957547)
+bones/23/rotation = Quaternion(-0.212541, 0.0345984, -0.0405445, 0.975697)
 bones/23/scale = Vector3(1, 1, 1)
-bones/24/rotation = Quaternion(-0.175496, 0.0246803, -0.021855, 0.983928)
+bones/24/rotation = Quaternion(-0.168547, 0.0250149, -0.019346, 0.985186)
 bones/24/scale = Vector3(1, 1, 1)
-bones/25/rotation = Quaternion(-0.13473, 0.125176, -0.0819903, 0.979518)
+bones/25/rotation = Quaternion(-0.158867, 0.119742, -0.0931191, 0.975578)
 bones/25/scale = Vector3(1, 1, 1)
-bones/27/rotation = Quaternion(0.0326069, 0.909954, 0.118234, 0.396157)
+bones/27/rotation = Quaternion(0.0254528, 0.911793, 0.097084, 0.398196)
 bones/27/scale = Vector3(1, 1, 1)
-bones/28/rotation = Quaternion(-0.234765, -0.0696475, 0.201935, 0.948292)
+bones/28/rotation = Quaternion(-0.232452, -0.0705869, 0.198902, 0.949432)
 bones/28/scale = Vector3(1, 1, 1)
-bones/29/rotation = Quaternion(-0.226983, 0.407147, 0.0972862, 0.879344)
+bones/29/rotation = Quaternion(-0.235115, 0.405654, 0.101154, 0.877459)
 bones/29/scale = Vector3(1, 1, 1)
-bones/30/rotation = Quaternion(-0.160095, 0.00516276, 0.00718459, 0.987062)
+bones/30/rotation = Quaternion(-0.176296, 0.0044067, 0.00806962, 0.984294)
 bones/30/scale = Vector3(1, 1, 1)
-bones/31/rotation = Quaternion(-0.162889, 0.0109033, 0.018286, 0.986415)
-bones/32/rotation = Quaternion(-0.235818, 0.0188103, 0.040388, 0.970775)
-bones/33/rotation = Quaternion(-0.17744, 0.0932288, -0.185272, 0.962028)
+bones/31/rotation = Quaternion(-0.180094, 0.010171, 0.0193788, 0.983406)
+bones/32/rotation = Quaternion(-0.247178, 0.0184551, 0.0410507, 0.967924)
+bones/33/rotation = Quaternion(-0.147013, 0.098108, -0.182568, 0.967177)
 bones/33/scale = Vector3(1, 1, 1)
-bones/35/rotation = Quaternion(-0.0210544, 0.803468, 0.0713464, 0.590682)
-bones/36/rotation = Quaternion(-0.215985, -0.101674, 0.286969, 0.927719)
-bones/37/rotation = Quaternion(-0.267609, 0.377279, 0.195326, 0.864809)
+bones/35/rotation = Quaternion(-0.0252465, 0.805699, 0.045654, 0.590023)
+bones/36/rotation = Quaternion(-0.207869, -0.0996691, 0.27728, 0.932723)
+bones/37/rotation = Quaternion(-0.263781, 0.379496, 0.194399, 0.865223)
 bones/37/scale = Vector3(1, 1, 1)
-bones/38/rotation = Quaternion(-0.189858, -0.0110275, 0.0450003, 0.980718)
-bones/39/rotation = Quaternion(-0.178546, -0.0107514, 0.0405676, 0.983036)
-bones/40/rotation = Quaternion(-0.267211, -0.0227233, 0.0417208, 0.962466)
+bones/38/rotation = Quaternion(-0.191353, -0.0100054, 0.046836, 0.980352)
+bones/39/rotation = Quaternion(-0.183186, -0.0101525, 0.0426941, 0.982098)
+bones/40/rotation = Quaternion(-0.271779, -0.0224785, 0.0432263, 0.961126)
 bones/40/scale = Vector3(1, 1, 1)
-bones/41/rotation = Quaternion(-0.191641, 0.105504, -0.0422891, 0.974861)
-bones/41/scale = Vector3(1, 1, 1)
-bones/43/rotation = Quaternion(0.135939, 0.82591, 0.389344, 0.384455)
-bones/44/rotation = Quaternion(-0.14044, -0.0155605, 0.13376, 0.980889)
+bones/41/rotation = Quaternion(-0.221016, 0.108806, -0.0412342, 0.968304)
+bones/43/rotation = Quaternion(0.130156, 0.832287, 0.375849, 0.386129)
+bones/44/rotation = Quaternion(-0.13471, -0.0141641, 0.128125, 0.982465)
 bones/44/scale = Vector3(1, 1, 1)
-bones/45/rotation = Quaternion(-0.267725, 0.402455, 0.0914517, 0.870626)
+bones/45/rotation = Quaternion(-0.265317, 0.403937, 0.0913445, 0.870688)
 bones/45/scale = Vector3(1, 1, 1)
-bones/46/rotation = Quaternion(-0.259837, -0.00292228, -0.0264016, 0.965287)
-bones/47/rotation = Quaternion(-0.163186, 0.000729116, -0.0123478, 0.986518)
+bones/46/rotation = Quaternion(-0.262129, -0.0021762, -0.0254357, 0.964695)
+bones/47/rotation = Quaternion(-0.167412, 0.000975277, -0.0115104, 0.985819)
 bones/47/scale = Vector3(1, 1, 1)
-bones/48/rotation = Quaternion(-0.16821, 0.00364122, 0.0166076, 0.985605)
-bones/49/rotation = Quaternion(-0.241642, 0.128668, -0.156367, 0.949001)
+bones/48/rotation = Quaternion(-0.172051, 0.00367533, 0.0172693, 0.98493)
+bones/49/rotation = Quaternion(-0.252909, 0.13157, -0.1658, 0.944053)
 bones/49/scale = Vector3(1, 1, 1)
-bones/51/position = Vector3(-1.22076, 0.331904, -0.27455)
-bones/51/rotation = Quaternion(-0.0523753, 0.929636, -0.243834, -0.271255)
+bones/51/position = Vector3(-1.21768, 0.374411, -0.341638)
+bones/51/rotation = Quaternion(-0.0795565, 0.900188, -0.336658, -0.264562)
 bones/51/scale = Vector3(1, 1, 1)
 bones/52/rotation = Quaternion(-3.06127e-07, -0.263952, 9.56381e-07, 0.964536)
 bones/53/scale = Vector3(1, 1, 1)
@@ -224,95 +225,95 @@ bones/61/scale = Vector3(1, 1, 1)
 bones/62/rotation = Quaternion(-1.08297e-07, 0.937923, 2.51787e-07, -0.346845)
 bones/62/scale = Vector3(1, 1, 1)
 bones/63/scale = Vector3(1, 1, 1)
-bones/64/position = Vector3(-0.639449, -0.478658, 1.31487)
-bones/64/rotation = Quaternion(0.236576, -0.398145, 0.882262, 0.0844132)
+bones/64/position = Vector3(-0.695983, -0.535255, 1.26965)
+bones/64/rotation = Quaternion(0.236576, -0.398146, 0.882262, 0.0844132)
 bones/64/scale = Vector3(1, 1, 1)
-bones/66/position = Vector3(1.38963, 0.48898, -1.71811)
-bones/67/position = Vector3(-0.262728, 0.028783, -2.72359)
+bones/66/position = Vector3(1.39438, 0.574927, -1.79765)
+bones/67/position = Vector3(-0.265065, 0.0286378, -2.62126)
 bones/67/rotation = Quaternion(-0.0219391, 0.706766, 0.706766, -0.0219391)
-bones/68/position = Vector3(-1.07533, 0.178249, -1.69752)
+bones/68/position = Vector3(-1.09116, 0.0978583, -1.75159)
 bones/68/rotation = Quaternion(-0.110506, 0.698419, 0.698419, -0.110506)
 bones/68/scale = Vector3(1, 1, 1)
-bones/69/position = Vector3(0.0128158, 0.901474, -1.67828)
+bones/69/position = Vector3(0.014862, 0.881473, -1.72863)
 bones/69/rotation = Quaternion(-0.0180203, 0.706877, 0.706877, -0.0180203)
 bones/69/scale = Vector3(1, 1, 1)
 
-[node name="Tentamech" parent="tentamech/TentamechArmature/Skeleton3D" index="0"]
+[node name="Tentamech" parent="Mesh/TentamechArmature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("2_6kx7t")
 surface_material_override/1 = ExtResource("3_pvmjk")
 
-[node name="RocketFlameRAttachment" type="BoneAttachment3D" parent="tentamech/TentamechArmature/Skeleton3D" index="1"]
-transform = Transform3D(-0.920271, 0.33938, -0.194738, -0.371294, -0.60039, 0.708289, 0.12346, 0.724122, 0.678531, 0.968201, 0.27045, 1.51034)
+[node name="RocketFlameRAttachment" type="BoneAttachment3D" parent="Mesh/TentamechArmature/Skeleton3D" index="1"]
+transform = Transform3D(-0.824054, 0.327558, -0.462212, -0.558815, -0.60402, 0.568229, -0.0930576, 0.726543, 0.68079, 0.968254, 0.17037, 1.54112)
 bone_name = "RocketFlame.R"
 bone_idx = 15
 
-[node name="TentamechRocketParticles" parent="tentamech/TentamechArmature/Skeleton3D/RocketFlameRAttachment" instance=ExtResource("4_6yynb")]
+[node name="TentamechRocketParticles" parent="Mesh/TentamechArmature/Skeleton3D/RocketFlameRAttachment" instance=ExtResource("4_6yynb")]
 transform = Transform3D(0.416424, 0.821797, -0.388898, -0.688332, 0.00552645, -0.725374, -0.593961, 0.569754, 0.567971, 0, 0, 0)
 
-[node name="RocketFlameLAttachment" type="BoneAttachment3D" parent="tentamech/TentamechArmature/Skeleton3D" index="2"]
-transform = Transform3D(-0.873813, -0.337332, 0.350226, 0.484661, -0.662597, 0.571024, 0.0394339, 0.668709, 0.742478, -0.989657, 0.544098, 1.43416)
+[node name="RocketFlameLAttachment" type="BoneAttachment3D" parent="Mesh/TentamechArmature/Skeleton3D" index="2"]
+transform = Transform3D(-0.873813, -0.337332, 0.350226, 0.484661, -0.662597, 0.571024, 0.0394339, 0.668709, 0.742478, -1.04619, 0.498881, 1.49075)
 bone_name = "RocketFlame.L"
 bone_idx = 65
 
-[node name="TentamechRocketParticles" parent="tentamech/TentamechArmature/Skeleton3D/RocketFlameLAttachment" instance=ExtResource("4_6yynb")]
+[node name="TentamechRocketParticles" parent="Mesh/TentamechArmature/Skeleton3D/RocketFlameLAttachment" instance=ExtResource("4_6yynb")]
 
-[node name="ArmRAttachment" type="BoneAttachment3D" parent="tentamech/TentamechArmature/Skeleton3D" index="3"]
-transform = Transform3D(-0.847355, 0.404278, 0.344309, -0.529878, -0.686324, -0.498185, 0.0349024, -0.604581, 0.795779, 1.30609, -0.457055, 1.2957)
+[node name="ArmRAttachment" type="BoneAttachment3D" parent="Mesh/TentamechArmature/Skeleton3D" index="3"]
+transform = Transform3D(-0.847355, 0.398422, 0.351069, -0.529878, -0.677836, -0.509673, 0.0349024, -0.617898, 0.785483, 1.30296, -0.472777, 1.23924)
 bone_name = "Arm.R"
 bone_idx = 1
 
-[node name="BulletPlaceholderR" type="Node3D" parent="tentamech/TentamechArmature/Skeleton3D/ArmRAttachment"]
+[node name="BulletPlaceholderR" type="Node3D" parent="Mesh/TentamechArmature/Skeleton3D/ArmRAttachment"]
 transform = Transform3D(0.999354, -0.0247665, 0.0260548, 0.0203074, 0.98702, 0.15931, -0.0296622, -0.158678, 0.986885, -0.0341094, 1.15293, -0.0184156)
 
-[node name="ArmLAttachment" type="BoneAttachment3D" parent="tentamech/TentamechArmature/Skeleton3D" index="4"]
-transform = Transform3D(-0.847355, -0.229662, -0.478795, 0.529878, -0.424939, -0.733932, -0.0349024, -0.875604, 0.481767, -1.22076, -0.357432, -0.0706407)
+[node name="ArmLAttachment" type="BoneAttachment3D" parent="Mesh/TentamechArmature/Skeleton3D" index="4"]
+transform = Transform3D(-0.847355, -0.321366, -0.422745, 0.529878, -0.564016, -0.633337, -0.0349024, -0.760664, 0.648206, -1.21768, -0.42452, -0.113148)
 bone_name = "Arm.L"
 bone_idx = 51
 
-[node name="BulletPlaceholderL" type="Node3D" parent="tentamech/TentamechArmature/Skeleton3D/ArmLAttachment"]
+[node name="BulletPlaceholderL" type="Node3D" parent="Mesh/TentamechArmature/Skeleton3D/ArmLAttachment"]
 transform = Transform3D(0.999431, 0.0333902, -0.00472231, -0.032489, 0.990915, 0.13051, 0.00903716, -0.130282, 0.991436, 5.96046e-08, 1.1827, -0.149448)
 
-[node name="BodyAttachment" type="BoneAttachment3D" parent="tentamech/TentamechArmature/Skeleton3D" index="5"]
-transform = Transform3D(0.954666, 0.00241624, -0.297668, 0.00241624, 0.999871, 0.0158654, 0.297668, -0.0158654, 0.954537, 0, 0.009565, 0.0483755)
+[node name="BodyAttachment" type="BoneAttachment3D" parent="Mesh/TentamechArmature/Skeleton3D" index="5"]
+transform = Transform3D(0.954666, 0.00177628, -0.297672, 0.00177625, 0.99993, 0.0116634, 0.297672, -0.0116634, 0.954597, 0, 0.0267744, 0.0103909)
 bone_name = "Body"
 bone_idx = 16
 
-[node name="Tentacle01GunAttachment" type="BoneAttachment3D" parent="tentamech/TentamechArmature/Skeleton3D" index="6"]
-transform = Transform3D(-0.937566, 0.281887, -0.203741, 0.340925, 0.62886, -0.698789, -0.0688548, -0.724621, -0.6857, 1.38886, -1.80244, -0.228008)
+[node name="Tentacle01GunAttachment" type="BoneAttachment3D" parent="Mesh/TentamechArmature/Skeleton3D" index="6"]
+transform = Transform3D(-0.937571, 0.282259, -0.203201, 0.340764, 0.628649, -0.699057, -0.0695731, -0.724659, -0.685587, 1.39517, -1.88267, -0.313178)
 bone_name = "Tentacle01Gun"
 bone_idx = 25
 
-[node name="BulletPlaceholder1" type="Node3D" parent="tentamech/TentamechArmature/Skeleton3D/Tentacle01GunAttachment"]
+[node name="BulletPlaceholder1" type="Node3D" parent="Mesh/TentamechArmature/Skeleton3D/Tentacle01GunAttachment"]
 transform = Transform3D(0.97437, 0.224951, 0, -0.224951, 0.97437, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="Tentacle02GunAttachment" type="BoneAttachment3D" parent="tentamech/TentamechArmature/Skeleton3D" index="7"]
-transform = Transform3D(-0.944533, 0.130315, -0.301453, 0.321069, 0.173372, -0.931051, -0.0690662, -0.976197, -0.205596, -0.261764, -2.80626, 0.232282)
+[node name="Tentacle02GunAttachment" type="BoneAttachment3D" parent="Mesh/TentamechArmature/Skeleton3D" index="7"]
+transform = Transform3D(-0.944292, 0.129987, -0.30235, 0.321785, 0.171952, -0.931067, -0.0690366, -0.976491, -0.204201, -0.264985, -2.70496, 0.232542)
 bone_name = "Tentacle02Gun"
 bone_idx = 33
 
-[node name="BulletPlaceholder2" type="Node3D" parent="tentamech/TentamechArmature/Skeleton3D/Tentacle02GunAttachment"]
+[node name="BulletPlaceholder2" type="Node3D" parent="Mesh/TentamechArmature/Skeleton3D/Tentacle02GunAttachment"]
 transform = Transform3D(0.97437, 0.224951, 0, -0.224951, 0.97437, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="Tentacle03GunAttachment" type="BoneAttachment3D" parent="tentamech/TentamechArmature/Skeleton3D" index="8"]
-transform = Transform3D(-0.949724, 0.159777, -0.269248, 0.312984, 0.506547, -0.8034, 0.00802204, -0.847279, -0.531088, -1.07512, -1.78071, 0.0831867)
+[node name="Tentacle03GunAttachment" type="BoneAttachment3D" parent="Mesh/TentamechArmature/Skeleton3D" index="8"]
+transform = Transform3D(-0.949678, 0.159561, -0.269542, 0.313125, 0.505758, -0.803842, 0.00806054, -0.847791, -0.53027, -1.09138, -1.83562, 0.163908)
 bone_name = "Tentacle03Gun"
 bone_idx = 41
 
-[node name="BulletPlaceholder3" type="Node3D" parent="tentamech/TentamechArmature/Skeleton3D/Tentacle03GunAttachment"]
+[node name="BulletPlaceholder3" type="Node3D" parent="Mesh/TentamechArmature/Skeleton3D/Tentacle03GunAttachment"]
 transform = Transform3D(0.988494, 0.151261, 0, -0.151261, 0.988494, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="Tentacle04GunAttachment" type="BoneAttachment3D" parent="tentamech/TentamechArmature/Skeleton3D" index="9"]
-transform = Transform3D(-0.957031, 0.0956758, -0.273747, 0.25377, 0.733141, -0.630955, 0.140328, -0.673312, -0.725919, 0.0130428, -1.76134, -0.64025)
+[node name="Tentacle04GunAttachment" type="BoneAttachment3D" parent="Mesh/TentamechArmature/Skeleton3D" index="9"]
+transform = Transform3D(-0.956942, 0.0959094, -0.273977, 0.254268, 0.732275, -0.63176, 0.140035, -0.674222, -0.725131, 0.0153247, -1.81292, -0.620691)
 bone_name = "Tentacle04Gun"
 bone_idx = 49
 
-[node name="BulletPlaceholder4" type="Node3D" parent="tentamech/TentamechArmature/Skeleton3D/Tentacle04GunAttachment"]
+[node name="BulletPlaceholder4" type="Node3D" parent="Mesh/TentamechArmature/Skeleton3D/Tentacle04GunAttachment"]
 transform = Transform3D(0.997185, 0.0749787, 0, -0.0749787, 0.997185, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="AnimationInterpolationEditor" type="Node" parent="tentamech/AnimationPlayer" index="0"]
+[node name="AnimationInterpolationEditor" type="Node" parent="Mesh/AnimationPlayer" index="0"]
 script = ExtResource("8_mce31")
 
-[node name="AnimationTree" type="AnimationTree" parent="tentamech"]
+[node name="AnimationTree" type="AnimationTree" parent="Mesh"]
 tree_root = SubResource("AnimationNodeBlendTree_4rd6t")
 anim_player = NodePath("../AnimationPlayer")
 parameters/StateMachine/conditions/firing = false
@@ -325,42 +326,33 @@ parameters/StateMachine/conditions/spread_firing = false
 parameters/StateMachine/conditions/turned = false
 script = ExtResource("6_4hkth")
 
-[node name="DirectionValue" type="Node" parent="tentamech/AnimationTree" node_paths=PackedStringArray("follow_control")]
+[node name="DirectionValue" type="Node" parent="Mesh/AnimationTree" node_paths=PackedStringArray("follow_control")]
 script = ExtResource("7_p6gu3")
 follow_control = NodePath("../../../MouseFollowBehavior")
 value_name = &"turned"
 also_set_inverse = true
 
-[node name="SpreadFiringValue" type="Node" parent="tentamech/AnimationTree"]
+[node name="SpreadFiringValue" type="Node" parent="Mesh/AnimationTree"]
 script = ExtResource("8_02dgv")
 value_name = &"spread_firing"
 also_set_inverse = true
 
-[node name="FiringValue" type="Node" parent="tentamech/AnimationTree"]
+[node name="FiringValue" type="Node" parent="Mesh/AnimationTree"]
 script = ExtResource("8_02dgv")
 firing_mode = 1
 value_name = &"firing"
 also_set_inverse = true
 
-[node name="MeleeValue" type="Node" parent="tentamech/AnimationTree"]
+[node name="MeleeValue" type="Node" parent="Mesh/AnimationTree"]
 script = ExtResource("8_02dgv")
 firing_mode = 2
 value_name = &"melee"
 also_set_inverse = true
 
-[node name="MouseFollowBehavior" type="Node" parent="." node_paths=PackedStringArray("target")]
+[node name="MouseFollowBehavior" type="Node" parent="." node_paths=PackedStringArray("target") groups=["Player"]]
 script = ExtResource("5_jmmn4")
 target = NodePath("..")
-
-[node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("target")]
-transform = Transform3D(-0.297648, 0.0269263, -0.954296, 0.00416287, 0.999629, 0.026907, 0.954667, 0.00403621, -0.29765, 0.0312726, 0.19115, 0.130519)
-script = ExtResource("10_lgp52")
-target = NodePath("../tentamech/TentamechArmature/Skeleton3D/BodyAttachment")
-run_in_editor = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(-4.37274e-08, 3.8211e-11, 1, 0.0279659, 0.999609, 1.18468e-09, -0.999609, 0.0279659, -4.37114e-08, -0.130519, -0.182838, 0.011619)
-shape = SubResource("SphereShape3D_in1du")
+acceleration = 70.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(0.122028, -0.868034, 0.481275, 0.567904, 0.458743, 0.683402, -0.813999, 0.189924, 0.54894, 3.84678, 5.20025, 4.08011)
@@ -372,21 +364,30 @@ spot_angle_attenuation = 2.37842
 [node name="FocusedBulletSpawner" type="Node" parent="." node_paths=PackedStringArray("_location_placeholders")]
 script = ExtResource("9_8d87e")
 _bullet_prefab = ExtResource("10_k7l4a")
-_spawn_at_all = null
-_location_placeholders = [NodePath("../tentamech/TentamechArmature/Skeleton3D/ArmRAttachment/BulletPlaceholderR"), NodePath("../tentamech/TentamechArmature/Skeleton3D/ArmLAttachment/BulletPlaceholderL")]
+_location_placeholders = [NodePath("../Mesh/TentamechArmature/Skeleton3D/ArmRAttachment/BulletPlaceholderR"), NodePath("../Mesh/TentamechArmature/Skeleton3D/ArmLAttachment/BulletPlaceholderL")]
 _direction = Vector3(0, 1, 0)
 _velocity = 30.0
-_damage = null
-_alliance = null
 
 [node name="SpreadBulletSpawner" type="Node" parent="." node_paths=PackedStringArray("_location_placeholders")]
 script = ExtResource("9_8d87e")
 _bullet_prefab = ExtResource("13_7fcwo")
 _spawn_at_all = true
-_location_placeholders = [NodePath("../tentamech/TentamechArmature/Skeleton3D/Tentacle01GunAttachment/BulletPlaceholder1"), NodePath("../tentamech/TentamechArmature/Skeleton3D/Tentacle02GunAttachment/BulletPlaceholder2"), NodePath("../tentamech/TentamechArmature/Skeleton3D/Tentacle03GunAttachment/BulletPlaceholder3"), NodePath("../tentamech/TentamechArmature/Skeleton3D/Tentacle04GunAttachment/BulletPlaceholder4")]
+_location_placeholders = [NodePath("../Mesh/TentamechArmature/Skeleton3D/Tentacle01GunAttachment/BulletPlaceholder1"), NodePath("../Mesh/TentamechArmature/Skeleton3D/Tentacle02GunAttachment/BulletPlaceholder2"), NodePath("../Mesh/TentamechArmature/Skeleton3D/Tentacle03GunAttachment/BulletPlaceholder3"), NodePath("../Mesh/TentamechArmature/Skeleton3D/Tentacle04GunAttachment/BulletPlaceholder4")]
 _direction = Vector3(0, 1, 0)
 _velocity = 30.0
-_damage = null
-_alliance = null
 
-[editable path="tentamech"]
+[node name="Hurtbox" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" node_paths=PackedStringArray("target")]
+transform = Transform3D(0.954676, 0.000228031, -0.297648, 0.00105904, 0.999991, 0.00416287, 0.297646, -0.00428941, 0.954667, 0.0692572, 0.20836, 0.130519)
+shape = SubResource("SphereShape3D_in1du")
+script = ExtResource("10_r5w1d")
+target = NodePath("../../Mesh/TentamechArmature/Skeleton3D/BodyAttachment")
+run_in_editor = true
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("15_pu5cx")
+
+[editable path="Mesh"]

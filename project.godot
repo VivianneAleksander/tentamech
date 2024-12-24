@@ -25,6 +25,10 @@ gdscript/warnings/unused_signal=0
 
 enabled=PackedStringArray("res://addons/GPUTrail-main/plugin.cfg")
 
+[global_group]
+
+Player="This group should only ever contain the player."
+
 [input]
 
 fire={

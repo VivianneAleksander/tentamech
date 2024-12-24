@@ -8,10 +8,10 @@ class_name LevelManager
 @export var level_margin : Vector3
 
 func _ready():
-	if Engine.is_editor_hint():
-		pass
-	else:
+	if not OS.has_feature("editor"):
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+
+	if not Engine.is_editor_hint():
 		if not area3D: return
 		area3D.area_entered.connect(_on_area_entered)
 		area3D.area_exited.connect(_on_area_exited)

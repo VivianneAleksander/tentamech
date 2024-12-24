@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cinndwls1qq0g"
-path="res://.godot/imported/needler.glb-80f8bed7c895f83845562e30f14dad7d.scn"
+path="res://.godot/imported/gunpunch.glb-2507614e6c40b621d20afb9abd50f386.scn"
 
 [deps]
 
-source_file="res://assets/meshes/enemies/needler.glb"
-dest_files=["res://.godot/imported/needler.glb-80f8bed7c895f83845562e30f14dad7d.scn"]
+source_file="res://assets/meshes/enemies/gunpunch.glb"
+dest_files=["res://.godot/imported/gunpunch.glb-2507614e6c40b621d20afb9abd50f386.scn"]
 
 [params]
 

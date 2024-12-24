@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccms4re0dq53k"]
+
+[ext_resource type="Script" path="res://scripts/enemies/enemy_base.gd" id="1_ltd7d"]
+[ext_resource type="Script" path="res://scripts/values/health_component.gd" id="2_lyqoc"]
+[ext_resource type="Script" path="res://scripts/enemies/needler_ai.gd" id="3_2m8ga"]
+[ext_resource type="Script" path="res://scripts/enemies/shield_ai.gd" id="4_y2nkn"]
+[ext_resource type="Script" path="res://scripts/enemies/hive_ai.gd" id="5_in5jy"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_h1pam"]
+radius = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ok60a"]
+
+[node name="EnemyBase" type="Node3D"]
+script = ExtResource("1_ltd7d")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+shape = SubResource("SphereShape3D_h1pam")
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("SphereShape3D_ok60a")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_lyqoc")
+
+[node name="NeedlerAI" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("3_2m8ga")
+target = NodePath("..")
+
+[node name="ShieldAI" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("4_y2nkn")
+target = NodePath("..")
+
+[node name="HiveAI" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("5_in5jy")
+target = NodePath("..")

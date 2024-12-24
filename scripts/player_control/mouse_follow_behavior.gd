@@ -4,9 +4,9 @@ class_name MouseFollowControl
 
 @onready var viewport := get_viewport()
 @onready var camera := viewport.get_camera_3d()
-@export var target : Node3D
-@export var acceleration : float = 1000
-@export_range(0, 0.1, 0.001) var movement_deadzone : float = 0.015
+@export var target : AreaCharacter3D
+@export var acceleration : float = 10
+@export var movement_deadzone : float = 0.015
 
 ## Direction is -1 for left, 1 for right, 0 while still.
 var direction : int = 0
@@ -20,5 +20,5 @@ func _physics_process(delta):
 		direction = 0
 	else:
 		direction = sign(distance)
-		
-	target.global_position = world_position
+	
+	target.velocity = (world_position - target.global_position) * acceleration * delta

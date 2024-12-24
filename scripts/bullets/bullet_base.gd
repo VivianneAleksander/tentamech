@@ -1,11 +1,29 @@
-extends Area3D
+extends Node3D
 class_name BulletBase
 
-var align_speed : float = 5.0
+@onready var player_hitbox := get_node("PlayerHitbox") as Area3D
+@onready var enemy_hitbox := get_node("EnemyHitbox") as Area3D
 
+var align_speed : float = 5.0
 var velocity : Vector3 = Vector3.RIGHT
 var damage : int = 0
 var forces : Array[Vector3] = []
+
+enum ALLIANCE {
+	PLAYER,
+	ENEMY
+}
+
+class BulletArgs :
+	var transform : Transform3D = Transform3D()
+	#TODO: Scale
+	var direction : Vector3 = Vector3.RIGHT
+	var velocity : float = 1.0
+	## Use a low number for bullets that will collide with the player. Use a higher number for bullets
+	## that collide with enemies.
+	var damage : int = 1
+	## Bitmask. Sets collision layer and mask. Use 0b1 for player, 0b10 for enemies.
+	var alliance : BulletBase.ALLIANCE = BulletBase.ALLIANCE.PLAYER
 
 signal bullet_destroyed
 
@@ -21,8 +39,8 @@ func prepare(args : BulletArgs) -> void:
 	
 	velocity = dir * args.velocity
 	damage = args.damage
-	collision_layer = args.alliance
-	collision_mask = args.alliance
+
+	set_alliance(args.alliance)
 
 func _physics_process(delta):
 	# If the bullet is not aligned with the global plane XY normal ZERO, this will move it to that plane.
@@ -36,20 +54,17 @@ func _physics_process(delta):
 	forces.clear()
 	global_position += velocity * delta
 
-
 func _exit_tree() -> void:
 	bullet_destroyed.emit()
 
 func add_force(force: Vector3):
 	forces.append(force)
 
-class BulletArgs :
-	var transform : Transform3D = Transform3D()
-	#TODO: Scale
-	var direction : Vector3 = Vector3.RIGHT
-	var velocity : float = 1.0
-	## Use a low number for bullets that will collide with the player. Use a higher number for bullets
-	## that collide with enemies.
-	var damage : int = 1
-	## Bitmask. Sets collision layer and mask. Use 0b1 for player, 0b10 for enemies.
-	var alliance : int = 0b10
+func set_alliance(new_alliance : ALLIANCE):
+	match new_alliance:
+		ALLIANCE.PLAYER:
+			player_hitbox.process_mode = Node.PROCESS_MODE_DISABLED
+			enemy_hitbox.process_mode = Node.PROCESS_MODE_INHERIT
+		ALLIANCE.ENEMY:
+			enemy_hitbox.process_mode = Node.PROCESS_MODE_DISABLED
+			player_hitbox.process_mode = Node.PROCESS_MODE_INHERIT

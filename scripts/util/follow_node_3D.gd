@@ -1,5 +1,5 @@
 @tool
-extends Area3D
+extends Node3D
 class_name FollowNode3D
 
 @export var target : Node3D
