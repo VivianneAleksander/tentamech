@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dm5w0d6n66uia"]
+[gd_scene load_steps=6 format=3 uid="uid://dm5w0d6n66uia"]
 
 [ext_resource type="Theme" uid="uid://dxj8bc86a2lmm" path="res://assets/themes/level_ui.tres" id="1_rhop6"]
+[ext_resource type="Texture2D" uid="uid://clv46vt03f5ua" path="res://assets/icons/HP.svg" id="2_jobes"]
 [ext_resource type="Texture2D" uid="uid://cwfiml2ekcp3o" path="res://assets/sprites/face_cam_placeholder.png" id="3_exm03"]
+[ext_resource type="Texture2D" uid="uid://bawctq1oavyry" path="res://assets/icons/PWR.svg" id="3_k27ih"]
 [ext_resource type="Texture2D" uid="uid://bjuu7xdttd8t0" path="res://assets/sprites/butt_cam_placeholder.png" id="4_r6dt8"]
 
 [node name="LevelUI" type="CanvasLayer"]
@@ -13,12 +15,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("1_rhop6")
 
 [node name="Health" type="Control" parent="Control"]
 layout_direction = 2
 layout_mode = 1
-anchor_right = 0.216146
+anchor_right = 0.332465
 anchor_bottom = 0.101852
 metadata/_edit_use_anchors_ = true
 
@@ -36,6 +39,12 @@ layout_mode = 2
 
 [node name="HealthPips" type="HBoxContainer" parent="Control/Health/HealthMargin/HealthContainer"]
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/Health/HealthMargin/HealthContainer/HealthPips"]
+self_modulate = Color(0, 0.729412, 0.317647, 1)
+layout_mode = 2
+texture = ExtResource("2_jobes")
+expand_mode = 3
 
 [node name="HealthPip" type="Panel" parent="Control/Health/HealthMargin/HealthContainer/HealthPips"]
 layout_mode = 2
@@ -78,11 +87,13 @@ size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="Power" type="Control" parent="Control"]
-layout_direction = 2
+layout_direction = 3
 layout_mode = 1
-anchor_left = 0.657986
-anchor_right = 1.0
+anchor_left = -0.00954872
+anchor_right = 0.332465
 anchor_bottom = 0.101852
+offset_left = 11.0001
+offset_bottom = -9.91821e-05
 grow_horizontal = 0
 metadata/_edit_use_anchors_ = true
 
@@ -98,12 +109,21 @@ theme_type_variation = &"Margin"
 [node name="PowerContainer" type="PanelContainer" parent="Control/Power/PowerMargin"]
 layout_mode = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="Control/Power/PowerMargin/PowerContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Power/PowerMargin/PowerContainer"]
 layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/Power/PowerMargin/PowerContainer/HBoxContainer"]
+self_modulate = Color(0, 0.729412, 0.317647, 1)
+layout_mode = 2
+texture = ExtResource("3_k27ih")
+expand_mode = 3
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/Power/PowerMargin/PowerContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 1
 step = 1.0
 value = 50.0
-fill_mode = 1
 show_percentage = false
 
 [node name="FaceCam" type="Control" parent="Control"]
@@ -139,6 +159,7 @@ texture = ExtResource("3_exm03")
 expand_mode = 1
 
 [node name="ButtCam" type="Control" parent="Control"]
+clip_contents = true
 layout_mode = 1
 anchor_left = 0.834201
 anchor_top = 0.70679
@@ -151,6 +172,7 @@ offset_bottom = 0.823975
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtCamMargins" type="PanelContainer" parent="Control/ButtCam"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -165,6 +187,7 @@ layout_mode = 2
 theme_type_variation = &"TextureContainer"
 
 [node name="ButtCamTexture" type="TextureRect" parent="Control/ButtCam/ButtCamMargins/ButtCamContainer"]
+show_behind_parent = true
 z_index = -1
 layout_mode = 2
 texture = ExtResource("4_r6dt8")

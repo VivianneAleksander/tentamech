@@ -1,9 +1,9 @@
 extends AnimationValue
 
 enum FIRE_MODE {
-	SPREAD,
-	FOCUSED,
-	MELEE
+	SPREAD = 0,
+	FOCUSED = 1,
+	MELEE = 2
 }
 
 @export var firing_mode : FIRE_MODE

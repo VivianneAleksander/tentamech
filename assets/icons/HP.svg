@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="32"
+   height="32"
+   viewBox="0 0 8.4666665 8.4666666"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="HP.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#000000"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="14.962794"
+     inkscape:cx="24.327008"
+     inkscape:cy="18.078175"
+     inkscape:window-width="1845"
+     inkscape:window-height="1057"
+     inkscape:window-x="67"
+     inkscape:window-y="-5"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showgrid="true">
+    <inkscape:grid
+       id="grid1"
+       units="px"
+       originx="0"
+       originy="0"
+       spacingx="0.26458332"
+       spacingy="0.26458332"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect1"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,0,0,1 @ F,0,0,1,0,2.9581315,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,3.4496304,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="rect1"
+       style="display:inline;fill:#ffffff;stroke-width:1.05833;stroke-linecap:round;stroke-linejoin:round"
+       d="M 0.52916666 0 C 0.23600834 0 0 0.23600834 0 0.52916666 L 0 7.9374999 C 0 8.2306582 0.23600834 8.4666666 0.52916666 8.4666666 L 7.9374999 8.4666666 C 8.2306582 8.4666666 8.4666666 8.2306582 8.4666666 7.9374999 L 8.4666666 0.52916666 C 8.4666666 0.23600834 8.2306582 0 7.9374999 0 L 0.52916666 0 z M 5.3950195 0.52916666 L 7.0223103 0.52916666 L 7.3923135 0.89555256 L 7.0212768 1.262972 L 5.396053 1.262972 L 5.025533 0.89555256 L 5.3950195 0.52916666 z M 3.6157999 1.0686686 L 3.9863199 1.4350545 L 3.9863199 3.7811645 L 3.6157999 4.1475504 L 3.2457967 3.7811645 L 3.2457967 1.4355713 L 3.6157999 1.0686686 z M 7.5669799 1.0686686 L 7.9374999 1.4350545 L 7.9374999 3.7811645 L 7.5669799 4.1475504 L 7.1964599 3.7811645 L 7.1964599 1.4355713 L 7.5669799 1.0686686 z M 0.89916991 1.0691854 L 1.2702067 1.436088 L 1.2702067 3.780131 L 0.89916991 4.1475504 L 0.52916666 3.7811645 L 0.52916666 1.4355713 L 0.89916991 1.0691854 z M 4.8503499 1.0691854 L 5.2208699 1.436088 L 5.2208699 3.780131 L 4.8503499 4.1475504 L 4.4803466 3.7811645 L 4.4803466 1.4355713 L 4.8503499 1.0691854 z M 1.4438395 3.953247 L 3.0716471 3.953247 L 3.4416503 4.3201497 L 3.0711303 4.6870523 L 1.4443563 4.6870523 L 1.0738362 4.3201497 L 1.4438395 3.953247 z M 5.3945027 3.953247 L 7.0223103 3.953247 L 7.3928303 4.3201497 L 7.0223103 4.6870523 L 5.3950195 4.6870523 L 5.0250162 4.3201497 L 5.3945027 3.953247 z M 3.6157999 4.492749 L 3.9863199 4.8596516 L 3.9863199 6.9608153 L 3.6157999 7.3272012 L 3.2457967 6.9602986 L 3.2457967 4.8601684 L 3.6157999 4.492749 z M 0.89916991 4.4932657 L 1.2702067 4.8612019 L 1.2702067 6.9597818 L 0.89916991 7.3272012 L 0.52916666 6.9602986 L 0.52916666 4.8601684 L 0.89916991 4.4932657 z M 4.8503499 4.4932657 L 5.2208699 4.8612019 L 5.2208699 6.9597818 L 4.8503499 7.3272012 L 4.4803466 6.9602986 L 4.4803466 4.8601684 L 4.8503499 4.4932657 z " />
+  </g>
+</svg>
