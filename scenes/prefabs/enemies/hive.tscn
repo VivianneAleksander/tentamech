@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bk18yspkip810"]
+
+[ext_resource type="PackedScene" uid="uid://ccms4re0dq53k" path="res://scenes/prefabs/enemies/enemy_base.tscn" id="1_jpdb4"]
+[ext_resource type="PackedScene" uid="uid://d2snehtb62er4" path="res://assets/meshes/enemies/hive.glb" id="2_2rpy3"]
+[ext_resource type="Material" uid="uid://yomvhxy57c4u" path="res://assets/materials/enemies/hive.tres" id="3_g3cn5"]
+
+[node name="EnemyBase" instance=ExtResource("1_jpdb4")]
+
+[node name="Mesh" parent="." index="2" instance=ExtResource("2_2rpy3")]
+
+[node name="HiveMesh" parent="Mesh/HiveArmature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_g3cn5")
+
+[editable path="Mesh"]

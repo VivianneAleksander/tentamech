@@ -1,0 +1,381 @@
+[gd_scene load_steps=12 format=3 uid="uid://csdeiqlsku7wy"]
+
+[ext_resource type="PackedScene" uid="uid://ccms4re0dq53k" path="res://scenes/prefabs/enemies/enemy_base.tscn" id="1_wuu5x"]
+[ext_resource type="ArrayMesh" uid="uid://xevcv0kdgoyt" path="res://assets/meshes/enemies/swarm_mesh.res" id="2_7d3og"]
+[ext_resource type="Material" uid="uid://dm23rmtqlan20" path="res://assets/materials/enemies/swarm.tres" id="3_oll4m"]
+[ext_resource type="ArrayMesh" uid="uid://cy58rway5gain" path="res://assets/meshes/enemies/swarm_wing_big_mesh.res" id="4_5o1es"]
+[ext_resource type="ArrayMesh" uid="uid://dgo0d1bgxl6df" path="res://assets/meshes/enemies/swarm_wing_small_mesh.res" id="5_rieuj"]
+[ext_resource type="ArrayMesh" uid="uid://dqte8gh81te7" path="res://assets/meshes/enemies/swarm_wing_tiny_mesh.res" id="5_wh4o5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_h560x"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kx1fs"]
+radius = 0.2
+
+[sub_resource type="Animation" id="Animation_s0ru3"]
+resource_name = "Fly"
+length = 0.16667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyMesh/WingBigMeshOrigin:rotation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.0821, 0.785398, 0), Vector3(-0.226893, 0.785398, 0), Vector3(0, 0.785398, 0), Vector3(0.0872665, 0.785398, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyMesh/WingBigMeshOrigin2:rotation")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.0821, -0.785398, 0), Vector3(-0.226893, -0.785398, 0), Vector3(0, -0.785398, 0), Vector3(0.0872665, -0.785398, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodyMesh/WingSmallMeshOrigin:rotation")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0872665, 0.785398, 0), Vector3(-0.366519, 0.785398, 0), Vector3(-0.191986, 0.785398, 0), Vector3(-0.139626, 0.785398, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BodyMesh/WingSmallMeshOrigin2:rotation")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0872665, -0.785398, 0), Vector3(-0.366519, -0.785398, 0), Vector3(-0.191986, -0.785398, 0), Vector3(-0.139626, -0.785398, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BodyMesh/WingTinyMeshOrigin:rotation")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.32645, 0.785398, 0), Vector3(1.32645, 0.785398, 0), Vector3(0, 0.785398, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BodyMesh/WingTinyMeshOrigin2:rotation")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.32645, -0.785398, 0), Vector3(1.32645, -0.785398, 0), Vector3(0, -0.785398, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BodyMesh/WingBigMeshOrigin:visible")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BodyMesh/WingBigMeshOrigin2:visible")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BodyMesh/WingSmallMeshOrigin:visible")
+tracks/8/interp = 0
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("BodyMesh/WingSmallMeshOrigin2:visible")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BodyMesh/WingTinyMeshOrigin:visible")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("BodyMesh/WingTinyMeshOrigin2:visible")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_n2gvc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyMesh/WingSmallMeshOrigin:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.785398, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyMesh/WingSmallMeshOrigin2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.785398, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodyMesh/WingTinyMeshOrigin:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.785398, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BodyMesh/WingTinyMeshOrigin2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.785398, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BodyMesh/WingBigMeshOrigin:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.785398, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BodyMesh/WingBigMeshOrigin2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.785398, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BodyMesh/WingBigMeshOrigin:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BodyMesh/WingBigMeshOrigin2:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BodyMesh/WingSmallMeshOrigin:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("BodyMesh/WingSmallMeshOrigin2:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BodyMesh/WingTinyMeshOrigin:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("BodyMesh/WingTinyMeshOrigin2:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lskmh"]
+_data = {
+"Fly": SubResource("Animation_s0ru3"),
+"RESET": SubResource("Animation_n2gvc")
+}
+
+[node name="Swarm" instance=ExtResource("1_wuu5x")]
+
+[node name="CollisionShape3D" parent="Hurtbox" index="0"]
+shape = SubResource("SphereShape3D_h560x")
+
+[node name="CollisionShape3D" parent="Hitbox" index="0"]
+shape = SubResource("SphereShape3D_kx1fs")
+
+[node name="BodyMesh" type="MeshInstance3D" parent="." index="2"]
+mesh = ExtResource("2_7d3og")
+surface_material_override/0 = ExtResource("3_oll4m")
+
+[node name="WingBigMeshOrigin" type="Node3D" parent="BodyMesh" index="0"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+
+[node name="WingBigMesh" type="MeshInstance3D" parent="BodyMesh/WingBigMeshOrigin" index="0"]
+mesh = ExtResource("4_5o1es")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_oll4m")
+
+[node name="WingBigMeshOrigin2" type="Node3D" parent="BodyMesh" index="1"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
+
+[node name="WingBigMesh" type="MeshInstance3D" parent="BodyMesh/WingBigMeshOrigin2" index="0"]
+mesh = ExtResource("4_5o1es")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_oll4m")
+
+[node name="WingSmallMeshOrigin" type="Node3D" parent="BodyMesh" index="2"]
+transform = Transform3D(0.707106, 0, 0.707107, 0, 1, 0, -0.707106, 0, 0.707107, 0, 0, 0)
+
+[node name="WingSmallMesh" type="MeshInstance3D" parent="BodyMesh/WingSmallMeshOrigin" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("5_rieuj")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_oll4m")
+
+[node name="WingSmallMeshOrigin2" type="Node3D" parent="BodyMesh" index="3"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
+
+[node name="WingSmallMesh" type="MeshInstance3D" parent="BodyMesh/WingSmallMeshOrigin2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("5_rieuj")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_oll4m")
+
+[node name="WingTinyMeshOrigin" type="Node3D" parent="BodyMesh" index="4"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BodyMesh/WingTinyMeshOrigin" index="0"]
+mesh = ExtResource("5_wh4o5")
+surface_material_override/0 = ExtResource("3_oll4m")
+
+[node name="WingTinyMeshOrigin2" type="Node3D" parent="BodyMesh" index="5"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BodyMesh/WingTinyMeshOrigin2" index="0"]
+mesh = ExtResource("5_wh4o5")
+surface_material_override/0 = ExtResource("3_oll4m")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_lskmh")
+}
+autoplay = "Fly"

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5kb36i8eyv5q"
-path.s3tc="res://.godot/imported/gunpunch_tex.jpg-5f03b502184af83c02356500a8f0251f.s3tc.ctex"
+uid="uid://b0rc74qym38id"
+path.s3tc="res://.godot/imported/ShieldTex.jpg-ff6dee2ef96425bf2f9087d32afa9a96.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/materials/textures/gunpunch_tex.jpg"
-dest_files=["res://.godot/imported/gunpunch_tex.jpg-5f03b502184af83c02356500a8f0251f.s3tc.ctex"]
+source_file="res://assets/materials/textures/ShieldTex.jpg"
+dest_files=["res://.godot/imported/ShieldTex.jpg-ff6dee2ef96425bf2f9087d32afa9a96.s3tc.ctex"]
 
 [params]
 

@@ -9,6 +9,7 @@ var forces : Array[Vector3]
 
 func _ready():
 	hurtbox.area_entered.connect(_on_hurtbox_entered)
+	
 
 func _physics_process(delta):
 	move()
@@ -24,4 +25,4 @@ func move():
 	global_position += velocity
 
 func _on_hurtbox_entered(area : Area3D):
-	health_component.take_damage(1)
+	pass

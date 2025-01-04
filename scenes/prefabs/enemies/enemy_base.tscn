@@ -1,17 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccms4re0dq53k"]
+[gd_scene load_steps=11 format=3 uid="uid://ccms4re0dq53k"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_base.gd" id="1_ltd7d"]
 [ext_resource type="Script" path="res://scripts/values/health_component.gd" id="2_lyqoc"]
+[ext_resource type="Script" path="res://scripts/bullets/damage_collision_3d.gd" id="2_tqmj5"]
 [ext_resource type="Script" path="res://scripts/enemies/needler_ai.gd" id="3_2m8ga"]
 [ext_resource type="Script" path="res://scripts/enemies/shield_ai.gd" id="4_y2nkn"]
 [ext_resource type="Script" path="res://scripts/enemies/hive_ai.gd" id="5_in5jy"]
+[ext_resource type="Script" path="res://scripts/debug/debug_label.gd" id="6_ntm7m"]
+[ext_resource type="Script" path="res://scripts/debug/debug_tracker.gd" id="7_wthrn"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_h1pam"]
 radius = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ok60a"]
 
-[node name="EnemyBase" type="Node3D"]
+[node name="EnemyBase" type="Node3D" groups=["Enemies"]]
 script = ExtResource("1_ltd7d")
 
 [node name="Hurtbox" type="Area3D" parent="."]
@@ -23,12 +26,14 @@ shape = SubResource("SphereShape3D_h1pam")
 [node name="Hitbox" type="Area3D" parent="."]
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("2_tqmj5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("SphereShape3D_ok60a")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("2_lyqoc")
+max_health = 100
 
 [node name="NeedlerAI" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("3_2m8ga")
@@ -41,3 +46,15 @@ target = NodePath("..")
 [node name="HiveAI" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("5_in5jy")
 target = NodePath("..")
+
+[node name="SwarmAI" type="Node" parent="."]
+
+[node name="DebugTracker" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.545177, 0)
+script = ExtResource("7_wthrn")
+
+[node name="HPLabel" type="Node" parent="DebugTracker" node_paths=PackedStringArray("item_to_check")]
+script = ExtResource("6_ntm7m")
+label_name = "HP"
+item_to_check = NodePath("../../HealthComponent")
+value = "health"

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cinndwls1qq0g"
-path="res://.godot/imported/gunpunch.glb-2507614e6c40b621d20afb9abd50f386.scn"
+uid="uid://d2snehtb62er4"
+path="res://.godot/imported/hive.glb-7d0cce5d241af168095c21af541ea99f.scn"
 
 [deps]
 
-source_file="res://assets/meshes/enemies/gunpunch.glb"
-dest_files=["res://.godot/imported/gunpunch.glb-2507614e6c40b621d20afb9abd50f386.scn"]
+source_file="res://assets/meshes/enemies/hive.glb"
+dest_files=["res://.godot/imported/hive.glb-7d0cce5d241af168095c21af541ea99f.scn"]
 
 [params]
 

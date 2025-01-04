@@ -16,10 +16,4 @@ func _on_hitbox_entered(area : Area3D):
 	pass
 
 func _on_hurtbox_entered(area : Area3D):
-	var damage : int = 0
-	if "damage" in area:
-		damage = area.damage
-	elif "damage" in area.get_parent():
-		damage = area.get_parent().damage
-
-	health_component.take_damage(damage)
+	pass

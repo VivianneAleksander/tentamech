@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://deubp5l1jl5p3"]
+
+[ext_resource type="PackedScene" uid="uid://ccms4re0dq53k" path="res://scenes/prefabs/enemies/enemy_base.tscn" id="1_tyndw"]
+[ext_resource type="PackedScene" uid="uid://dr2e8fmtx5dsl" path="res://assets/meshes/enemies/shield.glb" id="2_1g0ui"]
+[ext_resource type="Material" uid="uid://8qyhsjnpkbox" path="res://assets/materials/enemies/shield.tres" id="3_ro43p"]
+
+[node name="EnemyBase" instance=ExtResource("1_tyndw")]
+
+[node name="Mesh" parent="." index="2" instance=ExtResource("2_1g0ui")]
+
+[node name="ShieldMesh" parent="Mesh/ShieldArmature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_ro43p")
+
+[editable path="Mesh"]
