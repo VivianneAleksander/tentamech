@@ -1,7 +1,7 @@
 shader_type spatial;
 render_mode unshaded, fog_disabled;
 
-uniform sampler2D depth_tex : source_color, hint_depth_texture, repeat_disable;
+uniform sampler2D depth_tex : source_color, hint_depth_texture, filter_nearest;
 
 uniform float outline_thickness;
 uniform vec3 outline_color : source_color = vec3(0);

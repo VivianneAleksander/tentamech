@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8oq5yx625dfi"]
+[gd_scene load_steps=11 format=3 uid="uid://c8oq5yx625dfi"]
 
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="1_8r7up"]
 [ext_resource type="PackedScene" uid="uid://d43jvw5r31qx" path="res://scenes/prefabs/tentamech.tscn" id="2_vajby"]
@@ -6,8 +6,9 @@
 [ext_resource type="Script" path="res://addons/draw3d/draw_3d.gd" id="5_1krd4"]
 [ext_resource type="Shader" path="res://assets/shaders/post_processing.gdshader" id="6_2ixvr"]
 [ext_resource type="PackedScene" uid="uid://baef4ndm4ppvt" path="res://scenes/prefabs/enemies/knight.tscn" id="6_bghem"]
+[ext_resource type="Script" path="res://scripts/util/screenshot_grabber.gd" id="7_b2nmg"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_3x4gf"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_gudno"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4o1oa"]
 render_priority = 0
@@ -37,7 +38,7 @@ groups_to_monitor = Array[StringName]([&"Enemies", &"Bullets"])
 transform = Transform3D(1, 0, 0, 0, 0.42352, 0.905887, 0, -0.905887, 0.42352, 0, 7.49888, 8.96411)
 
 [node name="Draw3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("ImmediateMesh_3x4gf")
+mesh = SubResource("ImmediateMesh_gudno")
 script = ExtResource("5_1krd4")
 circle_resolution = 16
 default_color = Color(0.892421, 0.104161, 1, 1)
@@ -53,3 +54,6 @@ size = 14.839
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_bgliv")
+
+[node name="ScreenshotGrabber" type="Node" parent="Camera3D"]
+script = ExtResource("7_b2nmg")
