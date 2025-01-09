@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://baef4ndm4ppvt" path="res://scenes/prefabs/enemies/knight.tscn" id="6_bghem"]
 [ext_resource type="Script" path="res://scripts/util/screenshot_grabber.gd" id="7_b2nmg"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_gudno"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_0v3qu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4o1oa"]
 render_priority = 0
@@ -38,7 +38,7 @@ groups_to_monitor = Array[StringName]([&"Enemies", &"Bullets"])
 transform = Transform3D(1, 0, 0, 0, 0.42352, 0.905887, 0, -0.905887, 0.42352, 0, 7.49888, 8.96411)
 
 [node name="Draw3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("ImmediateMesh_gudno")
+mesh = SubResource("ImmediateMesh_0v3qu")
 script = ExtResource("5_1krd4")
 circle_resolution = 16
 default_color = Color(0.892421, 0.104161, 1, 1)

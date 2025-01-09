@@ -30,5 +30,6 @@ void fragment() {
 	
 	ALBEDO.rgb = outline * outline_color;
 	ALPHA = outline;
+	//ALBEDO = texture(depth_tex, UV).rgb;
 }
 
