@@ -3,7 +3,6 @@ extends Node3D
 class_name LevelManager
 
 @export var camera3D : Camera3D
-@export var draw3D : Draw3D
 @export_range(0.01, 1.0, 0.01) var level_margin_x : float = 1.0
 @export_range(0.01, 1.0, 0.01) var level_margin_y : float = 1.0
 @export var z_width : float = 1.0
@@ -45,8 +44,6 @@ func calculate_level_bounds():
 	level_bounds.position = -level_margin_calculated_half
 	level_bounds.size = level_margin_calculated
 
-	draw3D.clear()
-	draw3D.cube(Vector3.ZERO, Basis.IDENTITY.scaled(level_margin_calculated_half))
 
 func constrain_group(group_name : StringName):
 	for node in get_tree().get_nodes_in_group(group_name):
