@@ -1,12 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8oq5yx625dfi"]
+[gd_scene load_steps=10 format=3 uid="uid://c8oq5yx625dfi"]
 
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="1_8r7up"]
 [ext_resource type="PackedScene" uid="uid://d43jvw5r31qx" path="res://scenes/prefabs/tentamech.tscn" id="2_vajby"]
 [ext_resource type="PackedScene" uid="uid://dm5w0d6n66uia" path="res://scenes/prefabs/ui/level_ui.tscn" id="4_mkgbi"]
 [ext_resource type="Script" path="res://addons/draw3d/draw_3d.gd" id="5_1krd4"]
-[ext_resource type="PackedScene" uid="uid://csdeiqlsku7wy" path="res://scenes/prefabs/enemies/swarm.tscn" id="5_xm0vp"]
+[ext_resource type="Shader" path="res://assets/shaders/post_processing.gdshader" id="6_2ixvr"]
+[ext_resource type="PackedScene" uid="uid://baef4ndm4ppvt" path="res://scenes/prefabs/enemies/knight.tscn" id="6_bghem"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_qm6i7"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_3x4gf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4o1oa"]
+render_priority = 0
+shader = ExtResource("6_2ixvr")
+shader_parameter/outline_thickness = 1.465
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/step_threshold_max = 1.0
+shader_parameter/step_threshold_min = 0.8
+
+[sub_resource type="QuadMesh" id="QuadMesh_bgliv"]
+material = SubResource("ShaderMaterial_4o1oa")
+flip_faces = true
+size = Vector2(2, 2)
 
 [node name="Level01" type="Node3D" node_paths=PackedStringArray("camera3D", "draw3D")]
 script = ExtResource("1_8r7up")
@@ -17,21 +31,25 @@ groups_to_monitor = Array[StringName]([&"Enemies", &"Bullets"])
 
 [node name="Tentamech" parent="." instance=ExtResource("2_vajby")]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42.852)
-fov = 20.0
-size = 14.839
-
 [node name="LevelUI" parent="." instance=ExtResource("4_mkgbi")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.42352, 0.905887, 0, -0.905887, 0.42352, 0, 7.49888, 8.96411)
 
 [node name="Draw3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("ImmediateMesh_qm6i7")
+mesh = SubResource("ImmediateMesh_3x4gf")
 script = ExtResource("5_1krd4")
 circle_resolution = 16
 default_color = Color(0.892421, 0.104161, 1, 1)
 
-[node name="Swarm" parent="." instance=ExtResource("5_xm0vp")]
-transform = Transform3D(0.364877, 0, -0.931056, 0, 1, 0, 0.931056, 0, 0.364877, 4.74, 0, 0)
+[node name="Knight" parent="." instance=ExtResource("6_bghem")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.859, 0.007, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42.852)
+fov = 20.0
+size = 14.839
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_bgliv")

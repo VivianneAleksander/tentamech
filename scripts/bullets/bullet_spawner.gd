@@ -11,7 +11,7 @@ class_name BulletSpawner
 var current_location_placeholder : int = 0
 @export var _direction : Vector3 = Vector3.RIGHT
 @export var _velocity : float = 1.0
-@export var _damage : int = 1
+@export var _damage : int = -1
 @export var _alliance : BulletBase.ALLIANCE = BulletBase.ALLIANCE.PLAYER
 
 var bullet_args : BulletBase.BulletArgs

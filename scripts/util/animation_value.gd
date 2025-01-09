@@ -10,5 +10,5 @@ var value_name_inverse : StringName :
 
 @export var also_set_inverse : bool = false
 
-func get_value() -> Variant:
+func _get_value() -> Variant:
 	return false

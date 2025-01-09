@@ -1,12 +1,11 @@
 extends Node3D
 class_name BulletBase
 
-@onready var player_hitbox := get_node("PlayerHitbox") as Area3D
-@onready var enemy_hitbox := get_node("EnemyHitbox") as Area3D
+@onready var player_hitbox := get_node("PlayerHitbox") as DamageCollision3D
+@onready var enemy_hitbox := get_node("EnemyHitbox") as DamageCollision3D
 
 var align_speed : float = 5.0
 var velocity : Vector3 = Vector3.RIGHT
-var damage : int = 0
 var forces : Array[Vector3] = []
 
 enum ALLIANCE {
@@ -38,7 +37,9 @@ func prepare(args : BulletArgs) -> void:
 	look_at(pos+dir)
 	
 	velocity = dir * args.velocity
-	damage = args.damage
+	
+	player_hitbox.damage_value = args.damage
+	enemy_hitbox.damage_value = args.damage
 
 	set_alliance(args.alliance)
 

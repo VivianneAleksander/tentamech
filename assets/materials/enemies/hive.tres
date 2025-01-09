@@ -1,23 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=9 format=3 uid="uid://yomvhxy57c4u"]
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://yomvhxy57c4u"]
 
-[ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="1_pfwwk"]
 [ext_resource type="Shader" path="res://assets/shaders/tentamech.gdshader" id="2_v1bb1"]
 [ext_resource type="Texture2D" uid="uid://crljyynq3rfhw" path="res://assets/materials/textures/HiveTex.jpg" id="3_s8cxf"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cyge1"]
-render_priority = 0
-shader = ExtResource("1_pfwwk")
-shader_parameter/outlineColor = Color(0, 0, 0, 1)
-shader_parameter/depth_threshold = 0.025
-shader_parameter/normal_threshold = 0.5
-shader_parameter/normal_smoothing = 0.25
-shader_parameter/max_thickness = 4.174
-shader_parameter/min_thickness = 0.5
-shader_parameter/max_distance = 75.0
-shader_parameter/min_distance = 2.0
-shader_parameter/grazing_fresnel_power = 5.0
-shader_parameter/grazing_angle_mask_power = 1.0
-shader_parameter/grazing_angle_modulation_factor = 50.0
 
 [sub_resource type="Gradient" id="Gradient_a7fjg"]
 interpolation_mode = 1
@@ -35,9 +19,10 @@ gradient = SubResource("Gradient_rytbr")
 
 [resource]
 render_priority = 1
-next_pass = SubResource("ShaderMaterial_cyge1")
 shader = ExtResource("2_v1bb1")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/solid_albedo = null
+shader_parameter/use_solid_albedo = false
 shader_parameter/specular = 0.0
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = null

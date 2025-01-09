@@ -9,7 +9,7 @@ func _ready():
 
 func _process(delta):
 	for v : AnimationValue in values:
-		var value = v.get_value()
+		var value = v._get_value()
 		self[parameter_path_base + v.value_name] = value
 		if v.also_set_inverse:
 			self[parameter_path_base + v.value_name_inverse] = not value

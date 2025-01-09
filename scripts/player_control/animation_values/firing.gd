@@ -13,5 +13,5 @@ func _process(delta):
 	if Input.is_action_just_pressed("change"):
 		firing_mode = ((firing_mode + 1) % FIRE_MODE.size()) as FIRE_MODE
 
-func get_value() -> Variant:
+func _get_value() -> Variant:
 	return  current_firing_mode == firing_mode and Input.is_action_pressed("fire")
