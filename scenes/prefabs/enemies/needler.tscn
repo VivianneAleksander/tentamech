@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ccms4re0dq53k" path="res://scenes/prefabs/enemies/enemy_base.tscn" id="1_sven7"]
 [ext_resource type="PackedScene" uid="uid://cinndwls1qq0g" path="res://assets/meshes/enemies/needler.glb" id="2_hyv4p"]
 [ext_resource type="Material" uid="uid://dmxiitiapp0hp" path="res://assets/materials/enemies/needler.tres" id="3_wwpxt"]
-[ext_resource type="Script" path="res://scripts/util/animation_interpolation_editor.gd" id="4_0c34i"]
+[ext_resource type="Script" uid="uid://dicn1jxbaua1o" path="res://scripts/util/animation_interpolation_editor.gd" id="4_0c34i"]
 
 [node name="Needler" instance=ExtResource("1_sven7")]
 
