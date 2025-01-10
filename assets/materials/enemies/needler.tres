@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://dmxiitiapp0hp"]
 
-[ext_resource type="Shader" path="res://assets/shaders/tentamech.gdshader" id="2_2f7di"]
+[ext_resource type="Shader" uid="uid://x7id83ixiawd" path="res://assets/shaders/tentamech.gdshader" id="2_2f7di"]
 [ext_resource type="Texture2D" uid="uid://kq2tbir07hps" path="res://assets/materials/textures/NeedlerTex.jpg" id="3_ei7pw"]
 
 [sub_resource type="Gradient" id="Gradient_a7fjg"]

@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://dok4fxsa1nwqv"]
 
-[ext_resource type="Shader" path="res://assets/shaders/tentamech.gdshader" id="2_f85au"]
+[ext_resource type="Shader" uid="uid://x7id83ixiawd" path="res://assets/shaders/tentamech.gdshader" id="2_f85au"]
 [ext_resource type="Texture2D" uid="uid://be0egrs4v0pa4" path="res://assets/materials/textures/TommyGunTex.jpg" id="3_jny5a"]
 
 [sub_resource type="Gradient" id="Gradient_a7fjg"]

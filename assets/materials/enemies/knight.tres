@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://c3gbidftjj3fe"]
 
-[ext_resource type="Shader" path="res://assets/shaders/tentamech.gdshader" id="2_5o5r3"]
+[ext_resource type="Shader" uid="uid://x7id83ixiawd" path="res://assets/shaders/tentamech.gdshader" id="2_5o5r3"]
 [ext_resource type="Texture2D" uid="uid://c6ak1xiw5v404" path="res://assets/materials/textures/KnightTex.jpg" id="3_j3qmq"]
 
 [sub_resource type="Gradient" id="Gradient_a7fjg"]

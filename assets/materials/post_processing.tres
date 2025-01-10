@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://vyf86xb3f3kf"]
+
+[ext_resource type="Shader" uid="uid://doffa4ngmat67" path="res://assets/shaders/post_processing.gdshader" id="1_rojwm"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_rojwm")
+shader_parameter/outline_thickness = 1.465
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/step_threshold_max = 1.0
+shader_parameter/step_threshold_min = 0.8

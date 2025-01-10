@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://bcebdedm6l3i1"]
 
-[ext_resource type="Shader" path="res://assets/shaders/tentamech_windshield.gdshader" id="1_a3wwp"]
+[ext_resource type="Shader" uid="uid://cn47p2wxkxfht" path="res://assets/shaders/tentamech_windshield.gdshader" id="1_a3wwp"]
 
 [sub_resource type="Gradient" id="Gradient_3sm0j"]
 interpolation_mode = 1
