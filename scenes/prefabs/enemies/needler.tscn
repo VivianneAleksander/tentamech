@@ -1,28 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmacpy5lq41ek"]
+[gd_scene load_steps=5 format=3 uid="uid://dmacpy5lq41ek"]
 
 [ext_resource type="PackedScene" uid="uid://ccms4re0dq53k" path="res://scenes/prefabs/enemies/enemy_base.tscn" id="1_sven7"]
 [ext_resource type="PackedScene" uid="uid://cinndwls1qq0g" path="res://assets/meshes/enemies/needler.glb" id="2_hyv4p"]
 [ext_resource type="Material" uid="uid://dmxiitiapp0hp" path="res://assets/materials/enemies/needler.tres" id="3_wwpxt"]
+[ext_resource type="Script" path="res://scripts/util/animation_interpolation_editor.gd" id="4_0c34i"]
 
 [node name="Needler" instance=ExtResource("1_sven7")]
 
 [node name="Mesh" parent="." index="2" instance=ExtResource("2_hyv4p")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Mesh/NeedlerArmature" index="0"]
-bones/1/rotation = Quaternion(0.117989, -0.341049, 0.818017, -0.447899)
-bones/2/rotation = Quaternion(0.31642, -0.195768, -0.697727, 0.612152)
+bones/0/rotation = Quaternion(0, 0.299116, 0, 0.954217)
+bones/1/position = Vector3(8.41041e-09, -0.0760519, 1.95181e-08)
+bones/1/rotation = Quaternion(-9.56487e-08, 0.707107, 0.707107, -1.37679e-07)
+bones/2/rotation = Quaternion(0.798477, -0.126929, -0.277839, -0.518777)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.262654, 0.869902, 0.413272, -0.0590768)
+bones/3/rotation = Quaternion(0.147394, -0.267904, -0.339411, 0.889552)
 bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(-9.56487e-08, 0.707107, 0.707107, -1.37679e-07)
-bones/5/rotation = Quaternion(-0.117989, -0.341049, 0.818017, 0.447899)
+bones/4/rotation = Quaternion(0.234357, 0.860894, 0.339556, 0.297724)
+bones/5/rotation = Quaternion(0.819979, 0.256842, 0.428397, -0.27954)
 bones/5/scale = Vector3(1, 1, 1)
-bones/6/rotation = Quaternion(0.31642, 0.195768, 0.697727, 0.612152)
+bones/6/rotation = Quaternion(0.341232, 0.173811, 0.749952, 0.539373)
 bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(-0.262653, 0.869902, 0.413272, 0.0590771)
+bones/7/rotation = Quaternion(0.0926541, 0.893075, 0.423846, -0.119105)
+bones/8/position = Vector3(1.18988, -2.15505, -0.755663)
+bones/9/position = Vector3(-1.11095, -1.33575, -0.694186)
 
 [node name="NeedlerMesh" parent="Mesh/NeedlerArmature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_wwpxt")
+
+[node name="AnimationInterpolationEditor" type="Node" parent="Mesh/AnimationPlayer" index="0"]
+script = ExtResource("4_0c34i")
 
 [editable path="Mesh"]

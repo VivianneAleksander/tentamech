@@ -38,8 +38,7 @@ shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_qhbpk")
 shader_parameter/light_gradient = SubResource("GradientTexture1D_wdq6n")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0p5m4"]
-radius = 1.1
-height = 7.382
+radius = 0.6
 
 [node name="Knight" instance=ExtResource("1_mnjip")]
 
@@ -126,8 +125,11 @@ skeleton = NodePath("../../..")
 surface_material_override/0 = ExtResource("5_cb0h0")
 
 [node name="CollisionShape3D" parent="Hurtbox" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.157639, -0.875771, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.157639, 0.0879241, 0)
 shape = SubResource("CapsuleShape3D_0p5m4")
+
+[node name="CollisionShape3D" parent="Hitbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.259883, 0, 0)
 
 [node name="DebugTracker" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.87587, 0)
