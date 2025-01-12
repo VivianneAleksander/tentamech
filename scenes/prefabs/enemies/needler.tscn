@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmacpy5lq41ek"]
+[gd_scene load_steps=11 format=3 uid="uid://dmacpy5lq41ek"]
 
 [ext_resource type="PackedScene" uid="uid://ccms4re0dq53k" path="res://scenes/prefabs/enemies/enemy_base.tscn" id="1_sven7"]
 [ext_resource type="PackedScene" uid="uid://cinndwls1qq0g" path="res://assets/meshes/enemies/needler.glb" id="2_hyv4p"]
 [ext_resource type="Material" uid="uid://dmxiitiapp0hp" path="res://assets/materials/enemies/needler.tres" id="3_wwpxt"]
 [ext_resource type="Script" uid="uid://dicn1jxbaua1o" path="res://scripts/util/animation_interpolation_editor.gd" id="4_0c34i"]
+[ext_resource type="Script" path="res://scripts/enemies/move_to_target_rule.gd" id="5_7tccy"]
+[ext_resource type="Script" path="res://scripts/enemies/friction_applicator.gd" id="6_2srgb"]
+[ext_resource type="Script" path="res://scripts/enemies/move_away_from_target_rule.gd" id="6_ysfq4"]
+[ext_resource type="Script" path="res://scripts/enemies/align_with_target_axis_rule.gd" id="8_mo7xj"]
+[ext_resource type="Script" path="res://scripts/enemies/avoid_level_bounds_rule.gd" id="8_w7nqv"]
+[ext_resource type="Script" path="res://scripts/enemies/speed_cap.gd" id="9_1ewlp"]
 
 [node name="Needler" instance=ExtResource("1_sven7")]
 
@@ -11,26 +17,54 @@
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Mesh/NeedlerArmature" index="0"]
-bones/0/rotation = Quaternion(0, 0.299116, 0, 0.954217)
-bones/1/position = Vector3(8.41041e-09, -0.0760519, 1.95181e-08)
-bones/1/rotation = Quaternion(-9.56487e-08, 0.707107, 0.707107, -1.37679e-07)
-bones/2/rotation = Quaternion(0.798477, -0.126929, -0.277839, -0.518777)
+bones/0/rotation = Quaternion(0, 0.443287, 0, -0.89638)
+bones/1/position = Vector3(-5.19065e-08, 0.14266, 1.95181e-08)
+bones/1/rotation = Quaternion(-1.51138e-07, 0.707107, 0.707107, -1.27142e-07)
+bones/2/rotation = Quaternion(0.825572, -0.253593, -0.423162, -0.273964)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.147394, -0.267904, -0.339411, 0.889552)
-bones/3/scale = Vector3(1, 1, 1)
-bones/4/rotation = Quaternion(0.234357, 0.860894, 0.339556, 0.297724)
-bones/5/rotation = Quaternion(0.819979, 0.256842, 0.428397, -0.27954)
-bones/5/scale = Vector3(1, 1, 1)
-bones/6/rotation = Quaternion(0.341232, 0.173811, 0.749952, 0.539373)
+bones/3/rotation = Quaternion(0.33631, -0.16974, -0.749665, 0.544138)
+bones/4/rotation = Quaternion(-0.119265, 0.787801, 0.47625, 0.371929)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.798105, 0.125513, 0.276786, -0.520254)
+bones/6/rotation = Quaternion(0.138656, 0.270379, 0.319403, 0.897581)
 bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(0.0926541, 0.893075, 0.423846, -0.119105)
-bones/8/position = Vector3(1.18988, -2.15505, -0.755663)
-bones/9/position = Vector3(-1.11095, -1.33575, -0.694186)
+bones/7/rotation = Quaternion(-0.311993, 0.874425, 0.370336, -0.0298928)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(1.08893, -1.12817, -0.725664)
+bones/9/position = Vector3(-1.21232, -1.94254, -0.784093)
 
 [node name="NeedlerMesh" parent="Mesh/NeedlerArmature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_wwpxt")
 
 [node name="AnimationInterpolationEditor" type="Node" parent="Mesh/AnimationPlayer" index="0"]
 script = ExtResource("4_0c34i")
+
+[node name="MoveToTargetRule" type="Node" parent="." index="5" node_paths=PackedStringArray("primary")]
+script = ExtResource("5_7tccy")
+max_distance = 10.0
+primary = NodePath("..")
+
+[node name="MoveAwayFromTargetRule" type="Node" parent="." index="6" node_paths=PackedStringArray("primary")]
+script = ExtResource("6_ysfq4")
+min_distance = 9.0
+primary = NodePath("..")
+
+[node name="AvoidLevelBoundsRule" type="Node" parent="." index="7" node_paths=PackedStringArray("primary")]
+script = ExtResource("8_w7nqv")
+min_distance = 5.0
+primary = NodePath("..")
+
+[node name="AlignWithTargetAxisRule" type="Node" parent="." index="8" node_paths=PackedStringArray("primary")]
+script = ExtResource("8_mo7xj")
+min_distance = 0.2
+primary = NodePath("..")
+
+[node name="FrictionApplicator" type="Node" parent="." index="9" node_paths=PackedStringArray("primary")]
+script = ExtResource("6_2srgb")
+primary = NodePath("..")
+
+[node name="SpeedCap" type="Node" parent="." index="10" node_paths=PackedStringArray("primary")]
+script = ExtResource("9_1ewlp")
+primary = NodePath("..")
 
 [editable path="Mesh"]

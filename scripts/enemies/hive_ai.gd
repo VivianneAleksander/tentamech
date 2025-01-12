@@ -1,2 +1,0 @@
-extends EnemyAI
-class_name HiveAI

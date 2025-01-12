@@ -3,14 +3,14 @@ extends Node3D
 class_name LevelManager
 
 @export var camera3D : Camera3D
-@export_range(0.01, 1.0, 0.01) var level_margin_x : float = 1.0
-@export_range(0.01, 1.0, 0.01) var level_margin_y : float = 1.0
+@export_range(0.01, 2.0, 0.01) var level_margin_x : float = 1.0
+@export_range(0.01, 2.0, 0.01) var level_margin_y : float = 1.0
 @export var z_width : float = 1.0
 var level_margin_calculated : Vector3
 var level_margin_calculated_half : Vector3
 @export var groups_to_monitor : Array[StringName]
 
-var level_bounds : AABB = AABB()
+static var level_bounds : AABB = AABB()
 
 func _ready():
 	# This constrains the mouse to the viewport, but only in the release build, so I

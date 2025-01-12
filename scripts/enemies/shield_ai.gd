@@ -1,2 +1,0 @@
-extends EnemyAI
-class_name ShieldAI
