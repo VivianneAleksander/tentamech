@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmacpy5lq41ek"]
+[gd_scene load_steps=12 format=3 uid="uid://dmacpy5lq41ek"]
 
 [ext_resource type="PackedScene" uid="uid://ccms4re0dq53k" path="res://scenes/prefabs/enemies/enemy_base.tscn" id="1_sven7"]
 [ext_resource type="PackedScene" uid="uid://cinndwls1qq0g" path="res://assets/meshes/enemies/needler.glb" id="2_hyv4p"]
 [ext_resource type="Material" uid="uid://dmxiitiapp0hp" path="res://assets/materials/enemies/needler.tres" id="3_wwpxt"]
 [ext_resource type="Script" uid="uid://dicn1jxbaua1o" path="res://scripts/util/animation_interpolation_editor.gd" id="4_0c34i"]
+[ext_resource type="Script" path="res://scripts/enemies/ai_taskmaster.gd" id="5_4fhfq"]
 [ext_resource type="Script" path="res://scripts/enemies/move_to_target_rule.gd" id="5_7tccy"]
 [ext_resource type="Script" path="res://scripts/enemies/friction_applicator.gd" id="6_2srgb"]
 [ext_resource type="Script" path="res://scripts/enemies/move_away_from_target_rule.gd" id="6_ysfq4"]
@@ -39,32 +40,35 @@ surface_material_override/0 = ExtResource("3_wwpxt")
 [node name="AnimationInterpolationEditor" type="Node" parent="Mesh/AnimationPlayer" index="0"]
 script = ExtResource("4_0c34i")
 
-[node name="MoveToTargetRule" type="Node" parent="." index="5" node_paths=PackedStringArray("primary")]
+[node name="AITaskmaster" type="Node" parent="." index="5" node_paths=PackedStringArray("primary")]
+script = ExtResource("5_4fhfq")
+primary = NodePath("..")
+acceleration = 2.0
+
+[node name="MoveToTargetRule" type="Node" parent="AITaskmaster" index="0"]
 script = ExtResource("5_7tccy")
 max_distance = 10.0
-primary = NodePath("..")
 
-[node name="MoveAwayFromTargetRule" type="Node" parent="." index="6" node_paths=PackedStringArray("primary")]
+[node name="MoveAwayFromTargetRule" type="Node" parent="AITaskmaster" index="1"]
 script = ExtResource("6_ysfq4")
 min_distance = 9.0
-primary = NodePath("..")
 
-[node name="AvoidLevelBoundsRule" type="Node" parent="." index="7" node_paths=PackedStringArray("primary")]
+[node name="AvoidLevelBoundsRule" type="Node" parent="AITaskmaster" index="2"]
 script = ExtResource("8_w7nqv")
 min_distance = 5.0
-primary = NodePath("..")
 
-[node name="AlignWithTargetAxisRule" type="Node" parent="." index="8" node_paths=PackedStringArray("primary")]
+[node name="AlignWithTargetAxisRule" type="Node" parent="AITaskmaster" index="3"]
 script = ExtResource("8_mo7xj")
-min_distance = 0.2
-primary = NodePath("..")
+min_distance = 0.5
 
-[node name="FrictionApplicator" type="Node" parent="." index="9" node_paths=PackedStringArray("primary")]
+[node name="FrictionApplicator" type="Node" parent="." index="6" node_paths=PackedStringArray("primary")]
 script = ExtResource("6_2srgb")
 primary = NodePath("..")
 
-[node name="SpeedCap" type="Node" parent="." index="10" node_paths=PackedStringArray("primary")]
+[node name="SpeedCap" type="Node" parent="." index="7" node_paths=PackedStringArray("primary")]
+process_physics_priority = 1
 script = ExtResource("9_1ewlp")
 primary = NodePath("..")
+max_speed = 0.1
 
 [editable path="Mesh"]

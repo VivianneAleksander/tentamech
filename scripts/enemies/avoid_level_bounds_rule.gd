@@ -15,8 +15,16 @@ var min_x_dist : float
 var max_y_dist : float
 var min_y_dist : float
 
-func _check_rule() -> bool:
-	update_bounds()
+func _check_rule(primary : AreaCharacter3D, target : AreaCharacter3D) -> bool:
+	pos = primary.global_position
+	bounds = LevelManager.level_bounds
+	min_pos = bounds.position
+	max_pos = bounds.position + bounds.size
+
+	max_x_dist = -(pos.x - max_pos.x)
+	min_x_dist = pos.x - min_pos.x
+	max_y_dist = -(pos.y - max_pos.y)
+	min_y_dist = pos.y - min_pos.y
 
 	if max_x_dist < min_distance:
 		return true
@@ -28,7 +36,7 @@ func _check_rule() -> bool:
 		return true
 	return false
 
-func _apply_rule(_delta : float) -> void:
+func _apply_rule(primary : AreaCharacter3D, target : AreaCharacter3D) -> Vector3:
 	if max_x_dist >= min_distance:
 		max_x_dist = 0
 	if min_x_dist >= min_distance:
@@ -39,16 +47,5 @@ func _apply_rule(_delta : float) -> void:
 		min_y_dist = 0
 
 	var force := Vector3(-max_x_dist + min_x_dist, -max_y_dist + min_y_dist, 0)
-	force *= (acceleration * _delta)
-	primary.add_force(force)
-
-func update_bounds():
-	pos = primary.global_position
-	bounds = LevelManager.level_bounds
-	min_pos = bounds.position
-	max_pos = bounds.position + bounds.size
-
-	max_x_dist = -(pos.x - max_pos.x)
-	min_x_dist = pos.x - min_pos.x
-	max_y_dist = -(pos.y - max_pos.y)
-	min_y_dist = pos.y - min_pos.y
+	force *= acceleration
+	return force
