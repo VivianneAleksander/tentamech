@@ -1,8 +1,6 @@
 extends AreaCharacter3D
 class_name EnemyBase
 
-@export_range(0.0, 1.0, 0.001) var friction : float = 0.1
-
 @onready var hitbox := get_node("Hitbox") as Area3D
 
 func _ready():

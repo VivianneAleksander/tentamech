@@ -10,7 +10,8 @@ var forces : Array[Vector3] = []
 
 enum ALLIANCE {
 	PLAYER,
-	ENEMY
+	ENEMY,
+	NEUTRAL
 }
 
 class BulletArgs :
@@ -22,7 +23,7 @@ class BulletArgs :
 	## that collide with enemies.
 	var damage : int = 1
 	## Bitmask. Sets collision layer and mask. Use 0b1 for player, 0b10 for enemies.
-	var alliance : BulletBase.ALLIANCE = BulletBase.ALLIANCE.PLAYER
+	var alliance : BulletBase.ALLIANCE = BulletBase.ALLIANCE.NEUTRAL
 
 signal bullet_destroyed
 
@@ -64,8 +65,17 @@ func add_force(force: Vector3):
 func set_alliance(new_alliance : ALLIANCE):
 	match new_alliance:
 		ALLIANCE.PLAYER:
-			player_hitbox.process_mode = Node.PROCESS_MODE_DISABLED
-			enemy_hitbox.process_mode = Node.PROCESS_MODE_INHERIT
+			player_hitbox.monitorable = false
+			player_hitbox.monitoring = false
+			enemy_hitbox.monitorable = true
+			enemy_hitbox.monitoring = true
 		ALLIANCE.ENEMY:
-			enemy_hitbox.process_mode = Node.PROCESS_MODE_DISABLED
-			player_hitbox.process_mode = Node.PROCESS_MODE_INHERIT
+			enemy_hitbox.monitorable = false
+			enemy_hitbox.monitoring = false
+			player_hitbox.monitorable = true
+			player_hitbox.monitoring = true
+		ALLIANCE.NEUTRAL:
+			enemy_hitbox.monitorable = true
+			enemy_hitbox.monitoring = true
+			player_hitbox.monitorable = true
+			player_hitbox.monitoring = true

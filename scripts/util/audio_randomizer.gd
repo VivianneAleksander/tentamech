@@ -1,6 +1,14 @@
+@tool
 extends AudioStreamPlayer3D
 class_name AudioRandomizer
 
+@export var play_random : bool : 
+	get:
+		return true
+	set(val):
+		if Engine.is_editor_hint():
+			play_random_from_list()
+		
 @export var sounds : Array[AudioStreamOggVorbis]
 @export_range(0.0, 1.0, 0.01) var pitch_range : float = 0.0
 

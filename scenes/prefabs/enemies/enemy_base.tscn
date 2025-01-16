@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://ccms4re0dq53k"]
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_base.gd" id="1_ltd7d"]
-[ext_resource type="Script" uid="uid://b7sx5uyglflo0" path="res://scripts/values/health_component.gd" id="2_lyqoc"]
+[ext_resource type="Script" path="res://scripts/values/health_component.gd" id="2_lyqoc"]
 [ext_resource type="Script" uid="uid://becf66k7psgv5" path="res://scripts/bullets/damage_collision_3d.gd" id="2_tqmj5"]
 [ext_resource type="Script" uid="uid://by2cq2tceirwh" path="res://scripts/debug/debug_label.gd" id="6_ntm7m"]
 [ext_resource type="Script" uid="uid://dab0pt1cuodrh" path="res://scripts/debug/debug_tracker.gd" id="7_wthrn"]

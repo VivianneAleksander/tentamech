@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dmacpy5lq41ek"]
+[gd_scene load_steps=55 format=3 uid="uid://dmacpy5lq41ek"]
 
 [ext_resource type="PackedScene" uid="uid://ccms4re0dq53k" path="res://scenes/prefabs/enemies/enemy_base.tscn" id="1_sven7"]
 [ext_resource type="PackedScene" uid="uid://cinndwls1qq0g" path="res://assets/meshes/enemies/needler.glb" id="2_hyv4p"]
@@ -6,11 +6,207 @@
 [ext_resource type="Script" uid="uid://dicn1jxbaua1o" path="res://scripts/util/animation_interpolation_editor.gd" id="4_0c34i"]
 [ext_resource type="Script" path="res://scripts/enemies/ai_taskmaster.gd" id="5_4fhfq"]
 [ext_resource type="Script" path="res://scripts/enemies/move_to_target_rule.gd" id="5_7tccy"]
+[ext_resource type="Script" uid="uid://bojp5nrxspn3h" path="res://scripts/util/animation_values_manager.gd" id="5_xemhg"]
 [ext_resource type="Script" path="res://scripts/enemies/friction_applicator.gd" id="6_2srgb"]
 [ext_resource type="Script" path="res://scripts/enemies/move_away_from_target_rule.gd" id="6_ysfq4"]
+[ext_resource type="Script" path="res://scripts/enemies/animation_values/set_arbitrary_value.gd" id="7_vohh2"]
+[ext_resource type="Script" path="res://scripts/enemies/animation_values/enemy_flipped_value.gd" id="7_y5x84"]
 [ext_resource type="Script" path="res://scripts/enemies/align_with_target_axis_rule.gd" id="8_mo7xj"]
 [ext_resource type="Script" path="res://scripts/enemies/avoid_level_bounds_rule.gd" id="8_w7nqv"]
 [ext_resource type="Script" path="res://scripts/enemies/speed_cap.gd" id="9_1ewlp"]
+[ext_resource type="Script" path="res://scripts/util/bean_counter.gd" id="13_0lntd"]
+[ext_resource type="Script" path="res://scripts/bullets/bullet_spawner.gd" id="14_sdvm7"]
+[ext_resource type="PackedScene" uid="uid://n5285sd5xops" path="res://scenes/prefabs/bullets/bullet_sphere.tscn" id="15_i8t7o"]
+[ext_resource type="Script" path="res://scripts/util/audio_randomizer.gd" id="17_mcm3u"]
+[ext_resource type="AudioStream" uid="uid://c677bxqypjbk" path="res://assets/sound/sfx/laserShoot07.ogg" id="18_2hysh"]
+[ext_resource type="AudioStream" uid="uid://dm20fmqf807vw" path="res://assets/sound/sfx/laserShoot08.ogg" id="19_q6nsv"]
+[ext_resource type="AudioStream" uid="uid://046vj4aixsui" path="res://assets/sound/sfx/laserShoot09.ogg" id="20_u3fbo"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d6qge"]
+animation = &"NeedlerFire"
+use_custom_timeline = true
+timeline_length = 0.767
+stretch_time_scale = false
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rpi8t"]
+animation = &"NeedlerFire02"
+use_custom_timeline = true
+timeline_length = 0.767
+stretch_time_scale = false
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sk8vt"]
+animation = &"NeedlerFire"
+use_custom_timeline = true
+timeline_length = 0.117
+stretch_time_scale = false
+start_offset = 0.833
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0y1nf"]
+animation = &"NeedlerFire"
+use_custom_timeline = true
+timeline_length = 0.117
+stretch_time_scale = false
+start_offset = 0.967
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v2to1"]
+animation = &"NeedlerFire02"
+use_custom_timeline = true
+timeline_length = 0.117
+stretch_time_scale = false
+start_offset = 0.833
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ubq7a"]
+animation = &"NeedlerFire02"
+use_custom_timeline = true
+timeline_length = 0.117
+stretch_time_scale = false
+start_offset = 0.967
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_34ya3"]
+animation = &"NeedlerIdle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x6w8w"]
+animation = &"NeedlerIdle02"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_omxx7"]
+advance_mode = 2
+advance_condition = &"firing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2dx4o"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"not_firing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vgfbq"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3m6n6"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xlqtq"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"not_firing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g0qca"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ijuo7"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ogkyh"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"not_firing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nx4xx"]
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"flipped"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2efh7"]
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"not_flipped"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7ajeq"]
+advance_mode = 2
+advance_condition = &"firing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sca0l"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5uuml"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c24b3"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yalrd"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"not_firing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3fk3u"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"not_firing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mb18r"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"not_firing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g1ec7"]
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"flipped"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d1sor"]
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"not_flipped"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tx830"]
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"flipped"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u8sdn"]
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"not_flipped"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kxpug"]
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"flipped"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jcnhn"]
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"not_flipped"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_lbfv3"]
+states/End/position = Vector2(1333, 213)
+states/NeedlerFire/node = SubResource("AnimationNodeAnimation_d6qge")
+states/NeedlerFire/position = Vector2(213, 153)
+states/NeedlerFire02/node = SubResource("AnimationNodeAnimation_rpi8t")
+states/NeedlerFire02/position = Vector2(774, 153)
+states/NeedlerFireLoop-01/node = SubResource("AnimationNodeAnimation_sk8vt")
+states/NeedlerFireLoop-01/position = Vector2(223, 231)
+states/NeedlerFireLoop-02/node = SubResource("AnimationNodeAnimation_0y1nf")
+states/NeedlerFireLoop-02/position = Vector2(223, 325)
+states/NeedlerFireLoop02-01/node = SubResource("AnimationNodeAnimation_v2to1")
+states/NeedlerFireLoop02-01/position = Vector2(768, 231)
+states/NeedlerFireLoop02-02/node = SubResource("AnimationNodeAnimation_ubq7a")
+states/NeedlerFireLoop02-02/position = Vector2(774, 312)
+states/NeedlerIdle/node = SubResource("AnimationNodeAnimation_34ya3")
+states/NeedlerIdle/position = Vector2(396, 95)
+states/NeedlerIdle02/node = SubResource("AnimationNodeAnimation_x6w8w")
+states/NeedlerIdle02/position = Vector2(611, 95)
+states/Start/position = Vector2(498, -23)
+transitions = ["NeedlerIdle", "NeedlerFire", SubResource("AnimationNodeStateMachineTransition_omxx7"), "NeedlerFire", "NeedlerIdle", SubResource("AnimationNodeStateMachineTransition_2dx4o"), "Start", "NeedlerIdle", SubResource("AnimationNodeStateMachineTransition_vgfbq"), "NeedlerFire", "NeedlerFireLoop-01", SubResource("AnimationNodeStateMachineTransition_3m6n6"), "NeedlerFireLoop-01", "NeedlerIdle", SubResource("AnimationNodeStateMachineTransition_xlqtq"), "NeedlerFireLoop-02", "NeedlerFireLoop-01", SubResource("AnimationNodeStateMachineTransition_g0qca"), "NeedlerFireLoop-01", "NeedlerFireLoop-02", SubResource("AnimationNodeStateMachineTransition_ijuo7"), "NeedlerFireLoop-02", "NeedlerIdle", SubResource("AnimationNodeStateMachineTransition_ogkyh"), "NeedlerIdle", "NeedlerIdle02", SubResource("AnimationNodeStateMachineTransition_nx4xx"), "NeedlerIdle02", "NeedlerIdle", SubResource("AnimationNodeStateMachineTransition_2efh7"), "NeedlerIdle02", "NeedlerFire02", SubResource("AnimationNodeStateMachineTransition_7ajeq"), "NeedlerFire02", "NeedlerFireLoop02-01", SubResource("AnimationNodeStateMachineTransition_sca0l"), "NeedlerFireLoop02-01", "NeedlerFireLoop02-02", SubResource("AnimationNodeStateMachineTransition_5uuml"), "NeedlerFireLoop02-02", "NeedlerFireLoop02-01", SubResource("AnimationNodeStateMachineTransition_c24b3"), "NeedlerFire02", "NeedlerIdle02", SubResource("AnimationNodeStateMachineTransition_yalrd"), "NeedlerFireLoop02-01", "NeedlerIdle02", SubResource("AnimationNodeStateMachineTransition_3fk3u"), "NeedlerFireLoop02-02", "NeedlerIdle02", SubResource("AnimationNodeStateMachineTransition_mb18r"), "NeedlerFire", "NeedlerFire02", SubResource("AnimationNodeStateMachineTransition_g1ec7"), "NeedlerFire02", "NeedlerFire", SubResource("AnimationNodeStateMachineTransition_d1sor"), "NeedlerFireLoop-01", "NeedlerFireLoop02-01", SubResource("AnimationNodeStateMachineTransition_tx830"), "NeedlerFireLoop02-01", "NeedlerFireLoop-01", SubResource("AnimationNodeStateMachineTransition_u8sdn"), "NeedlerFireLoop-02", "NeedlerFireLoop02-02", SubResource("AnimationNodeStateMachineTransition_kxpug"), "NeedlerFireLoop02-02", "NeedlerFireLoop-02", SubResource("AnimationNodeStateMachineTransition_jcnhn")]
+graph_offset = Vector2(-51, 2)
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cavjr"]
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_lbfv3")
+nodes/StateMachine/position = Vector2(-80, 160)
+node_connections = [&"output", 0, &"StateMachine"]
 
 [node name="Needler" instance=ExtResource("1_sven7")]
 
@@ -18,29 +214,66 @@
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Mesh/NeedlerArmature" index="0"]
-bones/0/rotation = Quaternion(0, 0.443287, 0, -0.89638)
-bones/1/position = Vector3(-5.19065e-08, 0.14266, 1.95181e-08)
-bones/1/rotation = Quaternion(-1.51138e-07, 0.707107, 0.707107, -1.27142e-07)
-bones/2/rotation = Quaternion(0.825572, -0.253593, -0.423162, -0.273964)
+bones/0/rotation = Quaternion(0, 0.945837, 0, -0.324643)
+bones/1/position = Vector3(1.32453e-08, -0.0760519, 1.95181e-08)
+bones/1/rotation = Quaternion(-1.40602e-07, 0.707107, 0.707107, -1.37679e-07)
+bones/2/rotation = Quaternion(0.797597, -0.125499, -0.27621, -0.521342)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.33631, -0.16974, -0.749665, 0.544138)
-bones/4/rotation = Quaternion(-0.119265, 0.787801, 0.47625, 0.371929)
+bones/3/rotation = Quaternion(0.144659, -0.268757, -0.333084, 0.892131)
+bones/4/rotation = Quaternion(0.23784, 0.859852, 0.338682, 0.298967)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.798105, 0.125513, 0.276786, -0.520254)
-bones/6/rotation = Quaternion(0.138656, 0.270379, 0.319403, 0.897581)
+bones/5/rotation = Quaternion(0.820451, 0.255633, 0.426859, -0.281609)
+bones/6/rotation = Quaternion(0.339955, 0.1744, 0.748013, 0.54267)
 bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(-0.311993, 0.874425, 0.370336, -0.0298928)
+bones/7/rotation = Quaternion(0.0911671, 0.892821, 0.424735, -0.118995)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/position = Vector3(1.08893, -1.12817, -0.725664)
-bones/9/position = Vector3(-1.21232, -1.94254, -0.784093)
+bones/8/position = Vector3(1.18988, -2.15505, -0.755663)
+bones/9/position = Vector3(-1.11095, -1.33575, -0.694186)
 
 [node name="NeedlerMesh" parent="Mesh/NeedlerArmature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_wwpxt")
 
+[node name="GunLAttachment" type="BoneAttachment3D" parent="Mesh/NeedlerArmature/Skeleton3D" index="1"]
+transform = Transform3D(0.155315, -0.767249, 0.622259, -0.679085, -0.540393, -0.496809, 0.71744, -0.345405, -0.604959, -0.476494, -2.16172, 1.32827)
+bone_name = "Gun.L"
+bone_idx = 4
+
+[node name="BulletPlaceholderL" type="Node3D" parent="Mesh/NeedlerArmature/Skeleton3D/GunLAttachment" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9426, 0)
+
+[node name="GunRAttachment" type="BoneAttachment3D" parent="Mesh/NeedlerArmature/Skeleton3D" index="2"]
+transform = Transform3D(-0.806994, -0.0184556, -0.590271, 0.538393, -0.433724, -0.722507, -0.24268, -0.900857, 0.359949, 1.30311, -1.34556, -0.132753)
+bone_name = "Gun.R"
+bone_idx = 7
+
+[node name="BulletPlaceholderR" type="Node3D" parent="Mesh/NeedlerArmature/Skeleton3D/GunRAttachment" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9426, 0)
+
 [node name="AnimationInterpolationEditor" type="Node" parent="Mesh/AnimationPlayer" index="0"]
 script = ExtResource("4_0c34i")
 
+[node name="AnimationValuesManager" type="AnimationTree" parent="Mesh" index="2"]
+tree_root = SubResource("AnimationNodeBlendTree_cavjr")
+anim_player = NodePath("../AnimationPlayer")
+parameters/StateMachine/conditions/firing = false
+parameters/StateMachine/conditions/flipped = false
+parameters/StateMachine/conditions/not_firing = false
+parameters/StateMachine/conditions/not_flipped = false
+script = ExtResource("5_xemhg")
+
+[node name="FiringValue" type="Node" parent="Mesh/AnimationValuesManager" index="0"]
+script = ExtResource("7_vohh2")
+value_name = &"firing"
+also_set_inverse = true
+
+[node name="FlippedValue" type="Node" parent="Mesh/AnimationValuesManager" index="1" node_paths=PackedStringArray("target")]
+script = ExtResource("7_y5x84")
+target = NodePath("../../..")
+value_name = &"flipped"
+also_set_inverse = true
+
 [node name="AITaskmaster" type="Node" parent="." index="5" node_paths=PackedStringArray("primary")]
+process_physics_priority = -1
 script = ExtResource("5_4fhfq")
 primary = NodePath("..")
 acceleration = 2.0
@@ -62,6 +295,7 @@ script = ExtResource("8_mo7xj")
 min_distance = 0.5
 
 [node name="FrictionApplicator" type="Node" parent="." index="6" node_paths=PackedStringArray("primary")]
+process_physics_priority = 1
 script = ExtResource("6_2srgb")
 primary = NodePath("..")
 
@@ -70,5 +304,31 @@ process_physics_priority = 1
 script = ExtResource("9_1ewlp")
 primary = NodePath("..")
 max_speed = 0.1
+
+[node name="BulletCount" type="Node" parent="." index="8"]
+script = ExtResource("13_0lntd")
+max_count = 6
+
+[node name="BulletSpawner" type="Node" parent="." index="9" node_paths=PackedStringArray("_location_placeholders")]
+script = ExtResource("14_sdvm7")
+_bullet_prefab = ExtResource("15_i8t7o")
+_location_placeholders = [NodePath("../Mesh/NeedlerArmature/Skeleton3D/GunLAttachment/BulletPlaceholderL"), NodePath("../Mesh/NeedlerArmature/Skeleton3D/GunRAttachment/BulletPlaceholderR")]
+_alliance = 1
+
+[node name="AudioRandomizer" type="AudioStreamPlayer3D" parent="." index="10"]
+stream = ExtResource("20_u3fbo")
+script = ExtResource("17_mcm3u")
+play_random = true
+sounds = Array[AudioStreamOggVorbis]([ExtResource("18_2hysh"), ExtResource("19_q6nsv"), ExtResource("20_u3fbo")])
+pitch_range = 0.24
+
+[node name="AttackTimer" type="Timer" parent="." index="11"]
+process_callback = 0
+wait_time = 5.0
+autostart = true
+
+[connection signal="count_reached" from="BulletCount" to="Mesh/AnimationValuesManager/FiringValue" method="set_value" binds= [false]]
+[connection signal="bullet_fired" from="BulletSpawner" to="BulletCount" method="increment" unbinds=1]
+[connection signal="timeout" from="AttackTimer" to="Mesh/AnimationValuesManager/FiringValue" method="set_value" binds= [true]]
 
 [editable path="Mesh"]

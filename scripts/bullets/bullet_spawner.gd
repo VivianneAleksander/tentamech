@@ -6,7 +6,7 @@ class_name BulletSpawner
 @export var _bullet_prefab : PackedScene
 ## If this number is less than zero, the number of bullets will not be limited.
 @export var _max_bullets : int = -1
-@export var _spawn_at_all : bool = false
+@export var _should_spawn_at_all : bool = false
 @export var _location_placeholders : Array[Node3D]
 var current_location_placeholder : int = 0
 @export var _direction : Vector3 = Vector3.RIGHT
@@ -17,6 +17,8 @@ var current_location_placeholder : int = 0
 var bullet_args : BulletBase.BulletArgs
 var bullet_list : Array[BulletBase]
 
+signal bullet_fired(bullet : BulletBase)
+
 func _ready():
 	bullet_args = BulletBase.BulletArgs.new()
 	update_bullet_args()
@@ -25,7 +27,7 @@ func spawn(args : BulletBase.BulletArgs = null):
 	if not _should_spawn:
 		return
 
-	if _spawn_at_all:
+	if _should_spawn_at_all:
 		spawn_at_all(args)
 		return
 
@@ -48,13 +50,14 @@ func spawn(args : BulletBase.BulletArgs = null):
 	new_bullet.prepare(args if args != null else bullet_args)
 	bullet_list.append(new_bullet)
 	new_bullet.bullet_destroyed.connect(forget_bullet.bind(new_bullet))
+	bullet_fired.emit(new_bullet)
 
 func spawn_at_all(args : BulletBase.BulletArgs = null):
-	var last_spawn_at_all = _spawn_at_all
-	_spawn_at_all = false
+	var last_spawn_at_all = _should_spawn_at_all
+	_should_spawn_at_all = false
 	for i in _location_placeholders.size():
 		spawn(args)
-	_spawn_at_all = last_spawn_at_all
+	_should_spawn_at_all = last_spawn_at_all
 
 func forget_bullet(bullet : BulletBase):
 	bullet_list.erase(bullet)

@@ -1,14 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://cenqggv5fq243"]
+[gd_scene load_steps=7 format=3 uid="uid://cenqggv5fq243"]
 
 [ext_resource type="PackedScene" uid="uid://b03p0txueqmlp" path="res://scenes/prefabs/bullets/bullet_base.tscn" id="1_agagi"]
 [ext_resource type="ArrayMesh" uid="uid://yxdhlrtnmx1o" path="res://assets/meshes/bullets/bullet_cone.res" id="2_jlshr"]
 [ext_resource type="Material" uid="uid://cp2i11xoppr1" path="res://assets/materials/bullets/bullet_cone.tres" id="3_dlyrd"]
 [ext_resource type="Material" uid="uid://bfxmgq65wsts1" path="res://assets/materials/bullets/bullet_cone_shell.tres" id="4_1xji5"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_ppsnn"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1jge2"]
+radius = 0.661504
+
 [node name="Bullet" instance=ExtResource("1_agagi")]
 
 [node name="MeshInstance3D" parent="." index="0"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -0.164588)
 mesh = ExtResource("2_jlshr")
 surface_material_override/0 = ExtResource("3_dlyrd")
 surface_material_override/1 = ExtResource("4_1xji5")
+
+[node name="CollisionShape3D" parent="PlayerHitbox" index="0"]
+shape = SubResource("SphereShape3D_ppsnn")
+
+[node name="CollisionShape3D" parent="EnemyHitbox" index="0"]
+shape = SubResource("SphereShape3D_1jge2")

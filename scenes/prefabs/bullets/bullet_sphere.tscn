@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://n5285sd5xops"]
+
+[ext_resource type="PackedScene" uid="uid://b03p0txueqmlp" path="res://scenes/prefabs/bullets/bullet_base.tscn" id="1_14aio"]
+[ext_resource type="ArrayMesh" uid="uid://bhxvvgblf1onp" path="res://assets/meshes/bullets/bullet_sphere.res" id="2_ipvm4"]
+[ext_resource type="Material" uid="uid://bd6lyom7gv0j2" path="res://assets/materials/bullets/bullet_sphere.tres" id="3_qjtn1"]
+[ext_resource type="Material" uid="uid://8x67e062b00f" path="res://assets/materials/bullets/bullet_sphere_shell.tres" id="4_5iasp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vnkob"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pg5vg"]
+radius = 1.03533
+
+[node name="Bullet" instance=ExtResource("1_14aio")]
+
+[node name="MeshInstance3D" parent="." index="0"]
+mesh = ExtResource("2_ipvm4")
+surface_material_override/0 = ExtResource("3_qjtn1")
+surface_material_override/1 = ExtResource("4_5iasp")
+
+[node name="CollisionShape3D" parent="PlayerHitbox" index="0"]
+shape = SubResource("SphereShape3D_vnkob")
+
+[node name="CollisionShape3D" parent="EnemyHitbox" index="0"]
+shape = SubResource("SphereShape3D_pg5vg")
