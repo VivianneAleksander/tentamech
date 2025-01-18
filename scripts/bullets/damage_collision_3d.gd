@@ -10,7 +10,12 @@ func _ready():
 
 func _on_area_entered(area: Area3D):
 	var health_component : HealthComponent
-	health_component = area.health_component if "health_component" in area else area.get_parent().health_component
+	if "health_component" in area:
+		health_component = area.health_component
+	elif "health_component" in area.get_parent():
+		health_component = area.get_parent().health_component
+	else:
+		return
 
 	health_component.adjust_health(damage_value)
 	damage_dealt.emit()

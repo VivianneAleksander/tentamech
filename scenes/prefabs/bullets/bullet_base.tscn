@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b03p0txueqmlp"]
 
 [ext_resource type="Script" path="res://scripts/bullets/bullet_base.gd" id="1_3c8wb"]
-[ext_resource type="Script" uid="uid://becf66k7psgv5" path="res://scripts/bullets/damage_collision_3d.gd" id="2_nkvdu"]
+[ext_resource type="Script" path="res://scripts/bullets/damage_collision_3d.gd" id="2_nkvdu"]
 
 [node name="Bullet" type="Node3D" groups=["Bullets"]]
 script = ExtResource("1_3c8wb")
@@ -10,7 +10,7 @@ script = ExtResource("1_3c8wb")
 
 [node name="PlayerHitbox" type="Area3D" parent="."]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 8
 script = ExtResource("2_nkvdu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerHitbox"]
@@ -22,3 +22,6 @@ script = ExtResource("2_nkvdu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyHitbox"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[connection signal="damage_dealt" from="PlayerHitbox" to="." method="queue_free"]
+[connection signal="damage_dealt" from="EnemyHitbox" to="." method="queue_free"]

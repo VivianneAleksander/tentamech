@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/enemies/enemy_base.gd" id="1_ltd7d"]
 [ext_resource type="Script" path="res://scripts/values/health_component.gd" id="2_lyqoc"]
-[ext_resource type="Script" uid="uid://becf66k7psgv5" path="res://scripts/bullets/damage_collision_3d.gd" id="2_tqmj5"]
+[ext_resource type="Script" path="res://scripts/bullets/damage_collision_3d.gd" id="2_tqmj5"]
 [ext_resource type="Script" uid="uid://by2cq2tceirwh" path="res://scripts/debug/debug_label.gd" id="6_ntm7m"]
 [ext_resource type="Script" uid="uid://dab0pt1cuodrh" path="res://scripts/debug/debug_tracker.gd" id="7_wthrn"]
 
@@ -22,7 +22,7 @@ shape = SubResource("SphereShape3D_h1pam")
 
 [node name="Hitbox" type="Area3D" parent="."]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 8
 script = ExtResource("2_tqmj5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]

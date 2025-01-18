@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://dicn1jxbaua1o" path="res://scripts/util/animation_interpolation_editor.gd" id="4_0c34i"]
 [ext_resource type="Script" path="res://scripts/enemies/ai_taskmaster.gd" id="5_4fhfq"]
 [ext_resource type="Script" path="res://scripts/enemies/move_to_target_rule.gd" id="5_7tccy"]
-[ext_resource type="Script" uid="uid://bojp5nrxspn3h" path="res://scripts/util/animation_values_manager.gd" id="5_xemhg"]
+[ext_resource type="Script" path="res://scripts/util/animation_values_manager.gd" id="5_xemhg"]
 [ext_resource type="Script" path="res://scripts/enemies/friction_applicator.gd" id="6_2srgb"]
 [ext_resource type="Script" path="res://scripts/enemies/move_away_from_target_rule.gd" id="6_ysfq4"]
 [ext_resource type="Script" path="res://scripts/enemies/animation_values/set_arbitrary_value.gd" id="7_vohh2"]
@@ -215,26 +215,26 @@ transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 
 
 [node name="Skeleton3D" parent="Mesh/NeedlerArmature" index="0"]
 bones/0/rotation = Quaternion(0, 0.945837, 0, -0.324643)
-bones/1/position = Vector3(1.32453e-08, -0.0760519, 1.95181e-08)
+bones/1/position = Vector3(1.29123e-08, -0.0220437, 1.95181e-08)
 bones/1/rotation = Quaternion(-1.40602e-07, 0.707107, 0.707107, -1.37679e-07)
-bones/2/rotation = Quaternion(0.797597, -0.125499, -0.27621, -0.521342)
+bones/2/rotation = Quaternion(0.802299, -0.140067, -0.292006, -0.501427)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.144659, -0.268757, -0.333084, 0.892131)
-bones/4/rotation = Quaternion(0.23784, 0.859852, 0.338682, 0.298967)
+bones/3/rotation = Quaternion(0.164572, -0.264793, -0.376559, 0.872355)
+bones/4/rotation = Quaternion(0.216757, 0.867252, 0.338655, 0.293603)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.820451, 0.255633, 0.426859, -0.281609)
-bones/6/rotation = Quaternion(0.339955, 0.1744, 0.748013, 0.54267)
+bones/5/rotation = Quaternion(0.822264, 0.258346, 0.42955, -0.269492)
+bones/6/rotation = Quaternion(0.341887, 0.169167, 0.755818, 0.532198)
 bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(0.0911671, 0.892821, 0.424735, -0.118995)
+bones/7/rotation = Quaternion(0.0912144, 0.891497, 0.428422, -0.115621)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/position = Vector3(1.18988, -2.15505, -0.755663)
-bones/9/position = Vector3(-1.11095, -1.33575, -0.694186)
+bones/8/position = Vector3(1.2071, -2.05483, -0.756778)
+bones/9/position = Vector3(-1.09869, -1.26364, -0.710708)
 
 [node name="NeedlerMesh" parent="Mesh/NeedlerArmature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_wwpxt")
 
 [node name="GunLAttachment" type="BoneAttachment3D" parent="Mesh/NeedlerArmature/Skeleton3D" index="1"]
-transform = Transform3D(0.155315, -0.767249, 0.622259, -0.679085, -0.540393, -0.496809, 0.71744, -0.345405, -0.604959, -0.476494, -2.16172, 1.32827)
+transform = Transform3D(0.155315, -0.767249, 0.622259, -0.679085, -0.540393, -0.496809, 0.71744, -0.345405, -0.604959, -0.487823, -2.05484, 1.33903)
 bone_name = "Gun.L"
 bone_idx = 4
 
@@ -242,7 +242,7 @@ bone_idx = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9426, 0)
 
 [node name="GunRAttachment" type="BoneAttachment3D" parent="Mesh/NeedlerArmature/Skeleton3D" index="2"]
-transform = Transform3D(-0.806994, -0.0184556, -0.590271, 0.538393, -0.433724, -0.722507, -0.24268, -0.900857, 0.359949, 1.30311, -1.34556, -0.132753)
+transform = Transform3D(-0.806995, -0.0184575, -0.59027, 0.538392, -0.433725, -0.722507, -0.242679, -0.900856, 0.359951, 1.30359, -1.26363, -0.113202)
 bone_name = "Gun.R"
 bone_idx = 7
 
@@ -266,9 +266,9 @@ script = ExtResource("7_vohh2")
 value_name = &"firing"
 also_set_inverse = true
 
-[node name="FlippedValue" type="Node" parent="Mesh/AnimationValuesManager" index="1" node_paths=PackedStringArray("target")]
+[node name="FlippedValue" type="Node" parent="Mesh/AnimationValuesManager" index="1" node_paths=PackedStringArray("primary")]
 script = ExtResource("7_y5x84")
-target = NodePath("../../..")
+primary = NodePath("../../..")
 value_name = &"flipped"
 also_set_inverse = true
 
@@ -313,6 +313,7 @@ max_count = 6
 script = ExtResource("14_sdvm7")
 _bullet_prefab = ExtResource("15_i8t7o")
 _location_placeholders = [NodePath("../Mesh/NeedlerArmature/Skeleton3D/GunLAttachment/BulletPlaceholderL"), NodePath("../Mesh/NeedlerArmature/Skeleton3D/GunRAttachment/BulletPlaceholderR")]
+_velocity = 10.0
 _alliance = 1
 
 [node name="AudioRandomizer" type="AudioStreamPlayer3D" parent="." index="10"]

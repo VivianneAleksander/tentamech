@@ -6,13 +6,15 @@
 [ext_resource type="Material" uid="uid://8x67e062b00f" path="res://assets/materials/bullets/bullet_sphere_shell.tres" id="4_5iasp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vnkob"]
+radius = 0.393105
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pg5vg"]
-radius = 1.03533
+radius = 0.715207
 
 [node name="Bullet" instance=ExtResource("1_14aio")]
 
 [node name="MeshInstance3D" parent="." index="0"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = ExtResource("2_ipvm4")
 surface_material_override/0 = ExtResource("3_qjtn1")
 surface_material_override/1 = ExtResource("4_5iasp")
