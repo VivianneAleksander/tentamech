@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, shadows_disabled, diffuse_burley, specular_schlick_ggx;
+render_mode blend_mix, depth_draw_always, cull_back, shadows_disabled, diffuse_burley, specular_schlick_ggx;
 
 uniform vec4 albedo : source_color;
 uniform float specular : hint_range(0.0, 1.0);

@@ -1,5 +1,5 @@
 @icon("res://assets/icons/animation_value.svg")
-extends Node
+extends AnimationValues
 class_name AnimationValue
 
 @export var value_name : StringName = ""

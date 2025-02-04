@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c8oq5yx625dfi"]
 
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="1_8r7up"]
-[ext_resource type="PackedScene" uid="uid://d43jvw5r31qx" path="res://scenes/prefabs/tentamech.tscn" id="2_vajby"]
+[ext_resource type="PackedScene" uid="uid://ciqe08etvhqlc" path="res://scenes/prefabs/tentamech.tscn" id="2_vajby"]
 [ext_resource type="Material" uid="uid://vyf86xb3f3kf" path="res://assets/materials/post_processing.tres" id="4_gekc5"]
 [ext_resource type="PackedScene" uid="uid://dm5w0d6n66uia" path="res://scenes/prefabs/ui/level_ui.tscn" id="4_mkgbi"]
 [ext_resource type="PackedScene" uid="uid://dmacpy5lq41ek" path="res://scenes/prefabs/enemies/needler.tscn" id="5_ovwcc"]

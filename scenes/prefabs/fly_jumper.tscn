@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://cafnf8smr4lw4"]
+
+[ext_resource type="SpineAtlasResource" uid="uid://bgjji1wtw0uut" path="res://assets/sprites/fly_jumper/fly_jumper_piloting.atlas" id="1_grk8w"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://nugn0cor2odd" path="res://assets/sprites/fly_jumper/fly_jumper_piloting.skel" id="2_2rxxv"]
+[ext_resource type="Script" path="res://scripts/util/spine_sprite_control.gd" id="2_xf8hx"]
+
+[sub_resource type="SpineSkeletonDataResource" id="SpineSkeletonDataResource_sgmi6"]
+atlas_res = ExtResource("1_grk8w")
+skeleton_file_res = ExtResource("2_2rxxv")
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tk3nh"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_inflg"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5kphj"]
+states/Idle/node = SubResource("AnimationNodeAnimation_tk3nh")
+states/Idle/position = Vector2(330, 91)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_inflg")]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ljowk"]
+graph_offset = Vector2(-255, 108)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_5kphj")
+nodes/StateMachine/position = Vector2(-20, 160)
+node_connections = [&"output", 0, &"StateMachine"]
+
+[sub_resource type="Animation" id="Animation_21l0t"]
+resource_name = "Idle"
+loop_mode = 1
+step = 0.0416667
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlyJumperPiloting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["idle", false, 0],
+"method": &"set_animation_state"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wmq61"]
+_data = {
+"Idle": SubResource("Animation_21l0t")
+}
+
+[node name="FlyJumper" type="Node2D"]
+
+[node name="FlyJumperPiloting" type="SpineSprite" parent="."]
+skeleton_data_res = SubResource("SpineSkeletonDataResource_sgmi6")
+preview_skin = "Default"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+position = Vector2(695, 627)
+script = ExtResource("2_xf8hx")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_ljowk")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wmq61")
+}

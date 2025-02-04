@@ -189,6 +189,7 @@ theme_type_variation = &"TextureContainer"
 [node name="ButtCamTexture" type="TextureRect" parent="Control/ButtCam/ButtCamMargins/ButtCamContainer"]
 show_behind_parent = true
 z_index = -1
+clip_contents = true
 layout_mode = 2
 texture = ExtResource("4_r6dt8")
 expand_mode = 1
