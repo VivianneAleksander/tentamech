@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dm5w0d6n66uia"]
+[gd_scene load_steps=7 format=3 uid="uid://dm5w0d6n66uia"]
 
 [ext_resource type="Theme" uid="uid://dxj8bc86a2lmm" path="res://assets/themes/level_ui.tres" id="1_rhop6"]
 [ext_resource type="Texture2D" uid="uid://clv46vt03f5ua" path="res://assets/icons/HP.svg" id="2_jobes"]
-[ext_resource type="Texture2D" uid="uid://cwfiml2ekcp3o" path="res://assets/sprites/face_cam_placeholder.png" id="3_exm03"]
 [ext_resource type="Texture2D" uid="uid://bawctq1oavyry" path="res://assets/icons/PWR.svg" id="3_k27ih"]
-[ext_resource type="Texture2D" uid="uid://bjuu7xdttd8t0" path="res://assets/sprites/butt_cam_placeholder.png" id="4_r6dt8"]
+[ext_resource type="PackedScene" uid="uid://cafnf8smr4lw4" path="res://scenes/prefabs/fly_jumper.tscn" id="5_2xels"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gld3b"]
+viewport_path = NodePath("Control/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jcbkf"]
+viewport_path = NodePath("Control/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport")
 
 [node name="LevelUI" type="CanvasLayer"]
 
@@ -140,23 +145,43 @@ metadata/_edit_use_anchors_ = true
 
 [node name="FaceCamMargin" type="PanelContainer" parent="Control/FaceCam"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.0443037
+anchor_top = -0.0253165
+anchor_right = 1.01266
+anchor_bottom = 0.94937
 grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"Margin"
+metadata/_edit_use_anchors_ = true
 
 [node name="FaceCamContainer" type="PanelContainer" parent="Control/FaceCam/FaceCamMargin"]
+clip_children = 2
 clip_contents = true
 layout_mode = 2
 theme_type_variation = &"TextureContainer"
 
 [node name="FaceCamTexture" type="TextureRect" parent="Control/FaceCam/FaceCamMargin/FaceCamContainer"]
+show_behind_parent = true
 z_index = -1
+clip_contents = true
 layout_mode = 2
-texture = ExtResource("3_exm03")
+texture = SubResource("ViewportTexture_gld3b")
 expand_mode = 1
+
+[node name="SubViewport" type="SubViewport" parent="Control/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture"]
+size = Vector2i(1000, 1000)
+
+[node name="FlyJumper" parent="Control/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport" instance=ExtResource("5_2xels")]
+
+[node name="FlyJumperPiloting" parent="Control/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper" index="0"]
+visible = false
+
+[node name="FrontViewBG" parent="Control/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper" index="5"]
+visible = true
+
+[node name="FlyJumperFrontView" parent="Control/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper" index="6"]
+visible = true
 
 [node name="ButtCam" type="Control" parent="Control"]
 clip_contents = true
@@ -191,5 +216,22 @@ show_behind_parent = true
 z_index = -1
 clip_contents = true
 layout_mode = 2
-texture = ExtResource("4_r6dt8")
+texture = SubResource("ViewportTexture_jcbkf")
 expand_mode = 1
+
+[node name="SubViewport" type="SubViewport" parent="Control/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture"]
+size = Vector2i(1000, 1000)
+
+[node name="FlyJumper" parent="Control/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport" instance=ExtResource("5_2xels")]
+
+[node name="FlyJumperPiloting" parent="Control/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper" index="0"]
+visible = false
+
+[node name="FlyJumperBackView" parent="Control/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper" index="3"]
+visible = true
+
+[node name="BackViewBG" parent="Control/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper" index="4"]
+visible = true
+
+[editable path="Control/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper"]
+[editable path="Control/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper"]

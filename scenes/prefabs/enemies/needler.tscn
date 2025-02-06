@@ -18,9 +18,9 @@
 [ext_resource type="Script" path="res://scripts/bullets/bullet_spawner.gd" id="14_sdvm7"]
 [ext_resource type="PackedScene" uid="uid://n5285sd5xops" path="res://scenes/prefabs/bullets/bullet_sphere.tscn" id="15_i8t7o"]
 [ext_resource type="Script" path="res://scripts/util/audio_randomizer.gd" id="17_mcm3u"]
-[ext_resource type="AudioStream" uid="uid://c677bxqypjbk" path="res://assets/sound/sfx/laserShoot07.ogg" id="18_2hysh"]
-[ext_resource type="AudioStream" uid="uid://dm20fmqf807vw" path="res://assets/sound/sfx/laserShoot08.ogg" id="19_q6nsv"]
-[ext_resource type="AudioStream" uid="uid://046vj4aixsui" path="res://assets/sound/sfx/laserShoot09.ogg" id="20_u3fbo"]
+[ext_resource type="AudioStream" uid="uid://yswmlr1ukndp" path="res://assets/sound/sfx/laserShoot07.ogg" id="18_2hysh"]
+[ext_resource type="AudioStream" uid="uid://1rf55ie02n4s" path="res://assets/sound/sfx/laserShoot08.ogg" id="19_q6nsv"]
+[ext_resource type="AudioStream" uid="uid://bg2muknossbum" path="res://assets/sound/sfx/laserShoot09.ogg" id="20_u3fbo"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d6qge"]
 animation = &"NeedlerFire"
@@ -215,26 +215,26 @@ transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 
 
 [node name="Skeleton3D" parent="Mesh/NeedlerArmature" index="0"]
 bones/0/rotation = Quaternion(0, 0.945837, 0, -0.324643)
-bones/1/position = Vector3(1.29123e-08, -0.0220437, 1.95181e-08)
+bones/1/position = Vector3(1.67134e-08, -0.0317022, 1.95181e-08)
 bones/1/rotation = Quaternion(-1.40602e-07, 0.707107, 0.707107, -1.37679e-07)
-bones/2/rotation = Quaternion(0.802299, -0.140067, -0.292006, -0.501427)
+bones/2/rotation = Quaternion(0.802117, -0.139634, -0.291516, -0.502125)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.164572, -0.264793, -0.376559, 0.872355)
-bones/4/rotation = Quaternion(0.216757, 0.867252, 0.338655, 0.293603)
+bones/3/rotation = Quaternion(0.164005, -0.264948, -0.375298, 0.872959)
+bones/4/rotation = Quaternion(0.21726, 0.86709, 0.338619, 0.293753)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.822264, 0.258346, 0.42955, -0.269492)
-bones/6/rotation = Quaternion(0.341887, 0.169167, 0.755818, 0.532198)
+bones/5/rotation = Quaternion(0.822154, 0.258217, 0.429431, -0.270141)
+bones/6/rotation = Quaternion(0.341811, 0.169449, 0.755429, 0.53271)
 bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(0.0912144, 0.891497, 0.428422, -0.115621)
+bones/7/rotation = Quaternion(0.0912647, 0.891577, 0.428194, -0.115808)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/position = Vector3(1.2071, -2.05483, -0.756778)
-bones/9/position = Vector3(-1.09869, -1.26364, -0.710708)
+bones/8/position = Vector3(1.2048, -2.08108, -0.755663)
+bones/9/position = Vector3(-1.1016, -1.28664, -0.706649)
 
 [node name="NeedlerMesh" parent="Mesh/NeedlerArmature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_wwpxt")
 
 [node name="GunLAttachment" type="BoneAttachment3D" parent="Mesh/NeedlerArmature/Skeleton3D" index="1"]
-transform = Transform3D(0.155315, -0.767249, 0.622259, -0.679085, -0.540393, -0.496809, 0.71744, -0.345405, -0.604959, -0.487823, -2.05484, 1.33903)
+transform = Transform3D(0.155317, -0.76725, 0.622257, -0.679086, -0.540392, -0.496808, 0.717439, -0.345403, -0.604961, -0.487794, -2.06624, 1.33833)
 bone_name = "Gun.L"
 bone_idx = 4
 
@@ -242,7 +242,7 @@ bone_idx = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9426, 0)
 
 [node name="GunRAttachment" type="BoneAttachment3D" parent="Mesh/NeedlerArmature/Skeleton3D" index="2"]
-transform = Transform3D(-0.806995, -0.0184575, -0.59027, 0.538392, -0.433725, -0.722507, -0.242679, -0.900856, 0.359951, 1.30359, -1.26363, -0.113202)
+transform = Transform3D(-0.806995, -0.0184582, -0.59027, 0.538392, -0.433725, -0.722507, -0.242679, -0.900856, 0.359952, 1.30355, -1.27469, -0.114342)
 bone_name = "Gun.R"
 bone_idx = 7
 

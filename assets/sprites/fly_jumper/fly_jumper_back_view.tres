@@ -1,8 +1,8 @@
 [gd_resource type="SpineSkeletonDataResource" load_steps=3 format=3 uid="uid://dvaj4mxbufebj"]
 
-[ext_resource type="SpineAtlasResource" uid="uid://dpdg035e7ijr5" path="res://assets/sprites/fly_jumper/fly_jumper_back_view.atlas" id="1_asfdh"]
-[ext_resource type="SpineSkeletonFileResource" uid="uid://cgt1ghiugrtdh" path="res://assets/sprites/fly_jumper/fly_jumper_back_view.skel" id="2_ko2rc"]
+[ext_resource type="SpineAtlasResource" uid="uid://1ib0xlc5gke" path="res://assets/sprites/fly_jumper/fly_jumper_back_view.atlas" id="1_263tw"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://cgt1ghiugrtdh" path="res://assets/sprites/fly_jumper/fly_jumper_back_view.skel" id="2_dwxim"]
 
 [resource]
-atlas_res = ExtResource("1_asfdh")
-skeleton_file_res = ExtResource("2_ko2rc")
+atlas_res = ExtResource("1_263tw")
+skeleton_file_res = ExtResource("2_dwxim")

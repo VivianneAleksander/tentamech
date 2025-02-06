@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://pqi8gmig8gt0"
+path="res://.godot/imported/fly_jumper_front_view.skel-1c6109172f93aba9f088f2c3c6fb09a5.spskel"
+
+[deps]
+
+source_file="res://assets/sprites/fly_jumper/fly_jumper_front_view.skel"
+dest_files=["res://.godot/imported/fly_jumper_front_view.skel-1c6109172f93aba9f088f2c3c6fb09a5.spskel"]
+
+[params]
+
