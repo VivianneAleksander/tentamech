@@ -1,8 +1,0 @@
-[gd_resource type="SpineSkeletonDataResource" load_steps=3 format=3 uid="uid://bbvpkmkvnlccv"]
-
-[ext_resource type="SpineAtlasResource" uid="uid://bgjji1wtw0uut" path="res://assets/sprites/fly_jumper/fly_jumper_piloting.atlas" id="1_tb2ny"]
-[ext_resource type="SpineSkeletonFileResource" uid="uid://nugn0cor2odd" path="res://assets/sprites/fly_jumper/fly_jumper_piloting.skel" id="2_w8hf5"]
-
-[resource]
-atlas_res = ExtResource("1_tb2ny")
-skeleton_file_res = ExtResource("2_w8hf5")

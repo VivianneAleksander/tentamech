@@ -1,123 +1,25 @@
-[gd_scene load_steps=18 format=3 uid="uid://cafnf8smr4lw4"]
+[gd_scene load_steps=9 format=3 uid="uid://cafnf8smr4lw4"]
 
-[ext_resource type="SpineAtlasResource" uid="uid://bgjji1wtw0uut" path="res://assets/sprites/fly_jumper/fly_jumper_piloting.atlas" id="1_grk8w"]
-[ext_resource type="SpineSkeletonFileResource" uid="uid://nugn0cor2odd" path="res://assets/sprites/fly_jumper/fly_jumper_piloting.skel" id="2_2rxxv"]
-[ext_resource type="Script" path="res://scripts/util/spine_sprite_control.gd" id="2_xf8hx"]
-[ext_resource type="SpineSkeletonDataResource" uid="uid://dvaj4mxbufebj" path="res://assets/sprites/fly_jumper/fly_jumper_back_view.tres" id="4_h17qq"]
+[ext_resource type="Texture2D" uid="uid://cxgmvg7pl8h7n" path="res://assets/sprites/fly_jumper/fly_jumper_piloting.png" id="3_d3s1i"]
+[ext_resource type="Script" path="res://addons/Souperior 2D Skeleton Modifications/Animatinators/soup_stack.gd" id="4_dw1xy"]
+[ext_resource type="Script" path="res://addons/Souperior 2D Skeleton Modifications/Animatinators/Modifications/soup_two_bone_ik.gd" id="5_o128w"]
 [ext_resource type="Texture2D" uid="uid://b2c3yfksl5eqq" path="res://assets/sprites/fly_jumper/back_view_bg.png" id="5_ylbwr"]
 [ext_resource type="Texture2D" uid="uid://jrip30xwc6s2" path="res://assets/sprites/fly_jumper/front_view_bg.png" id="6_btl14"]
-[ext_resource type="SpineAtlasResource" uid="uid://bc7cmbnvw8un8" path="res://assets/sprites/fly_jumper/fly_jumper_front_view.atlas" id="7_77syf"]
-[ext_resource type="SpineSkeletonFileResource" uid="uid://pqi8gmig8gt0" path="res://assets/sprites/fly_jumper/fly_jumper_front_view.skel" id="8_wvb58"]
-[ext_resource type="Script" path="res://scripts/util/sprite_control_mouth_shapes.gd" id="9_t5xuk"]
+[ext_resource type="Script" path="res://addons/Souperior 2D Skeleton Modifications/Animatinators/Modifications/soup_path_IK.gd" id="6_x8pv2"]
 
-[sub_resource type="SpineSkeletonDataResource" id="SpineSkeletonDataResource_sgmi6"]
-atlas_res = ExtResource("1_grk8w")
-skeleton_file_res = ExtResource("2_2rxxv")
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tk3nh"]
-animation = &"Idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_inflg"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5kphj"]
-states/Idle/node = SubResource("AnimationNodeAnimation_tk3nh")
-states/Idle/position = Vector2(330, 91)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_inflg")]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ljowk"]
-graph_offset = Vector2(-355.013, 30.9006)
-nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_5kphj")
-nodes/StateMachine/position = Vector2(-100, 100)
-nodes/output/position = Vector2(380, 240)
-node_connections = [&"output", 0, &"StateMachine"]
-
-[sub_resource type="Animation" id="Animation_21l0t"]
-resource_name = "Idle"
-loop_mode = 1
-step = 0.0416667
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FlyJumperPiloting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["idle", false, 0],
-"method": &"set_animation_state"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FlyJumperBackView")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["idle", false, 0],
-"method": &"set_animation_state"
-}]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FlyJumperFrontView")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["idle", false, 0],
-"method": &"set_animation_state"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wmq61"]
+[sub_resource type="Curve2D" id="Curve2D_np1gr"]
 _data = {
-"Idle": SubResource("Animation_21l0t")
+"points": PackedVector2Array(146.206, 196.001, -146.206, -196.001, 80, 66, 117.6, 103.827, -117.6, -103.827, 227, -415, 29.665, -126.076, -29.665, 126.076, -133, -199)
 }
+point_count = 3
 
-[sub_resource type="SpineSkeletonDataResource" id="SpineSkeletonDataResource_ocf3r"]
-atlas_res = ExtResource("7_77syf")
-skeleton_file_res = ExtResource("8_wvb58")
-default_mix = 1.0
+[sub_resource type="Curve2D" id="Curve2D_rhsob"]
+_data = {
+"points": PackedVector2Array(-34.487, 74.92, 34.487, -74.92, 62, -171, 48.6222, 41.2438, -48.6222, -41.2438, 84, -358, 24.9467, 42.8927, -24.9467, -42.8927, -126, -331, -46.6762, 25.3518, 46.6762, -25.3518, -35, -498)
+}
+point_count = 4
 
 [node name="FlyJumper" type="Node2D"]
-
-[node name="FlyJumperPiloting" type="SpineSprite" parent="."]
-skeleton_data_res = SubResource("SpineSkeletonDataResource_sgmi6")
-preview_skin = "default"
-preview_animation = "idle"
-preview_frame = false
-preview_time = 0.0
-position = Vector2(695, 627)
-script = ExtResource("2_xf8hx")
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeBlendTree_ljowk")
-anim_player = NodePath("../AnimationPlayer")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_wmq61")
-}
-
-[node name="FlyJumperBackView" type="SpineSprite" parent="."]
-skeleton_data_res = ExtResource("4_h17qq")
-preview_skin = "default"
-preview_animation = "idle"
-preview_frame = false
-preview_time = 0.0
-visible = false
-position = Vector2(625, 663)
-script = ExtResource("2_xf8hx")
 
 [node name="BackViewBG" type="Sprite2D" parent="."]
 visible = false
@@ -133,12 +35,491 @@ position = Vector2(542, 548.875)
 scale = Vector2(0.273438, 0.273438)
 texture = ExtResource("6_btl14")
 
-[node name="FlyJumperFrontView" type="SpineSprite" parent="."]
-skeleton_data_res = SubResource("SpineSkeletonDataResource_ocf3r")
-preview_skin = "Default"
-preview_animation = "idle"
-preview_frame = false
-preview_time = 0.0
+[node name="Piloting" type="Node2D" parent="."]
+position = Vector2(656, 592)
+
+[node name="Sprites" type="Node2D" parent="Piloting"]
+
+[node name="Tentacle" type="Polygon2D" parent="Piloting/Sprites"]
+position = Vector2(322, 77)
+offset = Vector2(-3694, -837)
+texture = ExtResource("3_d3s1i")
+skeleton = NodePath("../../PilotingSkeleton")
+polygon = PackedVector2Array(3628.73, 931.595, 3583.7, 821.224, 3588.93, 699.772, 3672.69, 616.013, 3749.12, 557.382, 3784.72, 509.22, 3795.19, 478.857, 3787.86, 448.495, 3763.78, 438.025, 3726.83, 439.534, 3662.45, 473.258, 3614.93, 508.515, 3559.75, 569.831, 3527.56, 644.943, 3507.63, 698.595, 3449.38, 716.989, 3417.19, 657.206, 3434.05, 605.088, 3458.57, 539.173, 3509.16, 456.396, 3555.15, 398.146, 3631.79, 338.363, 3754.42, 290.843, 3877.06, 295.442, 3957.47, 395.098, 3944.91, 512.361, 3897.79, 603.449, 3828.69, 669.41, 3774.35, 727.72, 3785.08, 766.042, 3828, 789.036, 3782.02, 928.53, 3718.76, 848.445, 3687.35, 785.626, 3692.58, 712.336, 3751.21, 645.329, 3819.27, 581.462, 3863.24, 518.643, 3828, 373.62, 3772.82, 356.758, 3683.91, 379.751, 3607.27, 431.87, 3558.21, 473.258, 3515.29, 546.837, 3486.17, 617.351, 3469.3, 661.805, 3869.52, 441.166)
+uv = PackedVector2Array(3628.73, 931.595, 3583.7, 821.224, 3588.93, 699.772, 3672.69, 616.013, 3749.12, 557.382, 3784.72, 509.22, 3795.19, 478.857, 3787.86, 448.495, 3763.78, 438.025, 3726.83, 439.534, 3662.45, 473.258, 3614.93, 508.515, 3559.75, 569.831, 3527.56, 644.943, 3507.63, 698.595, 3449.38, 716.989, 3417.19, 657.206, 3434.05, 605.088, 3458.57, 539.173, 3509.16, 456.396, 3555.15, 398.146, 3631.79, 338.363, 3754.42, 290.843, 3877.06, 295.442, 3957.47, 395.098, 3944.91, 512.361, 3897.79, 603.449, 3828.69, 669.41, 3774.35, 727.72, 3785.08, 766.042, 3828, 789.036, 3782.02, 928.53, 3718.76, 848.445, 3687.35, 785.626, 3692.58, 712.336, 3751.21, 645.329, 3819.27, 581.462, 3863.24, 518.643, 3828, 373.62, 3772.82, 356.758, 3683.91, 379.751, 3607.27, 431.87, 3558.21, 473.258, 3515.29, 546.837, 3486.17, 617.351, 3469.3, 661.805, 3869.52, 441.166)
+polygons = [PackedInt32Array(16, 45, 15), PackedInt32Array(45, 14, 15), PackedInt32Array(44, 45, 16, 17), PackedInt32Array(44, 13, 14, 45), PackedInt32Array(44, 43, 18, 17), PackedInt32Array(44, 13, 12, 43), PackedInt32Array(43, 42, 19, 18), PackedInt32Array(43, 12, 11, 42), PackedInt32Array(19, 20, 41, 42), PackedInt32Array(42, 11, 10, 41), PackedInt32Array(20, 21, 40, 41), PackedInt32Array(41, 10, 9, 40), PackedInt32Array(40, 39, 22, 21), PackedInt32Array(39, 8, 9, 40), PackedInt32Array(7, 38, 39, 8), PackedInt32Array(39, 22, 23, 38), PackedInt32Array(7, 38, 46, 6), PackedInt32Array(38, 23, 24, 46), PackedInt32Array(46, 37, 25, 24), PackedInt32Array(37, 5, 6, 46), PackedInt32Array(4, 5, 37, 36), PackedInt32Array(36, 26, 25, 37), PackedInt32Array(35, 3, 4, 36), PackedInt32Array(35, 27, 26, 36), PackedInt32Array(2, 34, 35, 3), PackedInt32Array(34, 28, 27, 35), PackedInt32Array(2, 1, 33, 34), PackedInt32Array(33, 29, 28, 34), PackedInt32Array(33, 32, 0, 1), PackedInt32Array(33, 29, 30, 32), PackedInt32Array(32, 31, 30), PackedInt32Array(32, 0, 31)]
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepLeft/ForearmLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepRight/ForearmRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/Neck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/Head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighLeft/CalfLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12/TailTip01", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12/TailTip01/TailTip02", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot", PackedFloat32Array(1, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 1, 1, 1, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01", PackedFloat32Array(0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02", PackedFloat32Array(0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03", PackedFloat32Array(0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04", PackedFloat32Array(0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05", PackedFloat32Array(0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0.4), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0, 0, 0, 0, 0, 0, 0, 0.4), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0.4, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12/TentacleTip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.8, 0.8, 0.8, 0.4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.4, 0.8, 0), "HandLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "HandRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "FootLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+internal_vertex_count = 15
+
+[node name="ThighRight" type="Polygon2D" parent="Piloting/Sprites"]
+position = Vector2(28, -29)
+offset = Vector2(-3249, -737)
+texture = ExtResource("3_d3s1i")
+skeleton = NodePath("../../PilotingSkeleton")
+polygon = PackedVector2Array(3165.35, 734.612, 3186.26, 1111, 3365.5, 1113.99, 3434.2, 737.599)
+uv = PackedVector2Array(3165.35, 734.612, 3186.26, 1111, 3365.5, 1113.99, 3434.2, 737.599)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft/ForearmLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight/ForearmRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/Neck", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/Head", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighLeft/CalfLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(1, 1, 1, 1), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01/TailTip02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12/TentacleTip", PackedFloat32Array(0, 0, 0, 0), "HandLeft", PackedFloat32Array(0, 0, 0, 0), "HandRight", PackedFloat32Array(0, 0, 0, 0), "FootLeft", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="ButtRight" type="Polygon2D" parent="Piloting/Sprites"]
+position = Vector2(-1, -144)
+offset = Vector2(-2567, -1479)
+texture = ExtResource("3_d3s1i")
+skeleton = NodePath("../../PilotingSkeleton")
+polygon = PackedVector2Array(2604.7, 1337.9, 2790.98, 1450.12, 2530.64, 1721.68, 2404.96, 1515.2)
+uv = PackedVector2Array(2604.7, 1337.9, 2790.98, 1450.12, 2530.64, 1721.68, 2404.96, 1515.2)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft/ForearmLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight/ForearmRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/Neck", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/Head", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(1, 1, 1, 1), "BodyRoot/Waist/ThighLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighLeft/CalfLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01/TailTip02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12/TentacleTip", PackedFloat32Array(0, 0, 0, 0), "HandLeft", PackedFloat32Array(0, 0, 0, 0), "HandRight", PackedFloat32Array(0, 0, 0, 0), "FootLeft", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="Tail" type="Polygon2D" parent="Piloting/Sprites"]
+position = Vector2(64, -175)
+offset = Vector2(-1685, -1671)
+texture = ExtResource("3_d3s1i")
+skeleton = NodePath("../../PilotingSkeleton")
+polygon = PackedVector2Array(1612.69, 1673.87, 1654.09, 1621.65, 1679.48, 1574.76, 1691.21, 1536.18, 1681.93, 1522.99, 1666.04, 1521.97, 1628.87, 1533.95, 1570.81, 1555.85, 1523.76, 1568.74, 1485.66, 1561.41, 1455.38, 1521.85, 1474.43, 1448.59, 1510.08, 1388.02, 1554.53, 1341.62, 1582.86, 1300.59, 1649.78, 1296.68, 1664.92, 1305.97, 1722.06, 1301.57, 1755.28, 1374.83, 1767.84, 1441.63, 1703.5, 1443.7, 1676.15, 1401.21, 1662.96, 1403.65, 1652.67, 1427.35, 1591.16, 1422.7, 1564.79, 1399.26, 1541.83, 1422.7, 1520.34, 1464.22, 1518.46, 1483.51, 1527.03, 1493.98, 1544.16, 1493.98, 1567.96, 1483.51, 1613.64, 1463.52, 1668.85, 1450.2, 1734.52, 1454.95, 1765.93, 1494.93, 1776.4, 1570.12, 1762.13, 1656.74, 1734.52, 1713.85, 1638.39, 1741.45, 1673.13, 1691, 1730.45, 1584.03, 1736.36, 1520.2, 1709.77, 1485.92, 1662.49, 1480.01, 1612.25, 1495.38, 1572.6, 1515.99, 1538.41, 1523.8, 1492.5, 1500.36, 1498.36, 1456.89, 1527.15, 1401.41, 1556.7, 1370.08, 1589.7, 1358.72, 1623.89, 1356.27, 1730.45, 1404.36, 1702.09, 1644.31, 1510.57, 1521.85, 1667.36, 1355.78, 1695.69, 1363.11)
+uv = PackedVector2Array(1612.69, 1673.87, 1654.09, 1621.65, 1679.48, 1574.76, 1691.21, 1536.18, 1681.93, 1522.99, 1666.04, 1521.97, 1628.87, 1533.95, 1570.81, 1555.85, 1523.76, 1568.74, 1485.66, 1561.41, 1455.38, 1521.85, 1474.43, 1448.59, 1510.08, 1388.02, 1554.53, 1341.62, 1582.86, 1300.59, 1649.78, 1296.68, 1664.92, 1305.97, 1722.06, 1301.57, 1755.28, 1374.83, 1767.84, 1441.63, 1703.5, 1443.7, 1676.15, 1401.21, 1662.96, 1403.65, 1652.67, 1427.35, 1591.16, 1422.7, 1564.79, 1399.26, 1541.83, 1422.7, 1520.34, 1464.22, 1518.46, 1483.51, 1527.03, 1493.98, 1544.16, 1493.98, 1567.96, 1483.51, 1613.64, 1463.52, 1668.85, 1450.2, 1734.52, 1454.95, 1765.93, 1494.93, 1776.4, 1570.12, 1762.13, 1656.74, 1734.52, 1713.85, 1638.39, 1741.45, 1673.13, 1691, 1730.45, 1584.03, 1736.36, 1520.2, 1709.77, 1485.92, 1662.49, 1480.01, 1612.25, 1495.38, 1572.6, 1515.99, 1538.41, 1523.8, 1492.5, 1500.36, 1498.36, 1456.89, 1527.15, 1401.41, 1556.7, 1370.08, 1589.7, 1358.72, 1623.89, 1356.27, 1730.45, 1404.36, 1702.09, 1644.31, 1510.57, 1521.85, 1667.36, 1355.78, 1695.69, 1363.11)
+polygons = [PackedInt32Array(0, 40, 39), PackedInt32Array(40, 38, 39), PackedInt32Array(0, 40, 55, 1), PackedInt32Array(55, 37, 38, 40), PackedInt32Array(55, 41, 36, 37), PackedInt32Array(55, 1, 2, 41), PackedInt32Array(3, 42, 41, 2), PackedInt32Array(42, 35, 36, 41), PackedInt32Array(42, 43, 34, 35), PackedInt32Array(42, 3, 4, 43), PackedInt32Array(34, 33, 44, 43), PackedInt32Array(43, 4, 5, 44), PackedInt32Array(33, 32, 45, 44), PackedInt32Array(44, 5, 6, 45), PackedInt32Array(32, 31, 46, 45), PackedInt32Array(45, 6, 7, 46), PackedInt32Array(30, 47, 46, 31), PackedInt32Array(46, 7, 8, 47), PackedInt32Array(30, 29, 56, 47), PackedInt32Array(47, 8, 9, 56), PackedInt32Array(29, 28, 48, 56), PackedInt32Array(56, 9, 10, 48), PackedInt32Array(48, 49, 27, 28), PackedInt32Array(48, 10, 11, 49), PackedInt32Array(49, 50, 26, 27), PackedInt32Array(49, 11, 12, 50), PackedInt32Array(50, 51, 25, 26), PackedInt32Array(50, 12, 13, 51), PackedInt32Array(51, 52, 14, 13), PackedInt32Array(25, 24, 52, 51), PackedInt32Array(52, 53, 15, 14), PackedInt32Array(52, 24, 23, 53), PackedInt32Array(15, 16, 57, 53), PackedInt32Array(57, 22, 23, 53), PackedInt32Array(16, 17, 58, 57), PackedInt32Array(57, 22, 21, 58), PackedInt32Array(58, 54, 18, 17), PackedInt32Array(58, 21, 20, 54), PackedInt32Array(54, 19, 20), PackedInt32Array(54, 18, 19)]
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepLeft/ForearmLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepRight/ForearmRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/Neck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/Head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighLeft/CalfLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0.92, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.92, 0.92, 0.92, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0, 0, 0, 0, 0, 0, 0, 0.46, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.46, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailTip01", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.92, 0.92, 0.46, 0, 0, 0, 0, 0, 0.46, 0.92, 0.92, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.92, 0.92, 0, 0, 0, 0.46, 0), "BodyRoot/Waist/TailTip01/TailTip02", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.46, 0.92, 0.92, 0.92, 0.92, 0.92, 0.46, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.92, 0, 0, 0.46, 0.92), "TentacleRoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12/TentacleTip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "HandLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "HandRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "FootLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+internal_vertex_count = 19
+
+[node name="CalfLeft" type="Polygon2D" parent="Piloting/Sprites"]
+position = Vector2(164, 303)
+offset = Vector2(-3124, -1611)
+texture = ExtResource("3_d3s1i")
+skeleton = NodePath("../../PilotingSkeleton")
+polygon = PackedVector2Array(3289.25, 1335.42, 3036.25, 1514.96, 3075.02, 1753.68, 3427.99, 1500.68, 3744.24, 1106.91, 3517.76, 1035.5)
+uv = PackedVector2Array(3289.25, 1335.42, 3036.25, 1514.96, 3075.02, 1753.68, 3427.99, 1500.68, 3744.24, 1106.91, 3517.76, 1035.5)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepLeft/ForearmLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepRight/ForearmRight", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Torso/Neck", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Torso/Head", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighLeft/CalfLeft", PackedFloat32Array(0.46, 0.92, 0.92, 0.46, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailTip01", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailTip01/TailTip02", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12/TentacleTip", PackedFloat32Array(0, 0, 0, 0, 0, 0), "HandLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0), "HandRight", PackedFloat32Array(0, 0, 0, 0, 0, 0), "FootLeft", PackedFloat32Array(0.46, 0, 0, 0.46, 0.92, 0.92), "FootRight", PackedFloat32Array(0, 0, 0, 0, 0, 0)]
+
+[node name="ThighLeft" type="Polygon2D" parent="Piloting/Sprites"]
+position = Vector2(180, -17)
+offset = Vector2(-2972, -1179)
+texture = ExtResource("3_d3s1i")
+skeleton = NodePath("../../PilotingSkeleton")
+polygon = PackedVector2Array(2857.77, 1068.21, 2805.92, 1571.83, 3008.36, 1616.27, 3158.96, 1075.61)
+uv = PackedVector2Array(2857.77, 1068.21, 2805.92, 1571.83, 3008.36, 1616.27, 3158.96, 1075.61)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft/ForearmLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight/ForearmRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/Neck", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/Head", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighLeft", PackedFloat32Array(0.92, 0.92, 0.92, 0.92), "BodyRoot/Waist/ThighLeft/CalfLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01/TailTip02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12/TentacleTip", PackedFloat32Array(0, 0, 0, 0), "HandLeft", PackedFloat32Array(0, 0, 0, 0), "HandRight", PackedFloat32Array(0, 0, 0, 0), "FootLeft", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="ButtLeft" type="Polygon2D" parent="Piloting/Sprites"]
+position = Vector2(155, -104)
+offset = Vector2(-2566, -1179)
+texture = ExtResource("3_d3s1i")
+skeleton = NodePath("../../PilotingSkeleton")
+polygon = PackedVector2Array(2436.44, 1132.3, 2661.02, 1360.34, 2783.55, 1196.01, 2609.19, 1011.38)
+uv = PackedVector2Array(2436.44, 1132.3, 2661.02, 1360.34, 2783.55, 1196.01, 2609.19, 1011.38)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft/ForearmLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight/ForearmRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/Neck", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/Head", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(1, 1, 1, 1), "BodyRoot/Waist/ThighLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighLeft/CalfLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01/TailTip02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12/TentacleTip", PackedFloat32Array(0, 0, 0, 0), "HandLeft", PackedFloat32Array(0, 0, 0, 0), "HandRight", PackedFloat32Array(0, 0, 0, 0), "FootLeft", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="HandRight" type="Polygon2D" parent="Piloting/Sprites"]
+position = Vector2(-510, 316)
+offset = Vector2(-2830, -855)
+texture = ExtResource("3_d3s1i")
+skeleton = NodePath("../../PilotingSkeleton")
+polygon = PackedVector2Array(2669.32, 800.22, 2741.14, 959.567, 2889.26, 867.55, 2808.47, 748.601)
+uv = PackedVector2Array(2669.32, 800.22, 2741.14, 959.567, 2889.26, 867.55, 2808.47, 748.601)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft/ForearmLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight/ForearmRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/Neck", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/Head", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighLeft/CalfLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01/TailTip02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12/TentacleTip", PackedFloat32Array(0, 0, 0, 0), "HandLeft", PackedFloat32Array(0, 0, 0, 0), "HandRight", PackedFloat32Array(1, 1, 1, 1), "FootLeft", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="ForearmRight" type="Polygon2D" parent="Piloting/Sprites"]
+position = Vector2(-337, 218)
+offset = Vector2(-2581, -790)
+texture = ExtResource("3_d3s1i")
+skeleton = NodePath("../../PilotingSkeleton")
+polygon = PackedVector2Array(2591.81, 675.449, 2663.4, 835.917, 2389.37, 937.136, 2374.56, 826.042)
+uv = PackedVector2Array(2591.81, 675.449, 2663.4, 835.917, 2389.37, 937.136, 2374.56, 826.042)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft/ForearmLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight/ForearmRight", PackedFloat32Array(1, 1, 1, 1), "BodyRoot/Torso/Neck", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/Head", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighLeft/CalfLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01/TailTip02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12/TentacleTip", PackedFloat32Array(0, 0, 0, 0), "HandLeft", PackedFloat32Array(0, 0, 0, 0), "HandRight", PackedFloat32Array(0, 0, 0, 0), "FootLeft", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="BicepRight" type="Polygon2D" parent="Piloting/Sprites"]
+position = Vector2(-258, 136)
+offset = Vector2(-2199, -799)
+texture = ExtResource("3_d3s1i")
+skeleton = NodePath("../../PilotingSkeleton")
+polygon = PackedVector2Array(2246.65, 694.121, 2305, 851.223, 2087.3, 976.905, 2013.24, 831.025)
+uv = PackedVector2Array(2246.65, 694.121, 2305, 851.223, 2087.3, 976.905, 2013.24, 831.025)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft/ForearmLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(1, 1, 1, 1), "BodyRoot/Torso/BicepRight/ForearmRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/Neck", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/Head", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighLeft/CalfLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01/TailTip02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12/TentacleTip", PackedFloat32Array(0, 0, 0, 0), "HandLeft", PackedFloat32Array(0, 0, 0, 0), "HandRight", PackedFloat32Array(0, 0, 0, 0), "FootLeft", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="Torso" type="Polygon2D" parent="Piloting/Sprites"]
+position = Vector2(-3, 21)
+offset = Vector2(-2161, -1265)
+texture = ExtResource("3_d3s1i")
+skeleton = NodePath("../../PilotingSkeleton")
+polygon = PackedVector2Array(2137.67, 1020.8, 2056.98, 1112.8, 1914.16, 1181.43, 1930.86, 1435.54, 2114.48, 1569.08, 2238.75, 1415.13, 2396.41, 1227.8, 2294.4, 1005.22, 2134.89, 1255.62)
+uv = PackedVector2Array(2137.67, 1020.8, 2056.98, 1112.8, 1914.16, 1181.43, 1930.86, 1435.54, 2114.48, 1569.08, 2238.75, 1415.13, 2396.41, 1227.8, 2294.4, 1005.22, 2134.89, 1255.62)
+polygons = [PackedInt32Array(2, 1, 8, 3), PackedInt32Array(3, 4, 5, 8), PackedInt32Array(8, 7, 6, 5), PackedInt32Array(8, 1, 0, 7)]
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0.44, 0.88, 0.88, 0.88, 0.44, 0, 0, 0.44), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepLeft/ForearmLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepRight/ForearmRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/Neck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/Head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0.88, 0.44, 0, 0, 0, 0.44, 0.88, 0.88, 0.44), "BodyRoot/Waist/ThighLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighLeft/CalfLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailTip01", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailTip01/TailTip02", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12/TentacleTip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "HandLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "HandRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "FootLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)]
+internal_vertex_count = 1
+
+[node name="Neck" type="Polygon2D" parent="Piloting/Sprites"]
+position = Vector2(-217, 121)
+offset = Vector2(-2106, -1729)
+texture = ExtResource("3_d3s1i")
+skeleton = NodePath("../../PilotingSkeleton")
+polygon = PackedVector2Array(2008.18, 1601.22, 1937.58, 1761.44, 2046.2, 1783.16, 2021.76, 1870.06, 2249.87, 1859.2, 2162.97, 1641.95)
+uv = PackedVector2Array(2008.18, 1601.22, 1937.58, 1761.44, 2046.2, 1783.16, 2021.76, 1870.06, 2249.87, 1859.2, 2162.97, 1641.95)
+polygons = [PackedInt32Array(2, 5, 0, 1), PackedInt32Array(2, 3, 4, 5)]
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepLeft/ForearmLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepRight/ForearmRight", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Torso/Neck", PackedFloat32Array(0, 0, 0.44, 0.88, 0.88, 0.44), "BodyRoot/Torso/Head", PackedFloat32Array(0.88, 0.88, 0.44, 0, 0, 0.44), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighLeft/CalfLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailTip01", PackedFloat32Array(0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailTip01/TailTip02", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12", PackedFloat32Array(0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12/TentacleTip", PackedFloat32Array(0, 0, 0, 0, 0, 0), "HandLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0), "HandRight", PackedFloat32Array(0, 0, 0, 0, 0, 0), "FootLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0, 0, 0)]
+
+[node name="Jacket" type="Polygon2D" parent="Piloting/Sprites"]
+position = Vector2(-122, 51)
+offset = Vector2(-1661, -987)
+texture = ExtResource("3_d3s1i")
+skeleton = NodePath("../../PilotingSkeleton")
+polygon = PackedVector2Array(1763.48, 703.258, 1907.41, 841.755, 1931.85, 1121.46, 1817.79, 1118.75, 1723.53, 1277.64, 1543.1, 1125.88, 1524.56, 931.967, 1581.89, 824.051, 1703.29, 970.75)
+uv = PackedVector2Array(1763.48, 703.258, 1907.41, 841.755, 1931.85, 1121.46, 1817.79, 1118.75, 1723.53, 1277.64, 1543.1, 1125.88, 1524.56, 931.967, 1581.89, 824.051, 1703.29, 970.75)
+polygons = [PackedInt32Array(8, 5, 4, 3), PackedInt32Array(8, 7, 6, 5), PackedInt32Array(7, 0, 1, 8), PackedInt32Array(8, 3, 2, 1)]
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0.44, 0.88, 0.88, 0.88, 0.44, 0.44), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepLeft/ForearmLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepRight/ForearmRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/Neck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/Head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0.88, 0.88, 0.88, 0.44, 0, 0, 0, 0.44, 0.44), "BodyRoot/Waist/ThighLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighLeft/CalfLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailTip01", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailTip01/TailTip02", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12/TentacleTip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "HandLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "HandRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "FootLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)]
+internal_vertex_count = 1
+
+[node name="Head" type="Polygon2D" parent="Piloting/Sprites"]
+position = Vector2(-202, 7)
+offset = Vector2(-1850, -511)
+texture = ExtResource("3_d3s1i")
+skeleton = NodePath("../../PilotingSkeleton")
+polygon = PackedVector2Array(1675.92, 147.32, 1622.05, 634.338, 1958.7, 625.361, 2030.52, 129.366)
+uv = PackedVector2Array(1675.92, 147.32, 1622.05, 634.338, 1958.7, 625.361, 2030.52, 129.366)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft/ForearmLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight/ForearmRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/Neck", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/Head", PackedFloat32Array(1, 1, 1, 1), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighLeft/CalfLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01/TailTip02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12/TentacleTip", PackedFloat32Array(0, 0, 0, 0), "HandLeft", PackedFloat32Array(0, 0, 0, 0), "HandRight", PackedFloat32Array(0, 0, 0, 0), "FootLeft", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="BicepLeft" type="Polygon2D" parent="Piloting/Sprites"]
+position = Vector2(-134, 75)
+offset = Vector2(-2244, -375)
+texture = ExtResource("3_d3s1i")
+skeleton = NodePath("../../PilotingSkeleton")
+polygon = PackedVector2Array(2133.03, 266.294, 2105.88, 635.619, 2285.11, 654.629, 2369.29, 279.872)
+uv = PackedVector2Array(2133.03, 266.294, 2105.88, 635.619, 2285.11, 654.629, 2369.29, 279.872)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(1, 1, 1, 1), "BodyRoot/Torso/BicepLeft/ForearmLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight/ForearmRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/Neck", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/Head", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighLeft/CalfLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01/TailTip02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12/TentacleTip", PackedFloat32Array(0, 0, 0, 0), "HandLeft", PackedFloat32Array(0, 0, 0, 0), "HandRight", PackedFloat32Array(0, 0, 0, 0), "FootLeft", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="ForearmLeft" type="Polygon2D" parent="Piloting/Sprites"]
+position = Vector2(-178, 267)
+offset = Vector2(-2570, -437)
+texture = ExtResource("3_d3s1i")
+skeleton = NodePath("../../PilotingSkeleton")
+polygon = PackedVector2Array(2475.06, 383.687, 2422.01, 591.796, 2572.99, 608.118, 2668.89, 402.049)
+uv = PackedVector2Array(2475.06, 383.687, 2422.01, 591.796, 2572.99, 608.118, 2668.89, 402.049)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft/ForearmLeft", PackedFloat32Array(1, 1, 1, 1), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight/ForearmRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/Neck", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/Head", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighLeft/CalfLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01/TailTip02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12/TentacleTip", PackedFloat32Array(0, 0, 0, 0), "HandLeft", PackedFloat32Array(0, 0, 0, 0), "HandRight", PackedFloat32Array(0, 0, 0, 0), "FootLeft", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="HandLeft" type="Polygon2D" parent="Piloting/Sprites"]
+position = Vector2(-264, 403)
+offset = Vector2(-2870, -539)
+texture = ExtResource("3_d3s1i")
+skeleton = NodePath("../../PilotingSkeleton")
+polygon = PackedVector2Array(2735.51, 415.181, 2717.14, 594.726, 2978.3, 592.686, 2992.58, 433.543)
+uv = PackedVector2Array(2735.51, 415.181, 2717.14, 594.726, 2978.3, 592.686, 2992.58, 433.543)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft/ForearmLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight/ForearmRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/Neck", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/Head", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighLeft/CalfLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailTip01/TailTip02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12", PackedFloat32Array(0, 0, 0, 0), "TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12/TentacleTip", PackedFloat32Array(0, 0, 0, 0), "HandLeft", PackedFloat32Array(1, 1, 1, 1), "HandRight", PackedFloat32Array(0, 0, 0, 0), "FootLeft", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="Reference" type="Polygon2D" parent="Piloting/Sprites"]
 visible = false
-position = Vector2(452, 768)
-script = ExtResource("9_t5xuk")
+position = Vector2(-843, -676)
+color = Color(1, 1, 1, 0.113725)
+texture = ExtResource("3_d3s1i")
+polygon = PackedVector2Array(403.18, 122.932, 140.768, 1172.58, 1492.59, 1093.06, 1603.92, 87.1481)
+uv = PackedVector2Array(403.18, 122.932, 140.768, 1172.58, 1492.59, 1093.06, 1603.92, 87.1481)
+
+[node name="PilotingSkeleton" type="Skeleton2D" parent="Piloting"]
+
+[node name="SoupStack" type="Node" parent="Piloting/PilotingSkeleton"]
+script = ExtResource("4_dw1xy")
+
+[node name="ArmLeftIK" type="Node" parent="Piloting/PilotingSkeleton/SoupStack" node_paths=PackedStringArray("target_node", "joint_one_bone_node", "joint_two_bone_node")]
+script = ExtResource("5_o128w")
+target_node = NodePath("../../HandLeft")
+enabled = true
+flip_bend_direction = true
+softness = 0.1
+joint_one_bone_node = NodePath("../../BodyRoot/Torso/BicepLeft")
+joint_two_bone_node = NodePath("../../BodyRoot/Torso/BicepLeft/ForearmLeft")
+
+[node name="ArmRightIK" type="Node" parent="Piloting/PilotingSkeleton/SoupStack" node_paths=PackedStringArray("target_node", "joint_one_bone_node", "joint_two_bone_node")]
+script = ExtResource("5_o128w")
+target_node = NodePath("../../HandRight")
+enabled = true
+flip_bend_direction = true
+softness = 0.1
+joint_one_bone_node = NodePath("../../BodyRoot/Torso/BicepRight")
+joint_two_bone_node = NodePath("../../BodyRoot/Torso/BicepRight/ForearmRight")
+
+[node name="LegLeftIK" type="Node" parent="Piloting/PilotingSkeleton/SoupStack" node_paths=PackedStringArray("target_node", "joint_one_bone_node", "joint_two_bone_node")]
+script = ExtResource("5_o128w")
+target_node = NodePath("../../FootLeft")
+enabled = true
+softness = 0.1
+joint_one_bone_node = NodePath("../../BodyRoot/Waist/ThighLeft")
+joint_two_bone_node = NodePath("../../BodyRoot/Waist/ThighLeft/CalfLeft")
+
+[node name="LegRightIK" type="Node" parent="Piloting/PilotingSkeleton/SoupStack" node_paths=PackedStringArray("target_node", "joint_one_bone_node", "joint_two_bone_node")]
+script = ExtResource("5_o128w")
+target_node = NodePath("../../FootRight")
+enabled = true
+softness = 0.1
+joint_one_bone_node = NodePath("../../BodyRoot/Waist/ThighRight")
+joint_two_bone_node = NodePath("../../BodyRoot/Waist/ThighRight/CalfRight")
+
+[node name="TentacleIK" type="Node" parent="Piloting/PilotingSkeleton/SoupStack" node_paths=PackedStringArray("target_path", "bone_nodes")]
+script = ExtResource("6_x8pv2")
+enabled = true
+target_path = NodePath("../../TentaclePath")
+bone_nodes = [NodePath("../../TentacleRoot"), NodePath("../../TentacleRoot/Tentacle01"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02/Tentacle03"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12/TentacleTip")]
+
+[node name="TailIK" type="Node" parent="Piloting/PilotingSkeleton/SoupStack" node_paths=PackedStringArray("target_path", "bone_nodes")]
+script = ExtResource("6_x8pv2")
+enabled = true
+target_path = NodePath("../../BodyRoot/Waist/TailPath")
+bone_nodes = [NodePath("../../BodyRoot/Waist/TailRoot"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12")]
+
+[node name="TentaclePath" type="Path2D" parent="Piloting/PilotingSkeleton"]
+position = Vector2(260, 44)
+curve = SubResource("Curve2D_np1gr")
+
+[node name="BodyRoot" type="Bone2D" parent="Piloting/PilotingSkeleton"]
+position = Vector2(-21, -84)
+rest = Transform2D(1, 0, 0, 1, -21, -84)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+
+[node name="Torso" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot"]
+position = Vector2(-2, 84)
+rest = Transform2D(1, 0, 0, 1, -2, 84)
+
+[node name="BicepLeft" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Torso"]
+position = Vector2(-100, 48)
+rotation = -0.112743
+scale = Vector2(1, 1)
+rest = Transform2D(0.993651, -0.112505, 0.112505, 0.993651, -100, 48)
+
+[node name="ForearmLeft" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Torso/BicepLeft"]
+position = Vector2(-54, 203)
+rotation = 0.184284
+scale = Vector2(1, 1)
+rest = Transform2D(0.983068, 0.183243, -0.183243, 0.983068, -54, 203)
+auto_calculate_length_and_angle = false
+length = 190.658
+bone_angle = 117.073
+
+[node name="BicepRight" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Torso"]
+position = Vector2(-197, 101)
+rotation = -0.0576182
+scale = Vector2(1, 1)
+rest = Transform2D(0.99834, -0.0575863, 0.0575863, 0.99834, -197, 101)
+
+[node name="ForearmRight" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Torso/BicepRight"]
+position = Vector2(-133, 129)
+rotation = 0.13036
+rest = Transform2D(0.991515, 0.129992, -0.129992, 0.991515, -133, 129)
+auto_calculate_length_and_angle = false
+length = 174.304
+bone_angle = 146.341
+
+[node name="Neck" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Torso"]
+position = Vector2(-182, 111)
+rest = Transform2D(1, 0, 0, 1, -182, 111)
+auto_calculate_length_and_angle = false
+length = 81.513
+bone_angle = -127.295
+
+[node name="Head" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Torso"]
+position = Vector2(-229, 47)
+rest = Transform2D(1, 0, 0, 1, -229, 47)
+auto_calculate_length_and_angle = false
+length = 124.122
+bone_angle = -163.902
+
+[node name="Waist" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot"]
+position = Vector2(-2, 86)
+rest = Transform2D(1, 0, 0, 1, -2, 86)
+
+[node name="ThighLeft" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist"]
+position = Vector2(224, -110)
+rotation = -0.0179243
+rest = Transform2D(0.999839, -0.0179233, 0.0179233, 0.999839, 224, -110)
+
+[node name="CalfLeft" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/ThighLeft"]
+position = Vector2(-44, 468)
+rotation = -0.815569
+rest = Transform2D(0.685454, -0.728116, 0.728116, 0.685454, -44, 468)
+auto_calculate_length_and_angle = false
+length = 457.545
+bone_angle = 0.0
+
+[node name="ThighRight" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist"]
+position = Vector2(48, -166)
+rotation = 0.0401189
+rest = Transform2D(0.999195, 0.0401085, -0.0401085, 0.999195, 48, -166)
+
+[node name="CalfRight" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/ThighRight"]
+position = Vector2(37, 465)
+rotation = 0.0284586
+scale = Vector2(1, 1)
+rest = Transform2D(0.999595, 0.028455, -0.028455, 0.999595, 37, 465)
+auto_calculate_length_and_angle = false
+length = 300.415
+bone_angle = -70.244
+
+[node name="TailRoot" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist"]
+position = Vector2(85, -173)
+rest = Transform2D(1, 0, 0, 1, 85, -173)
+
+[node name="Tail01" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot"]
+position = Vector2(21.6721, -47.6412)
+rest = Transform2D(1, 0, 0, 1, 21.6721, -47.6412)
+
+[node name="Tail02" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01"]
+position = Vector2(18.1134, -49.0625)
+rest = Transform2D(1, 0, 0, 1, 18.1134, -49.0625)
+
+[node name="Tail03" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02"]
+position = Vector2(4.62683, -51.7075)
+rest = Transform2D(1, 0, 0, 1, 4.62683, -51.7075)
+
+[node name="Tail04" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03"]
+position = Vector2(-27.969, -42.4221)
+rest = Transform2D(1, 0, 0, 1, -27.969, -42.4221)
+
+[node name="Tail05" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04"]
+position = Vector2(-51.1222, -1.79831)
+rest = Transform2D(1, 0, 0, 1, -51.1222, -1.79831)
+
+[node name="Tail06" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05"]
+position = Vector2(-49.5549, 16.7182)
+rest = Transform2D(1, 0, 0, 1, -49.5549, 16.7182)
+
+[node name="Tail07" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06"]
+position = Vector2(-48.8608, 18.7455)
+rest = Transform2D(1, 0, 0, 1, -48.8608, 18.7455)
+
+[node name="Tail08" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07"]
+position = Vector2(-50.3714, 2.31107)
+rest = Transform2D(1, 0, 0, 1, -50.3714, 2.31107)
+
+[node name="Tail09" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08"]
+position = Vector2(-6.47321, -49.3919)
+rest = Transform2D(1, 0, 0, 1, -6.47321, -49.3919)
+
+[node name="Tail10" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09"]
+position = Vector2(21.5977, -47.4891)
+rest = Transform2D(1, 0, 0, 1, 21.5977, -47.4891)
+
+[node name="Tail11" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10"]
+position = Vector2(31.4025, -41.7782)
+rest = Transform2D(1, 0, 0, 1, 31.4025, -41.7782)
+
+[node name="Tail12" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11"]
+position = Vector2(39.939, -33.484)
+rest = Transform2D(1, 0, 0, 1, 39.939, -33.484)
+auto_calculate_length_and_angle = false
+length = 1.0
+bone_angle = 0.0
+
+[node name="TailPath" type="Path2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist"]
+position = Vector2(23, -2)
+curve = SubResource("Curve2D_rhsob")
+
+[node name="TailTip01" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist"]
+position = Vector2(-12, -500)
+rest = Transform2D(1, 0, 0, 1, -12, -500)
+
+[node name="TailTip02" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailTip01"]
+position = Vector2(109, 5)
+rest = Transform2D(1, 0, 0, 1, 109, 5)
+auto_calculate_length_and_angle = false
+length = 99.171
+bone_angle = 64.39
+
+[node name="TentacleRoot" type="Bone2D" parent="Piloting/PilotingSkeleton"]
+position = Vector2(340, 110)
+rotation = -2.2117
+rest = Transform2D(-0.59792, -0.801556, 0.801556, -0.59792, 340, 110)
+
+[node name="Tentacle01" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot"]
+position = Vector2(76.572, 18.6723)
+rotation = -1.70758
+rest = Transform2D(-0.136358, -0.99066, 0.99066, -0.136358, 76.572, 18.6723)
+
+[node name="Tentacle02" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01"]
+position = Vector2(-62.8659, 47.634)
+rotation = -1.20422
+rest = Transform2D(0.358421, -0.93356, 0.93356, 0.358421, -62.8659, 47.634)
+
+[node name="Tentacle03" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02"]
+position = Vector2(-48.0032, -63.3928)
+rotation = -0.953259
+rest = Transform2D(0.579029, -0.815307, 0.815307, 0.579029, -48.0032, -63.3928)
+
+[node name="Tentacle04" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03"]
+position = Vector2(35.6357, -71.2743)
+rotation = -0.861098
+scale = Vector2(1, 1)
+rest = Transform2D(0.651605, -0.758558, 0.758558, 0.651605, 35.6357, -71.2743)
+
+[node name="Tentacle05" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04"]
+position = Vector2(77.8883, -16.9423)
+rotation = -0.88857
+rest = Transform2D(0.630523, -0.776171, 0.776171, 0.630523, 77.8883, -16.9423)
+
+[node name="Tentacle06" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05"]
+position = Vector2(68.198, 40.6624)
+rotation = -1.20727
+rest = Transform2D(0.355572, -0.934649, 0.934649, 0.355572, 68.198, 40.6624)
+
+[node name="Tentacle07" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06"]
+position = Vector2(43.3445, 59.8122)
+rotation = -2.42397
+rest = Transform2D(-0.753371, -0.657596, 0.657596, -0.753371, 43.3445, 59.8122)
+
+[node name="Tentacle08" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07"]
+position = Vector2(-57.8067, 52.5973)
+rotation = -3.0679
+scale = Vector2(0.999999, 0.999999)
+rest = Transform2D(-0.997285, -0.073626, 0.073626, -0.997285, -57.8067, 52.5973)
+
+[node name="Tentacle09" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08"]
+position = Vector2(14.3421, -77.7727)
+rotation = 2.77153
+rest = Transform2D(-0.932305, 0.361674, -0.361674, -0.932305, 14.3421, -77.7727)
+
+[node name="Tentacle10" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09"]
+position = Vector2(-17.9268, 77.4722)
+rotation = 2.51779
+rest = Transform2D(-0.811663, 0.584126, -0.584126, -0.811663, -17.9268, 77.4722)
+
+[node name="Tentacle11" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10"]
+position = Vector2(47.992, -63.5141)
+rotation = 2.32936
+rest = Transform2D(-0.68788, 0.725825, -0.725825, -0.68788, 47.992, -63.5141)
+
+[node name="Tentacle12" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11"]
+position = Vector2(-76.271, 22.7649)
+rotation = 2.13183
+rest = Transform2D(-0.532062, 0.846706, -0.846706, -0.532062, -76.271, 22.7649)
+
+[node name="TentacleTip" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12"]
+position = Vector2(70.3864, 36.6825)
+rotation = 1.80189
+scale = Vector2(0.999999, 0.999999)
+rest = Transform2D(-0.229042, 0.973415, -0.973415, -0.229042, 70.3864, 36.6825)
+auto_calculate_length_and_angle = false
+length = 1.0
+bone_angle = 0.0
+
+[node name="HandLeft" type="Bone2D" parent="Piloting/PilotingSkeleton"]
+position = Vector2(-258, 428)
+rest = Transform2D(1, 0, 0, 1, -258, 428)
+auto_calculate_length_and_angle = false
+length = 84.171
+bone_angle = -90.0
+
+[node name="HandRight" type="Bone2D" parent="Piloting/PilotingSkeleton"]
+position = Vector2(-509, 330)
+rest = Transform2D(1, 0, 0, 1, -509, 330)
+auto_calculate_length_and_angle = false
+length = 84.171
+bone_angle = -117.073
+
+[node name="FootLeft" type="Bone2D" parent="Piloting/PilotingSkeleton"]
+position = Vector2(473, 22)
+rest = Transform2D(1, 0, 0, 1, 473, 22)
+auto_calculate_length_and_angle = false
+length = 1.0
+bone_angle = 0.0
+
+[node name="FootRight" type="Bone2D" parent="Piloting/PilotingSkeleton"]
+position = Vector2(164, 27)
+rest = Transform2D(1, 0, 0, 1, 164, 27)
+auto_calculate_length_and_angle = false
+length = 1.0
+bone_angle = 0.0

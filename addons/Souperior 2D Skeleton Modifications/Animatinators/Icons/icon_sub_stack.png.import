@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd3mtif1u5uy7"
-path="res://.godot/imported/fly_jumper_back_view.png-5cc8f68c9fa7af18c9443a4a8502e08b.ctex"
+uid="uid://cjiivsejtrcpo"
+path="res://.godot/imported/icon_sub_stack.png-fcadc5b67ddb69da1b79d2eba92de9d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/fly_jumper/fly_jumper_back_view.png"
-dest_files=["res://.godot/imported/fly_jumper_back_view.png-5cc8f68c9fa7af18c9443a4a8502e08b.ctex"]
+source_file="res://addons/Souperior 2D Skeleton Modifications/Animatinators/Icons/icon_sub_stack.png"
+dest_files=["res://.godot/imported/icon_sub_stack.png-fcadc5b67ddb69da1b79d2eba92de9d4.ctex"]
 
 [params]
 

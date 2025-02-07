@@ -32,6 +32,10 @@ window/size/mode=2
 movie_writer/mjpeg_quality=1.0
 movie_writer/movie_file="C:/Users/shelb/GameProjects/Games/Godot/Projects/tentamech work files/movies/movie.avi"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/Souperior 2D Skeleton Modifications/plugin.cfg")
+
 [global_group]
 
 Player="This group should only ever contain the player."

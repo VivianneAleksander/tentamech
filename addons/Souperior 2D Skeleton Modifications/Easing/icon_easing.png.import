@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd3mtif1u5uy7"
-path="res://.godot/imported/fly_jumper_back_view.png-5cc8f68c9fa7af18c9443a4a8502e08b.ctex"
+uid="uid://fut6fv5fkr73"
+path="res://.godot/imported/icon_easing.png-926b1a8dd0e79a17f0d86ca44379c0f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/fly_jumper/fly_jumper_back_view.png"
-dest_files=["res://.godot/imported/fly_jumper_back_view.png-5cc8f68c9fa7af18c9443a4a8502e08b.ctex"]
+source_file="res://addons/Souperior 2D Skeleton Modifications/Easing/icon_easing.png"
+dest_files=["res://.godot/imported/icon_easing.png-926b1a8dd0e79a17f0d86ca44379c0f7.ctex"]
 
 [params]
 
