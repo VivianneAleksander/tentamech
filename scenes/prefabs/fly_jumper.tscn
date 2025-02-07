@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cafnf8smr4lw4"]
+[gd_scene load_steps=16 format=3 uid="uid://cafnf8smr4lw4"]
 
 [ext_resource type="Texture2D" uid="uid://cxgmvg7pl8h7n" path="res://assets/sprites/fly_jumper/fly_jumper_piloting.png" id="3_d3s1i"]
 [ext_resource type="Script" path="res://addons/Souperior 2D Skeleton Modifications/Animatinators/soup_stack.gd" id="4_dw1xy"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://b2c3yfksl5eqq" path="res://assets/sprites/fly_jumper/back_view_bg.png" id="5_ylbwr"]
 [ext_resource type="Texture2D" uid="uid://jrip30xwc6s2" path="res://assets/sprites/fly_jumper/front_view_bg.png" id="6_btl14"]
 [ext_resource type="Script" path="res://addons/Souperior 2D Skeleton Modifications/Animatinators/Modifications/soup_path_IK.gd" id="6_x8pv2"]
+[ext_resource type="Texture2D" uid="uid://bd3mtif1u5uy7" path="res://assets/sprites/fly_jumper/fly_jumper_back_view.png" id="7_52qkl"]
+[ext_resource type="Script" path="res://addons/Souperior 2D Skeleton Modifications/Animatinators/Modifications/soup_soft_follow.gd" id="8_xtflj"]
+[ext_resource type="Texture2D" uid="uid://c3rhhsa1ty0ms" path="res://assets/sprites/fly_jumper/fly_jumper_front_view.png" id="9_c43hk"]
+[ext_resource type="Script" path="res://addons/Souperior 2D Skeleton Modifications/Animatinators/Modifications/soup_look_at.gd" id="10_dgeye"]
 
 [sub_resource type="Curve2D" id="Curve2D_np1gr"]
 _data = {
@@ -16,6 +20,24 @@ point_count = 3
 [sub_resource type="Curve2D" id="Curve2D_rhsob"]
 _data = {
 "points": PackedVector2Array(-34.487, 74.92, 34.487, -74.92, 62, -171, 48.6222, 41.2438, -48.6222, -41.2438, 84, -358, 24.9467, 42.8927, -24.9467, -42.8927, -126, -331, -46.6762, 25.3518, 46.6762, -25.3518, -35, -498)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_01imu"]
+_data = {
+"points": PackedVector2Array(-18.6878, 25.362, 18.6878, -25.362, -35, -70, 89.4343, 46.7194, -89.4343, -46.7194, -18, -376, 40.0452, 25.362, -40.0452, -25.362, -218, -226, -115.717, 61.339, 115.717, -61.339, -65, -487)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_8jhs3"]
+_data = {
+"points": PackedVector2Array(76.8392, -32.6186, -76.8392, 32.6186, 6, 1, 101.557, 189.106, -101.557, -189.106, -320, -56, 198.493, 119.94, -198.493, -119.94, -242, -647, 0, 0, 0, 0, -622, -388)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_d7mym"]
+_data = {
+"points": PackedVector2Array(53.3936, 136.154, -53.3936, -136.154, 444, 721, -177.534, 36.0407, 177.534, -36.0407, 506, 274, -92.104, -5.33936, 92.104, 5.33936, 748, 451, 52.0588, 61.4026, -52.0588, -61.4026, 784, 178)
 }
 point_count = 4
 
@@ -284,7 +306,7 @@ rest = Transform2D(0.993651, -0.112505, 0.112505, 0.993651, -100, 48)
 
 [node name="ForearmLeft" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Torso/BicepLeft"]
 position = Vector2(-54, 203)
-rotation = 0.184284
+rotation = 0.184285
 scale = Vector2(1, 1)
 rest = Transform2D(0.983068, 0.183243, -0.183243, 0.983068, -54, 203)
 auto_calculate_length_and_angle = false
@@ -523,3 +545,759 @@ rest = Transform2D(1, 0, 0, 1, 164, 27)
 auto_calculate_length_and_angle = false
 length = 1.0
 bone_angle = 0.0
+
+[node name="BackView" type="Node2D" parent="."]
+visible = false
+position = Vector2(-11, -113)
+
+[node name="Sprites" type="Node2D" parent="BackView"]
+
+[node name="Head" type="Polygon2D" parent="BackView/Sprites"]
+position = Vector2(308, 742)
+offset = Vector2(-2263, -1822)
+texture = ExtResource("7_52qkl")
+skeleton = NodePath("../../BackViewSkeleton")
+polygon = PackedVector2Array(2393.65, 1395.67, 2353.25, 2030.82, 1985.18, 2039.79, 1971.72, 1413.63)
+uv = PackedVector2Array(2393.65, 1395.67, 2353.25, 2030.82, 1985.18, 2039.79, 1971.72, 1413.63)
+
+[node name="HandLeft" type="Polygon2D" parent="BackView/Sprites"]
+position = Vector2(229, 1071)
+offset = Vector2(-3539, -1788)
+texture = ExtResource("7_52qkl")
+skeleton = NodePath("../../BackViewSkeleton")
+polygon = PackedVector2Array(3633.72, 1607.23, 3649.05, 1811.11, 3431.38, 1867.82, 3399.19, 1634.82)
+uv = PackedVector2Array(3633.72, 1607.23, 3649.05, 1811.11, 3431.38, 1867.82, 3399.19, 1634.82)
+
+[node name="ForearmLeft" type="Polygon2D" parent="BackView/Sprites"]
+position = Vector2(-1117, 516)
+offset = Vector2(-1715, -1152)
+texture = ExtResource("7_52qkl")
+skeleton = NodePath("../../BackViewSkeleton")
+polygon = PackedVector2Array(3336.6, 1598.62, 3320.89, 1823.05, 2973.02, 1753.48, 3013.41, 1603.11)
+uv = PackedVector2Array(3336.6, 1598.62, 3320.89, 1823.05, 2973.02, 1753.48, 3013.41, 1603.11)
+
+[node name="BicepLeft" type="Polygon2D" parent="BackView/Sprites"]
+position = Vector2(273, 739)
+offset = Vector2(-1715, -1152)
+texture = ExtResource("7_52qkl")
+skeleton = NodePath("../../BackViewSkeleton")
+polygon = PackedVector2Array(1839.27, 987.909, 1946.85, 1360.73, 1668.63, 1472.01, 1527.66, 1063.96)
+uv = PackedVector2Array(1839.27, 987.909, 1946.85, 1360.73, 1668.63, 1472.01, 1527.66, 1063.96)
+
+[node name="Jacket" type="Polygon2D" parent="BackView/Sprites"]
+position = Vector2(515, 649)
+offset = Vector2(-2303, -1156)
+texture = ExtResource("7_52qkl")
+skeleton = NodePath("../../BackViewSkeleton")
+polygon = PackedVector2Array(2599.31, 866.469, 2567.78, 1051.95, 2530.68, 1218.88, 2044.72, 1293.07, 2105.93, 1035.26, 2211.66, 846.066)
+uv = PackedVector2Array(2599.31, 866.469, 2567.78, 1051.95, 2530.68, 1218.88, 2044.72, 1293.07, 2105.93, 1035.26, 2211.66, 846.066)
+
+[node name="CalfRight" type="Polygon2D" parent="BackView/Sprites"]
+position = Vector2(704, 1100)
+offset = Vector2(-3380, -488)
+texture = ExtResource("7_52qkl")
+skeleton = NodePath("../../BackViewSkeleton")
+polygon = PackedVector2Array(3213.28, 357.527, 3293.94, 653.259, 4034.76, 390.386, 3891.37, 31.9232)
+uv = PackedVector2Array(3186.67, 360.602, 3330.21, 675.544, 3976.81, 300.68, 3831.88, 34.5125)
+
+[node name="ThighRight" type="Polygon2D" parent="BackView/Sprites"]
+position = Vector2(738, 636)
+offset = Vector2(-3024, -219)
+texture = ExtResource("7_52qkl")
+skeleton = NodePath("../../BackViewSkeleton")
+polygon = PackedVector2Array(2888.63, 12.1144, 2812.6, 354.283, 2771.86, 775.206, 3070.58, 750.765, 3165.63, 435.752, 3244.38, 50.1331)
+uv = PackedVector2Array(2888.63, 12.1144, 2812.6, 354.283, 2771.86, 775.206, 3070.58, 750.765, 3165.63, 435.752, 3244.38, 50.1331)
+
+[node name="Tail" type="Polygon2D" parent="BackView/Sprites"]
+position = Vector2(581, 544)
+offset = Vector2(-2835, -1371)
+texture = ExtResource("7_52qkl")
+skeleton = NodePath("../../BackViewSkeleton")
+polygon = PackedVector2Array(3069.26, 947.049, 2935.95, 1579.05, 2553.29, 1579.05, 2632.29, 907.549)
+uv = PackedVector2Array(3069.26, 947.049, 2935.95, 1579.05, 2553.29, 1579.05, 2632.29, 907.549)
+
+[node name="TailTip" type="Polygon2D" parent="BackView/Sprites"]
+position = Vector2(571, 128)
+offset = Vector2(-3162, -1364)
+texture = ExtResource("7_52qkl")
+skeleton = NodePath("../../BackViewSkeleton")
+polygon = PackedVector2Array(3307.13, 1284.27, 3259.61, 1494.27, 3054.2, 1419.16, 3132.38, 1227.55)
+uv = PackedVector2Array(3307.13, 1284.27, 3259.61, 1494.27, 3054.2, 1419.16, 3132.38, 1227.55)
+
+[node name="Tentacle" type="Polygon2D" parent="BackView/Sprites"]
+position = Vector2(1125, 1146)
+offset = Vector2(-3790, -1433)
+texture = ExtResource("7_52qkl")
+skeleton = NodePath("../../BackViewSkeleton")
+polygon = PackedVector2Array(3846.39, 1666.74, 3371.42, 1529.32, 3198.17, 1015.53, 3347.53, 648.104, 3962.89, 612.257, 4091.34, 1218.66, 3998.73, 1505.43)
+uv = PackedVector2Array(3846.39, 1666.74, 3371.42, 1529.32, 3198.17, 1015.53, 3347.53, 648.104, 3962.89, 612.257, 4091.34, 1218.66, 3998.73, 1505.43)
+
+[node name="Cock" type="Polygon2D" parent="BackView/Sprites"]
+position = Vector2(655, 790)
+offset = Vector2(-1836, -697)
+texture = ExtResource("7_52qkl")
+skeleton = NodePath("../../BackViewSkeleton")
+polygon = PackedVector2Array(1939.3, 581.745, 1966.28, 865.025, 1713.35, 881.887, 1723.47, 580.059)
+uv = PackedVector2Array(1939.3, 581.745, 1966.28, 865.025, 1713.35, 881.887, 1723.47, 580.059)
+
+[node name="ThighLeft" type="Polygon2D" parent="BackView/Sprites"]
+position = Vector2(498, 686)
+offset = Vector2(-2447, -209)
+texture = ExtResource("7_52qkl")
+skeleton = NodePath("../../BackViewSkeleton")
+polygon = PackedVector2Array(2658.64, 55.953, 2628.96, 337.884, 2645.66, 701.427, 2265.42, 757.071, 2185.66, 356.432, 2258, 7.72798)
+uv = PackedVector2Array(2658.64, 55.953, 2628.96, 337.884, 2645.66, 701.427, 2265.42, 757.071, 2185.66, 356.432, 2258, 7.72798)
+
+[node name="CalfLeft" type="Polygon2D" parent="BackView/Sprites"]
+position = Vector2(564, 1000)
+offset = Vector2(-1993, -388)
+texture = ExtResource("7_52qkl")
+skeleton = NodePath("../../BackViewSkeleton")
+polygon = PackedVector2Array(2108.29, 209.53, 2135.88, 591.222, 1873.76, 591.222, 1853.83, 206.464)
+uv = PackedVector2Array(2108.29, 209.53, 2135.88, 591.222, 1873.76, 591.222, 1853.83, 206.464)
+
+[node name="FootLeft" type="Polygon2D" parent="BackView/Sprites"]
+position = Vector2(545, 1087)
+offset = Vector2(-1692, -198)
+texture = ExtResource("7_52qkl")
+skeleton = NodePath("../../BackViewSkeleton")
+polygon = PackedVector2Array(1840.33, 63.6024, 1764.91, 565.494, 1503.75, 543.051, 1576.6, 18.6865)
+uv = PackedVector2Array(1840.33, 63.6024, 1764.91, 565.494, 1503.75, 543.051, 1576.6, 18.6865)
+
+[node name="Reference" type="Polygon2D" parent="BackView/Sprites"]
+visible = false
+position = Vector2(562, 654)
+color = Color(1, 1, 1, 0.145098)
+offset = Vector2(-695, -711)
+texture = ExtResource("7_52qkl")
+skeleton = NodePath("../../BackViewSkeleton")
+polygon = PackedVector2Array(1483.87, 69.6648, 1467.44, 1522.04, 139.93, 1518.75, 156.359, 56.5211)
+uv = PackedVector2Array(1483.87, 69.6648, 1467.44, 1522.04, 139.93, 1518.75, 156.359, 56.5211)
+
+[node name="BackViewSkeleton" type="Skeleton2D" parent="BackView"]
+
+[node name="SoupStack" type="Node" parent="BackView/BackViewSkeleton"]
+script = ExtResource("4_dw1xy")
+
+[node name="TentaclePath" type="Node" parent="BackView/BackViewSkeleton/SoupStack" node_paths=PackedStringArray("target_path", "bone_nodes")]
+script = ExtResource("6_x8pv2")
+enabled = true
+target_path = NodePath("../../TentaclePath")
+bone_nodes = [NodePath("../../TentacleRoot"), NodePath("../../TentacleRoot/Tentacle01"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02/Tentacle03"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11"), NodePath("../../TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12")]
+
+[node name="TailPath" type="Node" parent="BackView/BackViewSkeleton/SoupStack" node_paths=PackedStringArray("target_path", "bone_nodes")]
+script = ExtResource("6_x8pv2")
+enabled = true
+target_path = NodePath("../../BodyRoot/Waist/TailPath")
+bone_nodes = [NodePath("../../BodyRoot/Waist/TailRoot"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11")]
+
+[node name="ArmLeftIK" type="Node" parent="BackView/BackViewSkeleton/SoupStack" node_paths=PackedStringArray("target_node", "joint_one_bone_node", "joint_two_bone_node")]
+script = ExtResource("5_o128w")
+target_node = NodePath("../../HandLeft")
+enabled = true
+flip_bend_direction = true
+joint_one_bone_node = NodePath("../../BodyRoot/Torso/BicepLeft")
+joint_two_bone_node = NodePath("../../BodyRoot/Torso/BicepLeft/ForearmLeft")
+
+[node name="LegRightIK" type="Node" parent="BackView/BackViewSkeleton/SoupStack" node_paths=PackedStringArray("target_node", "joint_one_bone_node", "joint_two_bone_node")]
+script = ExtResource("5_o128w")
+target_node = NodePath("../../FootRight")
+enabled = true
+joint_one_bone_node = NodePath("../../BodyRoot/Waist/ThighRight")
+joint_two_bone_node = NodePath("../../BodyRoot/Waist/ThighRight/CalfRight")
+
+[node name="ThighSoftFollow" type="Node" parent="BackView/BackViewSkeleton/SoupStack" node_paths=PackedStringArray("target_node", "bone_node")]
+script = ExtResource("8_xtflj")
+target_node = NodePath("../../BodyRoot/Waist/ThighLeft/CalfLeft")
+enabled = true
+bone_node = NodePath("../../BodyRoot/Waist/ThighLeft")
+position_hardness = 0.5
+
+[node name="CalfSoftFollow" type="Node" parent="BackView/BackViewSkeleton/SoupStack" node_paths=PackedStringArray("target_node", "bone_node")]
+script = ExtResource("8_xtflj")
+target_node = NodePath("../../FootLeft")
+enabled = true
+bone_node = NodePath("../../BodyRoot/Waist/ThighLeft/CalfLeft")
+position_hardness = 0.75
+
+[node name="CalfLookAt" type="Node" parent="BackView/BackViewSkeleton/SoupStack" node_paths=PackedStringArray("target_node", "bone_node")]
+script = ExtResource("10_dgeye")
+target_node = NodePath("../../FootLeft")
+enabled = true
+bone_node = NodePath("../../BodyRoot/Waist/ThighLeft/CalfLeft")
+
+[node name="HeadSoftFollow" type="Node" parent="BackView/BackViewSkeleton/SoupStack" node_paths=PackedStringArray("target_node", "bone_node")]
+script = ExtResource("8_xtflj")
+target_node = NodePath("../../BodyRoot/Torso")
+enabled = true
+bone_node = NodePath("../../Head")
+position_hardness = 0.25
+
+[node name="BodyRoot" type="Bone2D" parent="BackView/BackViewSkeleton"]
+position = Vector2(491, 593)
+rest = Transform2D(1, 0, 0, 1, 491, 593)
+
+[node name="Waist" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot"]
+position = Vector2(144, 17)
+rest = Transform2D(1, 0, 0, 1, 144, 17)
+
+[node name="ThighLeft" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist"]
+position = Vector2(-133.745, 65.0139)
+rotation = 0.0815912
+scale = Vector2(1, 1)
+rest = Transform2D(0.996673, 0.0815007, -0.0815007, 0.996673, -177.762, -39.3851)
+auto_calculate_length_and_angle = false
+length = 352.264
+bone_angle = 80.0
+
+[node name="CalfLeft" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist/ThighLeft"]
+position = Vector2(62.1962, 325.891)
+rotation = -0.323891
+rest = Transform2D(0.93747, -0.348066, 0.348066, 0.93747, 97.7723, 481.14)
+auto_calculate_length_and_angle = false
+length = 136.417
+bone_angle = 103.333
+
+[node name="ThighRight" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist"]
+position = Vector2(129, 35)
+rotation = 0.00241278
+scale = Vector2(1, 1)
+rest = Transform2D(0.999997, 0.00241239, -0.00241239, 0.999997, 129, 35)
+auto_calculate_length_and_angle = false
+length = 506.931
+bone_angle = 100.028
+
+[node name="CalfRight" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist/ThighRight"]
+position = Vector2(-99, 519)
+rotation = -0.00453294
+scale = Vector2(1, 1)
+rest = Transform2D(0.99999, -0.0045329, 0.0045329, 0.99999, -99, 519)
+auto_calculate_length_and_angle = false
+length = 628.972
+bone_angle = -27.31
+
+[node name="Jacket" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist"]
+position = Vector2(-108, -92)
+rest = Transform2D(1, 0, 0, 1, -108, -92)
+auto_calculate_length_and_angle = false
+length = 143.875
+bone_angle = -60.0
+
+[node name="TailRoot" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist"]
+position = Vector2(-35, -70)
+rest = Transform2D(1, 0, 0, 1, -35, -70)
+
+[node name="Tail01" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot"]
+position = Vector2(31.8005, -77.7082)
+rest = Transform2D(1, 0, 0, 1, 31.8005, -77.7082)
+
+[node name="Tail02" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01"]
+position = Vector2(19.8215, -81.7144)
+rest = Transform2D(1, 0, 0, 1, 19.8215, -81.7144)
+
+[node name="Tail03" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02"]
+position = Vector2(2.90637, -83.7845)
+rest = Transform2D(1, 0, 0, 1, 2.90637, -83.7845)
+
+[node name="Tail04" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03"]
+position = Vector2(-44.9362, -66.0432)
+rest = Transform2D(1, 0, 0, 1, -44.9362, -66.0432)
+
+[node name="Tail05" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04"]
+position = Vector2(-74.8218, 26.5486)
+rest = Transform2D(1, 0, 0, 1, -74.8218, 26.5486)
+
+[node name="Tail06" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05"]
+position = Vector2(-52.0536, 65.9744)
+rest = Transform2D(1, 0, 0, 1, -52.0536, 65.9744)
+
+[node name="Tail07" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06"]
+position = Vector2(-55.1333, 62.0942)
+rest = Transform2D(1, 0, 0, 1, -55.1333, 62.0942)
+
+[node name="Tail08" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07"]
+position = Vector2(-13.2634, -70.3286)
+rest = Transform2D(1, 0, 0, 1, -13.2634, -70.3286)
+
+[node name="Tail09" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08"]
+position = Vector2(36.743, -75.4741)
+rest = Transform2D(1, 0, 0, 1, 36.743, -75.4741)
+
+[node name="Tail10" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09"]
+position = Vector2(52.228, -65.7835)
+rest = Transform2D(1, 0, 0, 1, 52.228, -65.7835)
+
+[node name="Tail11" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10"]
+position = Vector2(66.709, -50.7807)
+rest = Transform2D(1, 0, 0, 1, 66.709, -50.7807)
+
+[node name="TailTip" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11"]
+position = Vector2(52, -44)
+rest = Transform2D(1, 0, 0, 1, 52, -44)
+auto_calculate_length_and_angle = false
+length = 101.25
+bone_angle = 50.0
+
+[node name="TailPath" type="Path2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist"]
+curve = SubResource("Curve2D_01imu")
+
+[node name="Cock" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist"]
+position = Vector2(56, 173)
+rest = Transform2D(1, 0, 0, 1, 56, 173)
+auto_calculate_length_and_angle = false
+length = 148.611
+bone_angle = 100.0
+
+[node name="Torso" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot"]
+position = Vector2(-110, 100)
+rest = Transform2D(1, 0, 0, 1, -110, 100)
+
+[node name="BicepLeft" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Torso"]
+position = Vector2(-138, 24)
+rotation = -0.00638045
+scale = Vector2(0.999992, 0.999992)
+rest = Transform2D(0.999975, -0.00638057, 0.00638057, 0.999975, -138, 24)
+
+[node name="ForearmLeft" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Torso/BicepLeft"]
+position = Vector2(100, 344)
+rotation = 0.000992666
+scale = Vector2(0.999997, 0.999997)
+rest = Transform2D(0.999997, 0.0010012, -0.0010012, 0.999997, 100, 344)
+auto_calculate_length_and_angle = false
+length = 120.195
+bone_angle = -180.0
+
+[node name="Head" type="Bone2D" parent="BackView/BackViewSkeleton"]
+position = Vector2(284.645, 792.854)
+rest = Transform2D(1, 0, 0, 1, 284.645, 792.854)
+auto_calculate_length_and_angle = false
+length = 148.611
+bone_angle = -196.667
+
+[node name="TentacleRoot" type="Bone2D" parent="BackView/BackViewSkeleton"]
+position = Vector2(1245, 1114)
+rest = Transform2D(1, 0, 0, 1, 1245, 1114)
+
+[node name="Tentacle01" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot"]
+position = Vector2(-119.022, 48.5688)
+rest = Transform2D(1, 0, 0, 1, -119.022, 48.5688)
+
+[node name="Tentacle02" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01"]
+position = Vector2(-124.721, -12.7179)
+rest = Transform2D(1, 0, 0, 1, -124.721, -12.7179)
+
+[node name="Tentacle03" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01/Tentacle02"]
+position = Vector2(-83.6986, -95.6136)
+rest = Transform2D(1, 0, 0, 1, -83.6986, -95.6135)
+
+[node name="Tentacle04" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03"]
+position = Vector2(-9.0318, -125.616)
+rest = Transform2D(1, 0, 0, 1, -9.0318, -125.616)
+
+[node name="Tentacle05" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04"]
+position = Vector2(47.478, -119.387)
+rest = Transform2D(1, 0, 0, 1, 47.478, -119.387)
+
+[node name="Tentacle06" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05"]
+position = Vector2(59.0388, -114.413)
+rest = Transform2D(1, 0, 0, 1, 59.0388, -114.413)
+
+[node name="Tentacle07" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06"]
+position = Vector2(40.1383, -121.556)
+rest = Transform2D(1, 0, 0, 1, 40.1383, -121.556)
+
+[node name="Tentacle08" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07"]
+position = Vector2(-57.6183, -106.919)
+rest = Transform2D(1, 0, 0, 1, -57.6183, -106.919)
+
+[node name="Tentacle09" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08"]
+position = Vector2(-123.625, -17.5208)
+rest = Transform2D(1, 0, 0, 1, -123.625, -17.5208)
+
+[node name="Tentacle10" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09"]
+position = Vector2(-108.33, 67.3433)
+rest = Transform2D(1, 0, 0, 1, -108.33, 67.3433)
+
+[node name="Tentacle11" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10"]
+position = Vector2(-82.8251, 98.2827)
+rest = Transform2D(1, 0, 0, 1, -82.8251, 98.2827)
+
+[node name="Tentacle12" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11"]
+position = Vector2(-65.7835, 110.549)
+rest = Transform2D(1, 0, 0, 1, -65.7835, 110.549)
+
+[node name="TentaclePath" type="Path2D" parent="BackView/BackViewSkeleton"]
+position = Vector2(1239, 1113)
+curve = SubResource("Curve2D_8jhs3")
+
+[node name="FootLeft" type="Bone2D" parent="BackView/BackViewSkeleton"]
+position = Vector2(538, 1142)
+rest = Transform2D(1, 0, 0, 1, 538, 1142)
+auto_calculate_length_and_angle = false
+length = 229.125
+bone_angle = 96.667
+
+[node name="FootRight" type="Bone2D" parent="BackView/BackViewSkeleton"]
+position = Vector2(1222, 874)
+rest = Transform2D(1, 0, 0, 1, 1222, 874)
+auto_calculate_length_and_angle = false
+length = 229.125
+bone_angle = -33.333
+
+[node name="HandLeft" type="Bone2D" parent="BackView/BackViewSkeleton"]
+position = Vector2(225, 1061)
+rest = Transform2D(1, 0, 0, 1, 225, 1061)
+auto_calculate_length_and_angle = false
+length = 101.25
+bone_angle = -103.333
+
+[node name="FrontView" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprites" type="Node2D" parent="FrontView"]
+
+[node name="FootRight" type="Polygon2D" parent="FrontView/Sprites"]
+position = Vector2(172, 1178)
+offset = Vector2(-2079, -1937)
+texture = ExtResource("9_c43hk")
+skeleton = NodePath("../../FrontViewSkeleton")
+polygon = PackedVector2Array(2203.17, 1840.95, 2167.02, 2245.12, 1946.87, 2199.12, 1976.44, 1814.66)
+uv = PackedVector2Array(2203.17, 1840.95, 2167.02, 2245.12, 1946.87, 2199.12, 1976.44, 1814.66)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12/TailTip", PackedFloat32Array(0, 0, 0, 0), "Head", PackedFloat32Array(0, 0, 0, 0), "Head/EyeRight", PackedFloat32Array(0, 0, 0, 0), "Head/EyeLeft", PackedFloat32Array(0, 0, 0, 0), "Head/EyeTarget", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(1, 1, 1, 1), "ArmTargetRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetLeft", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="CalfRight" type="Polygon2D" parent="FrontView/Sprites"]
+position = Vector2(331, 1377)
+offset = Vector2(-1820, -2256)
+texture = ExtResource("9_c43hk")
+skeleton = NodePath("../../FrontViewSkeleton")
+polygon = PackedVector2Array(1761.48, 1982.43, 1534.75, 2048.15, 1741.77, 2435.89, 2009.07, 2234.06)
+uv = PackedVector2Array(1761.48, 1982.43, 1534.75, 2048.15, 1741.77, 2435.89, 2009.07, 2234.06)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(1, 1, 1, 1), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12/TailTip", PackedFloat32Array(0, 0, 0, 0), "Head", PackedFloat32Array(0, 0, 0, 0), "Head/EyeRight", PackedFloat32Array(0, 0, 0, 0), "Head/EyeLeft", PackedFloat32Array(0, 0, 0, 0), "Head/EyeTarget", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetLeft", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="ThighRight" type="Polygon2D" parent="FrontView/Sprites"]
+position = Vector2(298, 840)
+offset = Vector2(-1317, -2161)
+texture = ExtResource("9_c43hk")
+skeleton = NodePath("../../FrontViewSkeleton")
+polygon = PackedVector2Array(1501.96, 1989.87, 1672.83, 2817.92, 1160.23, 2873.78, 1018.93, 2035.87)
+uv = PackedVector2Array(1501.96, 1989.87, 1672.83, 2817.92, 1160.23, 2873.78, 1018.93, 2035.87)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(1, 1, 1, 1), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12/TailTip", PackedFloat32Array(0, 0, 0, 0), "Head", PackedFloat32Array(0, 0, 0, 0), "Head/EyeRight", PackedFloat32Array(0, 0, 0, 0), "Head/EyeLeft", PackedFloat32Array(0, 0, 0, 0), "Head/EyeTarget", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetLeft", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="Tail" type="Polygon2D" parent="FrontView/Sprites"]
+position = Vector2(427, 686)
+offset = Vector2(-435, -2517)
+texture = ExtResource("9_c43hk")
+skeleton = NodePath("../../FrontViewSkeleton")
+polygon = PackedVector2Array(517.927, 2635.37, 556.202, 2620.17, 611.846, 2512.59, 550.637, 2469.93, 500.557, 2395.74, 476.445, 2282.6, 502.412, 2191.71, 541.363, 2162.04, 582.957, 2165.06, 627.008, 2206.75, 667.126, 2296.42, 734.775, 2351.49, 840.688, 2297.28, 884.818, 2181.33, 888.279, 2089.61, 862.245, 2021.07, 856.681, 1902.36, 572.895, 1857.85, 572.729, 2040.78, 743.537, 2132.36, 798.289, 2116.43, 789.637, 2160.56, 763.88, 2195.74, 741.068, 2212.26, 719.829, 2194.95, 674.992, 2113.93, 577.451, 2052.57, 445.298, 2039.99, 348.546, 2109.21, 268.01, 2284.1, 259.948, 2463.76, 312.926, 2577.78, 385.483, 2643.43, 504.091, 2586.29, 453.905, 2509.28, 389.007, 2419.29, 375.163, 2284.3, 418.427, 2157.97, 483.323, 2107.79, 575.043, 2105.19, 651.188, 2151.91, 695.317, 2236.71, 743.773, 2283.44, 802.616, 2243.63, 832.035, 2177.87, 838.092, 2099.13, 824.306, 2063.12, 676.285, 1971.93)
+uv = PackedVector2Array(517.927, 2635.37, 556.202, 2620.17, 611.846, 2512.59, 550.637, 2469.93, 500.557, 2395.74, 476.445, 2282.6, 502.412, 2191.71, 541.363, 2162.04, 582.957, 2165.06, 627.008, 2206.75, 667.126, 2296.42, 734.775, 2351.49, 840.688, 2297.28, 884.818, 2181.33, 888.279, 2089.61, 862.245, 2021.07, 856.681, 1902.36, 572.895, 1857.85, 572.729, 2040.78, 743.537, 2132.36, 798.289, 2116.43, 789.637, 2160.56, 763.88, 2195.74, 741.068, 2212.26, 719.829, 2194.95, 674.992, 2113.93, 577.451, 2052.57, 445.298, 2039.99, 348.546, 2109.21, 268.01, 2284.1, 259.948, 2463.76, 312.926, 2577.78, 385.483, 2643.43, 504.091, 2586.29, 453.905, 2509.28, 389.007, 2419.29, 375.163, 2284.3, 418.427, 2157.97, 483.323, 2107.79, 575.043, 2105.19, 651.188, 2151.91, 695.317, 2236.71, 743.773, 2283.44, 802.616, 2243.63, 832.035, 2177.87, 838.092, 2099.13, 824.306, 2063.12, 676.285, 1971.93)
+polygons = [PackedInt32Array(33, 34, 3, 2), PackedInt32Array(34, 35, 4, 3), PackedInt32Array(35, 36, 5, 4), PackedInt32Array(36, 37, 6, 5), PackedInt32Array(37, 38, 7, 6), PackedInt32Array(38, 39, 8, 7), PackedInt32Array(39, 40, 9, 8), PackedInt32Array(40, 41, 10, 9), PackedInt32Array(41, 42, 11, 10), PackedInt32Array(42, 43, 12, 11), PackedInt32Array(43, 44, 13, 12), PackedInt32Array(44, 45, 14, 13), PackedInt32Array(45, 46, 15, 14), PackedInt32Array(46, 47, 16, 15), PackedInt32Array(47, 17, 16), PackedInt32Array(47, 18, 17), PackedInt32Array(18, 19, 46, 47), PackedInt32Array(20, 45, 46, 19), PackedInt32Array(20, 21, 44, 45), PackedInt32Array(21, 22, 43, 44), PackedInt32Array(22, 23, 42, 43), PackedInt32Array(24, 41, 42, 23), PackedInt32Array(24, 25, 40, 41), PackedInt32Array(25, 26, 39, 40), PackedInt32Array(26, 27, 38, 39), PackedInt32Array(27, 28, 37, 38), PackedInt32Array(36, 29, 28, 37), PackedInt32Array(36, 35, 30, 29), PackedInt32Array(35, 34, 31, 30), PackedInt32Array(34, 33, 32, 31), PackedInt32Array(33, 0, 32), PackedInt32Array(33, 2, 1), PackedInt32Array(33, 0, 1)]
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0.82, 0.82, 0.82, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.82, 0.82, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0.41, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 0.41, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12/TailTip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 1, 1, 1, 0.41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.41, 1), "Head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Head/EyeRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Head/EyeLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Head/EyeTarget", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "ArmTargetRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "ArmTargetLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+internal_vertex_count = 15
+
+[node name="Jacket" type="Polygon2D" parent="FrontView/Sprites"]
+position = Vector2(564, 929)
+offset = Vector2(-2415, -1380)
+texture = ExtResource("9_c43hk")
+skeleton = NodePath("../../FrontViewSkeleton")
+polygon = PackedVector2Array(1939.78, 1032.71, 2827.33, 1000.52, 2658.71, 1852.82, 1976.57, 1748.58)
+uv = PackedVector2Array(1939.78, 1032.71, 2827.33, 1000.52, 2658.71, 1852.82, 1976.57, 1748.58)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(1, 1, 1, 1), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12/TailTip", PackedFloat32Array(0, 0, 0, 0), "Head", PackedFloat32Array(0, 0, 0, 0), "Head/EyeRight", PackedFloat32Array(0, 0, 0, 0), "Head/EyeLeft", PackedFloat32Array(0, 0, 0, 0), "Head/EyeTarget", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetLeft", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="BicepLeft" type="Polygon2D" parent="FrontView/Sprites"]
+position = Vector2(922, 1283)
+offset = Vector2(-2629, -499)
+texture = ExtResource("9_c43hk")
+skeleton = NodePath("../../FrontViewSkeleton")
+polygon = PackedVector2Array(2463.47, 991.216, 2795.05, 1018.1, 2854.79, 301.176, 2385.8, 298.189)
+uv = PackedVector2Array(2463.47, 991.216, 2795.05, 1018.1, 2854.79, 301.176, 2385.8, 298.189)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(1, 1, 1, 1), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12/TailTip", PackedFloat32Array(0, 0, 0, 0), "Head", PackedFloat32Array(0, 0, 0, 0), "Head/EyeRight", PackedFloat32Array(0, 0, 0, 0), "Head/EyeLeft", PackedFloat32Array(0, 0, 0, 0), "Head/EyeTarget", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetLeft", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="Torso" type="Polygon2D" parent="FrontView/Sprites"]
+position = Vector2(552, 1056)
+offset = Vector2(-1530, -1438)
+texture = ExtResource("9_c43hk")
+skeleton = NodePath("../../FrontViewSkeleton")
+polygon = PackedVector2Array(1599.78, 1078.79, 1791.57, 1280.78, 2016, 1678.63, 1832.37, 2007.12, 1383.51, 1913.27, 1324.34, 1556.21, 1173.36, 1305.26, 1295.78, 1099.19, 1591.62, 1460.32)
+uv = PackedVector2Array(1599.78, 1078.79, 1791.57, 1280.78, 2016, 1678.63, 1832.37, 2007.12, 1383.51, 1913.27, 1324.34, 1556.21, 1173.36, 1305.26, 1295.78, 1099.19, 1591.62, 1460.32)
+polygons = [PackedInt32Array(7, 8, 5, 6), PackedInt32Array(7, 0, 1, 8), PackedInt32Array(8, 3, 2, 1), PackedInt32Array(8, 5, 4, 3)]
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0.43, 0.86, 0.86, 0.86, 0.43, 0, 0, 0.43), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0.86, 0.43, 0, 0, 0, 0.43, 0.86, 0.86, 0.43), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12/TailTip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Head/EyeRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Head/EyeLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "Head/EyeTarget", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "ArmTargetRight", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "ArmTargetLeft", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)]
+internal_vertex_count = 1
+
+[node name="BicepRight" type="Polygon2D" parent="FrontView/Sprites"]
+position = Vector2(524, 1308)
+offset = Vector2(-2074, -527)
+texture = ExtResource("9_c43hk")
+skeleton = NodePath("../../FrontViewSkeleton")
+polygon = PackedVector2Array(2179.08, 273.742, 2369.85, 967.237, 2078.09, 1097.41, 1779.6, 379.225)
+uv = PackedVector2Array(2179.08, 273.742, 2369.85, 967.237, 2078.09, 1097.41, 1779.6, 379.225)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(1, 1, 1, 1), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12/TailTip", PackedFloat32Array(0, 0, 0, 0), "Head", PackedFloat32Array(0, 0, 0, 0), "Head/EyeRight", PackedFloat32Array(0, 0, 0, 0), "Head/EyeLeft", PackedFloat32Array(0, 0, 0, 0), "Head/EyeTarget", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetLeft", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="EyeWhites" type="Polygon2D" parent="FrontView/Sprites"]
+position = Vector2(841, 960)
+offset = Vector2(-3215, -309)
+texture = ExtResource("9_c43hk")
+skeleton = NodePath("../../FrontViewSkeleton")
+polygon = PackedVector2Array(3503.75, 101.83, 3424.89, 492.853, 2964.86, 496.139, 3027.29, 52.5414)
+uv = PackedVector2Array(3503.75, 101.83, 3424.89, 492.853, 2964.86, 496.139, 3027.29, 52.5414)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12/TailTip", PackedFloat32Array(0, 0, 0, 0), "Head", PackedFloat32Array(1, 1, 1, 1), "Head/EyeRight", PackedFloat32Array(0, 0, 0, 0), "Head/EyeLeft", PackedFloat32Array(0, 0, 0, 0), "Head/EyeTarget", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetLeft", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="EyeLeft" type="Polygon2D" parent="FrontView/Sprites"]
+position = Vector2(959, 985)
+offset = Vector2(-3887, -343)
+texture = ExtResource("9_c43hk")
+skeleton = NodePath("../../FrontViewSkeleton")
+polygon = PackedVector2Array(3855.06, 219.498, 3813.09, 454.029, 3926.65, 471.31, 3978.5, 209.623)
+uv = PackedVector2Array(3855.06, 219.498, 3813.09, 454.029, 3926.65, 471.31, 3978.5, 209.623)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12/TailTip", PackedFloat32Array(0, 0, 0, 0), "Head", PackedFloat32Array(0, 0, 0, 0), "Head/EyeRight", PackedFloat32Array(0, 0, 0, 0), "Head/EyeLeft", PackedFloat32Array(1, 1, 1, 1), "Head/EyeTarget", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetLeft", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="EyeRight" type="Polygon2D" parent="FrontView/Sprites"]
+position = Vector2(768, 974)
+offset = Vector2(-3696, -332)
+texture = ExtResource("9_c43hk")
+skeleton = NodePath("../../FrontViewSkeleton")
+polygon = PackedVector2Array(3828.02, 187.265, 3758.65, 466.785, 3528.1, 417.818, 3605.63, 140.338)
+uv = PackedVector2Array(3828.02, 187.265, 3758.65, 466.785, 3528.1, 417.818, 3605.63, 140.338)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12/TailTip", PackedFloat32Array(0, 0, 0, 0), "Head", PackedFloat32Array(0, 0, 0, 0), "Head/EyeRight", PackedFloat32Array(1, 1, 1, 1), "Head/EyeLeft", PackedFloat32Array(0, 0, 0, 0), "Head/EyeTarget", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetLeft", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="Head" type="Polygon2D" parent="FrontView/Sprites"]
+position = Vector2(791, 968)
+offset = Vector2(-1500, -708)
+texture = ExtResource("9_c43hk")
+skeleton = NodePath("../../FrontViewSkeleton")
+polygon = PackedVector2Array(1826.91, 44.8066, 1812.09, 1079.21, 1123.31, 1002.68, 1118.38, 2.83778)
+uv = PackedVector2Array(1826.91, 44.8066, 1812.09, 1079.21, 1123.31, 1002.68, 1118.38, 2.83778)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12/TailTip", PackedFloat32Array(0, 0, 0, 0), "Head", PackedFloat32Array(1, 1, 1, 1), "Head/EyeRight", PackedFloat32Array(0, 0, 0, 0), "Head/EyeLeft", PackedFloat32Array(0, 0, 0, 0), "Head/EyeTarget", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetLeft", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="MouthShapes" type="Node2D" parent="FrontView/Sprites"]
+
+[node name="MouthClosed" type="Polygon2D" parent="FrontView/Sprites/MouthShapes"]
+position = Vector2(890, 1224)
+offset = Vector2(-3230, -639)
+texture = ExtResource("9_c43hk")
+skeleton = NodePath("../../../FrontViewSkeleton")
+polygon = PackedVector2Array(3315.87, 572.449, 3301.59, 692.826, 3117.97, 705.067, 3156.73, 556.126)
+uv = PackedVector2Array(3315.87, 572.449, 3301.59, 692.826, 3117.97, 705.067, 3156.73, 556.126)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12/TailTip", PackedFloat32Array(0, 0, 0, 0), "Head", PackedFloat32Array(1, 1, 1, 1), "Head/EyeRight", PackedFloat32Array(0, 0, 0, 0), "Head/EyeLeft", PackedFloat32Array(0, 0, 0, 0), "Head/EyeTarget", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetLeft", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="MouthOh" type="Polygon2D" parent="FrontView/Sprites/MouthShapes"]
+visible = false
+position = Vector2(887, 1244)
+offset = Vector2(-3418, -645)
+texture = ExtResource("9_c43hk")
+skeleton = NodePath("../../../FrontViewSkeleton")
+polygon = PackedVector2Array(3514.3, 564.552, 3451.24, 727.775, 3323.26, 685.114, 3390.03, 546.004)
+uv = PackedVector2Array(3514.3, 564.552, 3451.24, 727.775, 3323.26, 685.114, 3390.03, 546.004)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12/TailTip", PackedFloat32Array(0, 0, 0, 0), "Head", PackedFloat32Array(1, 1, 1, 1), "Head/EyeRight", PackedFloat32Array(0, 0, 0, 0), "Head/EyeLeft", PackedFloat32Array(0, 0, 0, 0), "Head/EyeTarget", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetLeft", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="MouthOoo" type="Polygon2D" parent="FrontView/Sprites/MouthShapes"]
+visible = false
+position = Vector2(901, 1231)
+offset = Vector2(-3599, -639)
+texture = ExtResource("9_c43hk")
+skeleton = NodePath("../../../FrontViewSkeleton")
+polygon = PackedVector2Array(3678.36, 589.408, 3626.74, 730.8, 3516.77, 694.891, 3586.34, 560.232)
+uv = PackedVector2Array(3678.36, 589.408, 3626.74, 730.8, 3516.77, 694.891, 3586.34, 560.232)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12/TailTip", PackedFloat32Array(0, 0, 0, 0), "Head", PackedFloat32Array(1, 1, 1, 1), "Head/EyeRight", PackedFloat32Array(0, 0, 0, 0), "Head/EyeLeft", PackedFloat32Array(0, 0, 0, 0), "Head/EyeTarget", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetLeft", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="MouthEesh" type="Polygon2D" parent="FrontView/Sprites/MouthShapes"]
+visible = false
+position = Vector2(898, 1224)
+offset = Vector2(-3807, -639)
+texture = ExtResource("9_c43hk")
+skeleton = NodePath("../../../FrontViewSkeleton")
+polygon = PackedVector2Array(3873.11, 574.046, 3871.42, 692.079, 3711.24, 697.138, 3719.67, 582.477)
+uv = PackedVector2Array(3873.11, 574.046, 3871.42, 692.079, 3711.24, 697.138, 3719.67, 582.477)
+bones = ["BodyRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Torso/BicepLeft", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/ThighRight/CalfRight", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12", PackedFloat32Array(0, 0, 0, 0), "BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12/TailTip", PackedFloat32Array(0, 0, 0, 0), "Head", PackedFloat32Array(1, 1, 1, 1), "Head/EyeRight", PackedFloat32Array(0, 0, 0, 0), "Head/EyeLeft", PackedFloat32Array(0, 0, 0, 0), "Head/EyeTarget", PackedFloat32Array(0, 0, 0, 0), "FootRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetRight", PackedFloat32Array(0, 0, 0, 0), "ArmTargetLeft", PackedFloat32Array(0, 0, 0, 0)]
+
+[node name="Reference" type="Polygon2D" parent="FrontView/Sprites"]
+visible = false
+position = Vector2(582, 1038)
+color = Color(1, 1, 1, 0.141176)
+offset = Vector2(-582, -1038)
+texture = ExtResource("9_c43hk")
+skeleton = NodePath("../../FrontViewSkeleton")
+polygon = PackedVector2Array(1095.03, 40.0166, 1178.12, 1824.42, -37.7219, 1824.42, 49.7489, 5.0282)
+uv = PackedVector2Array(1095.03, 40.0166, 1178.12, 1824.42, -37.7219, 1824.42, 49.7489, 5.0282)
+
+[node name="FrontViewSkeleton" type="Skeleton2D" parent="FrontView"]
+
+[node name="SoupStack" type="Node" parent="FrontView/FrontViewSkeleton"]
+script = ExtResource("4_dw1xy")
+
+[node name="TailPathIK" type="Node" parent="FrontView/FrontViewSkeleton/SoupStack" node_paths=PackedStringArray("target_path", "bone_nodes")]
+script = ExtResource("6_x8pv2")
+enabled = true
+target_path = NodePath("../../BodyRoot/Waist/TailPath")
+bone_nodes = [NodePath("../../BodyRoot/Waist/TailRoot"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11"), NodePath("../../BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12")]
+
+[node name="BicepRightLookAt" type="Node" parent="FrontView/FrontViewSkeleton/SoupStack" node_paths=PackedStringArray("target_node", "bone_node")]
+script = ExtResource("10_dgeye")
+target_node = NodePath("../../ArmTargetRight")
+enabled = true
+bone_node = NodePath("../../BodyRoot/Torso/BicepRight")
+
+[node name="BicepLeftLookAt" type="Node" parent="FrontView/FrontViewSkeleton/SoupStack" node_paths=PackedStringArray("target_node", "bone_node")]
+script = ExtResource("10_dgeye")
+target_node = NodePath("../../ArmTargetLeft")
+enabled = true
+bone_node = NodePath("../../BodyRoot/Torso/BicepLeft")
+
+[node name="HeadSoftFollow" type="Node" parent="FrontView/FrontViewSkeleton/SoupStack" node_paths=PackedStringArray("target_node", "bone_node")]
+script = ExtResource("8_xtflj")
+target_node = NodePath("../../BodyRoot/Torso")
+enabled = true
+bone_node = NodePath("../../Head")
+position_hardness = 0.25
+
+[node name="ThighSoftFollow" type="Node" parent="FrontView/FrontViewSkeleton/SoupStack" node_paths=PackedStringArray("target_node", "bone_node")]
+script = ExtResource("8_xtflj")
+target_node = NodePath("../../FootRight")
+enabled = true
+bone_node = NodePath("../../BodyRoot/Waist/ThighRight")
+position_hardness = 0.25
+
+[node name="CalfSoftFollow" type="Node" parent="FrontView/FrontViewSkeleton/SoupStack" node_paths=PackedStringArray("target_node", "bone_node")]
+script = ExtResource("8_xtflj")
+target_node = NodePath("../../FootRight")
+enabled = true
+bone_node = NodePath("../../BodyRoot/Waist/ThighRight/CalfRight")
+position_hardness = 0.25
+
+[node name="SoupLookAt" type="Node" parent="FrontView/FrontViewSkeleton/SoupStack" node_paths=PackedStringArray("target_node", "bone_node")]
+script = ExtResource("10_dgeye")
+target_node = NodePath("../../FootRight")
+enabled = true
+bone_node = NodePath("../../BodyRoot/Waist/ThighRight/CalfRight")
+
+[node name="BodyRoot" type="Bone2D" parent="FrontView/FrontViewSkeleton"]
+position = Vector2(521, 816)
+rest = Transform2D(1, 0, 0, 1, 521, 816)
+
+[node name="Torso" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot"]
+position = Vector2(-31, 121)
+rest = Transform2D(1, 0, 0, 1, -31, 121)
+
+[node name="BicepRight" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Torso"]
+position = Vector2(-16, 352)
+rotation = -0.000911355
+rest = Transform2D(1, -0.000911355, 0.000911355, 1, -16, 352)
+auto_calculate_length_and_angle = false
+length = 437.514
+bone_angle = 66.667
+
+[node name="BicepLeft" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Torso"]
+position = Vector2(457, 331)
+rotation = -0.00697672
+rest = Transform2D(0.999976, -0.00697667, 0.00697667, 0.999976, 457, 331)
+auto_calculate_length_and_angle = false
+length = 437.514
+bone_angle = 90.0
+
+[node name="Waist" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot"]
+position = Vector2(-36, 124)
+rest = Transform2D(1, 0, 0, 1, -36, 124)
+
+[node name="ThighRight" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist"]
+position = Vector2(-320, -78)
+rest = Transform2D(1, 0, 0, 1, -320, -78)
+
+[node name="CalfRight" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/ThighRight"]
+position = Vector2(194, 552)
+rotation = -0.00377011
+rest = Transform2D(0.999993, -0.0037701, 0.0037701, 0.999993, 194, 552)
+auto_calculate_length_and_angle = false
+length = 304.902
+bone_angle = -134.784
+
+[node name="TailRoot" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist"]
+position = Vector2(-41, -219)
+rest = Transform2D(1, 0, 0, 1, -41, -219)
+
+[node name="Tail01" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot"]
+position = Vector2(-30.0183, -91.2973)
+rest = Transform2D(1, 0, 0, 1, -30.0183, -91.2973)
+
+[node name="Tail02" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01"]
+position = Vector2(-19.7436, -94.0432)
+rest = Transform2D(1, 0, 0, 1, -19.7436, -94.0432)
+
+[node name="Tail03" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02"]
+position = Vector2(-5.33191, -95.8551)
+rest = Transform2D(1, 0, 0, 1, -5.33191, -95.8551)
+
+[node name="Tail04" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03"]
+position = Vector2(21.4297, -93.0647)
+rest = Transform2D(1, 0, 0, 1, 21.4297, -93.0647)
+
+[node name="Tail05" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04"]
+position = Vector2(68.22, -64.5681)
+rest = Transform2D(1, 0, 0, 1, 68.22, -64.5681)
+
+[node name="Tail06" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05"]
+position = Vector2(94.4268, -9.47208)
+rest = Transform2D(1, 0, 0, 1, 94.4268, -9.47208)
+
+[node name="Tail07" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06"]
+position = Vector2(74.9944, 55.9521)
+rest = Transform2D(1, 0, 0, 1, 74.9944, 55.9521)
+
+[node name="Tail08" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07"]
+position = Vector2(46.2762, 84.2246)
+rest = Transform2D(1, 0, 0, 1, 46.2762, 84.2246)
+
+[node name="Tail09" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08"]
+position = Vector2(80.2791, 32.5408)
+rest = Transform2D(1, 0, 0, 1, 80.2791, 32.5408)
+
+[node name="Tail10" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09"]
+position = Vector2(43.0211, -82.4045)
+rest = Transform2D(1, 0, 0, 1, 43.0211, -82.4045)
+
+[node name="Tail11" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10"]
+position = Vector2(-0.636353, -95.8087)
+rest = Transform2D(1, 0, 0, 1, -0.636353, -95.8087)
+
+[node name="Tail12" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11"]
+position = Vector2(-32.9173, -89.204)
+rest = Transform2D(1, 0, 0, 1, -32.9173, -89.204)
+
+[node name="TailTip" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12"]
+position = Vector2(-67, -10)
+rest = Transform2D(1, 0, 0, 1, -67, -10)
+auto_calculate_length_and_angle = false
+length = 143.875
+bone_angle = -193.333
+
+[node name="TailPath" type="Path2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist"]
+position = Vector2(-485, -940)
+curve = SubResource("Curve2D_d7mym")
+
+[node name="Head" type="Bone2D" parent="FrontView/FrontViewSkeleton"]
+position = Vector2(735, 1048)
+rest = Transform2D(1, 0, 0, 1, 735, 1048)
+auto_calculate_length_and_angle = false
+length = 191.236
+bone_angle = 36.667
+
+[node name="EyeRight" type="Bone2D" parent="FrontView/FrontViewSkeleton/Head"]
+position = Vector2(42.6927, -65.0828)
+rest = Transform2D(1, 0, 0, 1, 42.6927, -65.0828)
+
+[node name="EyeLeft" type="Bone2D" parent="FrontView/FrontViewSkeleton/Head"]
+position = Vector2(234.378, -44.6716)
+rest = Transform2D(1, 0, 0, 1, 234.378, -44.6716)
+
+[node name="FootRight" type="Bone2D" parent="FrontView/FrontViewSkeleton"]
+position = Vector2(145, 1200)
+rest = Transform2D(1, 0, 0, 1, 145, 1200)
+auto_calculate_length_and_angle = false
+length = 153.992
+bone_angle = 86.667
+
+[node name="ArmTargetRight" type="Bone2D" parent="FrontView/FrontViewSkeleton"]
+position = Vector2(650, 1696)
+rest = Transform2D(1, 0, 0, 1, 650, 1696)
+
+[node name="ArmTargetLeft" type="Bone2D" parent="FrontView/FrontViewSkeleton"]
+position = Vector2(950, 1698)
+rest = Transform2D(1, 0, 0, 1, 950, 1698)
