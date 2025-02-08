@@ -54,7 +54,7 @@ func _update_bone_transform() -> void:
 	_mod_stack.apply_bone_rotation_mod(bone_node, rotation_global_to_local(new_rotation, bone_node.get_parent()))
 
 func _update_last_transform() -> void:
-	if not target_node: return
+	if not (target_node and bone_node): return
 	last_target_position = target_node.global_position
 	last_target_rotation = target_node.global_rotation
 	
