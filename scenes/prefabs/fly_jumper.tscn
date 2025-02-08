@@ -137,6 +137,30 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector2(-200, 38)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BackView/BackViewSkeleton/TentacleControl01/TentacleControl02/TentacleControl03/TentacleControl04:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-402.829, 277.712)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12/TailTip01/TailTip02:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(109, 5)]
+}
 
 [sub_resource type="Animation" id="Animation_ooo5p"]
 resource_name = "idle"
@@ -180,7 +204,7 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("BackView/BackViewSkeleton/TentacleControl01/TentacleControl02:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
@@ -200,7 +224,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.208334, 0.916667),
 "transitions": PackedFloat32Array(0.63728, 1.31951, 1),
 "update": 0,
-"values": [Vector2(48.4701, -563.677), Vector2(-17, -503), Vector2(48.4701, -563.677)]
+"values": [Vector2(48.4701, -563.677), Vector2(-57, -463), Vector2(48.4701, -563.677)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -212,7 +236,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.208334, 0.916667),
 "transitions": PackedFloat32Array(0.482968, 1.27456, 1),
 "update": 0,
-"values": [Vector2(145, -479), Vector2(109, -441), Vector2(145, -479)]
+"values": [Vector2(145, -479), Vector2(69, -412), Vector2(145, -479)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -224,7 +248,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.208334, 0.916667),
 "transitions": PackedFloat32Array(0.466516, 1.23114, 1),
 "update": 0,
-"values": [Vector2(-358, 216), Vector2(-348, 221), Vector2(-358, 216)]
+"values": [Vector2(-358, 216), Vector2(-341, 261), Vector2(-358, 216)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -262,6 +286,30 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector2(-200, 38), Vector2(-200, 38), Vector2(-197.346, 66.5)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BackView/BackViewSkeleton/TentacleControl01/TentacleControl02/TentacleControl03/TentacleControl04:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.208334, 0.916667),
+"transitions": PackedFloat32Array(0.435275, 1.27456, 1),
+"update": 0,
+"values": [Vector2(-402.829, 277.712), Vector2(-365, 316), Vector2(-402.829, 277.712)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12/TailTip01/TailTip02:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.0833334, 0.166667, 0.375),
+"transitions": PackedFloat32Array(1, 0.517632, 1.31951),
+"update": 0,
+"values": [Vector2(109, 5), Vector2(109, 5), Vector2(104.491, 19.491)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rmsv8"]
 _data = {
@@ -281,12 +329,11 @@ states/idle/position = Vector2(326, 92)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_1oel5")]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kmpuc"]
-graph_offset = Vector2(-148, 160)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_pkd00")
 nodes/StateMachine/position = Vector2(103, 145)
 node_connections = [&"output", 0, &"StateMachine"]
 
-[sub_resource type="Resource" id="Resource_t5tsg"]
+[sub_resource type="Resource" id="Resource_6pbqo"]
 script = ExtResource("13_g78mo")
 frequency = 1.0
 damping = 1.0
@@ -294,13 +341,13 @@ reaction = 1.0
 
 [sub_resource type="Curve2D" id="Curve2D_np1gr"]
 _data = {
-"points": PackedVector2Array(146.206, 196.001, -146.206, -196.001, 67.4398, 81.2517, 117.6, 103.827, -117.6, -103.827, 180.142, -363.656, 29.665, -126.076, -29.665, 126.076, -168.969, -143.212)
+"points": PackedVector2Array(146.206, 196.001, -146.206, -196.001, 67.7573, 80.8661, 117.6, 103.827, -117.6, -103.827, 146.297, -339.544, 29.665, -126.076, -29.665, 126.076, -196.993, -84.6065)
 }
 point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_rhsob"]
 _data = {
-"points": PackedVector2Array(-34.487, 74.92, 34.487, -74.92, 61, -170, 48.6222, 41.2438, -48.6222, -41.2438, 57.2673, -353.904, 24.9467, 42.8927, -24.9467, -42.8927, -140.218, -288.902, -46.6762, 25.3518, 46.6762, -25.3518, -49.7097, -461.393)
+"points": PackedVector2Array(-34.487, 74.92, 34.487, -74.92, 61, -170, 48.6222, 41.2438, -48.6222, -41.2438, 56.6312, -353.625, 24.9467, 42.8927, -24.9467, -42.8927, -140.761, -287.626, -46.6762, 25.3518, 46.6762, -25.3518, -50.2529, -460.117)
 }
 point_count = 4
 
@@ -312,29 +359,29 @@ point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_8jhs3"]
 _data = {
-"points": PackedVector2Array(76.8392, -32.6186, -76.8392, 32.6186, 7, 2, 101.557, 189.106, -101.557, -189.106, -321, -58, 198.493, 119.94, -198.493, -119.94, -331.786, -566.759, 0, 0, 0, 0, -734.615, -289.047)
+"points": PackedVector2Array(76.8392, -32.6186, -76.8392, 32.6186, 7, 2, 101.557, 189.106, -101.557, -189.106, -321, -46.6318, 198.493, 119.94, -198.493, -119.94, -365.695, -521.377, 0, 0, 0, 0, -735.444, -210.184)
 }
 point_count = 4
 
-[sub_resource type="Resource" id="Resource_1yvp3"]
+[sub_resource type="Resource" id="Resource_4yevj"]
 script = ExtResource("13_g78mo")
 frequency = 1.0
 damping = 1.0
 reaction = 1.0
 
-[sub_resource type="Resource" id="Resource_ijw3n"]
+[sub_resource type="Resource" id="Resource_4w67p"]
 script = ExtResource("13_g78mo")
 frequency = 1.0
 damping = 5.0
 reaction = 1.0
 
-[sub_resource type="Resource" id="Resource_fbwkh"]
+[sub_resource type="Resource" id="Resource_lqhg7"]
 script = ExtResource("13_g78mo")
 frequency = 1.0
 damping = 5.0
 reaction = 1.0
 
-[sub_resource type="Resource" id="Resource_vtgbp"]
+[sub_resource type="Resource" id="Resource_an034"]
 script = ExtResource("13_g78mo")
 frequency = 1.0
 damping = 0.5
@@ -342,7 +389,7 @@ reaction = 100.0
 
 [sub_resource type="Curve2D" id="Curve2D_d7mym"]
 _data = {
-"points": PackedVector2Array(53.3936, 136.154, -53.3936, -136.154, 444, 721, -177.534, 36.0407, 177.534, -36.0407, 493.333, 262.613, -92.104, -5.33936, 92.104, 5.33936, 724.333, 440.613, 52.0588, 61.4026, -52.0588, -61.4026, 804.724, 197.86)
+"points": PackedVector2Array(53.3936, 136.154, -53.3936, -136.154, 444, 721, -177.534, 36.0407, 177.534, -36.0407, 488.388, 255.888, -92.104, -5.33936, 92.104, 5.33936, 719.388, 433.888, 52.0588, 61.4026, -52.0588, -61.4026, 804.724, 197.86)
 }
 point_count = 4
 
@@ -604,7 +651,7 @@ target_node = NodePath("../../BodyRoot/Torso/HeadTracker")
 enabled = true
 bone_node = NodePath("../../Head")
 use_easing = true
-easing = SubResource("Resource_t5tsg")
+easing = SubResource("Resource_6pbqo")
 
 [node name="NeckLookAt" type="Node" parent="Piloting/PilotingSkeleton/SoupStack" node_paths=PackedStringArray("target_node", "bone_node")]
 script = ExtResource("10_dgeye")
@@ -629,13 +676,12 @@ rest = Transform2D(1, 0, 0, 1, -2, 84)
 
 [node name="BicepLeft" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Torso"]
 position = Vector2(-100, 48)
-rotation = -0.348092
-scale = Vector2(1, 1)
+rotation = -0.290115
 rest = Transform2D(0.993651, -0.112505, 0.112505, 0.993651, -100, 48)
 
 [node name="ForearmLeft" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Torso/BicepLeft"]
 position = Vector2(-54, 203)
-rotation = 0.582398
+rotation = 0.486133
 scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(0.983067, 0.183243, -0.183243, 0.983067, -54, 203)
 auto_calculate_length_and_angle = false
@@ -644,14 +690,12 @@ bone_angle = 117.073
 
 [node name="BicepRight" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Torso"]
 position = Vector2(-197, 101)
-rotation = -0.292897
-scale = Vector2(1, 1)
+rotation = -0.235194
 rest = Transform2D(0.99834, -0.0575863, 0.0575863, 0.99834, -197, 101)
 
 [node name="ForearmRight" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Torso/BicepRight"]
 position = Vector2(-133, 129)
-rotation = 0.639838
-scale = Vector2(1, 1)
+rotation = 0.514693
 rest = Transform2D(0.991515, 0.129992, -0.129992, 0.991515, -133, 129)
 auto_calculate_length_and_angle = false
 length = 174.304
@@ -659,7 +703,7 @@ bone_angle = 146.341
 
 [node name="Neck" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Torso"]
 position = Vector2(-182, 111)
-rotation = 0.232222
+rotation = 0.270206
 scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(0.999847, 0.0174935, -0.0174935, 0.999847, -182, 111)
 auto_calculate_length_and_angle = false
@@ -680,14 +724,12 @@ rest = Transform2D(1, 0, 0, 1, -2, 86)
 
 [node name="ThighLeft" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist"]
 position = Vector2(224, -110)
-rotation = -0.149538
-scale = Vector2(1, 1)
+rotation = -0.116418
 rest = Transform2D(0.99993, -0.0118666, 0.0118666, 0.99993, 224, -110)
 
 [node name="CalfLeft" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/ThighLeft"]
 position = Vector2(-44, 468)
-rotation = -0.843066
-scale = Vector2(1, 1)
+rotation = -0.846463
 rest = Transform2D(0.659315, -0.751867, 0.751867, 0.659315, -44, 468)
 auto_calculate_length_and_angle = false
 length = 338.963
@@ -695,13 +737,12 @@ bone_angle = 0.0
 
 [node name="ThighRight" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist"]
 position = Vector2(48, -166)
-rotation = -0.125366
-scale = Vector2(1, 1)
+rotation = -0.0864543
 rest = Transform2D(0.999195, 0.0401085, -0.0401085, 0.999195, 48, -166)
 
 [node name="CalfRight" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/ThighRight"]
 position = Vector2(37, 465)
-rotation = 0.0281036
+rotation = 0.0258935
 scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(0.999595, 0.028455, -0.028455, 0.999595, 37, 465)
 auto_calculate_length_and_angle = false
@@ -713,51 +754,51 @@ position = Vector2(84, -172)
 rest = Transform2D(1, 0, 0, 1, 84, -172)
 
 [node name="Tail01" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot"]
-position = Vector2(19.1006, -48.6905)
+position = Vector2(20.2906, -48.3236)
 rest = Transform2D(1, 0, 0, 1, 21.0131, -48.2048)
 
 [node name="Tail02" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01"]
-position = Vector2(10.234, -51.1987)
+position = Vector2(14.2102, -50.3887)
 rest = Transform2D(1, 0, 0, 1, 16.3639, -49.9306)
 
 [node name="Tail03" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02"]
-position = Vector2(-7.76971, -51.2635)
+position = Vector2(-0.631653, -52.0185)
 rest = Transform2D(1, 0, 0, 1, 3.46844, -52.1409)
 
 [node name="Tail04" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03"]
-position = Vector2(-33.999, -38.3138)
+position = Vector2(-29.2031, -42.161)
 rest = Transform2D(1, 0, 0, 1, -25.8834, -44.3074)
 
 [node name="Tail05" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04"]
-position = Vector2(-50.1937, 9.13577)
+position = Vector2(-50.7397, 1.80289)
 rest = Transform2D(1, 0, 0, 1, -50.6863, -2.59155)
 
 [node name="Tail06" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05"]
-position = Vector2(-44.9464, 26.7479)
+position = Vector2(-47.2164, 22.6708)
 rest = Transform2D(1, 0, 0, 1, -48.5446, 20.0823)
 
 [node name="Tail07" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06"]
-position = Vector2(-44.0375, 28.2687)
+position = Vector2(-46.2228, 24.7165)
 rest = Transform2D(1, 0, 0, 1, -47.5162, 22.5231)
 
 [node name="Tail08" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07"]
-position = Vector2(-47.6703, 7.33182)
+position = Vector2(-48.6304, 3.91675)
 rest = Transform2D(1, 0, 0, 1, -49.2756, 2.18536)
 
 [node name="Tail09" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08"]
-position = Vector2(-2.57697, -50.547)
+position = Vector2(-2.84512, -50.5836)
 rest = Transform2D(1, 0, 0, 1, -3.32147, -50.6891)
 
 [node name="Tail10" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09"]
-position = Vector2(21.4611, -47.5846)
+position = Vector2(21.4452, -47.6848)
 rest = Transform2D(1, 0, 0, 1, 21.2352, -47.9604)
 
 [node name="Tail11" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10"]
-position = Vector2(30.6859, -42.3096)
+position = Vector2(30.7174, -42.3931)
 rest = Transform2D(1, 0, 0, 1, 30.6013, -42.6817)
 
 [node name="Tail12" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11"]
-position = Vector2(39.4629, -34.0034)
+position = Vector2(39.5201, -34.0677)
 rest = Transform2D(1, 0, 0, 1, 39.5456, -34.2842)
 
 [node name="TailTip01" type="Bone2D" parent="Piloting/PilotingSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12"]
@@ -797,69 +838,69 @@ length = 1.0
 bone_angle = 0.0
 
 [node name="TentacleRoot" type="Bone2D" parent="Piloting/PilotingSkeleton"]
-position = Vector2(327.267, 125.462)
+position = Vector2(326.002, 126.998)
 rotation = -2.2117
 rest = Transform2D(-0.59792, -0.801556, 0.801556, -0.59792, 340, 110)
 
 [node name="Tentacle01" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot"]
-position = Vector2(73.5112, 15.2266)
+position = Vector2(72.0056, 12.4795)
 rotation = -1.70758
 rest = Transform2D(-0.136358, -0.99066, 0.99066, -0.136358, 76.3238, 18.4272)
 
 [node name="Tentacle02" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01"]
-position = Vector2(-56.4784, 49.1171)
+position = Vector2(-51.002, 51.7938)
 rotation = -1.20422
 rest = Transform2D(0.358421, -0.93356, 0.93356, 0.358421, -62.3964, 47.7239)
 
 [node name="Tentacle03" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02"]
-position = Vector2(-47.2873, -58.8066)
+position = Vector2(-48.4996, -54.8335)
 rotation = -0.953259
 rest = Transform2D(0.579029, -0.815307, 0.815307, 0.579029, -47.9563, -63.0259)
 
 [node name="Tentacle04" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03"]
-position = Vector2(33.4568, -67.8835)
+position = Vector2(30.6671, -66.791)
 rotation = -0.861098
 scale = Vector2(1, 1)
 rest = Transform2D(0.651605, -0.758558, 0.758558, 0.651605, 35.4333, -71.0198)
 
 [node name="Tentacle05" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04"]
-position = Vector2(73.71, -17.2331)
+position = Vector2(69.9761, -22.2155)
 rotation = -0.88857
 rest = Transform2D(0.630523, -0.776171, 0.776171, 0.630523, 77.567, -16.9248)
 
 [node name="Tentacle06" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05"]
-position = Vector2(68.5347, 29.7497)
+position = Vector2(69.7759, -0.00224626)
 rotation = -1.20727
 rest = Transform2D(0.355572, -0.934649, 0.934649, 0.355572, 68.0382, 40.2903)
 
 [node name="Tentacle07" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06"]
-position = Vector2(58.78, 41.4838)
+position = Vector2(70.1413, 15.8653)
 rotation = -2.42397
 rest = Transform2D(-0.753371, -0.657596, 0.657596, -0.753371, 43.7573, 59.1916)
 
 [node name="Tentacle08" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07"]
-position = Vector2(-47.429, 57.2523)
+position = Vector2(-25.6574, 67.6542)
 rotation = -3.0679
 scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(-0.997285, -0.073626, 0.073626, -0.997285, -57.5112, 52.4695)
 
 [node name="Tentacle09" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08"]
-position = Vector2(6.65906, -74.9349)
+position = Vector2(-10.729, -72.4757)
 rotation = 2.77153
 rest = Transform2D(-0.932305, 0.361674, -0.361674, -0.932305, 14.1013, -77.4907)
 
 [node name="Tentacle10" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09"]
-position = Vector2(-12.3447, 74.5393)
+position = Vector2(-0.319703, 73.4372)
 rotation = 2.51779
 rest = Transform2D(-0.811663, 0.584126, -0.584126, -0.811663, -17.5573, 77.2302)
 
 [node name="Tentacle11" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10"]
-position = Vector2(42.5662, -62.5045)
+position = Vector2(34.1617, -65.0472)
 rotation = 2.32936
 rest = Transform2D(-0.68788, 0.725825, -0.725825, -0.68788, 47.5219, -63.4704)
 
 [node name="Tentacle12" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11"]
-position = Vector2(-71.5694, 24.3978)
+position = Vector2(-67.5289, 28.9317)
 rotation = 2.13183
 rest = Transform2D(-0.532062, 0.846706, -0.846706, -0.532062, -75.8726, 22.9911)
 auto_calculate_length_and_angle = false
@@ -867,7 +908,7 @@ length = 79.0635
 bone_angle = 27.3891
 
 [node name="TentacleTip" type="Bone2D" parent="Piloting/PilotingSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11/Tentacle12"]
-position = Vector2(67.5708, 33.5615)
+position = Vector2(66.6396, 30.6627)
 rotation = 1.80189
 scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(-0.229042, 0.973415, -0.973415, -0.229042, 70.2007, 36.3716)
@@ -891,7 +932,7 @@ length = 1.0
 bone_angle = 0.0
 
 [node name="Head" type="Bone2D" parent="Piloting/PilotingSkeleton"]
-position = Vector2(-268.096, 60.9503)
+position = Vector2(-258.382, 52.5314)
 rest = Transform2D(1, 0, 0, 1, -252, 47.0001)
 auto_calculate_length_and_angle = false
 length = 124.122
@@ -1139,7 +1180,7 @@ position = Vector2(144, 17)
 rest = Transform2D(1, 0, 0, 1, 144, 17)
 
 [node name="ThighLeft" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist"]
-position = Vector2(-126.399, 57.7064)
+position = Vector2(-120.519, 51.8287)
 rotation = 0.0815912
 rest = Transform2D(0.996673, 0.0815007, -0.0815007, 0.996673, -133.745, 65.0135)
 auto_calculate_length_and_angle = false
@@ -1147,8 +1188,8 @@ length = 352.264
 bone_angle = 80.0
 
 [node name="CalfLeft" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist/ThighLeft"]
-position = Vector2(75.9812, 309.656)
-rotation = -0.363787
+position = Vector2(86.6338, 297.11)
+rotation = -0.204374
 scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(0.948004, -0.318255, 0.318255, 0.948004, 62.197, 325.891)
 auto_calculate_length_and_angle = false
@@ -1157,8 +1198,7 @@ bone_angle = 103.333
 
 [node name="ThighRight" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist"]
 position = Vector2(129, 35)
-rotation = -0.0874252
-scale = Vector2(1, 1)
+rotation = -0.0673613
 rest = Transform2D(0.999997, 0.00241239, -0.00241239, 0.999997, 129, 35)
 auto_calculate_length_and_angle = false
 length = 506.931
@@ -1166,8 +1206,7 @@ bone_angle = 100.028
 
 [node name="CalfRight" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist/ThighRight"]
 position = Vector2(-99, 519)
-rotation = 0.0223906
-scale = Vector2(1, 1)
+rotation = 0.0159162
 rest = Transform2D(0.99999, -0.0045329, 0.0045329, 0.99999, -99, 519)
 auto_calculate_length_and_angle = false
 length = 628.972
@@ -1201,7 +1240,7 @@ position = Vector2(-37.6241, -66.5576)
 rest = Transform2D(1, 0, 0, 1, -37.6241, -66.5576)
 
 [node name="Tail05" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04"]
-position = Vector2(-72.9181, 14.076)
+position = Vector2(-72.9182, 14.076)
 rest = Transform2D(1, 0, 0, 1, -72.9181, 14.0759)
 
 [node name="Tail06" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05"]
@@ -1281,13 +1320,13 @@ rest = Transform2D(1, 0, 0, 1, -110, 100)
 
 [node name="BicepLeft" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Torso"]
 position = Vector2(-138, 24)
-rotation = -0.083842
+rotation = -0.0670559
 scale = Vector2(0.999992, 0.999992)
 rest = Transform2D(0.999972, -0.00638017, 0.00638017, 0.999972, -138, 24)
 
 [node name="ForearmLeft" type="Bone2D" parent="BackView/BackViewSkeleton/BodyRoot/Torso/BicepLeft"]
 position = Vector2(100, 344)
-rotation = 0.234483
+rotation = 0.183537
 scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(0.999997, 0.000991049, -0.000991049, 0.999997, 100, 344)
 auto_calculate_length_and_angle = false
@@ -1295,7 +1334,7 @@ length = 120.195
 bone_angle = -180.0
 
 [node name="Head" type="Bone2D" parent="BackView/BackViewSkeleton"]
-position = Vector2(254.22, 782.296)
+position = Vector2(248.87, 787.753)
 rest = Transform2D(1, 0, 0, 1, 261.051, 775.001)
 auto_calculate_length_and_angle = false
 length = 148.611
@@ -1306,51 +1345,51 @@ position = Vector2(1246, 1115)
 rest = Transform2D(1, 0, 0, 1, 1245, 1114)
 
 [node name="Tentacle01" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot"]
-position = Vector2(-114.169, 46.1189)
+position = Vector2(-108.964, 48.7247)
 rest = Transform2D(1, 0, 0, 1, -119.022, 48.5688)
 
 [node name="Tentacle02" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01"]
-position = Vector2(-120.445, -7.05139)
+position = Vector2(-117.089, 4.28296)
 rest = Transform2D(1, 0, 0, 1, -124.721, -12.7179)
 
 [node name="Tentacle03" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01/Tentacle02"]
-position = Vector2(-85.9587, -85.8898)
+position = Vector2(-88.443, -77.0285)
 rest = Transform2D(1, 0, 0, 1, -83.6986, -95.6136)
 
 [node name="Tentacle04" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03"]
-position = Vector2(-29.347, -117.63)
+position = Vector2(-39.009, -111.427)
 rest = Transform2D(1, 0, 0, 1, -9.0318, -125.616)
 
 [node name="Tentacle05" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04"]
-position = Vector2(30.2015, -119.057)
+position = Vector2(17.5287, -117.514)
 rest = Transform2D(1, 0, 0, 1, 47.478, -119.387)
 
 [node name="Tentacle06" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05"]
-position = Vector2(42.8153, -115.57)
+position = Vector2(30.5643, -115.3)
 rest = Transform2D(1, 0, 0, 1, 59.0388, -114.413)
 
 [node name="Tentacle07" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06"]
-position = Vector2(-8.50769, -119.144)
+position = Vector2(-36.3727, -108.993)
 rest = Transform2D(1, 0, 0, 1, 40.1383, -121.556)
 
 [node name="Tentacle08" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07"]
-position = Vector2(-99.2745, -68.5501)
+position = Vector2(-104.25, -53.3892)
 rest = Transform2D(1, 0, 0, 1, -57.6183, -106.919)
 
 [node name="Tentacle09" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08"]
-position = Vector2(-118.893, 19.9078)
+position = Vector2(-109.835, 39.412)
 rest = Transform2D(1, 0, 0, 1, -123.625, -17.5208)
 
 [node name="Tentacle10" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09"]
-position = Vector2(-96.3809, 76.1086)
+position = Vector2(-81.0085, 87.2538)
 rest = Transform2D(1, 0, 0, 1, -108.33, 67.3433)
 
 [node name="Tentacle11" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10"]
-position = Vector2(-77.7548, 95.5359)
+position = Vector2(-62.638, 101.595)
 rest = Transform2D(1, 0, 0, 1, -82.8251, 98.2827)
 
 [node name="Tentacle12" type="Bone2D" parent="BackView/BackViewSkeleton/TentacleRoot/Tentacle01/Tentacle02/Tentacle03/Tentacle04/Tentacle05/Tentacle06/Tentacle07/Tentacle08/Tentacle09/Tentacle10/Tentacle11"]
-position = Vector2(-64.6729, 104.889)
+position = Vector2(-50.349, 108.251)
 rest = Transform2D(1, 0, 0, 1, -65.7835, 110.549)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -1601,7 +1640,7 @@ target_node = NodePath("../../BodyRoot/Torso/HeadTracker")
 enabled = true
 bone_node = NodePath("../../Head")
 use_easing = true
-easing = SubResource("Resource_1yvp3")
+easing = SubResource("Resource_4yevj")
 
 [node name="Tail01StayAt" type="Node" parent="FrontView/FrontViewSkeleton/SoupStack" node_paths=PackedStringArray("target_node", "bone_node")]
 script = ExtResource("12_nknx1")
@@ -1609,7 +1648,7 @@ target_node = NodePath("../../BodyRoot/Torso/TailTracker01")
 enabled = true
 bone_node = NodePath("../../TailPathNode01")
 use_easing = true
-easing = SubResource("Resource_ijw3n")
+easing = SubResource("Resource_4w67p")
 
 [node name="Tail02StayAt" type="Node" parent="FrontView/FrontViewSkeleton/SoupStack" node_paths=PackedStringArray("target_node", "bone_node")]
 script = ExtResource("12_nknx1")
@@ -1617,7 +1656,7 @@ target_node = NodePath("../../BodyRoot/Torso/TailTracker02")
 enabled = true
 bone_node = NodePath("../../TailPathNode02")
 use_easing = true
-easing = SubResource("Resource_fbwkh")
+easing = SubResource("Resource_lqhg7")
 
 [node name="TailJiggleTargetStayAt" type="Node" parent="FrontView/FrontViewSkeleton/SoupStack" node_paths=PackedStringArray("target_node", "bone_node")]
 script = ExtResource("12_nknx1")
@@ -1631,7 +1670,7 @@ target_node = NodePath("../../TailTipJiggleTarget")
 enabled = true
 bone_node = NodePath("../../TailTipJiggleBone")
 use_easing = true
-easing = SubResource("Resource_vtgbp")
+easing = SubResource("Resource_an034")
 
 [node name="TailTipLookAt" type="Node" parent="FrontView/FrontViewSkeleton/SoupStack" node_paths=PackedStringArray("target_node", "bone_node")]
 script = ExtResource("10_dgeye")
@@ -1683,7 +1722,7 @@ rest = Transform2D(1, 0, 0, 1, -31, 121)
 
 [node name="BicepRight" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Torso"]
 position = Vector2(-16, 352)
-rotation = 0.0222287
+rotation = 0.016651
 scale = Vector2(1, 1)
 rest = Transform2D(1, -0.000911355, 0.000911355, 1, -16, 352)
 auto_calculate_length_and_angle = false
@@ -1692,8 +1731,7 @@ bone_angle = 66.667
 
 [node name="BicepLeft" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Torso"]
 position = Vector2(457, 331)
-rotation = 0.0545843
-scale = Vector2(1, 1)
+rotation = 0.0399276
 rest = Transform2D(0.999975, -0.00697666, 0.00697666, 0.999975, 457, 331)
 auto_calculate_length_and_angle = false
 length = 437.514
@@ -1728,12 +1766,12 @@ position = Vector2(-36, 124)
 rest = Transform2D(1, 0, 0, 1, -36, 124)
 
 [node name="ThighRight" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist"]
-position = Vector2(-329.29, -90.6733)
+position = Vector2(-334.07, -97.1802)
 rest = Transform2D(1, 0, 0, 1, -321.078, -79.5043)
 
 [node name="CalfRight" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/ThighRight"]
-position = Vector2(186.156, 541.529)
-rotation = 0.00266171
+position = Vector2(182.567, 536.65)
+rotation = -0.0089438
 scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(0.999983, -0.00573656, 0.00573656, 0.999983, 192.291, 549.889)
 auto_calculate_length_and_angle = false
@@ -1745,56 +1783,56 @@ position = Vector2(-41, -219)
 rest = Transform2D(1, 0, 0, 1, -41, -219)
 
 [node name="Tail01" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot"]
-position = Vector2(-30.503, -89.8365)
+position = Vector2(-30.8254, -89.8879)
 rest = Transform2D(1, 0, 0, 1, -30.468, -89.8326)
 
 [node name="Tail02" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01"]
-position = Vector2(-21.8952, -92.3015)
+position = Vector2(-22.7482, -92.2532)
 rest = Transform2D(1, 0, 0, 1, -21.8006, -92.3083)
 
 [node name="Tail03" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02"]
-position = Vector2(-9.72592, -94.2984)
+position = Vector2(-11.3647, -94.2786)
 rest = Transform2D(1, 0, 0, 1, -9.54294, -94.3008)
 
 [node name="Tail04" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03"]
-position = Vector2(12.7627, -93.5824)
+position = Vector2(9.54187, -94.1809)
 rest = Transform2D(1, 0, 0, 1, 13.1183, -93.5114)
 
 [node name="Tail05" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04"]
-position = Vector2(57.2254, -73.0337)
+position = Vector2(52.6457, -76.6863)
 rest = Transform2D(1, 0, 0, 1, 57.7108, -72.6284)
 
 [node name="Tail06" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05"]
-position = Vector2(91.6962, -18.9457)
+position = Vector2(90.8694, -22.6767)
 rest = Transform2D(1, 0, 0, 1, 91.7755, -18.5512)
 
 [node name="Tail07" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06"]
-position = Vector2(79.1649, 46.1864)
+position = Vector2(81.597, 41.975)
 rest = Transform2D(1, 0, 0, 1, 78.8992, 46.6371)
 
 [node name="Tail08" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07"]
-position = Vector2(42.9664, 84.4549)
+position = Vector2(43.9494, 84.028)
 rest = Transform2D(1, 0, 0, 1, 42.8721, 84.4958)
 
 [node name="Tail09" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08"]
-position = Vector2(71.6102, 50.5135)
+position = Vector2(68.6567, 56.0592)
 rest = Transform2D(1, 0, 0, 1, 71.9197, 49.8665)
 
 [node name="Tail10" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09"]
-position = Vector2(68.0981, -60.6071)
+position = Vector2(73.0077, -54.3897)
 rest = Transform2D(1, 0, 0, 1, 67.5458, -61.2433)
 
 [node name="Tail11" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10"]
-position = Vector2(22.1585, -91.6262)
+position = Vector2(26.6573, -90.4727)
 rest = Transform2D(1, 0, 0, 1, 21.6907, -91.734)
 
 [node name="Tail12" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11"]
-position = Vector2(-22.8344, -90.0632)
+position = Vector2(-21.2629, -90.3761)
 rest = Transform2D(1, 0, 0, 1, -22.9966, -90.0295)
 
 [node name="TailTip" type="Bone2D" parent="FrontView/FrontViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10/Tail11/Tail12"]
 position = Vector2(-67, -10)
-rotation = 0.235157
+rotation = 0.183933
 scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(0.999747, -0.0224765, 0.0224765, 0.999747, -67, -10)
 auto_calculate_length_and_angle = false
@@ -1816,7 +1854,7 @@ enabled = true
 points = [null, NodePath("../../../TailPathNode01"), NodePath("../../../TailPathNode02")]
 
 [node name="Head" type="Bone2D" parent="FrontView/FrontViewSkeleton"]
-position = Vector2(757.95, 1105.97)
+position = Vector2(749.638, 1094.67)
 rest = Transform2D(1, 0, 0, 1, 744, 1087)
 auto_calculate_length_and_angle = false
 length = 191.236
@@ -1865,21 +1903,21 @@ length = 16.0
 bone_angle = 0.0
 
 [node name="TailPathNode01" type="Bone2D" parent="FrontView/FrontViewSkeleton"]
-position = Vector2(517.995, 296.153)
+position = Vector2(507.517, 281.903)
 rest = Transform2D(1, 0, 0, 1, 493.988, 263.504)
 auto_calculate_length_and_angle = false
 length = 16.0
 bone_angle = 0.0
 
 [node name="TailPathNode02" type="Bone2D" parent="FrontView/FrontViewSkeleton"]
-position = Vector2(748.995, 474.153)
+position = Vector2(738.517, 459.903)
 rest = Transform2D(1, 0, 0, 1, 724.988, 441.504)
 auto_calculate_length_and_angle = false
 length = 16.0
 bone_angle = 0.0
 
 [node name="TailTipJiggleTarget" type="Bone2D" parent="FrontView/FrontViewSkeleton"]
-position = Vector2(628.876, 223.357)
+position = Vector2(623.702, 223.738)
 rest = Transform2D(1, 0, 0, 1, 609.047, 223.512)
 auto_calculate_length_and_angle = false
 length = 1.0
@@ -1887,8 +1925,7 @@ bone_angle = 0.0
 
 [node name="TailTipJiggleBone" type="Bone2D" parent="FrontView/FrontViewSkeleton"]
 position = Vector2(610.58, 221.028)
-rotation = -0.959442
-scale = Vector2(1, 1)
+rotation = 0.0167853
 rest = Transform2D(-0.525174, 0.850995, -0.850995, -0.525174, 610.58, 221.028)
 auto_calculate_length_and_angle = false
 length = 1.0

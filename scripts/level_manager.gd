@@ -3,12 +3,18 @@ extends Node3D
 class_name LevelManager
 
 @export var camera3D : Camera3D
-@export_range(0.01, 2.0, 0.01) var level_margin_x : float = 1.0
+@export_range(0.01, 2.0, 0.01) var level_margin_x : float = 0.85
 @export_range(0.01, 2.0, 0.01) var level_margin_y : float = 1.0
-@export var z_width : float = 1.0
+@export var z_width : float = 5.0
 var level_margin_calculated : Vector3
 var level_margin_calculated_half : Vector3
 @export var groups_to_monitor : Array[StringName]
+@export var levels : Array[PackedScene]
+
+@onready var player := $Tentamech as AreaCharacter3D
+var current_level : Level
+@export var current_level_index : int = 0
+
 
 static var level_bounds : AABB = AABB()
 
@@ -17,6 +23,11 @@ func _ready():
 	# can still do stuff outside the window in edit mode.
 	if not OS.has_feature("editor"):
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	
+	if Engine.is_editor_hint(): return
+	
+	if levels.size() > 0:
+		current_level = start_level(current_level_index)
 
 func _physics_process(delta):
 
@@ -52,3 +63,16 @@ func constrain_group(group_name : StringName):
 		
 		if not level_bounds.has_point(node.global_position):
 			node.queue_free()
+
+func start_level(idx : int) -> Level:
+		if idx >= levels.size() or idx < 0: 
+			print_debug("All Levels Cleared.")
+			return null
+		var level : Level = levels[idx].instantiate() as Level
+		add_child(level)
+		level.level_completed.connect(next_level)
+		return level as Level
+	
+func next_level() -> void:
+	current_level_index += 1
+	start_level(current_level_index)

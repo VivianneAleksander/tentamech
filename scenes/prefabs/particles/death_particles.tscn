@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://co81vvanco6f2"]
+
+[ext_resource type="AudioStream" uid="uid://cu4bhf5p16s0v" path="res://assets/sound/sfx/death_sound_01.ogg" id="1_6a0g4"]
+
+[sub_resource type="Gradient" id="Gradient_fp015"]
+offsets = PackedFloat32Array(0, 0.55625, 0.853125, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.704736, 0.318494, 0, 1, 0.167163, 0, 0.0542909, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_47txd"]
+gradient = SubResource("Gradient_fp015")
+
+[sub_resource type="Curve" id="Curve_3m3d8"]
+_data = [Vector2(0, 1), 0.0, 0.075868, 0, 0, Vector2(0.9, 0), -2.46916, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rg53x"]
+curve = SubResource("Curve_3m3d8")
+
+[sub_resource type="Curve" id="Curve_ejntu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.21777, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gr4h8"]
+curve = SubResource("Curve_ejntu")
+
+[sub_resource type="Curve" id="Curve_blfbh"]
+_data = [Vector2(0, 0), 0.0, 4.92214, 0, 0, Vector2(0.241379, 0.832023), 0.95309, 0.95309, 0, 0, Vector2(1, 0.992697), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_nfpru"]
+curve = SubResource("Curve_blfbh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kvvsl"]
+lifetime_randomness = 0.4
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+radial_velocity_min = 2.99998
+radial_velocity_max = 4.99998
+radial_velocity_curve = SubResource("CurveTexture_rg53x")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_gr4h8")
+scale_over_velocity_curve = SubResource("CurveTexture_nfpru")
+color_ramp = SubResource("GradientTexture1D_47txd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ilrr7"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.987516, 0.849952, 0.594596, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_uqfcb"]
+material = SubResource("StandardMaterial3D_ilrr7")
+radius = 0.25
+height = 0.5
+
+[node name="DeathParticles" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+emitting = false
+amount = 80
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.9
+fixed_fps = 24
+interpolate = false
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_kvvsl")
+draw_pass_1 = SubResource("SphereMesh_uqfcb")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_6a0g4")
+autoplay = true
+
+[connection signal="tree_entered" from="." to="." method="set_emitting" binds= [true]]
+[connection signal="timeout" from="Timer" to="." method="queue_free"]

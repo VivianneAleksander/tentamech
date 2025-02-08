@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dmacpy5lq41ek"]
+[gd_scene load_steps=69 format=3 uid="uid://dmacpy5lq41ek"]
 
 [ext_resource type="PackedScene" uid="uid://ccms4re0dq53k" path="res://scenes/prefabs/enemies/enemy_base.tscn" id="1_sven7"]
 [ext_resource type="PackedScene" uid="uid://cinndwls1qq0g" path="res://assets/meshes/enemies/needler.glb" id="2_hyv4p"]
@@ -21,6 +21,8 @@
 [ext_resource type="AudioStream" uid="uid://yswmlr1ukndp" path="res://assets/sound/sfx/laserShoot07.ogg" id="18_2hysh"]
 [ext_resource type="AudioStream" uid="uid://1rf55ie02n4s" path="res://assets/sound/sfx/laserShoot08.ogg" id="19_q6nsv"]
 [ext_resource type="AudioStream" uid="uid://bg2muknossbum" path="res://assets/sound/sfx/laserShoot09.ogg" id="20_u3fbo"]
+[ext_resource type="PackedScene" uid="uid://co81vvanco6f2" path="res://scenes/prefabs/particles/death_particles.tscn" id="22_8lmo8"]
+[ext_resource type="Script" path="res://scripts/util/particle_prefab_instantiate.gd" id="22_sg3i5"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d6qge"]
 animation = &"NeedlerFire"
@@ -69,6 +71,12 @@ timeline_length = 0.117
 stretch_time_scale = false
 start_offset = 0.967
 loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_24rmg"]
+animation = &"NeedlerHurt"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4n60o"]
+animation = &"NeedlerHurt02"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_34ya3"]
 animation = &"NeedlerIdle"
@@ -181,8 +189,48 @@ switch_mode = 1
 advance_mode = 2
 advance_condition = &"not_flipped"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q2fq2"]
+advance_mode = 2
+advance_condition = &"dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2jt7i"]
+advance_mode = 2
+advance_condition = &"dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ql1it"]
+advance_mode = 2
+advance_condition = &"dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6ilum"]
+advance_mode = 2
+advance_condition = &"dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vivax"]
+advance_mode = 2
+advance_condition = &"dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wpnqv"]
+advance_mode = 2
+advance_condition = &"dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wpxd5"]
+advance_mode = 2
+advance_condition = &"dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0f4y8"]
+advance_mode = 2
+advance_condition = &"dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_flxah"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7rlgq"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_lbfv3"]
-states/End/position = Vector2(1333, 213)
+states/End/position = Vector2(479, 463)
 states/NeedlerFire/node = SubResource("AnimationNodeAnimation_d6qge")
 states/NeedlerFire/position = Vector2(213, 153)
 states/NeedlerFire02/node = SubResource("AnimationNodeAnimation_rpi8t")
@@ -195,15 +243,20 @@ states/NeedlerFireLoop02-01/node = SubResource("AnimationNodeAnimation_v2to1")
 states/NeedlerFireLoop02-01/position = Vector2(768, 231)
 states/NeedlerFireLoop02-02/node = SubResource("AnimationNodeAnimation_ubq7a")
 states/NeedlerFireLoop02-02/position = Vector2(774, 312)
+states/NeedlerHurt/node = SubResource("AnimationNodeAnimation_24rmg")
+states/NeedlerHurt/position = Vector2(41, 99)
+states/NeedlerHurt02/node = SubResource("AnimationNodeAnimation_4n60o")
+states/NeedlerHurt02/position = Vector2(1026, 130)
 states/NeedlerIdle/node = SubResource("AnimationNodeAnimation_34ya3")
 states/NeedlerIdle/position = Vector2(396, 95)
 states/NeedlerIdle02/node = SubResource("AnimationNodeAnimation_x6w8w")
 states/NeedlerIdle02/position = Vector2(611, 95)
 states/Start/position = Vector2(498, -23)
-transitions = ["NeedlerIdle", "NeedlerFire", SubResource("AnimationNodeStateMachineTransition_omxx7"), "NeedlerFire", "NeedlerIdle", SubResource("AnimationNodeStateMachineTransition_2dx4o"), "Start", "NeedlerIdle", SubResource("AnimationNodeStateMachineTransition_vgfbq"), "NeedlerFire", "NeedlerFireLoop-01", SubResource("AnimationNodeStateMachineTransition_3m6n6"), "NeedlerFireLoop-01", "NeedlerIdle", SubResource("AnimationNodeStateMachineTransition_xlqtq"), "NeedlerFireLoop-02", "NeedlerFireLoop-01", SubResource("AnimationNodeStateMachineTransition_g0qca"), "NeedlerFireLoop-01", "NeedlerFireLoop-02", SubResource("AnimationNodeStateMachineTransition_ijuo7"), "NeedlerFireLoop-02", "NeedlerIdle", SubResource("AnimationNodeStateMachineTransition_ogkyh"), "NeedlerIdle", "NeedlerIdle02", SubResource("AnimationNodeStateMachineTransition_nx4xx"), "NeedlerIdle02", "NeedlerIdle", SubResource("AnimationNodeStateMachineTransition_2efh7"), "NeedlerIdle02", "NeedlerFire02", SubResource("AnimationNodeStateMachineTransition_7ajeq"), "NeedlerFire02", "NeedlerFireLoop02-01", SubResource("AnimationNodeStateMachineTransition_sca0l"), "NeedlerFireLoop02-01", "NeedlerFireLoop02-02", SubResource("AnimationNodeStateMachineTransition_5uuml"), "NeedlerFireLoop02-02", "NeedlerFireLoop02-01", SubResource("AnimationNodeStateMachineTransition_c24b3"), "NeedlerFire02", "NeedlerIdle02", SubResource("AnimationNodeStateMachineTransition_yalrd"), "NeedlerFireLoop02-01", "NeedlerIdle02", SubResource("AnimationNodeStateMachineTransition_3fk3u"), "NeedlerFireLoop02-02", "NeedlerIdle02", SubResource("AnimationNodeStateMachineTransition_mb18r"), "NeedlerFire", "NeedlerFire02", SubResource("AnimationNodeStateMachineTransition_g1ec7"), "NeedlerFire02", "NeedlerFire", SubResource("AnimationNodeStateMachineTransition_d1sor"), "NeedlerFireLoop-01", "NeedlerFireLoop02-01", SubResource("AnimationNodeStateMachineTransition_tx830"), "NeedlerFireLoop02-01", "NeedlerFireLoop-01", SubResource("AnimationNodeStateMachineTransition_u8sdn"), "NeedlerFireLoop-02", "NeedlerFireLoop02-02", SubResource("AnimationNodeStateMachineTransition_kxpug"), "NeedlerFireLoop02-02", "NeedlerFireLoop-02", SubResource("AnimationNodeStateMachineTransition_jcnhn")]
-graph_offset = Vector2(-51, 2)
+transitions = ["NeedlerIdle", "NeedlerFire", SubResource("AnimationNodeStateMachineTransition_omxx7"), "NeedlerFire", "NeedlerIdle", SubResource("AnimationNodeStateMachineTransition_2dx4o"), "Start", "NeedlerIdle", SubResource("AnimationNodeStateMachineTransition_vgfbq"), "NeedlerFire", "NeedlerFireLoop-01", SubResource("AnimationNodeStateMachineTransition_3m6n6"), "NeedlerFireLoop-01", "NeedlerIdle", SubResource("AnimationNodeStateMachineTransition_xlqtq"), "NeedlerFireLoop-02", "NeedlerFireLoop-01", SubResource("AnimationNodeStateMachineTransition_g0qca"), "NeedlerFireLoop-01", "NeedlerFireLoop-02", SubResource("AnimationNodeStateMachineTransition_ijuo7"), "NeedlerFireLoop-02", "NeedlerIdle", SubResource("AnimationNodeStateMachineTransition_ogkyh"), "NeedlerIdle", "NeedlerIdle02", SubResource("AnimationNodeStateMachineTransition_nx4xx"), "NeedlerIdle02", "NeedlerIdle", SubResource("AnimationNodeStateMachineTransition_2efh7"), "NeedlerIdle02", "NeedlerFire02", SubResource("AnimationNodeStateMachineTransition_7ajeq"), "NeedlerFire02", "NeedlerFireLoop02-01", SubResource("AnimationNodeStateMachineTransition_sca0l"), "NeedlerFireLoop02-01", "NeedlerFireLoop02-02", SubResource("AnimationNodeStateMachineTransition_5uuml"), "NeedlerFireLoop02-02", "NeedlerFireLoop02-01", SubResource("AnimationNodeStateMachineTransition_c24b3"), "NeedlerFire02", "NeedlerIdle02", SubResource("AnimationNodeStateMachineTransition_yalrd"), "NeedlerFireLoop02-01", "NeedlerIdle02", SubResource("AnimationNodeStateMachineTransition_3fk3u"), "NeedlerFireLoop02-02", "NeedlerIdle02", SubResource("AnimationNodeStateMachineTransition_mb18r"), "NeedlerFire", "NeedlerFire02", SubResource("AnimationNodeStateMachineTransition_g1ec7"), "NeedlerFire02", "NeedlerFire", SubResource("AnimationNodeStateMachineTransition_d1sor"), "NeedlerFireLoop-01", "NeedlerFireLoop02-01", SubResource("AnimationNodeStateMachineTransition_tx830"), "NeedlerFireLoop02-01", "NeedlerFireLoop-01", SubResource("AnimationNodeStateMachineTransition_u8sdn"), "NeedlerFireLoop-02", "NeedlerFireLoop02-02", SubResource("AnimationNodeStateMachineTransition_kxpug"), "NeedlerFireLoop02-02", "NeedlerFireLoop-02", SubResource("AnimationNodeStateMachineTransition_jcnhn"), "NeedlerIdle", "NeedlerHurt", SubResource("AnimationNodeStateMachineTransition_q2fq2"), "NeedlerFire", "NeedlerHurt", SubResource("AnimationNodeStateMachineTransition_2jt7i"), "NeedlerFireLoop-01", "NeedlerHurt", SubResource("AnimationNodeStateMachineTransition_ql1it"), "NeedlerFireLoop-02", "NeedlerHurt", SubResource("AnimationNodeStateMachineTransition_6ilum"), "NeedlerIdle02", "NeedlerHurt02", SubResource("AnimationNodeStateMachineTransition_vivax"), "NeedlerFire02", "NeedlerHurt02", SubResource("AnimationNodeStateMachineTransition_wpnqv"), "NeedlerFireLoop02-01", "NeedlerHurt02", SubResource("AnimationNodeStateMachineTransition_wpxd5"), "NeedlerFireLoop02-02", "NeedlerHurt02", SubResource("AnimationNodeStateMachineTransition_0f4y8"), "NeedlerHurt02", "End", SubResource("AnimationNodeStateMachineTransition_flxah"), "NeedlerHurt", "End", SubResource("AnimationNodeStateMachineTransition_7rlgq")]
+graph_offset = Vector2(8, -62)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cavjr"]
+graph_offset = Vector2(-243, 206)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_lbfv3")
 nodes/StateMachine/position = Vector2(-80, 160)
 node_connections = [&"output", 0, &"StateMachine"]
@@ -214,27 +267,27 @@ node_connections = [&"output", 0, &"StateMachine"]
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Mesh/NeedlerArmature" index="0"]
-bones/0/rotation = Quaternion(0, 0.945837, 0, -0.324643)
+bones/0/rotation = Quaternion(0, 0.919191, 0, -0.393811)
 bones/1/position = Vector3(1.67134e-08, -0.0317022, 1.95181e-08)
-bones/1/rotation = Quaternion(-1.40602e-07, 0.707107, 0.707107, -1.37679e-07)
-bones/2/rotation = Quaternion(0.802117, -0.139634, -0.291516, -0.502125)
+bones/1/rotation = Quaternion(0.10847, 0.769399, 0.627909, 0.0446059)
+bones/2/rotation = Quaternion(0.820949, -0.200071, -0.361266, -0.394336)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.164005, -0.264948, -0.375298, 0.872959)
-bones/4/rotation = Quaternion(0.21726, 0.86709, 0.338619, 0.293753)
+bones/3/rotation = Quaternion(0.216059, -0.250651, -0.487537, 0.80796)
+bones/4/rotation = Quaternion(0.131706, 0.904375, 0.38936, 0.114708)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.822154, 0.258217, 0.429431, -0.270141)
-bones/6/rotation = Quaternion(0.341811, 0.169449, 0.755429, 0.53271)
+bones/5/rotation = Quaternion(0.909082, 0.126156, 0.276731, -0.284735)
+bones/6/rotation = Quaternion(0.201345, 0.131872, 0.613872, 0.751819)
 bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(0.0912647, 0.891577, 0.428194, -0.115808)
+bones/7/rotation = Quaternion(0.156435, 0.78853, 0.591725, 0.060075)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/position = Vector3(1.2048, -2.08108, -0.755663)
-bones/9/position = Vector3(-1.1016, -1.28664, -0.706649)
+bones/8/position = Vector3(0.845875, -2.19081, -0.634864)
+bones/9/position = Vector3(-1.0246, -1.68087, -0.866707)
 
 [node name="NeedlerMesh" parent="Mesh/NeedlerArmature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_wwpxt")
 
 [node name="GunLAttachment" type="BoneAttachment3D" parent="Mesh/NeedlerArmature/Skeleton3D" index="1"]
-transform = Transform3D(0.155317, -0.76725, 0.622257, -0.679086, -0.540392, -0.496808, 0.717439, -0.345403, -0.604961, -0.487794, -2.06624, 1.33833)
+transform = Transform3D(0.114694, -0.858956, 0.499038, -0.651897, -0.444136, -0.614632, 0.749583, -0.254827, -0.610891, -0.123881, -2.19081, 1.05034)
 bone_name = "Gun.L"
 bone_idx = 4
 
@@ -242,7 +295,7 @@ bone_idx = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9426, 0)
 
 [node name="GunRAttachment" type="BoneAttachment3D" parent="Mesh/NeedlerArmature/Skeleton3D" index="2"]
-transform = Transform3D(-0.806995, -0.0184582, -0.59027, 0.538392, -0.433725, -0.722507, -0.242679, -0.900856, 0.359952, 1.30355, -1.27469, -0.114342)
+transform = Transform3D(-0.999572, -0.0121697, -0.0266121, 0.0290033, -0.291238, -0.956211, 0.00388633, -0.956574, 0.291466, 1.33427, -1.68087, -0.143906)
 bone_name = "Gun.R"
 bone_idx = 7
 
@@ -252,14 +305,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9426, 0)
 [node name="AnimationInterpolationEditor" type="Node" parent="Mesh/AnimationPlayer" index="0"]
 script = ExtResource("4_0c34i")
 
-[node name="AnimationValuesManager" type="AnimationTree" parent="Mesh" index="2"]
+[node name="AnimationValuesManager" type="AnimationTree" parent="Mesh" index="2" node_paths=PackedStringArray("animation_forest")]
 tree_root = SubResource("AnimationNodeBlendTree_cavjr")
 anim_player = NodePath("../AnimationPlayer")
+parameters/StateMachine/conditions/dead = false
 parameters/StateMachine/conditions/firing = false
 parameters/StateMachine/conditions/flipped = false
 parameters/StateMachine/conditions/not_firing = false
 parameters/StateMachine/conditions/not_flipped = false
 script = ExtResource("5_xemhg")
+animation_forest = [NodePath(".")]
 
 [node name="FiringValue" type="Node" parent="Mesh/AnimationValuesManager" index="0"]
 script = ExtResource("7_vohh2")
@@ -271,6 +326,10 @@ script = ExtResource("7_y5x84")
 primary = NodePath("../../..")
 value_name = &"flipped"
 also_set_inverse = true
+
+[node name="DeadValue" type="Node" parent="Mesh/AnimationValuesManager" index="2"]
+script = ExtResource("7_vohh2")
+value_name = &"dead"
 
 [node name="AITaskmaster" type="Node" parent="." index="5" node_paths=PackedStringArray("primary")]
 process_physics_priority = -1
@@ -328,6 +387,13 @@ process_callback = 0
 wait_time = 5.0
 autostart = true
 
+[node name="DeathParticlesInstantiate" type="Node3D" parent="." index="12"]
+script = ExtResource("22_sg3i5")
+particle_prefab = ExtResource("22_8lmo8")
+
+[connection signal="death" from="HealthComponent" to="." method="perish"]
+[connection signal="death" from="HealthComponent" to="Mesh/AnimationValuesManager/DeadValue" method="set_value" binds= [true]]
+[connection signal="death" from="HealthComponent" to="AITaskmaster" method="set_enabled" binds= [false]]
 [connection signal="count_reached" from="BulletCount" to="Mesh/AnimationValuesManager/FiringValue" method="set_value" binds= [false]]
 [connection signal="bullet_fired" from="BulletSpawner" to="BulletCount" method="increment" unbinds=1]
 [connection signal="timeout" from="AttackTimer" to="Mesh/AnimationValuesManager/FiringValue" method="set_value" binds= [true]]

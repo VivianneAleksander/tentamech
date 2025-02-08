@@ -2,6 +2,8 @@ extends AI
 class_name AITaskmaster
 
 @onready var rules : Array[AIRule]
+
+@export var enabled : bool = true
 @export var primary : AreaCharacter3D
 @export var target : Node3D
 @export var acceleration : float = 1.0
@@ -13,6 +15,10 @@ func _ready() -> void:
 		target = get_tree().get_nodes_in_group("Player")[0]
 
 func _physics_process(delta):
+	if not (
+		enabled and 
+		primary
+		): return
 	var final_force : Vector3 = Vector3.ZERO
 	var number_of_forces : int = 0
 
@@ -29,3 +35,6 @@ func _physics_process(delta):
 		final_force = (final_force / number_of_forces).normalized()
 	
 	primary.add_force(final_force * acceleration * delta)
+
+func set_enabled(value : bool) -> void:
+	enabled = value
