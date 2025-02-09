@@ -15,6 +15,7 @@ var level_margin_calculated_half : Vector3
 var current_level : Level
 @export var current_level_index : int = 0
 
+var game_is_over : bool = false
 
 static var level_bounds : AABB = AABB()
 
@@ -28,8 +29,14 @@ func _ready():
 	
 	if levels.size() > 0:
 		current_level = start_level(current_level_index)
+	
+	player.character_died.connect(game_over.unbind(1))
+	
+		
+func _process(delta: float) -> void:
+	pass
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 
 	calculate_level_bounds()
 
@@ -66,7 +73,7 @@ func constrain_group(group_name : StringName):
 
 func start_level(idx : int) -> Level:
 		if idx >= levels.size() or idx < 0: 
-			print_debug("All Levels Cleared.")
+			game_finished()
 			return null
 		var level : Level = levels[idx].instantiate() as Level
 		add_child(level)
@@ -74,5 +81,14 @@ func start_level(idx : int) -> Level:
 		return level as Level
 	
 func next_level() -> void:
+	if game_is_over: return
 	current_level_index += 1
 	start_level(current_level_index)
+
+func game_over() -> void:
+	print_debug("Game Over")
+	game_is_over = true
+
+func game_finished() -> void:
+	print_debug("All Levels Cleared.")
+	game_is_over = true

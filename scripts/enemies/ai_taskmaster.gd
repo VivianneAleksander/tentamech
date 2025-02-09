@@ -15,9 +15,12 @@ func _ready() -> void:
 		target = get_tree().get_nodes_in_group("Player")[0]
 
 func _physics_process(delta):
-	if not (
-		enabled and 
-		primary
+	if (
+		not enabled or 
+		not primary or
+		primary.is_queued_for_deletion() or
+		not target or
+		target.is_queued_for_deletion()
 		): return
 	var final_force : Vector3 = Vector3.ZERO
 	var number_of_forces : int = 0

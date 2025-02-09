@@ -30,7 +30,7 @@ window/size/mode=2
 [editor]
 
 movie_writer/mjpeg_quality=1.0
-movie_writer/movie_file="C:/Users/shelb/GameProjects/Games/Godot/Projects/tentamech work files/movies/movie.avi"
+movie_writer/movie_file="/home/vivianne/Art/Godot/Projects/tentamech work files/movies/movie.avi"
 
 [editor_plugins]
 

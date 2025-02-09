@@ -1,11 +1,11 @@
-[gd_scene load_steps=84 format=3 uid="uid://ciqe08etvhqlc"]
+[gd_scene load_steps=93 format=3 uid="uid://ciqe08etvhqlc"]
 
 [ext_resource type="Script" path="res://scripts/player_control/area_character.gd" id="1_dap5o"]
 [ext_resource type="PackedScene" uid="uid://dee56bhfxqip5" path="res://assets/meshes/tentamech.glb" id="1_ik0fc"]
 [ext_resource type="Material" uid="uid://cuakkhn75dlen" path="res://assets/materials/tentamech_body.tres" id="2_6kx7t"]
 [ext_resource type="Material" uid="uid://bcebdedm6l3i1" path="res://assets/materials/tentamech_windshield.tres" id="3_pvmjk"]
 [ext_resource type="PackedScene" uid="uid://bgcae7sh45881" path="res://scenes/prefabs/tentamech_particles.tscn" id="4_6yynb"]
-[ext_resource type="Script" uid="uid://c12r2n1os6ofv" path="res://scripts/player_control/mouse_follow_behavior.gd" id="5_jmmn4"]
+[ext_resource type="Script" path="res://scripts/player_control/mouse_follow_behavior.gd" id="5_jmmn4"]
 [ext_resource type="ArrayMesh" uid="uid://bb72l43w54skp" path="res://assets/meshes/fx/punch_effect.res" id="6_0qyn1"]
 [ext_resource type="Material" uid="uid://dbftrnbmuo0du" path="res://assets/materials/tentamech_punch_fx.tres" id="7_nec15"]
 [ext_resource type="Script" path="res://scripts/player_control/animation_values/turned.gd" id="7_p6gu3"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://d2400e6bywg12" path="res://scripts/util/follow_node_3D.gd" id="10_r5w1d"]
 [ext_resource type="Script" path="res://scripts/util/animation_values_manager.gd" id="13_lcede"]
 [ext_resource type="Script" uid="uid://b4n2ur2o7kvdg" path="res://scripts/player_control/animation_values/damaged.gd" id="13_lot45"]
+[ext_resource type="Script" path="res://scripts/enemies/animation_values/set_arbitrary_value.gd" id="14_5kuh8"]
 [ext_resource type="PackedScene" uid="uid://cafnf8smr4lw4" path="res://scenes/prefabs/fly_jumper.tscn" id="14_lpxb2"]
 [ext_resource type="Script" path="res://scripts/values/health_component.gd" id="15_pu5cx"]
 [ext_resource type="Script" path="res://scripts/util/audio_randomizer.gd" id="16_1q0nx"]
@@ -32,6 +33,8 @@
 [ext_resource type="AudioStream" uid="uid://bydk4xue4iigi" path="res://assets/sound/sfx/punch02.ogg" id="24_etrk1"]
 [ext_resource type="Script" uid="uid://dab0pt1cuodrh" path="res://scripts/debug/debug_tracker.gd" id="27_mmc2k"]
 [ext_resource type="Script" uid="uid://by2cq2tceirwh" path="res://scripts/debug/debug_label.gd" id="28_gv1vb"]
+[ext_resource type="Script" path="res://scripts/util/particle_prefab_instantiate.gd" id="34_1movk"]
+[ext_resource type="PackedScene" uid="uid://co81vvanco6f2" path="res://scenes/prefabs/particles/death_particles.tscn" id="35_f6s8r"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x7e08"]
 animation = &"Damage"
@@ -48,6 +51,12 @@ timeline_length = 0.792
 stretch_time_scale = false
 start_offset = 0.0
 loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i1yei"]
+animation = &"Death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x5ms0"]
+animation = &"Death02"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p5rrw"]
 animation = &"Fire"
@@ -240,11 +249,31 @@ advance_condition = &"damaged"
 advance_mode = 2
 advance_condition = &"damaged"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b3obp"]
+advance_mode = 2
+advance_condition = &"dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ypq0r"]
+advance_mode = 2
+advance_condition = &"dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bsmfv"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8ewlu"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fixs7"]
 states/Damage/node = SubResource("AnimationNodeAnimation_x7e08")
 states/Damage/position = Vector2(595.16, 22.5115)
 states/Damage02/node = SubResource("AnimationNodeAnimation_lbo5m")
 states/Damage02/position = Vector2(664.08, 269.997)
+states/Death/node = SubResource("AnimationNodeAnimation_i1yei")
+states/Death/position = Vector2(707, 23)
+states/Death02/node = SubResource("AnimationNodeAnimation_x5ms0")
+states/Death02/position = Vector2(789, 269.997)
 states/Fire/node = SubResource("AnimationNodeAnimation_p5rrw")
 states/Fire/position = Vector2(188.714, 29.8794)
 states/Fire02/node = SubResource("AnimationNodeAnimation_3op0i")
@@ -266,11 +295,11 @@ states/SpreadFire/position = Vector2(273.45, -43)
 states/SpreadFire02/node = SubResource("AnimationNodeAnimation_36q1c")
 states/SpreadFire02/position = Vector2(161.2, 332)
 states/Start/position = Vector2(231.2, 130.078)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_t7wda"), "Idle", "Idle02", SubResource("AnimationNodeStateMachineTransition_s7n1v"), "Idle02", "Idle", SubResource("AnimationNodeStateMachineTransition_68bfu"), "Idle", "Fire", SubResource("AnimationNodeStateMachineTransition_smy2t"), "Fire", "Idle", SubResource("AnimationNodeStateMachineTransition_gotgm"), "Idle02", "Fire02", SubResource("AnimationNodeStateMachineTransition_xc6as"), "Fire02", "Idle02", SubResource("AnimationNodeStateMachineTransition_if7qd"), "Idle", "SpreadFire", SubResource("AnimationNodeStateMachineTransition_0w8wc"), "SpreadFire", "Idle", SubResource("AnimationNodeStateMachineTransition_jdng4"), "MeleeLeft", "Idle", SubResource("AnimationNodeStateMachineTransition_4k8pu"), "Idle", "MeleeLeft", SubResource("AnimationNodeStateMachineTransition_bogxc"), "Idle02", "SpreadFire02", SubResource("AnimationNodeStateMachineTransition_35tci"), "SpreadFire02", "Idle02", SubResource("AnimationNodeStateMachineTransition_0refn"), "Idle02", "Melee02Left", SubResource("AnimationNodeStateMachineTransition_31of0"), "Melee02Left", "Idle02", SubResource("AnimationNodeStateMachineTransition_xkyyv"), "MeleeLeft", "MeleeRight", SubResource("AnimationNodeStateMachineTransition_3megi"), "MeleeRight", "MeleeLeft", SubResource("AnimationNodeStateMachineTransition_75g0o"), "MeleeRight", "Idle", SubResource("AnimationNodeStateMachineTransition_66f13"), "Melee02Left", "Melee02Right", SubResource("AnimationNodeStateMachineTransition_73yov"), "Melee02Right", "Melee02Left", SubResource("AnimationNodeStateMachineTransition_5x3xy"), "Melee02Right", "Idle02", SubResource("AnimationNodeStateMachineTransition_ie8wh"), "MeleeLeft", "Damage", SubResource("AnimationNodeStateMachineTransition_lghoi"), "MeleeRight", "Damage", SubResource("AnimationNodeStateMachineTransition_e8fc0"), "SpreadFire", "Damage", SubResource("AnimationNodeStateMachineTransition_xsto8"), "Fire", "Damage", SubResource("AnimationNodeStateMachineTransition_8etv2"), "Idle", "Damage", SubResource("AnimationNodeStateMachineTransition_48665"), "Damage", "Idle", SubResource("AnimationNodeStateMachineTransition_32tps"), "Fire02", "Damage02", SubResource("AnimationNodeStateMachineTransition_32mnt"), "Idle02", "Damage02", SubResource("AnimationNodeStateMachineTransition_8eep4"), "Damage02", "Idle02", SubResource("AnimationNodeStateMachineTransition_cenue"), "SpreadFire02", "Damage02", SubResource("AnimationNodeStateMachineTransition_54158"), "Melee02Right", "Damage02", SubResource("AnimationNodeStateMachineTransition_uqmol"), "Melee02Left", "Damage02", SubResource("AnimationNodeStateMachineTransition_fnqtg")]
-graph_offset = Vector2(-90, 26)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_t7wda"), "Idle", "Idle02", SubResource("AnimationNodeStateMachineTransition_s7n1v"), "Idle02", "Idle", SubResource("AnimationNodeStateMachineTransition_68bfu"), "Idle", "Fire", SubResource("AnimationNodeStateMachineTransition_smy2t"), "Fire", "Idle", SubResource("AnimationNodeStateMachineTransition_gotgm"), "Idle02", "Fire02", SubResource("AnimationNodeStateMachineTransition_xc6as"), "Fire02", "Idle02", SubResource("AnimationNodeStateMachineTransition_if7qd"), "Idle", "SpreadFire", SubResource("AnimationNodeStateMachineTransition_0w8wc"), "SpreadFire", "Idle", SubResource("AnimationNodeStateMachineTransition_jdng4"), "MeleeLeft", "Idle", SubResource("AnimationNodeStateMachineTransition_4k8pu"), "Idle", "MeleeLeft", SubResource("AnimationNodeStateMachineTransition_bogxc"), "Idle02", "SpreadFire02", SubResource("AnimationNodeStateMachineTransition_35tci"), "SpreadFire02", "Idle02", SubResource("AnimationNodeStateMachineTransition_0refn"), "Idle02", "Melee02Left", SubResource("AnimationNodeStateMachineTransition_31of0"), "Melee02Left", "Idle02", SubResource("AnimationNodeStateMachineTransition_xkyyv"), "MeleeLeft", "MeleeRight", SubResource("AnimationNodeStateMachineTransition_3megi"), "MeleeRight", "MeleeLeft", SubResource("AnimationNodeStateMachineTransition_75g0o"), "MeleeRight", "Idle", SubResource("AnimationNodeStateMachineTransition_66f13"), "Melee02Left", "Melee02Right", SubResource("AnimationNodeStateMachineTransition_73yov"), "Melee02Right", "Melee02Left", SubResource("AnimationNodeStateMachineTransition_5x3xy"), "Melee02Right", "Idle02", SubResource("AnimationNodeStateMachineTransition_ie8wh"), "MeleeLeft", "Damage", SubResource("AnimationNodeStateMachineTransition_lghoi"), "MeleeRight", "Damage", SubResource("AnimationNodeStateMachineTransition_e8fc0"), "SpreadFire", "Damage", SubResource("AnimationNodeStateMachineTransition_xsto8"), "Fire", "Damage", SubResource("AnimationNodeStateMachineTransition_8etv2"), "Idle", "Damage", SubResource("AnimationNodeStateMachineTransition_48665"), "Damage", "Idle", SubResource("AnimationNodeStateMachineTransition_32tps"), "Fire02", "Damage02", SubResource("AnimationNodeStateMachineTransition_32mnt"), "Idle02", "Damage02", SubResource("AnimationNodeStateMachineTransition_8eep4"), "Damage02", "Idle02", SubResource("AnimationNodeStateMachineTransition_cenue"), "SpreadFire02", "Damage02", SubResource("AnimationNodeStateMachineTransition_54158"), "Melee02Right", "Damage02", SubResource("AnimationNodeStateMachineTransition_uqmol"), "Melee02Left", "Damage02", SubResource("AnimationNodeStateMachineTransition_fnqtg"), "Damage", "Death", SubResource("AnimationNodeStateMachineTransition_b3obp"), "Damage02", "Death02", SubResource("AnimationNodeStateMachineTransition_ypq0r"), "Death02", "End", SubResource("AnimationNodeStateMachineTransition_bsmfv"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_8ewlu")]
+graph_offset = Vector2(254, 14)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_4rd6t"]
-graph_offset = Vector2(-302, 162.557)
+graph_offset = Vector2(-183.796, 41.217)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_fixs7")
 nodes/StateMachine/position = Vector2(32, 192)
 node_connections = [&"output", 0, &"StateMachine"]
@@ -294,109 +323,64 @@ script = ExtResource("1_dap5o")
 transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0.310762, 0, 1.35839e-08)
 
 [node name="Skeleton3D" parent="Mesh/TentamechArmature" index="0"]
-bones/0/position = Vector3(0, -0.082882, 0.261263)
-bones/0/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
-bones/1/position = Vector3(1.3161, -1.00715, -0.408983)
-bones/1/rotation = Quaternion(0.107573, 0.858719, -0.431602, 0.254461)
-bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(-2.9817e-07, 0.263952, -9.64352e-07, 0.964536)
-bones/3/scale = Vector3(1, 1, 1)
+bones/0/position = Vector3(1.57494e-08, -0.0530074, 0.152968)
+bones/0/rotation = Quaternion(-0.679882, -0.194321, -0.194321, 0.679882)
+bones/1/position = Vector3(1.57953, -0.948217, -1.12577)
+bones/1/rotation = Quaternion(0.104835, 0.794384, -0.504235, 0.322042)
 bones/4/rotation = Quaternion(7.36302e-08, -0.0389013, -1.67765e-07, 0.999243)
-bones/4/scale = Vector3(1, 1, 1)
-bones/5/scale = Vector3(1, 1, 1)
-bones/6/scale = Vector3(1, 1, 1)
-bones/7/scale = Vector3(1, 1, 1)
-bones/8/rotation = Quaternion(7.45289e-08, 0.998189, 3.59217e-07, -0.0601527)
-bones/8/scale = Vector3(1, 1, 1)
-bones/9/scale = Vector3(1, 1, 1)
-bones/10/scale = Vector3(1, 1, 1)
-bones/11/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(1.24089e-07, -0.773045, -2.55406e-07, 0.634352)
+bones/7/rotation = Quaternion(6.45941e-08, -0.865084, -3.65495e-07, 0.501627)
+bones/8/rotation = Quaternion(7.4641e-08, 0.998189, 3.61076e-07, -0.0601527)
 bones/12/rotation = Quaternion(9.33385e-08, 0.937923, 2.22424e-07, 0.346844)
-bones/12/scale = Vector3(1, 1, 1)
-bones/13/scale = Vector3(1, 1, 1)
-bones/14/position = Vector3(0.617946, -0.556905, 0.906726)
-bones/14/rotation = Quaternion(-0.289076, -0.363759, 0.88301, -0.0663924)
+bones/14/position = Vector3(0.522141, -0.201609, 1.71277)
+bones/14/rotation = Quaternion(-0.264246, -0.198005, 0.925153, -0.187241)
 bones/14/scale = Vector3(1, 1, 1)
-bones/16/position = Vector3(0, 0.215179, 0.0941059)
-bones/16/rotation = Quaternion(0.686971, -0.106463, -0.106463, 0.710916)
-bones/16/scale = Vector3(1, 0.995617, 1)
-bones/18/rotation = Quaternion(0.837847, -3.72233e-09, 2.00946e-08, 0.545905)
-bones/18/scale = Vector3(1, 1.00074, 1.00376)
-bones/19/rotation = Quaternion(0.189493, 0.928034, 0.171926, -0.270714)
-bones/20/rotation = Quaternion(-0.276494, -0.205542, -0.0504067, 0.937424)
-bones/21/rotation = Quaternion(-0.367084, 0.335339, -0.0957428, 0.86234)
+bones/16/rotation = Quaternion(0.757222, -0.0115261, -0.0703192, 0.649259)
+bones/18/rotation = Quaternion(0.837839, -9.76837e-09, 2.50313e-08, 0.545918)
+bones/19/rotation = Quaternion(0.167816, 0.941281, 0.0898997, -0.278829)
+bones/21/rotation = Quaternion(-0.369293, 0.335881, -0.0954373, 0.861219)
 bones/21/scale = Vector3(1, 1, 1)
-bones/22/rotation = Quaternion(-0.268265, 0.0188184, -0.120377, 0.955609)
-bones/23/rotation = Quaternion(-0.219083, 0.0340771, -0.0425222, 0.974183)
+bones/22/rotation = Quaternion(-0.307072, 0.0169313, -0.130164, 0.942591)
+bones/23/rotation = Quaternion(-0.268049, 0.0307013, -0.0559466, 0.961289)
 bones/23/scale = Vector3(1, 1, 1)
-bones/24/rotation = Quaternion(-0.172713, 0.0248417, -0.0207263, 0.984441)
 bones/24/scale = Vector3(1, 1, 1)
-bones/25/rotation = Quaternion(-0.150307, 0.0851001, 0.00671556, 0.984947)
-bones/25/scale = Vector3(1, 1, 1)
-bones/27/rotation = Quaternion(0.034801, 0.909087, 0.125122, 0.395847)
+bones/25/rotation = Quaternion(-0.111781, 0.112532, -0.084109, 0.983752)
 bones/27/scale = Vector3(1, 1, 1)
-bones/28/rotation = Quaternion(-0.23696, -0.0699161, 0.20408, 0.947266)
 bones/28/scale = Vector3(1, 1, 1)
-bones/29/rotation = Quaternion(-0.22716, 0.406911, 0.0971434, 0.879423)
+bones/29/rotation = Quaternion(-0.237678, 0.402921, 0.0997834, 0.878184)
 bones/29/scale = Vector3(1, 1, 1)
-bones/30/rotation = Quaternion(-0.158226, 0.0050351, 0.00678593, 0.987367)
 bones/30/scale = Vector3(1, 1, 1)
-bones/31/rotation = Quaternion(-0.160343, 0.0108772, 0.0178335, 0.98684)
-bones/32/rotation = Quaternion(-0.233717, 0.0188239, 0.0400633, 0.971297)
-bones/33/rotation = Quaternion(-0.171959, 0.0865086, -0.0232057, 0.981024)
-bones/33/scale = Vector3(1, 1, 1)
-bones/35/rotation = Quaternion(-0.022777, 0.805236, 0.060953, 0.589374)
-bones/36/rotation = Quaternion(-0.213933, -0.0994697, 0.284956, 0.929053)
-bones/37/rotation = Quaternion(-0.268392, 0.37864, 0.197465, 0.863484)
+bones/35/scale = Vector3(1, 1, 1)
 bones/37/scale = Vector3(1, 1, 1)
-bones/38/rotation = Quaternion(-0.193607, -0.00996489, 0.0473077, 0.979887)
-bones/39/rotation = Quaternion(-0.183089, -0.0101198, 0.0427739, 0.982113)
-bones/40/rotation = Quaternion(-0.270618, -0.022477, 0.0430919, 0.961459)
+bones/39/rotation = Quaternion(-0.150399, -0.0118598, 0.0336439, 0.987982)
 bones/40/scale = Vector3(1, 1, 1)
-bones/41/rotation = Quaternion(-0.237833, 0.0497241, 0.10435, 0.964403)
-bones/41/scale = Vector3(1, 1, 1)
-bones/43/rotation = Quaternion(0.139668, 0.822052, 0.398368, 0.382134)
-bones/44/rotation = Quaternion(-0.141239, -0.0153003, 0.134647, 0.980657)
+bones/41/rotation = Quaternion(-0.210775, 0.0603161, -0.0870471, 0.971781)
+bones/43/rotation = Quaternion(0.130613, 0.836747, 0.378015, 0.374031)
+bones/44/rotation = Quaternion(-0.133904, -0.00271931, 0.13252, 0.98209)
 bones/44/scale = Vector3(1, 1, 1)
-bones/45/rotation = Quaternion(-0.262694, 0.40343, 0.0894509, 0.871914)
 bones/45/scale = Vector3(1, 1, 1)
-bones/46/rotation = Quaternion(-0.250213, -0.00250742, -0.0258499, 0.967842)
-bones/47/rotation = Quaternion(-0.153373, 0.00115497, -0.0119, 0.988096)
+bones/46/rotation = Quaternion(-0.264717, 0.00319796, -0.0184236, 0.964145)
+bones/47/rotation = Quaternion(-0.169231, 0.00329107, -0.00580901, 0.985554)
 bones/47/scale = Vector3(1, 1, 1)
-bones/48/rotation = Quaternion(-0.160696, 0.00384997, 0.0168606, 0.986852)
-bones/49/rotation = Quaternion(-0.268661, 0.0936022, -0.0731893, 0.955878)
-bones/49/scale = Vector3(1, 1, 1)
-bones/51/position = Vector3(-1.22814, 0.3265, -0.285995)
-bones/51/rotation = Quaternion(-0.0523753, 0.929636, -0.243834, -0.271255)
-bones/51/scale = Vector3(1, 1, 1)
-bones/52/rotation = Quaternion(-3.06127e-07, -0.263952, 9.56381e-07, 0.964536)
-bones/53/scale = Vector3(1, 1, 1)
+bones/48/rotation = Quaternion(-0.173139, 0.00433356, 0.0211243, 0.984661)
+bones/49/rotation = Quaternion(-0.235502, 0.130883, -0.186303, 0.944828)
+bones/51/position = Vector3(-1.65878, 0.421276, -0.954893)
+bones/51/rotation = Quaternion(-0.138332, 0.877843, -0.360794, -0.282991)
 bones/54/rotation = Quaternion(7.36302e-08, 0.0389013, 1.67765e-07, 0.999243)
-bones/54/scale = Vector3(1, 1, 1)
-bones/55/scale = Vector3(1, 1, 1)
-bones/56/scale = Vector3(1, 1, 1)
-bones/57/scale = Vector3(1, 1, 1)
+bones/55/rotation = Quaternion(1.24089e-07, 0.773045, 2.55406e-07, 0.634352)
+bones/57/rotation = Quaternion(6.45941e-08, 0.865084, 3.65495e-07, 0.501627)
 bones/58/rotation = Quaternion(-7.4641e-08, 0.998189, 3.61076e-07, 0.0601527)
-bones/58/scale = Vector3(1, 1, 1)
-bones/59/rotation = Quaternion(-1.81439e-07, 0.931082, 2.10816e-07, -0.36481)
-bones/59/scale = Vector3(1, 1, 1)
-bones/60/scale = Vector3(1, 1, 1)
-bones/61/scale = Vector3(1, 1, 1)
-bones/62/rotation = Quaternion(-1.08297e-07, 0.937923, 2.51787e-07, -0.346845)
-bones/62/scale = Vector3(1, 1, 1)
-bones/63/scale = Vector3(1, 1, 1)
-bones/64/position = Vector3(-0.647813, -0.487032, 1.30818)
-bones/64/rotation = Quaternion(0.236576, -0.398145, 0.882262, 0.0844132)
+bones/62/rotation = Quaternion(-9.33385e-08, 0.937923, 2.22424e-07, -0.346844)
+bones/64/position = Vector3(-0.0964053, -1.20647, 0.589753)
+bones/64/rotation = Quaternion(0.138212, -0.279008, 0.950225, -0.0111192)
 bones/64/scale = Vector3(1, 1, 1)
-bones/66/position = Vector3(1.3913, 0.463595, -1.77937)
-bones/66/rotation = Quaternion(0.00975716, 0.707039, 0.707039, 0.00975716)
-bones/67/position = Vector3(-0.263074, 0.0287615, -2.70845)
+bones/66/position = Vector3(1.18642, -0.299577, -2.5013)
+bones/67/position = Vector3(0.0339751, -0.45176, -2.90822)
 bones/67/rotation = Quaternion(-0.0219391, 0.706766, 0.706766, -0.0219391)
-bones/68/position = Vector3(-1.05323, 0.110168, -1.69752)
+bones/68/position = Vector3(-1.14942, -0.272999, -1.99361)
 bones/68/rotation = Quaternion(-0.110506, 0.698419, 0.698419, -0.110506)
 bones/68/scale = Vector3(1, 1, 1)
-bones/69/position = Vector3(0.0138389, 0.901526, -1.72863)
-bones/69/rotation = Quaternion(-0.0180203, 0.706877, 0.706877, -0.0180203)
+bones/69/position = Vector3(-0.147226, 0.440096, -2.27099)
 bones/69/scale = Vector3(1, 1, 1)
 
 [node name="Tentamech" parent="Mesh/TentamechArmature/Skeleton3D" index="0"]
@@ -404,7 +388,7 @@ surface_material_override/0 = ExtResource("2_6kx7t")
 surface_material_override/1 = ExtResource("3_pvmjk")
 
 [node name="RocketFlameRAttachment" type="BoneAttachment3D" parent="Mesh/TentamechArmature/Skeleton3D" index="1"]
-transform = Transform3D(-0.824054, 0.327558, -0.462212, -0.558815, -0.60402, 0.568229, -0.0930577, 0.726543, 0.68079, 0.958007, 0.196767, 1.57244)
+transform = Transform3D(-0.798658, -0.067007, -0.598043, -0.563086, -0.267414, 0.781936, -0.21232, 0.961249, 0.175842, 0.267168, 1.38214, 1.598)
 bone_name = "RocketFlame.R"
 bone_idx = 15
 
@@ -412,14 +396,14 @@ bone_idx = 15
 transform = Transform3D(0.416424, 0.821797, -0.388898, -0.688332, 0.00552645, -0.725374, -0.593961, 0.569754, 0.567971, 0, 0, 0)
 
 [node name="RocketFlameLAttachment" type="BoneAttachment3D" parent="Mesh/TentamechArmature/Skeleton3D" index="2"]
-transform = Transform3D(-0.873813, -0.337332, 0.350226, 0.484661, -0.662597, 0.571024, 0.0394339, 0.668709, 0.742478, -0.998022, 0.537408, 1.44253)
+transform = Transform3D(-0.868237, -0.49359, -0.0503299, 0.256459, -0.533315, 0.806104, -0.424726, 0.686982, 0.58963, -1.23185, -0.0169268, 1.83947)
 bone_name = "RocketFlame.L"
 bone_idx = 65
 
 [node name="TentamechRocketParticles" parent="Mesh/TentamechArmature/Skeleton3D/RocketFlameLAttachment" instance=ExtResource("4_6yynb")]
 
 [node name="ArmRAttachment" type="BoneAttachment3D" parent="Mesh/TentamechArmature/Skeleton3D" index="3"]
-transform = Transform3D(-0.847355, 0.404401, 0.344164, -0.529878, -0.686503, -0.497938, 0.0349024, -0.604296, 0.795995, 1.3161, -0.491865, 1.26841)
+transform = Transform3D(-0.737813, 0.665236, -0.114427, -0.617372, -0.73359, -0.284072, -0.272917, -0.138947, 0.95195, 0.839856, -1.17878, 1.79268)
 bone_name = "Arm.R"
 bone_idx = 1
 
@@ -441,7 +425,7 @@ surface_material_override/0 = ExtResource("7_nec15")
 surface_material_override/1 = ExtResource("8_krdnl")
 
 [node name="ArmLAttachment" type="BoneAttachment3D" parent="Mesh/TentamechArmature/Skeleton3D" index="4"]
-transform = Transform3D(-0.847355, -0.229662, -0.478795, 0.529878, -0.424939, -0.733932, -0.0349024, -0.875604, 0.481767, -1.22814, -0.368877, -0.0652369)
+transform = Transform3D(-0.700923, -0.00888819, -0.713181, 0.596661, -0.555148, -0.579487, -0.390771, -0.831704, 0.39442, -1.1856, -1.0079, -1.08128)
 bone_name = "Arm.L"
 bone_idx = 51
 
@@ -463,7 +447,7 @@ surface_material_override/0 = ExtResource("7_nec15")
 surface_material_override/1 = ExtResource("8_krdnl")
 
 [node name="BodyAttachment" type="BoneAttachment3D" parent="Mesh/TentamechArmature/Skeleton3D" index="5"]
-transform = Transform3D(0.954663, 0.00507604, -0.297646, 0.00509839, 0.995046, 0.0334718, 0.297646, -0.0333251, 0.954089, 0, 0.0112239, 0.0460833)
+transform = Transform3D(0.782857, -0.020089, -0.621878, -0.0915278, 0.984887, -0.147036, 0.615433, 0.172027, 0.769187, 0.138067, 0.0298746, -0.0688329)
 bone_name = "Body"
 bone_idx = 16
 
@@ -474,7 +458,7 @@ update_rotation = false
 update_scale = false
 
 [node name="Tentacle01GunAttachment" type="BoneAttachment3D" parent="Mesh/TentamechArmature/Skeleton3D" index="6"]
-transform = Transform3D(-0.887668, 0.449864, -0.0993931, 0.369328, 0.564405, -0.736842, -0.274499, -0.691172, -0.670097, 1.3927, -1.86217, -0.205516)
+transform = Transform3D(-0.816287, 0.553743, 0.164449, 0.362305, 0.712528, -0.600865, -0.4499, -0.430897, -0.782251, 1.40679, -1.89817, 0.292388)
 bone_name = "Tentacle01Gun"
 bone_idx = 25
 
@@ -482,7 +466,7 @@ bone_idx = 25
 transform = Transform3D(0.97437, 0.224951, 0, -0.224951, 0.97437, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Tentacle02GunAttachment" type="BoneAttachment3D" parent="Mesh/TentamechArmature/Skeleton3D" index="7"]
-transform = Transform3D(-0.874308, 0.424384, -0.235999, 0.293613, 0.0738678, -0.951959, -0.386085, -0.903512, -0.191579, -0.262013, -2.78986, 0.228803)
+transform = Transform3D(-0.702955, 0.705542, -0.0898031, 0.413084, 0.302223, -0.859082, -0.578979, -0.640992, -0.503897, -0.159781, -2.64335, -0.518216)
 bone_name = "Tentacle02Gun"
 bone_idx = 33
 
@@ -490,7 +474,7 @@ bone_idx = 33
 transform = Transform3D(0.97437, 0.224951, 0, -0.224951, 0.97437, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Tentacle03GunAttachment" type="BoneAttachment3D" parent="Mesh/TentamechArmature/Skeleton3D" index="8"]
-transform = Transform3D(-0.902548, 0.426424, -0.0614975, 0.295938, 0.508285, -0.80744, -0.312404, -0.747569, -0.587915, -1.05291, -1.77936, 0.149146)
+transform = Transform3D(-0.942779, 0.333355, 0.00646809, 0.23212, 0.670151, -0.704995, -0.239348, -0.663153, -0.709182, -0.780919, -1.70103, -0.930258)
 bone_name = "Tentacle03Gun"
 bone_idx = 41
 
@@ -498,7 +482,7 @@ bone_idx = 41
 transform = Transform3D(0.988494, 0.151261, 0, -0.151261, 0.988494, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Tentacle04GunAttachment" type="BoneAttachment3D" parent="Mesh/TentamechArmature/Skeleton3D" index="9"]
-transform = Transform3D(-0.955679, 0.245284, -0.163474, 0.290925, 0.690026, -0.661149, -0.0481683, -0.679353, -0.733661, 0.0149308, -1.81177, -0.643596)
+transform = Transform3D(-0.942858, 0.319254, 0.0953659, 0.228626, 0.8281, -0.51184, -0.24238, -0.460789, -0.853771, 0.583458, -1.66138, -0.864427)
 bone_name = "Tentacle04Gun"
 bone_idx = 49
 
@@ -512,6 +496,7 @@ script = ExtResource("8_mce31")
 tree_root = SubResource("AnimationNodeBlendTree_4rd6t")
 anim_player = NodePath("../AnimationPlayer")
 parameters/StateMachine/conditions/damaged = false
+parameters/StateMachine/conditions/dead = false
 parameters/StateMachine/conditions/firing = false
 parameters/StateMachine/conditions/melee = false
 parameters/StateMachine/conditions/not_firing = false
@@ -552,8 +537,12 @@ also_set_inverse = true
 script = ExtResource("13_lot45")
 value_name = &"damaged"
 
+[node name="DeadValue" type="Node" parent="Mesh/AnimationValuesManager"]
+script = ExtResource("14_5kuh8")
+value_name = &"dead"
+
 [node name="SpriteContainer" type="Node3D" parent="Mesh"]
-transform = Transform3D(1, 0, 1.74087e-10, 0, 1, 0, -1.74087e-10, 0, 1, -0.0552277, -0.0705545, 0.833296)
+transform = Transform3D(1, 0, 3.82315e-10, 0, 1, 0, -3.82315e-10, 0, 1, 0.0716181, -0.0578452, 0.709572)
 
 [node name="Sprite3D" type="Sprite3D" parent="Mesh/SpriteContainer"]
 transform = Transform3D(-5.24536e-09, 0, -0.12, 0, 0.12, 0, 0.12, 0, -5.24537e-09, 1.49925e-12, 0, -0.0412764)
@@ -591,14 +580,14 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" node_paths=PackedStringArray("target")]
-transform = Transform3D(0.954676, 0.000228031, -0.297648, 0.00105904, 0.999991, 0.00416287, 0.297646, -0.00428941, 0.954667, -0.156986, -0.0765514, -6.86197e-09)
+transform = Transform3D(0.954676, 0.000228031, -0.297648, 0.00105904, 0.999991, 0.00416287, 0.297646, -0.00428941, 0.954667, -0.0996278, -0.0731048, 0.0828405)
 shape = SubResource("SphereShape3D_in1du")
 script = ExtResource("10_r5w1d")
 target = NodePath("../../Mesh/TentamechArmature/Skeleton3D/BodyAttachment")
 run_in_editor = true
 
 [node name="FistLeftCollision" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.581185, -0.643808, -0.916023)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15657, -1.12879, -0.718294)
 collision_layer = 4
 monitoring = false
 script = ExtResource("16_xoy32")
@@ -608,7 +597,7 @@ damage_value = -10
 shape = SubResource("SphereShape3D_7mrcj")
 
 [node name="FistRightCollision" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.430625, -0.921621, 1.10509)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10816, -1.3705, 1.0228)
 collision_layer = 4
 monitoring = false
 script = ExtResource("16_xoy32")
@@ -619,7 +608,7 @@ shape = SubResource("SphereShape3D_7mrcj")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("15_pu5cx")
-max_health = 6
+max_health = 1
 
 [node name="FocusFireAudioRandom" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("18_8np0v")
@@ -660,6 +649,12 @@ label_name = "FiringMode"
 item_to_check = NodePath("../../Mesh/AnimationValuesManager/FiringValue")
 value = "current_firing_mode"
 
+[node name="DeathParticlesInstantiate" type="Node3D" parent="."]
+script = ExtResource("34_1movk")
+particle_prefab = ExtResource("35_f6s8r")
+
+[connection signal="death" from="HealthComponent" to="MouseFollowBehavior" method="set_enabled" binds= [false]]
+[connection signal="death" from="HealthComponent" to="Mesh/AnimationValuesManager/DeadValue" method="set_value" binds= [true]]
 [connection signal="health_lost" from="HealthComponent" to="Mesh/AnimationValuesManager/WasDamagedValue" method="_on_health_component_health_lost"]
 
 [editable path="Mesh"]

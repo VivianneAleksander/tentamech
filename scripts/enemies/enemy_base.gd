@@ -17,7 +17,10 @@ func _on_hurtbox_entered(area : Area3D):
 	pass
 
 func perish():
+	set_hitbox_monitoring(false)
 	super()
-	hitbox.set_deferred("monitoring", false)
-	hitbox.set_deferred("monitorable", false)
 	
+func set_hitbox_monitoring(value : bool) -> void:
+	if dead: return
+	hitbox.set_deferred("monitoring", value)
+	hitbox.set_deferred("monitorable", value)
