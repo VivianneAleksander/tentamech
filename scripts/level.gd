@@ -1,6 +1,8 @@
 extends Node3D
 class_name Level
 
+@export var checkpoint : bool = false
+
 signal level_completed
 
 func _physics_process(delta: float) -> void:

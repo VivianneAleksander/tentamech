@@ -34,13 +34,14 @@ movie_writer/movie_file="/home/vivianne/Art/Godot/Projects/tentamech work files/
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Souperior 2D Skeleton Modifications/plugin.cfg")
+enabled=PackedStringArray("res://addons/Souperior 2D Skeleton Modifications/plugin.cfg", "res://addons/remote_container/plugin.cfg")
 
 [global_group]
 
 Player="This group should only ever contain the player."
 Bullets=""
 Enemies=""
+Effects="Particle systems and whatnot"
 
 [input]
 

@@ -2,6 +2,7 @@
 extends Node3D
 class_name LevelManager
 
+#region Camera
 @export var camera3D : Camera3D
 @export_range(0.01, 2.0, 0.01) var level_margin_x : float = 0.85
 @export_range(0.01, 2.0, 0.01) var level_margin_y : float = 1.0
@@ -9,11 +10,18 @@ class_name LevelManager
 var level_margin_calculated : Vector3
 var level_margin_calculated_half : Vector3
 @export var groups_to_monitor : Array[StringName]
-@export var levels : Array[PackedScene]
+#endregion
 
-@onready var player := $Tentamech as AreaCharacter3D
-var current_level : Level
+#region Levels
+@onready var level_manager_prefab := preload("res://scenes/levels/level_manager.tscn")
+@export var levels : Array[PackedScene]
 @export var current_level_index : int = 0
+var current_level : Level
+var current_checkpoint : int = 0
+#endregion
+
+@onready var level_ui : LevelUI = $LevelUI
+@onready var player := $Tentamech as AreaCharacter3D
 
 var game_is_over : bool = false
 
@@ -31,6 +39,7 @@ func _ready():
 		current_level = start_level(current_level_index)
 	
 	player.character_died.connect(game_over.unbind(1))
+	player.health_component.health_value_changed.connect(level_ui.update_health)
 	
 		
 func _process(delta: float) -> void:
@@ -85,10 +94,26 @@ func next_level() -> void:
 	current_level_index += 1
 	start_level(current_level_index)
 
+func reset_checkpoint() -> void:
+	get_tree().call_group("Enemies", "queue_free")
+	get_tree().call_group("Bullets", "queue_free")
+	get_tree().call_group("Effects", "queue_free")
+	var new_level_manager := level_manager_prefab.instantiate() as LevelManager
+	new_level_manager.current_level_index = current_checkpoint
+	get_tree().root.add_child(new_level_manager)
+	queue_free()
+
 func game_over() -> void:
 	print_debug("Game Over")
+	level_ui.game_over()
 	game_is_over = true
 
 func game_finished() -> void:
 	print_debug("All Levels Cleared.")
 	game_is_over = true
+
+
+func _on_level_ui_game_quit() -> void:
+	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
+	get_tree().quit.call_deferred()
+			

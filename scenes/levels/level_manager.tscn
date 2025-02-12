@@ -18,6 +18,8 @@ camera3D = NodePath("Camera3D")
 groups_to_monitor = Array[StringName]([&"Enemies", &"Bullets"])
 levels = Array[PackedScene]([ExtResource("6_5sdgn")])
 
+[node name="LevelUI" parent="." instance=ExtResource("5_kwpxm")]
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 42.852)
 fov = 20.0
@@ -32,7 +34,8 @@ script = ExtResource("3_gr2cs")
 
 [node name="Tentamech" parent="." instance=ExtResource("4_e5pap")]
 
-[node name="LevelUI" parent="." instance=ExtResource("5_kwpxm")]
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.42352, 0.905887, 0, -0.905887, 0.42352, 0, 7.49888, 8.96411)
+
+[connection signal="game_quit" from="LevelUI" to="." method="_on_level_ui_game_quit"]
+[connection signal="game_reset_checkpoint" from="LevelUI" to="." method="reset_checkpoint"]

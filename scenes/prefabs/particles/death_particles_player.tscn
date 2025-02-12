@@ -1,0 +1,203 @@
+[gd_scene load_steps=10 format=3 uid="uid://gvormwptnpps"]
+
+[ext_resource type="PackedScene" uid="uid://co81vvanco6f2" path="res://scenes/prefabs/particles/death_particles.tscn" id="1_43ph1"]
+[ext_resource type="Script" path="res://scenes/prefabs/particles/multi_particle_emitting.gd" id="2_nkh1u"]
+
+[sub_resource type="Gradient" id="Gradient_34y05"]
+offsets = PackedFloat32Array(0.39375, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y7bw4"]
+gradient = SubResource("Gradient_34y05")
+
+[sub_resource type="Curve" id="Curve_2lpck"]
+max_value = 100.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_h810t"]
+curve = SubResource("Curve_2lpck")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sa6ka"]
+particle_flag_damping_as_friction = true
+spread = 0.0
+flatness = 1.0
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+damping_min = 1.0
+damping_max = 1.0
+damping_curve = SubResource("CurveTexture_h810t")
+color_ramp = SubResource("GradientTexture1D_y7bw4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lux0v"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0.638982, 0.699861, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_v8o1w"]
+material = SubResource("StandardMaterial3D_lux0v")
+
+[node name="DeathParticles" node_paths=PackedStringArray("particle_systems") instance=ExtResource("1_43ph1")]
+emitting = true
+amount = 160
+lifetime = 0.7
+explosiveness = 0.6
+script = ExtResource("2_nkh1u")
+particle_systems = [NodePath("SprayParticles"), NodePath("SprayParticles2"), NodePath("SprayParticles3"), NodePath("SprayParticles4"), NodePath("SprayParticles5"), NodePath("SprayParticles6"), NodePath("SprayParticles7"), NodePath("SprayParticles8"), NodePath("SprayParticles9"), NodePath("SprayParticles10"), NodePath("SprayParticles11"), NodePath("SprayParticles12")]
+
+[node name="SprayParticles" type="GPUParticles3D" parent="." index="2"]
+emitting = false
+amount = 1
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 24
+interpolate = false
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_sa6ka")
+draw_pass_1 = SubResource("SphereMesh_v8o1w")
+
+[node name="SprayParticles2" type="GPUParticles3D" parent="." index="3"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, 0, 0)
+emitting = false
+amount = 1
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 24
+interpolate = false
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_sa6ka")
+draw_pass_1 = SubResource("SphereMesh_v8o1w")
+
+[node name="SprayParticles3" type="GPUParticles3D" parent="." index="4"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, 0, 0)
+emitting = false
+amount = 1
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 24
+interpolate = false
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_sa6ka")
+draw_pass_1 = SubResource("SphereMesh_v8o1w")
+
+[node name="SprayParticles4" type="GPUParticles3D" parent="." index="5"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 0, 0)
+emitting = false
+amount = 1
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 24
+interpolate = false
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_sa6ka")
+draw_pass_1 = SubResource("SphereMesh_v8o1w")
+
+[node name="SprayParticles5" type="GPUParticles3D" parent="." index="6"]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0, 0, 0)
+emitting = false
+amount = 1
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 24
+interpolate = false
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_sa6ka")
+draw_pass_1 = SubResource("SphereMesh_v8o1w")
+
+[node name="SprayParticles6" type="GPUParticles3D" parent="." index="7"]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 0, 0, 0)
+emitting = false
+amount = 1
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 24
+interpolate = false
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_sa6ka")
+draw_pass_1 = SubResource("SphereMesh_v8o1w")
+
+[node name="SprayParticles7" type="GPUParticles3D" parent="." index="8"]
+transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, 0, 0, 0)
+emitting = false
+amount = 1
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 24
+interpolate = false
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_sa6ka")
+draw_pass_1 = SubResource("SphereMesh_v8o1w")
+
+[node name="SprayParticles8" type="GPUParticles3D" parent="." index="9"]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 0, 0, 0)
+emitting = false
+amount = 1
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 24
+interpolate = false
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_sa6ka")
+draw_pass_1 = SubResource("SphereMesh_v8o1w")
+
+[node name="SprayParticles9" type="GPUParticles3D" parent="." index="10"]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, 0, 0, 0)
+emitting = false
+amount = 1
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 24
+interpolate = false
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_sa6ka")
+draw_pass_1 = SubResource("SphereMesh_v8o1w")
+
+[node name="SprayParticles10" type="GPUParticles3D" parent="." index="11"]
+transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1, 0, 5.96046e-08, 0, 0, 0)
+emitting = false
+amount = 1
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 24
+interpolate = false
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_sa6ka")
+draw_pass_1 = SubResource("SphereMesh_v8o1w")
+
+[node name="SprayParticles11" type="GPUParticles3D" parent="." index="12"]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, 0, 0)
+emitting = false
+amount = 1
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 24
+interpolate = false
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_sa6ka")
+draw_pass_1 = SubResource("SphereMesh_v8o1w")
+
+[node name="SprayParticles12" type="GPUParticles3D" parent="." index="13"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0, 0)
+emitting = false
+amount = 1
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 24
+interpolate = false
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_sa6ka")
+draw_pass_1 = SubResource("SphereMesh_v8o1w")

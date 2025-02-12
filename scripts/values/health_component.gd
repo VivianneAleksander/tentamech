@@ -15,6 +15,7 @@ signal death
 
 func _ready():
 	health = max_health
+	await get_tree().physics_frame
 	health_value_changed.emit(health)
 
 func _process(delta):

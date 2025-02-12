@@ -3,7 +3,6 @@ extends Node
 class_name MouseFollowControl
 
 @onready var viewport := get_viewport()
-@onready var camera := viewport.get_camera_3d()
 
 @export var enabled : bool = true
 @export var target : AreaCharacter3D
@@ -15,6 +14,7 @@ var direction : int = 0
 
 func _physics_process(delta):
 	if not enabled: return
+	var camera := viewport.get_camera_3d()
 	var mouse_position := viewport.get_mouse_position()
 	var world_position := camera.project_position(mouse_position, camera.global_position.z)
 
