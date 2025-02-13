@@ -3,8 +3,9 @@ class_name LevelUI
 
 @export var health_pips : Array[Control]
 
-@onready var game_over_timer = $GameOverTimer
-@onready var face_cams = $Control/FaceCams
+@onready var energy_bar := $Control/Power/PowerMargin/PowerContainer/HBoxContainer/ProgressBar as ProgressBar
+@onready var game_over_timer := $GameOverTimer as Timer
+@onready var face_cams := $Control/FaceCams as Control
 
 signal game_reset_checkpoint
 signal game_quit
@@ -15,6 +16,9 @@ func update_health(val : int) -> void:
 			health_pips[idx].modulate.a = 1.0
 		else:
 			health_pips[idx].modulate.a = 0.0
+
+func update_engergy(val : float) -> void:
+	energy_bar.value = val * energy_bar.max_value
 
 func game_over() -> void:
 	game_over_timer.start()

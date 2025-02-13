@@ -42,6 +42,7 @@ Player="This group should only ever contain the player."
 Bullets=""
 Enemies=""
 Effects="Particle systems and whatnot"
+AudioTracks=""
 
 [input]
 

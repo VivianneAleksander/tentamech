@@ -21,7 +21,7 @@ var current_checkpoint : int = 0
 #endregion
 
 @onready var level_ui : LevelUI = $LevelUI
-@onready var player := $Tentamech as AreaCharacter3D
+@onready var player := $Tentamech as PlayerCharacter
 
 var game_is_over : bool = false
 
@@ -40,7 +40,7 @@ func _ready():
 	
 	player.character_died.connect(game_over.unbind(1))
 	player.health_component.health_value_changed.connect(level_ui.update_health)
-	
+	player.energy_component.energy_value_changed.connect(level_ui.update_engergy)
 		
 func _process(delta: float) -> void:
 	pass
@@ -105,6 +105,7 @@ func reset_checkpoint() -> void:
 
 func game_over() -> void:
 	print_debug("Game Over")
+	get_tree().call_group("AudioTracks", "queue_free")
 	level_ui.game_over()
 	game_is_over = true
 
