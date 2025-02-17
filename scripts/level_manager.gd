@@ -107,10 +107,12 @@ func game_over() -> void:
 	print_debug("Game Over")
 	get_tree().call_group("AudioTracks", "queue_free")
 	level_ui.game_over()
+	FiringModeValue.current_firing_mode = 0
 	game_is_over = true
 
 func game_finished() -> void:
 	print_debug("All Levels Cleared.")
+	FiringModeValue.current_firing_mode = 0
 	game_is_over = true
 
 

@@ -1,4 +1,5 @@
 extends AnimationValue
+class_name FiringModeValue
 
 enum FIRE_MODE {
 	SPREAD = 0,

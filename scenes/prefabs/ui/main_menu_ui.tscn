@@ -1,0 +1,466 @@
+[gd_scene load_steps=35 format=3 uid="uid://cp7jmum0jgyau"]
+
+[ext_resource type="Texture2D" uid="uid://xjc01pkk8h2t" path="res://assets/sprites/ui/button_left_side.svg" id="1_7afxd"]
+[ext_resource type="FontFile" uid="uid://blswv5hns6gor" path="res://assets/fonts/Xolonium-Regular.otf" id="1_o4u6p"]
+[ext_resource type="Material" uid="uid://c2sceqasu5fsg" path="res://assets/materials/ui/main_menu_button_bg.tres" id="3_4scnh"]
+[ext_resource type="Shader" path="res://assets/shaders/ui_transition.gdshader" id="3_70w31"]
+[ext_resource type="AnimationLibrary" uid="uid://pa44nipfprdw" path="res://assets/animations/ui/button_animations.res" id="4_o660y"]
+[ext_resource type="Script" path="res://scripts/util/animation_sm_traveler.gd" id="5_7ngco"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qg1u7"]
+texture = ExtResource("1_7afxd")
+modulate_color = Color(0.160784, 0.160784, 0.160784, 0.423529)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fs4mx"]
+texture = ExtResource("1_7afxd")
+modulate_color = Color(1, 0.756863, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_15l65"]
+texture = ExtResource("1_7afxd")
+modulate_color = Color(1, 0.533333, 0.0666667, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ybiow"]
+texture = ExtResource("1_7afxd")
+modulate_color = Color(0.690196, 0, 0.141176, 1)
+
+[sub_resource type="Theme" id="Theme_whx7t"]
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 15
+Label/font_sizes/font_size = 36
+Label/fonts/font = ExtResource("1_o4u6p")
+VBoxContainer/constants/separation = 21
+button_bg/base_type = &"Panel"
+button_bg/styles/panel = SubResource("StyleBoxTexture_qg1u7")
+button_decor_01/base_type = &"Panel"
+button_decor_01/styles/panel = SubResource("StyleBoxTexture_fs4mx")
+button_decor_02/base_type = &"Panel"
+button_decor_02/styles/panel = SubResource("StyleBoxTexture_15l65")
+button_decor_03/base_type = &"Panel"
+button_decor_03/styles/panel = SubResource("StyleBoxTexture_ybiow")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dp1wj"]
+shader = ExtResource("3_70w31")
+shader_parameter/right_slide = 0.0
+shader_parameter/left_slide = 0.0
+shader_parameter/angle_right = 0.58
+shader_parameter/angle_left = 0.785
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_srk7c"]
+shader = ExtResource("3_70w31")
+shader_parameter/right_slide = 0.0
+shader_parameter/left_slide = 0.0
+shader_parameter/angle_right = 0.58
+shader_parameter/angle_left = 0.785
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0s040"]
+shader = ExtResource("3_70w31")
+shader_parameter/right_slide = 0.0
+shader_parameter/left_slide = 0.0
+shader_parameter/angle_right = 0.58
+shader_parameter/angle_left = 0.785
+
+[sub_resource type="Animation" id="Animation_y6mtl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_grtge"]
+_data = {
+"RESET": SubResource("Animation_y6mtl")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tol22"]
+animation = &"button_animations/RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_anb5i"]
+animation = &"button_animations/bounce"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4yf66"]
+animation = &"button_animations/transition_in"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xpsyo"]
+animation = &"button_animations/transition_out"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lsfbx"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ami32"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fhlmx"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pi7xp"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y0k0r"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lugph"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rtu0c"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0xfvi"]
+states/button_animations_RESET/node = SubResource("AnimationNodeAnimation_tol22")
+states/button_animations_RESET/position = Vector2(376, 100)
+states/button_animations_bounce/node = SubResource("AnimationNodeAnimation_anb5i")
+states/button_animations_bounce/position = Vector2(880, 9)
+states/button_animations_transition_in/node = SubResource("AnimationNodeAnimation_4yf66")
+states/button_animations_transition_in/position = Vector2(610, -18)
+states/button_animations_transition_out/node = SubResource("AnimationNodeAnimation_xpsyo")
+states/button_animations_transition_out/position = Vector2(668, 92)
+transitions = ["Start", "button_animations_RESET", SubResource("AnimationNodeStateMachineTransition_lsfbx"), "button_animations_transition_out", "button_animations_RESET", SubResource("AnimationNodeStateMachineTransition_ami32"), "button_animations_bounce", "button_animations_transition_out", SubResource("AnimationNodeStateMachineTransition_fhlmx"), "button_animations_RESET", "button_animations_transition_in", SubResource("AnimationNodeStateMachineTransition_pi7xp"), "button_animations_transition_in", "button_animations_transition_out", SubResource("AnimationNodeStateMachineTransition_y0k0r"), "button_animations_transition_in", "button_animations_bounce", SubResource("AnimationNodeStateMachineTransition_lugph"), "button_animations_transition_out", "button_animations_transition_in", SubResource("AnimationNodeStateMachineTransition_rtu0c")]
+graph_offset = Vector2(166, -66)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xcq4y"]
+shader = ExtResource("3_70w31")
+shader_parameter/right_slide = 0.0
+shader_parameter/left_slide = 0.0
+shader_parameter/angle_right = 0.58
+shader_parameter/angle_left = 0.785
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4vhrx"]
+shader = ExtResource("3_70w31")
+shader_parameter/right_slide = 0.0
+shader_parameter/left_slide = 0.0
+shader_parameter/angle_right = 0.58
+shader_parameter/angle_left = 0.785
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ffs38"]
+shader = ExtResource("3_70w31")
+shader_parameter/right_slide = 0.0
+shader_parameter/left_slide = 0.0
+shader_parameter/angle_right = 0.58
+shader_parameter/angle_left = 0.785
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4b58u"]
+shader = ExtResource("3_70w31")
+shader_parameter/right_slide = 0.0
+shader_parameter/left_slide = 0.0
+shader_parameter/angle_right = 0.58
+shader_parameter/angle_left = 0.785
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6sdnk"]
+shader = ExtResource("3_70w31")
+shader_parameter/right_slide = 0.0
+shader_parameter/left_slide = 0.0
+shader_parameter/angle_right = 0.58
+shader_parameter/angle_left = 0.785
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p42ss"]
+shader = ExtResource("3_70w31")
+shader_parameter/right_slide = 0.0
+shader_parameter/left_slide = 0.0
+shader_parameter/angle_right = 0.58
+shader_parameter/angle_left = 0.785
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_whx7t")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0668403
+anchor_top = 0.529321
+anchor_right = 0.487847
+anchor_bottom = 0.941358
+metadata/_edit_use_anchors_ = true
+
+[node name="StartButtonControl" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/StartButtonControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(220, 39)
+size_flags_vertical = 3
+focus_mode = 0
+flat = true
+
+[node name="ButtonBG" type="Panel" parent="VBoxContainer/StartButtonControl/Button"]
+show_behind_parent = true
+material = ExtResource("3_4scnh")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"button_bg"
+
+[node name="ButtonDecor01" type="Panel" parent="VBoxContainer/StartButtonControl/Button"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_dp1wj")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"button_decor_01"
+
+[node name="ButtonDecor02" type="Panel" parent="VBoxContainer/StartButtonControl/Button"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_srk7c")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"button_decor_02"
+
+[node name="ButtonDecor03" type="Panel" parent="VBoxContainer/StartButtonControl/Button"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_0s040")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"button_decor_03"
+
+[node name="StartLabel" type="Label" parent="VBoxContainer/StartButtonControl/Button"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.167355
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/StartButtonControl/Button"]
+libraries = {
+"": SubResource("AnimationLibrary_grtge"),
+"button_animations": ExtResource("4_o660y")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="VBoxContainer/StartButtonControl/Button"]
+tree_root = SubResource("AnimationNodeStateMachine_0xfvi")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationTraveler" type="Node" parent="VBoxContainer/StartButtonControl/Button" node_paths=PackedStringArray("animation_tree")]
+script = ExtResource("5_7ngco")
+animation_tree = NodePath("../AnimationTree")
+
+[node name="OptionsButtonControl" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/OptionsButtonControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(220, 39)
+size_flags_vertical = 3
+focus_mode = 0
+flat = true
+
+[node name="ButtonBG" type="Panel" parent="VBoxContainer/OptionsButtonControl/Button"]
+show_behind_parent = true
+material = ExtResource("3_4scnh")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"button_bg"
+
+[node name="ButtonDecor01" type="Panel" parent="VBoxContainer/OptionsButtonControl/Button"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_xcq4y")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"button_decor_01"
+
+[node name="ButtonDecor02" type="Panel" parent="VBoxContainer/OptionsButtonControl/Button"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_4vhrx")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"button_decor_02"
+
+[node name="ButtonDecor03" type="Panel" parent="VBoxContainer/OptionsButtonControl/Button"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_ffs38")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"button_decor_03"
+
+[node name="Label" type="Label" parent="VBoxContainer/OptionsButtonControl/Button"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.167355
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/OptionsButtonControl/Button"]
+libraries = {
+"": SubResource("AnimationLibrary_grtge"),
+"button_animations": ExtResource("4_o660y")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="VBoxContainer/OptionsButtonControl/Button"]
+tree_root = SubResource("AnimationNodeStateMachine_0xfvi")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationTraveler" type="Node" parent="VBoxContainer/OptionsButtonControl/Button" node_paths=PackedStringArray("animation_tree")]
+script = ExtResource("5_7ngco")
+animation_tree = NodePath("../AnimationTree")
+
+[node name="QuitButtonControl" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/QuitButtonControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(220, 39)
+size_flags_vertical = 3
+focus_mode = 0
+flat = true
+
+[node name="ButtonBG" type="Panel" parent="VBoxContainer/QuitButtonControl/Button"]
+show_behind_parent = true
+material = ExtResource("3_4scnh")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"button_bg"
+
+[node name="ButtonDecor01" type="Panel" parent="VBoxContainer/QuitButtonControl/Button"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_4b58u")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"button_decor_01"
+
+[node name="ButtonDecor02" type="Panel" parent="VBoxContainer/QuitButtonControl/Button"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_6sdnk")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"button_decor_02"
+
+[node name="ButtonDecor03" type="Panel" parent="VBoxContainer/QuitButtonControl/Button"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_p42ss")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"button_decor_03"
+
+[node name="Label" type="Label" parent="VBoxContainer/QuitButtonControl/Button"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.167355
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/QuitButtonControl/Button"]
+libraries = {
+"": SubResource("AnimationLibrary_grtge"),
+"button_animations": ExtResource("4_o660y")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="VBoxContainer/QuitButtonControl/Button"]
+tree_root = SubResource("AnimationNodeStateMachine_0xfvi")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationTraveler" type="Node" parent="VBoxContainer/QuitButtonControl/Button" node_paths=PackedStringArray("animation_tree")]
+script = ExtResource("5_7ngco")
+animation_tree = NodePath("../AnimationTree")
+
+[connection signal="mouse_entered" from="VBoxContainer/StartButtonControl/Button" to="VBoxContainer/StartButtonControl/Button/AnimationTraveler" method="travel" binds= [&"button_animations_transition_in"]]
+[connection signal="mouse_exited" from="VBoxContainer/StartButtonControl/Button" to="VBoxContainer/StartButtonControl/Button/AnimationTraveler" method="travel" binds= [&"button_animations_transition_out"]]
+[connection signal="pressed" from="VBoxContainer/StartButtonControl/Button" to="VBoxContainer/StartButtonControl/Button/AnimationTraveler" method="travel" binds= [&"button_animations_bounce"]]
+[connection signal="mouse_entered" from="VBoxContainer/OptionsButtonControl/Button" to="VBoxContainer/OptionsButtonControl/Button/AnimationTraveler" method="travel" binds= [&"button_animations_transition_in"]]
+[connection signal="mouse_exited" from="VBoxContainer/OptionsButtonControl/Button" to="VBoxContainer/OptionsButtonControl/Button/AnimationTraveler" method="travel" binds= [&"button_animations_transition_out"]]
+[connection signal="pressed" from="VBoxContainer/OptionsButtonControl/Button" to="VBoxContainer/OptionsButtonControl/Button/AnimationTraveler" method="travel" binds= [&"button_animations_bounce"]]
+[connection signal="mouse_entered" from="VBoxContainer/QuitButtonControl/Button" to="VBoxContainer/QuitButtonControl/Button/AnimationTraveler" method="travel" binds= [&"button_animations_transition_in"]]
+[connection signal="mouse_exited" from="VBoxContainer/QuitButtonControl/Button" to="VBoxContainer/QuitButtonControl/Button/AnimationTraveler" method="travel" binds= [&"button_animations_transition_out"]]
+[connection signal="pressed" from="VBoxContainer/QuitButtonControl/Button" to="VBoxContainer/QuitButtonControl/Button/AnimationTraveler" method="travel" binds= [&"button_animations_bounce"]]

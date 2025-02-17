@@ -1,22 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8oq5yx625dfi"]
+[gd_scene load_steps=7 format=3 uid="uid://c8oq5yx625dfi"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_q6xpr"]
 [ext_resource type="Script" path="res://scenes/levels/audio_stream_looper.gd" id="3_8h8kp"]
 [ext_resource type="AudioStream" uid="uid://mt8fo16axsa1" path="res://assets/sound/music/interstellar porn star body.mp3" id="3_ekigm"]
 [ext_resource type="AudioStream" uid="uid://diqrje06vm7lh" path="res://assets/sound/music/interstellar porn star opening.mp3" id="5_kol1j"]
 [ext_resource type="PackedScene" uid="uid://dmacpy5lq41ek" path="res://scenes/prefabs/enemies/needler.tscn" id="5_ovwcc"]
+[ext_resource type="Script" path="res://scripts/util/audio_fade_in_out.gd" id="6_7olkh"]
 
 [node name="Level01" type="Node3D"]
 script = ExtResource("1_q6xpr")
 
 [node name="Needler" parent="." instance=ExtResource("5_ovwcc")]
-process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.77898, 0, 0)
-visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." groups=["AudioTracks"]]
 stream = ExtResource("5_kol1j")
-volume_db = -7.021
+volume_db = -80.0
 autoplay = true
 script = ExtResource("3_8h8kp")
 audio = Array[AudioStream]([ExtResource("5_kol1j"), ExtResource("3_ekigm")])
+
+[node name="AudioFadeInOut" type="Node" parent="AudioStreamPlayer"]
+script = ExtResource("6_7olkh")
+fade_in_time = Vector2(0, 3)
+fade_out_time = Vector2(0, 0)
+fade_dec = Vector2(-80, -15)

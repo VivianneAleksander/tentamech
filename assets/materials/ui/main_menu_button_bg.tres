@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c2sceqasu5fsg"]
+
+[ext_resource type="Shader" path="res://assets/shaders/ui_transition.gdshader" id="1_10p6e"]
+
+[resource]
+shader = ExtResource("1_10p6e")
+shader_parameter/right_slide = 1.5
+shader_parameter/left_slide = 0.0
+shader_parameter/angle_right = 0.58
+shader_parameter/angle_left = 0.0
