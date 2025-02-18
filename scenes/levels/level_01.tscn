@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://c8oq5yx625dfi"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_q6xpr"]
+[ext_resource type="AudioStream" uid="uid://bwr1ybx6cbtj2" path="res://assets/sound/music/radioactive orgasmic glow body.mp3" id="3_2qaae"]
 [ext_resource type="Script" path="res://scenes/levels/audio_stream_looper.gd" id="3_8h8kp"]
-[ext_resource type="AudioStream" uid="uid://mt8fo16axsa1" path="res://assets/sound/music/interstellar porn star body.mp3" id="3_ekigm"]
-[ext_resource type="AudioStream" uid="uid://diqrje06vm7lh" path="res://assets/sound/music/interstellar porn star opening.mp3" id="5_kol1j"]
+[ext_resource type="AudioStream" uid="uid://ckxpu3sohhua8" path="res://assets/sound/music/radioactive orgasmic glow opening.mp3" id="5_4212j"]
 [ext_resource type="PackedScene" uid="uid://dmacpy5lq41ek" path="res://scenes/prefabs/enemies/needler.tscn" id="5_ovwcc"]
 [ext_resource type="Script" path="res://scripts/util/audio_fade_in_out.gd" id="6_7olkh"]
 
@@ -14,11 +14,14 @@ script = ExtResource("1_q6xpr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.77898, 0, 0)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." groups=["AudioTracks"]]
-stream = ExtResource("5_kol1j")
+stream = ExtResource("3_2qaae")
 volume_db = -80.0
 autoplay = true
+stream_paused = true
 script = ExtResource("3_8h8kp")
-audio = Array[AudioStream]([ExtResource("5_kol1j"), ExtResource("3_ekigm")])
+audio = Array[AudioStream]([ExtResource("5_4212j"), ExtResource("3_2qaae")])
+audio_idx = 1
+was_playing = true
 
 [node name="AudioFadeInOut" type="Node" parent="AudioStreamPlayer"]
 script = ExtResource("6_7olkh")

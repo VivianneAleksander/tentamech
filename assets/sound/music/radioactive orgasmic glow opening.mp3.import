@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ckxpu3sohhua8"
+path="res://.godot/imported/radioactive orgasmic glow opening.mp3-1d5a4aadc5593ed04cef9aa4f5da42c0.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/music/radioactive orgasmic glow opening.mp3"
+dest_files=["res://.godot/imported/radioactive orgasmic glow opening.mp3-1d5a4aadc5593ed04cef9aa4f5da42c0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

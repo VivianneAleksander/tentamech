@@ -20,7 +20,6 @@ func _process(delta: float) -> void:
 	if playing and not was_playing:
 		was_playing = true
 	elif not playing and was_playing:
-		print_debug("eh")
 		audio_idx = audio_start_idx
 		update_audio(audio_idx)
 		was_playing = false

@@ -16,31 +16,31 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_gld3b"]
 viewport_path = NodePath("Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport")
 
-[sub_resource type="Resource" id="Resource_q850e"]
+[sub_resource type="Resource" id="Resource_y4js7"]
 script = ExtResource("5_v6a3h")
 frequency = 1.0
 damping = 1.0
 reaction = 1.0
 
-[sub_resource type="Resource" id="Resource_d16ek"]
+[sub_resource type="Resource" id="Resource_4xw0i"]
 script = ExtResource("5_v6a3h")
 frequency = 1.0
 damping = 1.0
 reaction = 1.0
 
-[sub_resource type="Resource" id="Resource_jw6u0"]
+[sub_resource type="Resource" id="Resource_63idv"]
 script = ExtResource("5_v6a3h")
 frequency = 1.0
 damping = 5.0
 reaction = 1.0
 
-[sub_resource type="Resource" id="Resource_kwnpt"]
+[sub_resource type="Resource" id="Resource_v078e"]
 script = ExtResource("5_v6a3h")
 frequency = 1.0
 damping = 5.0
 reaction = 1.0
 
-[sub_resource type="Resource" id="Resource_l1ayg"]
+[sub_resource type="Resource" id="Resource_lvnmi"]
 script = ExtResource("5_v6a3h")
 frequency = 1.0
 damping = 0.5
@@ -49,31 +49,31 @@ reaction = 100.0
 [sub_resource type="ViewportTexture" id="ViewportTexture_jcbkf"]
 viewport_path = NodePath("Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport")
 
-[sub_resource type="Resource" id="Resource_jo2bd"]
+[sub_resource type="Resource" id="Resource_wqhcp"]
 script = ExtResource("5_v6a3h")
 frequency = 1.0
 damping = 1.0
 reaction = 1.0
 
-[sub_resource type="Resource" id="Resource_svkjh"]
+[sub_resource type="Resource" id="Resource_68j8x"]
 script = ExtResource("5_v6a3h")
 frequency = 1.0
 damping = 1.0
 reaction = 1.0
 
-[sub_resource type="Resource" id="Resource_fnty6"]
+[sub_resource type="Resource" id="Resource_iqjqe"]
 script = ExtResource("5_v6a3h")
 frequency = 1.0
 damping = 5.0
 reaction = 1.0
 
-[sub_resource type="Resource" id="Resource_rqnbe"]
+[sub_resource type="Resource" id="Resource_qiix4"]
 script = ExtResource("5_v6a3h")
 frequency = 1.0
 damping = 5.0
 reaction = 1.0
 
-[sub_resource type="Resource" id="Resource_to3g2"]
+[sub_resource type="Resource" id="Resource_tdte5"]
 script = ExtResource("5_v6a3h")
 frequency = 1.0
 damping = 0.5
@@ -889,7 +889,7 @@ visible = false
 visible = false
 
 [node name="HeadStayAt" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/Piloting/PilotingSkeleton/SoupStack" index="6"]
-easing = SubResource("Resource_q850e")
+easing = SubResource("Resource_y4js7")
 
 [node name="BicepLeft" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/Piloting/PilotingSkeleton/BodyRoot/Torso" index="0"]
 rotation = -0.317793
@@ -1083,16 +1083,16 @@ visible = true
 visible = false
 
 [node name="HeadStayAt" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/SoupStack" index="3"]
-easing = SubResource("Resource_d16ek")
+easing = SubResource("Resource_4xw0i")
 
 [node name="Tail01StayAt" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/SoupStack" index="4"]
-easing = SubResource("Resource_jw6u0")
+easing = SubResource("Resource_63idv")
 
 [node name="Tail02StayAt" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/SoupStack" index="5"]
-easing = SubResource("Resource_kwnpt")
+easing = SubResource("Resource_v078e")
 
 [node name="TailTipJiggle" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/SoupStack" index="7"]
-easing = SubResource("Resource_l1ayg")
+easing = SubResource("Resource_lvnmi")
 
 [node name="BicepRight" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/BodyRoot/Torso" index="0"]
 rotation = 0.0193877
@@ -1220,7 +1220,7 @@ visible = false
 visible = false
 
 [node name="HeadStayAt" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/Piloting/PilotingSkeleton/SoupStack" index="6"]
-easing = SubResource("Resource_jo2bd")
+easing = SubResource("Resource_wqhcp")
 
 [node name="BicepLeft" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/Piloting/PilotingSkeleton/BodyRoot/Torso" index="0"]
 rotation = -0.317793
@@ -1414,16 +1414,16 @@ position = Vector2(-50.8043, 108.262)
 visible = false
 
 [node name="HeadStayAt" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/SoupStack" index="3"]
-easing = SubResource("Resource_svkjh")
+easing = SubResource("Resource_68j8x")
 
 [node name="Tail01StayAt" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/SoupStack" index="4"]
-easing = SubResource("Resource_fnty6")
+easing = SubResource("Resource_iqjqe")
 
 [node name="Tail02StayAt" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/SoupStack" index="5"]
-easing = SubResource("Resource_rqnbe")
+easing = SubResource("Resource_qiix4")
 
 [node name="TailTipJiggle" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/SoupStack" index="7"]
-easing = SubResource("Resource_to3g2")
+easing = SubResource("Resource_tdte5")
 
 [node name="BicepRight" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/BodyRoot/Torso" index="0"]
 rotation = 0.0193877

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bwr1ybx6cbtj2"
+path="res://.godot/imported/radioactive orgasmic glow body.mp3-590636e1cceb52ab9d81b73b9f864c93.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/music/radioactive orgasmic glow body.mp3"
+dest_files=["res://.godot/imported/radioactive orgasmic glow body.mp3-590636e1cceb52ab9d81b73b9f864c93.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
