@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://8qyhsjnpkbox"]
 
-[ext_resource type="Shader" path="res://assets/shaders/tentamech.gdshader" id="2_uvpjx"]
+[ext_resource type="Shader" uid="uid://x7id83ixiawd" path="res://assets/shaders/tentamech.gdshader" id="2_uvpjx"]
 [ext_resource type="Texture2D" uid="uid://b0rc74qym38id" path="res://assets/materials/textures/ShieldTex.jpg" id="3_y5eei"]
 
 [sub_resource type="Gradient" id="Gradient_a7fjg"]
@@ -20,6 +20,7 @@ gradient = SubResource("Gradient_rytbr")
 [resource]
 render_priority = 1
 shader = ExtResource("2_uvpjx")
+shader_parameter/unshaded = false
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/solid_albedo = null
 shader_parameter/use_solid_albedo = false

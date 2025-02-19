@@ -2,6 +2,7 @@ extends Area3D
 class_name DamageCollision3D
 
 @export var damage_value : int = -1
+@export var damage_type : DamageType.TYPE = DamageType.TYPE.NEUTRAL
 
 signal damage_dealt
 
@@ -17,5 +18,5 @@ func _on_area_entered(area: Area3D):
 	else:
 		return
 
-	health_component.adjust_health(damage_value)
+	health_component.adjust_health(damage_value, damage_type)
 	damage_dealt.emit()

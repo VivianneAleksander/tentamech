@@ -22,6 +22,7 @@ class BulletArgs :
 	## Use a low number for bullets that will collide with the player. Use a higher number for bullets
 	## that collide with enemies.
 	var damage : int = 1
+	var damage_type : DamageType.TYPE = DamageType.TYPE.NEUTRAL
 	## Bitmask. Sets collision layer and mask. Use 0b1 for player, 0b10 for enemies.
 	var alliance : BulletBase.ALLIANCE = BulletBase.ALLIANCE.NEUTRAL
 
@@ -40,7 +41,9 @@ func prepare(args : BulletArgs) -> void:
 	velocity = dir * args.velocity
 	
 	player_hitbox.damage_value = args.damage
+	player_hitbox.damage_type = args.damage_type
 	enemy_hitbox.damage_value = args.damage
+	enemy_hitbox.damage_type = args.damage_type
 
 	set_alliance(args.alliance)
 

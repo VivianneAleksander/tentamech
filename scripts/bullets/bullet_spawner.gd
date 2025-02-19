@@ -9,9 +9,11 @@ class_name BulletSpawner
 @export var _should_spawn_at_all : bool = false
 @export var _location_placeholders : Array[Node3D]
 var current_location_placeholder : int = 0
+@export_category("Bullet Arguments")
 @export var _direction : Vector3 = Vector3.RIGHT
 @export var _velocity : float = 1.0
 @export var _damage : int = -1
+@export var _damage_type : DamageType.TYPE = DamageType.TYPE.NEUTRAL
 @export var _alliance : BulletBase.ALLIANCE = BulletBase.ALLIANCE.PLAYER
 
 var bullet_args : BulletBase.BulletArgs
@@ -73,4 +75,5 @@ func update_bullet_args():
 	bullet_args.direction = _direction
 	bullet_args.velocity = _velocity
 	bullet_args.damage = _damage
+	bullet_args.damage_type = _damage_type
 	bullet_args.alliance = _alliance

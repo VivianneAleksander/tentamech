@@ -1,14 +1,83 @@
-[gd_scene load_steps=4 format=3 uid="uid://deubp5l1jl5p3"]
+[gd_scene load_steps=15 format=3 uid="uid://deubp5l1jl5p3"]
 
 [ext_resource type="PackedScene" uid="uid://ccms4re0dq53k" path="res://scenes/prefabs/enemies/enemy_base.tscn" id="1_tyndw"]
 [ext_resource type="PackedScene" uid="uid://dr2e8fmtx5dsl" path="res://assets/meshes/enemies/shield.glb" id="2_1g0ui"]
 [ext_resource type="Material" uid="uid://8qyhsjnpkbox" path="res://assets/materials/enemies/shield.tres" id="3_ro43p"]
+[ext_resource type="Script" path="res://scripts/enemies/ai_taskmaster.gd" id="4_4o3j1"]
+[ext_resource type="Script" path="res://scripts/values/shield_resistance.gd" id="4_iyiun"]
+[ext_resource type="Script" uid="uid://by2cq2tceirwh" path="res://scripts/debug/debug_label.gd" id="5_1o1ms"]
+[ext_resource type="Script" path="res://scripts/enemies/move_to_target_rule.gd" id="5_velgh"]
+[ext_resource type="Script" path="res://scripts/enemies/friction_applicator.gd" id="6_mk30x"]
+[ext_resource type="Script" path="res://scripts/enemies/speed_cap.gd" id="7_2x7yu"]
+[ext_resource type="Shader" path="res://assets/shaders/shield.gdshader" id="8_sdbkp"]
 
-[node name="EnemyBase" instance=ExtResource("1_tyndw")]
+[sub_resource type="SphereMesh" id="SphereMesh_geu3p"]
+radius = 1.0
+height = 2.0
+
+[sub_resource type="Gradient" id="Gradient_asodn"]
+offsets = PackedFloat32Array(0, 0.646865, 0.759076)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0.45098, 0.396078, 1, 0, 1, 0.882353, 0.462745)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sxstr"]
+gradient = SubResource("Gradient_asodn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ar0o8"]
+render_priority = 0
+shader = ExtResource("8_sdbkp")
+shader_parameter/_columns = 7.13
+shader_parameter/_rows = 5.0
+shader_parameter/_wobble_speed = 0.22
+shader_parameter/_color_gradient = SubResource("GradientTexture1D_sxstr")
+
+[node name="Shield" instance=ExtResource("1_tyndw")]
 
 [node name="Mesh" parent="." index="2" instance=ExtResource("2_1g0ui")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0, 0, 0)
 
 [node name="ShieldMesh" parent="Mesh/ShieldArmature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_ro43p")
+
+[node name="ShieldResistance" type="Node" parent="HealthComponent" index="0"]
+script = ExtResource("4_iyiun")
+health = 50
+resistance_types = Array[int]([1, 2])
+heal_speed = 3.0
+
+[node name="DebugLabel" type="Node" parent="DebugTracker" index="1" node_paths=PackedStringArray("item_to_check")]
+script = ExtResource("5_1o1ms")
+label_name = "Shield"
+item_to_check = NodePath("../../HealthComponent/ShieldResistance")
+value = "shield_health.health"
+
+[node name="AITaskmaster" type="Node" parent="." index="5" node_paths=PackedStringArray("primary")]
+script = ExtResource("4_4o3j1")
+enabled = false
+primary = NodePath("..")
+acceleration = 0.5
+
+[node name="MoveToTargetRule" type="Node" parent="AITaskmaster" index="0"]
+script = ExtResource("5_velgh")
+
+[node name="FrictionApplicator" type="Node" parent="." index="6" node_paths=PackedStringArray("primary")]
+script = ExtResource("6_mk30x")
+primary = NodePath("..")
+
+[node name="SpeedCap" type="Node" parent="." index="7" node_paths=PackedStringArray("primary")]
+script = ExtResource("7_2x7yu")
+primary = NodePath("..")
+max_speed = 1.0
+
+[node name="ShieldMesh" type="Node3D" parent="." index="8"]
+
+[node name="Shield" type="MeshInstance3D" parent="ShieldMesh" index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+mesh = SubResource("SphereMesh_geu3p")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_ar0o8")
+
+[connection signal="death" from="HealthComponent" to="AITaskmaster" method="set_enabled" binds= [false]]
+[connection signal="shield_destroyed" from="HealthComponent/ShieldResistance" to="ShieldMesh" method="set_visible" binds= [false]]
+[connection signal="shield_restored" from="HealthComponent/ShieldResistance" to="ShieldMesh" method="set_visible" binds= [true]]
 
 [editable path="Mesh"]

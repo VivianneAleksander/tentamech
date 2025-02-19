@@ -6,4 +6,3 @@ class_name FrictionApplicator
 
 func _physics_process(delta):
 	primary.velocity = lerp(primary.velocity, Vector3.ZERO, clampf(friction * delta, 0.0, 1.0))
-

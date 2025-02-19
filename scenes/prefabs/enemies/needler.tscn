@@ -411,26 +411,26 @@ transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 
 
 [node name="Skeleton3D" parent="Mesh/NeedlerArmature" index="0"]
 bones/0/rotation = Quaternion(0, 0.945837, 0, -0.324643)
-bones/1/position = Vector3(3.47104e-10, -0.0432779, 1.95181e-08)
+bones/1/position = Vector3(-5.19065e-08, 0.14266, 1.95181e-08)
 bones/1/rotation = Quaternion(-1.40602e-07, 0.707107, 0.707107, -1.37679e-07)
-bones/2/rotation = Quaternion(0.797726, -0.127276, -0.278008, -0.519756)
+bones/2/rotation = Quaternion(0.801552, -0.13252, -0.28467, -0.508838)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.14624, -0.268881, -0.336196, 0.890668)
-bones/4/rotation = Quaternion(0.236742, 0.860497, 0.337721, 0.29907)
+bones/3/rotation = Quaternion(0.149866, -0.267392, -0.344826, 0.887207)
+bones/4/rotation = Quaternion(0.240832, 0.859156, 0.337665, 0.299722)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.821296, 0.254817, 0.425691, -0.281653)
-bones/6/rotation = Quaternion(0.338942, 0.174082, 0.747364, 0.544299)
+bones/5/rotation = Quaternion(0.82462, 0.257834, 0.428326, -0.26469)
+bones/6/rotation = Quaternion(0.340373, 0.166767, 0.75702, 0.532218)
 bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(0.0896184, 0.892299, 0.426366, -0.118251)
+bones/7/rotation = Quaternion(0.0870317, 0.889955, 0.433079, -0.113353)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/position = Vector3(1.19725, -2.12381, -0.755663)
-bones/9/position = Vector3(-1.10687, -1.31683, -0.699568)
+bones/8/position = Vector3(1.21232, -1.94254, -0.784093)
+bones/9/position = Vector3(-1.08893, -1.12817, -0.725664)
 
 [node name="NeedlerMesh" parent="Mesh/NeedlerArmature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_wwpxt")
 
 [node name="GunLAttachment" type="BoneAttachment3D" parent="Mesh/NeedlerArmature/Skeleton3D" index="1"]
-transform = Transform3D(0.155315, -0.767249, 0.622258, -0.679085, -0.540393, -0.496809, 0.71744, -0.345405, -0.604959, -0.480818, -2.12381, 1.33163)
+transform = Transform3D(0.155407, -0.767313, 0.622158, -0.679103, -0.540369, -0.496811, 0.717404, -0.345301, -0.605061, -0.47417, -1.91623, 1.36643)
 bone_name = "Gun.L"
 bone_idx = 4
 
@@ -438,7 +438,7 @@ bone_idx = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9426, 0)
 
 [node name="GunRAttachment" type="BoneAttachment3D" parent="Mesh/NeedlerArmature/Skeleton3D" index="2"]
-transform = Transform3D(-0.806994, -0.0184577, -0.59027, 0.538392, -0.433724, -0.722507, -0.242679, -0.900856, 0.359951, 1.30317, -1.31682, -0.127639)
+transform = Transform3D(-0.80695, -0.0183305, -0.590336, 0.538413, -0.4337, -0.722507, -0.242785, -0.900871, 0.359844, 1.30586, -1.09679, -0.095337)
 bone_name = "Gun.R"
 bone_idx = 7
 
