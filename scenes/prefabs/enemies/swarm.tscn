@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://csdeiqlsku7wy"]
+[gd_scene load_steps=14 format=3 uid="uid://csdeiqlsku7wy"]
 
 [ext_resource type="PackedScene" uid="uid://ccms4re0dq53k" path="res://scenes/prefabs/enemies/enemy_base.tscn" id="1_wuu5x"]
 [ext_resource type="ArrayMesh" uid="uid://xevcv0kdgoyt" path="res://assets/meshes/enemies/swarm_mesh.res" id="2_7d3og"]
@@ -6,6 +6,8 @@
 [ext_resource type="ArrayMesh" uid="uid://cy58rway5gain" path="res://assets/meshes/enemies/swarm_wing_big_mesh.res" id="4_5o1es"]
 [ext_resource type="ArrayMesh" uid="uid://dgo0d1bgxl6df" path="res://assets/meshes/enemies/swarm_wing_small_mesh.res" id="5_rieuj"]
 [ext_resource type="ArrayMesh" uid="uid://dqte8gh81te7" path="res://assets/meshes/enemies/swarm_wing_tiny_mesh.res" id="5_wh4o5"]
+[ext_resource type="Script" path="res://scripts/enemies/speed_cap.gd" id="7_0skaf"]
+[ext_resource type="Script" path="res://scripts/enemies/friction_applicator.gd" id="8_3naae"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_h560x"]
 
@@ -346,7 +348,6 @@ surface_material_override/0 = ExtResource("3_oll4m")
 transform = Transform3D(0.707106, 0, 0.707107, 0, 1, 0, -0.707106, 0, 0.707107, 0, 0, 0)
 
 [node name="WingSmallMesh" type="MeshInstance3D" parent="BodyMesh/WingSmallMeshOrigin" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = ExtResource("5_rieuj")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_oll4m")
@@ -355,7 +356,6 @@ surface_material_override/0 = ExtResource("3_oll4m")
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0)
 
 [node name="WingSmallMesh" type="MeshInstance3D" parent="BodyMesh/WingSmallMeshOrigin2" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = ExtResource("5_rieuj")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_oll4m")
@@ -379,3 +379,11 @@ libraries = {
 "": SubResource("AnimationLibrary_lskmh")
 }
 autoplay = "Fly"
+
+[node name="FrictionApplicator" type="Node" parent="." index="6" node_paths=PackedStringArray("primary")]
+script = ExtResource("8_3naae")
+primary = NodePath("..")
+
+[node name="SpeedCap" type="Node" parent="." index="7" node_paths=PackedStringArray("primary")]
+script = ExtResource("7_0skaf")
+primary = NodePath("..")

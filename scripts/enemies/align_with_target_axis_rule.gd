@@ -6,7 +6,7 @@ class_name AlignWithTargetAxisRule
 @export var min_distance : float = 1.0
 var axis_delta : float
 
-func _check_rule(primary : AreaCharacter3D, target : AreaCharacter3D) -> bool:
+func _check_rule(primary : AreaCharacter3D, target : Node3D) -> bool:
 	match axis:
 		0:
 			axis_delta = target.global_position.y - primary.global_position.y
@@ -18,7 +18,7 @@ func _check_rule(primary : AreaCharacter3D, target : AreaCharacter3D) -> bool:
 	if abs(axis_delta) > min_distance: return true
 	return false
 
-func _apply_rule(primary : AreaCharacter3D, target : AreaCharacter3D) -> Vector3:
+func _apply_rule(primary : AreaCharacter3D, target : Node3D) -> Vector3:
 	var force := Vector3.ZERO
 	match axis:
 		0:

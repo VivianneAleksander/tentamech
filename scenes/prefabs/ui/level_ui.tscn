@@ -7,11 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://cafnf8smr4lw4" path="res://scenes/prefabs/fly_jumper.tscn" id="5_2xels"]
 [ext_resource type="Script" path="res://addons/Souperior 2D Skeleton Modifications/Easing/soup_second_order_easing.gd" id="5_v6a3h"]
 [ext_resource type="FontFile" uid="uid://b7pk2316dx24c" path="res://assets/fonts/GAME_glm.ttf" id="7_6c8fl"]
-[ext_resource type="Shader" path="res://assets/shaders/infinity_wobble.gdshader" id="7_rl441"]
+[ext_resource type="Shader" path="res://assets/shaders/canvas_item/infinity_wobble.gdshader" id="7_rl441"]
 [ext_resource type="AudioStream" uid="uid://b8v0qrjxvnw4j" path="res://assets/sound/music/game over.mp3" id="9_7ypdt"]
 [ext_resource type="AudioStream" uid="uid://cjce35uiw5kgc" path="res://assets/sound/sfx/washingMachineCrunched.mp3" id="10_0e3b2"]
 [ext_resource type="Script" path="res://scripts/util/audio_fade_in_out.gd" id="11_cfbt2"]
-[ext_resource type="Shader" path="res://assets/shaders/ui_transition.gdshader" id="12_lsoqe"]
+[ext_resource type="Shader" path="res://assets/shaders/canvas_item/ui_transition.gdshader" id="12_lsoqe"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_gld3b"]
 viewport_path = NodePath("Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport")

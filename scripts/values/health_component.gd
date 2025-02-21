@@ -69,3 +69,10 @@ func set_invincible(time : float) -> void:
 
 func get_health_percentage() -> float:
 	return float(health) / float(max_health)
+
+func kill() -> void:
+	if is_dead: return
+	is_dead = true
+	health = 0
+	health_value_changed.emit(health)
+	death.emit()

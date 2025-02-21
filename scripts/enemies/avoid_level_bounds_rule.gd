@@ -15,7 +15,7 @@ var min_x_dist : float
 var max_y_dist : float
 var min_y_dist : float
 
-func _check_rule(primary : AreaCharacter3D, target : AreaCharacter3D) -> bool:
+func _check_rule(primary : AreaCharacter3D, target : Node3D) -> bool:
 	pos = primary.global_position
 	bounds = LevelManager.level_bounds
 	min_pos = bounds.position
@@ -36,7 +36,7 @@ func _check_rule(primary : AreaCharacter3D, target : AreaCharacter3D) -> bool:
 		return true
 	return false
 
-func _apply_rule(primary : AreaCharacter3D, target : AreaCharacter3D) -> Vector3:
+func _apply_rule(primary : AreaCharacter3D, target : Node3D) -> Vector3:
 	if max_x_dist >= min_distance:
 		max_x_dist = 0
 	if min_x_dist >= min_distance:

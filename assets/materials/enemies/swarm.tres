@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://dm23rmtqlan20"]
 
-[ext_resource type="Shader" path="res://assets/shaders/tentamech.gdshader" id="2_wcjqf"]
+[ext_resource type="Shader" uid="uid://x7id83ixiawd" path="res://assets/shaders/tentamech.gdshader" id="2_wcjqf"]
 [ext_resource type="Texture2D" uid="uid://bwnrgss7xln8g" path="res://assets/materials/textures/SwarmTex.jpg" id="3_16j8x"]
 
 [sub_resource type="Gradient" id="Gradient_a7fjg"]
@@ -20,6 +20,7 @@ gradient = SubResource("Gradient_rytbr")
 [resource]
 render_priority = 1
 shader = ExtResource("2_wcjqf")
+shader_parameter/unshaded = false
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/solid_albedo = null
 shader_parameter/use_solid_albedo = false

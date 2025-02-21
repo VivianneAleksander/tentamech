@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://deubp5l1jl5p3"]
+[gd_scene load_steps=18 format=3 uid="uid://deubp5l1jl5p3"]
 
 [ext_resource type="PackedScene" uid="uid://ccms4re0dq53k" path="res://scenes/prefabs/enemies/enemy_base.tscn" id="1_tyndw"]
 [ext_resource type="PackedScene" uid="uid://dr2e8fmtx5dsl" path="res://assets/meshes/enemies/shield.glb" id="2_1g0ui"]
@@ -30,6 +30,133 @@ shader_parameter/_rows = 5.0
 shader_parameter/_wobble_speed = 0.22
 shader_parameter/_color_gradient = SubResource("GradientTexture1D_sxstr")
 
+[sub_resource type="Animation" id="Animation_xjmab"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.098164, -1.92112, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ymbop"]
+resource_name = "entry"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-5.7211, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-4.65232, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-100.572, -0.25, 0, 0.5, -30.5785, -1.13678, -0.430472, 2.13373, 0.201723, -0.999882, 0, -0.098164, -1.92112, 0.25, 0),
+"times": PackedFloat32Array(0, 1.66667, 2)
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AITaskmaster")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"set_enabled"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.93333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [false],
+"method": &"set_hurtbox_monitoring"
+}, {
+"args": [true],
+"method": &"set_hurtbox_monitoring"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.93333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [false],
+"method": &"set_hitbox_monitoring"
+}, {
+"args": [true],
+"method": &"set_hitbox_monitoring"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ym41v"]
+_data = {
+"RESET": SubResource("Animation_xjmab"),
+"entry": SubResource("Animation_ymbop")
+}
+
 [node name="Shield" instance=ExtResource("1_tyndw")]
 
 [node name="Mesh" parent="." index="2" instance=ExtResource("2_1g0ui")]
@@ -37,6 +164,16 @@ transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 
 
 [node name="ShieldMesh" parent="Mesh/ShieldArmature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_ro43p")
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/ShieldArmature/Skeleton3D" index="1"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, -3.60002e-14, 1.50996e-07, 0, -1, 0, 0, 0)
+bone_name = "Head"
+bone_idx = 1
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Mesh/ShieldArmature/Skeleton3D/BoneAttachment3D" index="0"]
+remote_path = NodePath("../../../../../ShieldMesh")
+update_rotation = false
+update_scale = false
 
 [node name="ShieldResistance" type="Node" parent="HealthComponent" index="0"]
 script = ExtResource("4_iyiun")
@@ -75,6 +212,12 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 mesh = SubResource("SphereMesh_geu3p")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_ar0o8")
+
+[node name="EntryAnimations" type="AnimationPlayer" parent="." index="9"]
+libraries = {
+"": SubResource("AnimationLibrary_ym41v")
+}
+autoplay = "entry"
 
 [connection signal="death" from="HealthComponent" to="AITaskmaster" method="set_enabled" binds= [false]]
 [connection signal="shield_destroyed" from="HealthComponent/ShieldResistance" to="ShieldMesh" method="set_visible" binds= [false]]

@@ -1,0 +1,147 @@
+[gd_scene load_steps=25 format=3 uid="uid://bey6uie0cmw5d"]
+
+[ext_resource type="PackedScene" uid="uid://bj0yoycn0cvoe" path="res://assets/meshes/ui/main_menu_bg.glb" id="1_qvdbd"]
+[ext_resource type="Material" uid="uid://csdo4k8aygpwl" path="res://assets/materials/ui/main_menu_bg_ground.tres" id="2_ol3h2"]
+[ext_resource type="Texture2D" uid="uid://d3lcfk14ra7fu" path="res://assets/materials/textures/main_menu_bg_big_skyscraper_tex.png" id="3_mw5mg"]
+[ext_resource type="Shader" path="res://assets/shaders/spatial/medium_sky_scrapers].gdshader" id="4_qgx58"]
+[ext_resource type="Texture2D" uid="uid://ccfn46keldaf" path="res://assets/materials/textures/main_menu_bg_skyscraper_texture.png" id="5_vimw7"]
+[ext_resource type="Texture2D" uid="uid://bxawj2ktx6ggt" path="res://assets/materials/textures/main_menu_bg_perch_tex.png" id="6_x1ydy"]
+[ext_resource type="Shader" path="res://assets/shaders/spatial/skyline_generator.gdshader" id="7_nmxkh"]
+[ext_resource type="Texture2D" uid="uid://dowkyto02xcrc" path="res://assets/materials/textures/skyline.png" id="8_2ds5f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_migwj"]
+albedo_texture = ExtResource("3_mw5mg")
+
+[sub_resource type="Gradient" id="Gradient_xj8fa"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.463235, 0.67402, 0.808824)
+colors = PackedColorArray(0.773589, 0.109891, 0.772891, 1, 0.338806, 0.799794, 1, 1, 0.596209, 0.463474, 1, 1, 0.940109, 0.306314, 0.552812, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kibow"]
+gradient = SubResource("Gradient_xj8fa")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f4t5d"]
+render_priority = 0
+shader = ExtResource("4_qgx58")
+shader_parameter/skyscraper_tex = ExtResource("5_vimw7")
+shader_parameter/skyscraper_color = SubResource("GradientTexture1D_kibow")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xyqbt"]
+albedo_texture = ExtResource("6_x1ydy")
+
+[sub_resource type="Shader" id="Shader_r8ft0"]
+code = "shader_type spatial;
+render_mode unshaded, cull_back;
+
+uniform sampler2D building_color : source_color;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	vec3 normal = (INV_VIEW_MATRIX * vec4(NORMAL, 0.0)).rgb;
+	vec4 color = texture(building_color, vec2(normal.x, 0.0));
+	ALBEDO = COLOR.rgb * color.rgb;
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the material.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ofaqr"]
+gradient = SubResource("Gradient_xj8fa")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q8du3"]
+render_priority = 0
+shader = SubResource("Shader_r8ft0")
+shader_parameter/building_color = SubResource("GradientTexture1D_ofaqr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlaxd"]
+shading_mode = 0
+albedo_color = Color(0.168627, 0.152941, 0.462745, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5oyxv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4gxok"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ivcqm"]
+render_priority = 0
+shader = ExtResource("7_nmxkh")
+shader_parameter/color = Color(0.577004, 0.422598, 0.943105, 1)
+shader_parameter/uv_scale = Vector2(1.4, 3.29)
+shader_parameter/tex = ExtResource("8_2ds5f")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ai1dk"]
+sky_top_color = Color(0.0707828, 7.78756e-05, 0.20937, 1)
+sky_horizon_color = Color(0.443728, 0.678519, 0.892666, 1)
+sky_curve = 0.0174944
+ground_bottom_color = Color(0.0385833, 0.207157, 0.414988, 1)
+ground_horizon_color = Color(0.443137, 0.678431, 0.894118, 1)
+
+[sub_resource type="Sky" id="Sky_ipitf"]
+sky_material = SubResource("ProceduralSkyMaterial_ai1dk")
+
+[sub_resource type="Environment" id="Environment_exvfj"]
+background_mode = 2
+sky = SubResource("Sky_ipitf")
+glow_enabled = true
+glow_intensity = 0.4
+glow_strength = 1.2
+glow_bloom = 0.01
+glow_blend_mode = 1
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.197995, 0.156184, 0.368036, 1)
+fog_density = 0.6487
+fog_sky_affect = 0.0
+fog_depth_curve = 0.233258
+fog_depth_begin = 0.0
+fog_depth_end = 94.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_c36qy"]
+
+[node name="MainMenuBG" type="Node3D"]
+
+[node name="Mesh" parent="." instance=ExtResource("1_qvdbd")]
+transform = Transform3D(1, 0, 0, 0, 0.999657, -0.0261769, 0, 0.0261769, 0.999657, 0, 0, 0)
+
+[node name="Cityscape" parent="Mesh" index="1"]
+surface_material_override/0 = ExtResource("2_ol3h2")
+surface_material_override/1 = SubResource("StandardMaterial3D_migwj")
+surface_material_override/2 = SubResource("ShaderMaterial_f4t5d")
+surface_material_override/3 = SubResource("StandardMaterial3D_xyqbt")
+surface_material_override/4 = SubResource("ShaderMaterial_q8du3")
+surface_material_override/5 = SubResource("StandardMaterial3D_hlaxd")
+
+[node name="Moon01" parent="Mesh" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_5oyxv")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Mesh/Moon01" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.72529e-09, 2.34008)
+light_energy = 4096.0
+
+[node name="Moon02" parent="Mesh" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_4gxok")
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Mesh/Moon02" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.811244)
+light_energy = 4096.0
+
+[node name="Point" parent="Mesh" index="4"]
+light_energy = 11.504
+
+[node name="Skyscrapers" parent="Mesh" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.7437, -28.8742, -164.609)
+surface_material_override/0 = SubResource("ShaderMaterial_ivcqm")
+
+[node name="Sun" parent="Mesh" index="6"]
+light_energy = 0.198
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_exvfj")
+camera_attributes = SubResource("CameraAttributesPractical_c36qy")
+
+[editable path="Mesh"]

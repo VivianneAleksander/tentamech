@@ -2,6 +2,7 @@ extends AreaCharacter3D
 class_name EnemyBase
 
 @onready var hitbox := get_node("Hitbox") as Area3D
+@onready var ai_taskmaster := $AITaskmaster as AITaskmaster
 
 func _ready():
 	super()

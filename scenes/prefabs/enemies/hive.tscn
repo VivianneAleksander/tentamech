@@ -1,14 +1,38 @@
-[gd_scene load_steps=4 format=3 uid="uid://bk18yspkip810"]
+[gd_scene load_steps=9 format=3 uid="uid://bk18yspkip810"]
 
 [ext_resource type="PackedScene" uid="uid://ccms4re0dq53k" path="res://scenes/prefabs/enemies/enemy_base.tscn" id="1_jpdb4"]
 [ext_resource type="PackedScene" uid="uid://d2snehtb62er4" path="res://assets/meshes/enemies/hive.glb" id="2_2rpy3"]
 [ext_resource type="Material" uid="uid://yomvhxy57c4u" path="res://assets/materials/enemies/hive.tres" id="3_g3cn5"]
+[ext_resource type="Script" path="res://scripts/enemies/ai_taskmaster.gd" id="4_igyg0"]
+[ext_resource type="Script" path="res://scripts/enemies/move_to_target_rule.gd" id="5_r7pbo"]
+[ext_resource type="Script" path="res://scripts/enemies/friction_applicator.gd" id="6_5xk4p"]
+[ext_resource type="Script" path="res://scripts/enemies/speed_cap.gd" id="7_e4vqx"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_spawner.gd" id="8_joo8l"]
 
-[node name="EnemyBase" instance=ExtResource("1_jpdb4")]
+[node name="Hive" instance=ExtResource("1_jpdb4")]
 
 [node name="Mesh" parent="." index="2" instance=ExtResource("2_2rpy3")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0, 0, 0)
 
 [node name="HiveMesh" parent="Mesh/HiveArmature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_g3cn5")
+
+[node name="AITaskmaster" type="Node" parent="." index="5" node_paths=PackedStringArray("primary")]
+script = ExtResource("4_igyg0")
+primary = NodePath("..")
+
+[node name="MoveToTargetRule" type="Node" parent="AITaskmaster" index="0"]
+script = ExtResource("5_r7pbo")
+
+[node name="FrictionApplicator" type="Node" parent="." index="6" node_paths=PackedStringArray("primary")]
+script = ExtResource("6_5xk4p")
+primary = NodePath("..")
+
+[node name="SpeedCap" type="Node" parent="." index="7" node_paths=PackedStringArray("primary")]
+script = ExtResource("7_e4vqx")
+primary = NodePath("..")
+
+[node name="EnemySpawner" type="Node" parent="." index="8"]
+script = ExtResource("8_joo8l")
 
 [editable path="Mesh"]

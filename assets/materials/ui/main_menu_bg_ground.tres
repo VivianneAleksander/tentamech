@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://csdo4k8aygpwl"]
+
+[ext_resource type="Shader" path="res://assets/shaders/spatial/normal_to_albedo.gdshader" id="1_227kv"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_227kv")
+shader_parameter/color_shift = Vector3(0.186, -1, 0.825)
