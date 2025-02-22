@@ -6,7 +6,7 @@ uniform vec4 color : source_color = vec4(1.0);
 uniform vec2 uv_scale = vec2(1.0);
 
 float snap(float a, float i) {
-	
+
 	return a - mod(a, i);
 }
 
