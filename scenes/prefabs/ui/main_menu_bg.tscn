@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bey6uie0cmw5d"]
+[gd_scene load_steps=50 format=3 uid="uid://bey6uie0cmw5d"]
 
 [ext_resource type="PackedScene" uid="uid://bj0yoycn0cvoe" path="res://assets/meshes/ui/main_menu_bg.glb" id="1_qvdbd"]
 [ext_resource type="Material" uid="uid://csdo4k8aygpwl" path="res://assets/materials/ui/main_menu_bg_ground.tres" id="2_ol3h2"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dgpc8aagyntwi" path="res://assets/materials/textures/main_menu_bg_ui doodles.png" id="9_07o48"]
 [ext_resource type="Script" path="res://scripts/util/path_follow_automation.gd" id="10_1xi2c"]
 [ext_resource type="ArrayMesh" uid="uid://q5ur6sb67877" path="res://assets/meshes/ui/main_menu_bg_ship_low_poly.res" id="10_8dokw"]
+[ext_resource type="AudioStream" uid="uid://cpbofsaktmcr2" path="res://assets/sound/sfx/ship sound.ogg" id="10_unlqt"]
 [ext_resource type="AudioStream" uid="uid://qbi4o756f6rh" path="res://assets/sound/music/chill party in outer space.mp3" id="12_8orrs"]
 [ext_resource type="AudioStream" uid="uid://bpcs31e65l4qt" path="res://assets/sound/sfx/crowd_noises.mp3" id="13_dx7oi"]
 [ext_resource type="AudioStream" uid="uid://cjce35uiw5kgc" path="res://assets/sound/sfx/washingMachineCrunched.mp3" id="14_w7ctf"]
@@ -80,6 +81,68 @@ shader_parameter/color = Color(0.577004, 0.422598, 0.943105, 1)
 shader_parameter/uv_scale = Vector2(7.48, 3.29)
 shader_parameter/tex = ExtResource("8_2ds5f")
 
+[sub_resource type="Animation" id="Animation_d2qu0"]
+resource_name = "whoosh_crossfade"
+length = 40.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WhooshSFX:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-18.3667, 8.9, 20.8667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WhooshSFX2:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 26.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_m3m1q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WhooshSFX:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WhooshSFX2:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jto20"]
+_data = {
+"RESET": SubResource("Animation_m3m1q"),
+"whoosh_crossfade": SubResource("Animation_d2qu0")
+}
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ai1dk"]
 sky_top_color = Color(0.0707828, 7.78756e-05, 0.20937, 1)
 sky_horizon_color = Color(0.443728, 0.678519, 0.892666, 1)
@@ -144,10 +207,10 @@ height = 0.2
 
 [sub_resource type="Curve3D" id="Curve3D_fp35m"]
 _data = {
-"points": PackedVector3Array(-31.9613, 4.26285, 27.8494, 31.9613, -4.26285, -27.8494, -1.87669, 8.83631, 38.7772, 46.4352, 3.08587, 17.5434, -46.4352, -3.08587, -17.5434, -32.6893, 5.73923, -59.2503, 30.2621, 4.00543e-05, -25.6532, -30.2621, -4.00543e-05, 25.6532, -112.194, 6.15362, -39.3143, -123.194, -0.835075, 25.7658, 123.194, 0.835075, -25.7658, -4.47556, 7.79975, 40.1573),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
+"points": PackedVector3Array(-15.2742, 0.834968, 20.6179, 15.2742, -0.834968, -20.6179, -1.87669, 8.83631, 38.7772, 118.323, 3.08594, 21.9436, -118.323, -3.08594, -21.9436, -55.8754, 5.73926, -67.0335, -164.147, -0.835024, 173.863, 164.147, 0.835024, -173.863, -1.877, 8.836, 38.777),
+"tilts": PackedFloat32Array(0, 0, 0)
 }
-point_count = 4
+point_count = 3
 
 [sub_resource type="Curve3D" id="Curve3D_eb8kv"]
 _data = {
@@ -170,6 +233,33 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="Animation" id="Animation_xu6aq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CrowdSounds02:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CrowdSounds:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_8q2ol"]
 resource_name = "crowd_sounds_crossfade"
 length = 111.5
@@ -177,53 +267,26 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CrowdSounds:volume_db")
+tracks/0/path = NodePath("CrowdSounds:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.4, 111.5),
-"transitions": PackedFloat32Array(12.5533, 1),
-"update": 0,
-"values": [0.0, -80.0]
+"times": PackedFloat32Array(-77.2333, 32.2333, 78.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CrowdSounds02:volume_db")
+tracks/1/path = NodePath("CrowdSounds02:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 111.5),
-"transitions": PackedFloat32Array(0.101532, 1),
-"update": 0,
-"values": [-80.0, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_xu6aq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CrowdSounds:volume_db")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CrowdSounds02:volume_db")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-80.0]
+"times": PackedFloat32Array(0, 107.833),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_23no1"]
@@ -237,56 +300,56 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WashingMachineCrunchedSound:volume_db")
+tracks/0/path = NodePath("WashingMachineCrunchedSound:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WashingMachineCrunchedSound02:volume_db")
+tracks/1/path = NodePath("WashingMachineCrunchedSound02:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-80.0]
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_uu5h1"]
 resource_name = "crowd_sounds_crossfade"
-length = 111.5
+length = 70.85
 loop_mode = 1
 step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WashingMachineCrunchedSound:volume_db")
+tracks/0/path = NodePath("WashingMachineCrunchedSound:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 111.5),
-"transitions": PackedFloat32Array(9.18958, 1),
-"update": 0,
-"values": [0.0, -80.0]
+"times": PackedFloat32Array(-47, 22, 46),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WashingMachineCrunchedSound02:volume_db")
+tracks/1/path = NodePath("WashingMachineCrunchedSound02:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 111.5),
-"transitions": PackedFloat32Array(0.105112, 1),
-"update": 0,
-"values": [-80.0, 0.0]
+"times": PackedFloat32Array(0, 70.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vfxeh"]
@@ -333,7 +396,25 @@ surface_material_override/0 = SubResource("ShaderMaterial_ivcqm")
 light_energy = 0.198
 
 [node name="ShipHighPoly" parent="Mesh" index="8"]
-transform = Transform3D(0.779792, 0.0291052, 0.625114, -0.0555685, 0.997878, 0.0228422, -0.623322, -0.0525485, 0.779999, 0.59485, 6.03305, -35.6364)
+transform = Transform3D(0.976471, 0.00609666, -0.214878, 0.00151476, 0.999061, 0.0352392, 0.21496, -0.0347347, 0.975855, 20.0892, 8.19766, -2.55202)
+
+[node name="WhooshSFX" type="AudioStreamPlayer3D" parent="Mesh/ShipHighPoly" index="0"]
+stream = ExtResource("10_unlqt")
+unit_size = 40.0
+max_distance = 64.0
+doppler_tracking = 1
+
+[node name="WhooshSFX2" type="AudioStreamPlayer3D" parent="Mesh/ShipHighPoly" index="1"]
+stream = ExtResource("10_unlqt")
+unit_size = 40.0
+max_distance = 64.0
+doppler_tracking = 1
+
+[node name="WhooshSFXCrossFade" type="AnimationPlayer" parent="Mesh/ShipHighPoly" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_jto20")
+}
+autoplay = "whoosh_crossfade"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_exvfj")
@@ -356,12 +437,13 @@ draw_pass_1 = SubResource("SphereMesh_0nlak")
 curve = SubResource("Curve3D_fp35m")
 
 [node name="ShipPathFollow" type="PathFollow3D" parent="ShipPath"]
-transform = Transform3D(0.779792, 0.0291052, 0.625114, -0.0392328, 0.998912, 0.00241639, -0.624562, -0.0264091, 0.780329, 0.59485, 6.96383, -35.4663)
-progress = 82.5217
+transform = Transform3D(0.976471, 0.00609666, -0.214878, -0.00411274, 0.999628, 0.00968223, 0.214925, -0.00857047, 0.976443, 20.0892, 8.26165, -2.33655)
+progress = 46.9766
 script = ExtResource("10_1xi2c")
 enabled_in_editor = true
 follow_speed = 0.007
 starting_ratio = 0.9
+process_type = 1
 
 [node name="ShipPathTransform" type="RemoteTransform3D" parent="ShipPath/ShipPathFollow"]
 remote_path = NodePath("../../../Mesh/ShipHighPoly")
@@ -370,8 +452,8 @@ remote_path = NodePath("../../../Mesh/ShipHighPoly")
 curve = SubResource("Curve3D_eb8kv")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="MinorShipPath01"]
-transform = Transform3D(0.110337, 0.135969, 0.984377, 0.202713, 0.966521, -0.156224, -0.972835, 0.216819, 0.0790929, 39.5354, 7.74491, -59.647)
-progress = 23.8157
+transform = Transform3D(0.0696507, 0.128148, 0.989141, 0.208847, 0.96769, -0.140077, -0.9753, 0.216369, 0.0406437, 29.3973, 9.27078, -60.2553)
+progress = 34.0867
 script = ExtResource("10_1xi2c")
 enabled_in_editor = true
 follow_speed = 0.02
@@ -385,8 +467,8 @@ skeleton = NodePath("../../..")
 curve = SubResource("Curve3D_6xlxh")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="MinorShipPath02"]
-transform = Transform3D(0.00661229, -0.0361998, -0.99915, -0.161324, 0.985996, -0.0367941, 0.986703, 0.161451, 0.000679944, 42.6894, 6.3646, -86.7145)
-progress = 148.582
+transform = Transform3D(0.0476915, -0.0309362, -0.998211, -0.159778, 0.98619, -0.0382005, 0.985821, 0.161335, 0.0420995, 56.4131, 6.88046, -86.9993)
+progress = 162.319
 script = ExtResource("10_1xi2c")
 enabled_in_editor = true
 follow_speed = 0.02
@@ -401,8 +483,8 @@ skeleton = NodePath("../../..")
 curve = SubResource("Curve3D_javkk")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="MinorShipPath03"]
-transform = Transform3D(0.801172, 0.0102573, 0.598097, 0.0292698, 0.997813, -0.056321, -0.597468, 0.0626369, 0.799256, -5.82921, 7.97267, -74.6052)
-progress = 85.3249
+transform = Transform3D(0.085374, 0.0632997, -0.994187, 0.0266011, 0.997306, 0.0657857, 0.995847, -0.0320668, 0.0834745, -4.82879, 8.11574, -79.3276)
+progress = 3.08312
 script = ExtResource("10_1xi2c")
 enabled_in_editor = true
 follow_speed = 0.02
@@ -413,7 +495,7 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 mesh = ExtResource("10_8dokw")
 skeleton = NodePath("../../..")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_8orrs")
 autoplay = true
 
@@ -422,12 +504,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.546, 0, -35)
 
 [node name="CrowdSounds" type="AudioStreamPlayer3D" parent="CrowdSoundsContainer"]
 stream = ExtResource("13_dx7oi")
-autoplay = true
 
 [node name="CrowdSounds02" type="AudioStreamPlayer3D" parent="CrowdSoundsContainer"]
 stream = ExtResource("13_dx7oi")
-volume_db = -80.0
-autoplay = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CrowdSoundsContainer"]
 libraries = {
@@ -440,12 +519,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -23)
 
 [node name="WashingMachineCrunchedSound" type="AudioStreamPlayer3D" parent="WashingMachineSoundsContainer"]
 stream = ExtResource("14_w7ctf")
-autoplay = true
 
 [node name="WashingMachineCrunchedSound02" type="AudioStreamPlayer3D" parent="WashingMachineSoundsContainer"]
 stream = ExtResource("14_w7ctf")
-volume_db = -80.0
-autoplay = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="WashingMachineSoundsContainer"]
 libraries = {
