@@ -22,6 +22,7 @@ var current_checkpoint : int = 0
 
 @onready var level_ui : LevelUI = $LevelUI
 @onready var player := $Tentamech as PlayerCharacter
+@onready var score_manager := $ScoreManager as ScoreManager
 
 var game_is_over : bool = false
 
@@ -87,6 +88,9 @@ func start_level(idx : int) -> Level:
 		var level : Level = levels[idx].instantiate() as Level
 		add_child(level)
 		level.level_completed.connect(next_level)
+		for enemy : EnemyBase in get_tree().get_nodes_in_group("Enemies"):
+			enemy.character_died.connect(_on_enemy_death)
+		
 		return level as Level
 	
 func next_level() -> void:
@@ -107,12 +111,12 @@ func game_over() -> void:
 	print_debug("Game Over")
 	get_tree().call_group("AudioTracks", "queue_free")
 	level_ui.game_over()
-	FiringModeValue.current_firing_mode = 0
+	FiringModeValue.current_firing_mode = FiringModeValue.FIRE_MODE.SPREAD
 	game_is_over = true
 
 func game_finished() -> void:
 	print_debug("All Levels Cleared.")
-	FiringModeValue.current_firing_mode = 0
+	FiringModeValue.current_firing_mode =  FiringModeValue.FIRE_MODE.SPREAD
 	game_is_over = true
 
 
@@ -120,3 +124,8 @@ func _on_level_ui_game_quit() -> void:
 	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 	get_tree().quit.call_deferred()
 			
+
+func _on_enemy_death(enemy : AreaCharacter3D) -> void:
+	if not "score_value" in enemy: return
+	
+	score_manager.add_score(enemy.score_value)

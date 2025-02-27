@@ -1,78 +1,32 @@
-[gd_scene load_steps=50 format=3 uid="uid://bey6uie0cmw5d"]
+[gd_scene load_steps=55 format=3 uid="uid://bey6uie0cmw5d"]
 
+[ext_resource type="Script" path="res://scripts/ui/main_menu_bg.gd" id="1_enbn6"]
 [ext_resource type="PackedScene" uid="uid://bj0yoycn0cvoe" path="res://assets/meshes/ui/main_menu_bg.glb" id="1_qvdbd"]
 [ext_resource type="Material" uid="uid://csdo4k8aygpwl" path="res://assets/materials/ui/main_menu_bg_ground.tres" id="2_ol3h2"]
-[ext_resource type="Texture2D" uid="uid://d3lcfk14ra7fu" path="res://assets/materials/textures/main_menu_bg_big_skyscraper_tex.png" id="3_mw5mg"]
-[ext_resource type="Shader" path="res://assets/shaders/spatial/medium_sky_scrapers].gdshader" id="4_qgx58"]
-[ext_resource type="Texture2D" uid="uid://ccfn46keldaf" path="res://assets/materials/textures/main_menu_bg_skyscraper_texture.png" id="5_vimw7"]
-[ext_resource type="Texture2D" uid="uid://bxawj2ktx6ggt" path="res://assets/materials/textures/main_menu_bg_perch_tex.png" id="6_x1ydy"]
+[ext_resource type="Material" uid="uid://c1sqdh6caib1d" path="res://assets/materials/ui/main_menu_bg_big_skyscraper.tres" id="3_vsxb0"]
+[ext_resource type="Material" uid="uid://b8qt3xeftip3n" path="res://assets/materials/ui/main_menu_bg_medium_skyscraper.tres" id="4_wxi2e"]
+[ext_resource type="Material" uid="uid://bxcvsmkyq4lp3" path="res://assets/materials/ui/main_menu_bg_ledge.tres" id="5_tjdsi"]
+[ext_resource type="Material" uid="uid://cqjbl7b2cgv5t" path="res://assets/materials/ui/main_menu_bg_small_skyscrapers.tres" id="6_rqj54"]
 [ext_resource type="Shader" path="res://assets/shaders/spatial/skyline_generator.gdshader" id="7_nmxkh"]
+[ext_resource type="Material" uid="uid://ryye46dieixv" path="res://assets/materials/main_menu_bg_horizon_skyscrapers.tres" id="7_nw27h"]
 [ext_resource type="Texture2D" uid="uid://dowkyto02xcrc" path="res://assets/materials/textures/skyline.png" id="8_2ds5f"]
 [ext_resource type="Texture2D" uid="uid://dgpc8aagyntwi" path="res://assets/materials/textures/main_menu_bg_ui doodles.png" id="9_07o48"]
 [ext_resource type="Script" path="res://scripts/util/path_follow_automation.gd" id="10_1xi2c"]
-[ext_resource type="ArrayMesh" uid="uid://q5ur6sb67877" path="res://assets/meshes/ui/main_menu_bg_ship_low_poly.res" id="10_8dokw"]
 [ext_resource type="AudioStream" uid="uid://cpbofsaktmcr2" path="res://assets/sound/sfx/ship sound.ogg" id="10_unlqt"]
+[ext_resource type="Shader" path="res://assets/shaders/spatial/clouds.gdshader" id="11_8wona"]
 [ext_resource type="AudioStream" uid="uid://qbi4o756f6rh" path="res://assets/sound/music/chill party in outer space.mp3" id="12_8orrs"]
 [ext_resource type="AudioStream" uid="uid://bpcs31e65l4qt" path="res://assets/sound/sfx/crowd_noises.mp3" id="13_dx7oi"]
+[ext_resource type="PackedScene" uid="uid://b2gwt5hr0mv3p" path="res://scenes/prefabs/ui/low_poly_ship.tscn" id="13_gesu7"]
 [ext_resource type="AudioStream" uid="uid://cjce35uiw5kgc" path="res://assets/sound/sfx/washingMachineCrunched.mp3" id="14_w7ctf"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_migwj"]
-albedo_texture = ExtResource("3_mw5mg")
-
-[sub_resource type="Gradient" id="Gradient_xj8fa"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.463235, 0.67402, 0.808824)
-colors = PackedColorArray(0.773589, 0.109891, 0.772891, 1, 0.338806, 0.799794, 1, 1, 0.596209, 0.463474, 1, 1, 0.940109, 0.306314, 0.552812, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_kibow"]
-gradient = SubResource("Gradient_xj8fa")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f4t5d"]
-render_priority = 0
-shader = ExtResource("4_qgx58")
-shader_parameter/skyscraper_tex = ExtResource("5_vimw7")
-shader_parameter/skyscraper_color = SubResource("GradientTexture1D_kibow")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xyqbt"]
-albedo_texture = ExtResource("6_x1ydy")
-
-[sub_resource type="Shader" id="Shader_r8ft0"]
-code = "shader_type spatial;
-render_mode unshaded, cull_back;
-
-uniform sampler2D building_color : source_color;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	vec3 normal = (INV_VIEW_MATRIX * vec4(NORMAL, 0.0)).rgb;
-	vec4 color = texture(building_color, vec2(normal.x, 0.0));
-	ALBEDO = COLOR.rgb * color.rgb;
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the material.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ofaqr"]
-gradient = SubResource("Gradient_xj8fa")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q8du3"]
-render_priority = 0
-shader = SubResource("Shader_r8ft0")
-shader_parameter/building_color = SubResource("GradientTexture1D_ofaqr")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlaxd"]
-shading_mode = 0
-albedo_color = Color(0.168627, 0.152941, 0.462745, 1)
+[ext_resource type="PackedScene" uid="uid://dee56bhfxqip5" path="res://assets/meshes/tentamech.glb" id="17_vgre0"]
+[ext_resource type="Material" uid="uid://cuakkhn75dlen" path="res://assets/materials/tentamech_body.tres" id="18_owkcu"]
+[ext_resource type="Material" uid="uid://bcebdedm6l3i1" path="res://assets/materials/tentamech_windshield.tres" id="19_ut3l5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5oyxv"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4gxok"]
+disable_fog = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 3.7
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ivcqm"]
 render_priority = 0
@@ -80,6 +34,47 @@ shader = ExtResource("7_nmxkh")
 shader_parameter/color = Color(0.577004, 0.422598, 0.943105, 1)
 shader_parameter/uv_scale = Vector2(7.48, 3.29)
 shader_parameter/tex = ExtResource("8_2ds5f")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1q5mb"]
+diffuse_mode = 3
+disable_fog = true
+metallic = 0.73
+roughness = 0.65
+rim_enabled = true
+rim = 0.34
+clearcoat_enabled = true
+clearcoat_roughness = 0.77
+anisotropy_enabled = true
+anisotropy = 0.61
+backlight = Color(0.462291, 0.462291, 0.462291, 1)
+proximity_fade_distance = 389.41
+
+[sub_resource type="Animation" id="Animation_m3m1q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WhooshSFX:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WhooshSFX2:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_d2qu0"]
 resource_name = "whoosh_crossfade"
@@ -110,67 +105,64 @@ tracks/1/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_m3m1q"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("WhooshSFX:playing")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("WhooshSFX2:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jto20"]
 _data = {
 "RESET": SubResource("Animation_m3m1q"),
 "whoosh_crossfade": SubResource("Animation_d2qu0")
 }
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ai1dk"]
-sky_top_color = Color(0.0707828, 7.78756e-05, 0.20937, 1)
-sky_horizon_color = Color(0.443728, 0.678519, 0.892666, 1)
-sky_curve = 0.0174944
-ground_bottom_color = Color(0.0385833, 0.207157, 0.414988, 1)
-ground_horizon_color = Color(0.443137, 0.678431, 0.894118, 1)
+[sub_resource type="QuadMesh" id="QuadMesh_fmlgt"]
+size = Vector2(500, 500)
 
-[sub_resource type="Sky" id="Sky_ipitf"]
-sky_material = SubResource("ProceduralSkyMaterial_ai1dk")
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tgwii"]
+noise_type = 5
 
-[sub_resource type="Environment" id="Environment_exvfj"]
-background_mode = 2
-sky = SubResource("Sky_ipitf")
-glow_enabled = true
-glow_intensity = 0.4
-glow_strength = 1.2
-glow_bloom = 0.01
-glow_blend_mode = 1
-fog_enabled = true
-fog_mode = 1
-fog_light_color = Color(0.197995, 0.156184, 0.368036, 1)
-fog_density = 0.6487
-fog_sky_affect = 0.0
-fog_depth_curve = 0.233258
-fog_depth_begin = 0.0
-fog_depth_end = 94.0
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e4gka"]
+seamless = true
+noise = SubResource("FastNoiseLite_tgwii")
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_c36qy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ct7fm"]
+render_priority = 0
+shader = ExtResource("11_8wona")
+shader_parameter/color = Color(0.1875, 0.075, 0.3, 1)
+shader_parameter/speed = 0.01
+shader_parameter/direction = Vector2(0, 1)
+shader_parameter/shelf = 0.42
+shader_parameter/uv_scale = Vector2(2, 2)
+shader_parameter/depth_scale = 0.75
+shader_parameter/noise = SubResource("NoiseTexture2D_e4gka")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7x2dq"]
+render_priority = 0
+shader = ExtResource("11_8wona")
+shader_parameter/color = Color(0.1875, 0.075, 0.3, 1)
+shader_parameter/speed = 0.01
+shader_parameter/direction = Vector2(0, 1)
+shader_parameter/shelf = 0.62
+shader_parameter/uv_scale = Vector2(5, 5)
+shader_parameter/depth_scale = 0.5
+shader_parameter/noise = SubResource("NoiseTexture2D_e4gka")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aocws"]
+render_priority = 0
+shader = ExtResource("11_8wona")
+shader_parameter/color = Color(0.1875, 0.075, 0.3, 1)
+shader_parameter/speed = 0.01
+shader_parameter/direction = Vector2(0, 1)
+shader_parameter/shelf = 0.77
+shader_parameter/uv_scale = Vector2(10, 10)
+shader_parameter/depth_scale = 0.5
+shader_parameter/noise = SubResource("NoiseTexture2D_e4gka")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_myhq6"]
+transparency = 1
+shading_mode = 0
+disable_fog = true
+albedo_texture = ExtResource("9_07o48")
+billboard_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_h6fq6"]
+size = Vector2(1.1, 1.1)
 
 [sub_resource type="Curve" id="Curve_kp5i1"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(0.0424528, 1), 0.0, 0.0, 0, 0, Vector2(0.0471698, 0), -4.98823, 0.0, 0, 0, Vector2(0.0731132, 0), 0.0, 0.0, 0, 0, Vector2(0.0754717, 1), 0.0, 0.0, 0, 0, Vector2(0.181604, 1), 0.0, 0.0, 0, 0, Vector2(0.183962, 0), 0.0, 0.0, 0, 0, Vector2(0.200472, 0), 0.0, 0.0, 0, 0, Vector2(0.20283, 1), 0.0, 0.0, 0, 0, Vector2(0.346698, 1), 0.0, 0.0, 0, 0, Vector2(0.353774, 0), 0.0, 0.0, 0, 0, Vector2(0.372642, 0), 0.0, 0.0, 0, 0, Vector2(0.372652, 1), 0.0, 0.0, 0, 0, Vector2(0.495283, 1), 0.0, 0.0, 0, 0, Vector2(0.502358, 0), 0.0, 0.0, 0, 0]
@@ -197,6 +189,7 @@ hue_variation_max = 0.43
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_khi0a"]
 transparency = 1
 shading_mode = 0
+disable_fog = true
 vertex_color_use_as_albedo = true
 albedo_color = Color(1, 0.578369, 0.516824, 1)
 
@@ -358,32 +351,59 @@ _data = {
 "washing_machine_sounds_crossfade": SubResource("Animation_uu5h1")
 }
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ai1dk"]
+sky_top_color = Color(0.0707828, 7.78756e-05, 0.20937, 1)
+sky_horizon_color = Color(0.443728, 0.678519, 0.892666, 1)
+sky_curve = 0.0174944
+ground_bottom_color = Color(0.0385833, 0.207157, 0.414988, 1)
+ground_horizon_color = Color(0.443137, 0.678431, 0.894118, 1)
+
+[sub_resource type="Sky" id="Sky_ipitf"]
+sky_material = SubResource("ProceduralSkyMaterial_ai1dk")
+
+[sub_resource type="Environment" id="Environment_exvfj"]
+background_mode = 2
+sky = SubResource("Sky_ipitf")
+glow_enabled = true
+glow_intensity = 0.4
+glow_strength = 1.2
+glow_bloom = 0.01
+glow_blend_mode = 1
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.0962972, 0.0708965, 0.19872, 1)
+fog_density = 0.8572
+fog_aerial_perspective = 1.0
+fog_sky_affect = 0.0
+fog_height_density = -2.1513
+fog_depth_curve = 0.31864
+fog_depth_begin = 0.0
+fog_depth_end = 94.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_c36qy"]
+
 [node name="MainMenuBG" type="Node3D"]
+script = ExtResource("1_enbn6")
 
 [node name="Mesh" parent="." instance=ExtResource("1_qvdbd")]
 transform = Transform3D(1, 0, 0, 0, 0.999657, -0.0261769, 0, 0.0261769, 0.999657, 0, 0, 0)
 
+[node name="Camera" parent="Mesh" index="0"]
+transform = Transform3D(0.216636, 0.000911761, -0.059789, -3.03594e-07, 0.224711, 0.00342566, 0.0597959, -0.0033021, 0.216611, 2.1428, 2.31037, 2.44664)
+
 [node name="Cityscape" parent="Mesh" index="1"]
 surface_material_override/0 = ExtResource("2_ol3h2")
-surface_material_override/1 = SubResource("StandardMaterial3D_migwj")
-surface_material_override/2 = SubResource("ShaderMaterial_f4t5d")
-surface_material_override/3 = SubResource("StandardMaterial3D_xyqbt")
-surface_material_override/4 = SubResource("ShaderMaterial_q8du3")
-surface_material_override/5 = SubResource("StandardMaterial3D_hlaxd")
+surface_material_override/1 = ExtResource("3_vsxb0")
+surface_material_override/2 = ExtResource("4_wxi2e")
+surface_material_override/3 = ExtResource("5_tjdsi")
+surface_material_override/4 = ExtResource("6_rqj54")
+surface_material_override/5 = ExtResource("7_nw27h")
 
 [node name="Moon01" parent="Mesh" index="2"]
 surface_material_override/0 = SubResource("StandardMaterial3D_5oyxv")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Mesh/Moon01" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.72529e-09, 2.34008)
-light_energy = 4096.0
-
 [node name="Moon02" parent="Mesh" index="3"]
-surface_material_override/0 = SubResource("StandardMaterial3D_4gxok")
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="Mesh/Moon02" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.811244)
-light_energy = 4096.0
+surface_material_override/0 = SubResource("StandardMaterial3D_5oyxv")
 
 [node name="Point" parent="Mesh" index="4"]
 light_energy = 11.504
@@ -393,19 +413,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.744, -65.906, -164.609)
 surface_material_override/0 = SubResource("ShaderMaterial_ivcqm")
 
 [node name="Sun" parent="Mesh" index="6"]
+transform = Transform3D(-0.316308, 0.775664, -0.546164, 0.388734, 0.631146, 0.671223, 0.865353, 1.49012e-08, -0.501163, 0, 8.6806, 0)
 light_energy = 0.198
 
 [node name="ShipHighPoly" parent="Mesh" index="8"]
-transform = Transform3D(0.976471, 0.00609666, -0.214878, 0.00151476, 0.999061, 0.0352392, 0.21496, -0.0347347, 0.975855, 20.0892, 8.19766, -2.55202)
+transform = Transform3D(0.720928, -0.00626473, -0.692767, 0.0232255, 0.999301, 0.0151299, 0.692406, -0.026997, 0.720797, -4.26982, 9.90126, 41.0443)
+surface_material_override/0 = SubResource("StandardMaterial3D_1q5mb")
 
 [node name="WhooshSFX" type="AudioStreamPlayer3D" parent="Mesh/ShipHighPoly" index="0"]
 stream = ExtResource("10_unlqt")
+volume_db = -10.0
 unit_size = 40.0
 max_distance = 64.0
 doppler_tracking = 1
 
 [node name="WhooshSFX2" type="AudioStreamPlayer3D" parent="Mesh/ShipHighPoly" index="1"]
 stream = ExtResource("10_unlqt")
+volume_db = -10.0
 unit_size = 40.0
 max_distance = 64.0
 doppler_tracking = 1
@@ -416,117 +440,148 @@ libraries = {
 }
 autoplay = "whoosh_crossfade"
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_exvfj")
-camera_attributes = SubResource("CameraAttributesPractical_c36qy")
+[node name="SpotLight3D" type="SpotLight3D" parent="Mesh/ShipHighPoly" index="3"]
+transform = Transform3D(0.552153, -0.329307, -0.765953, -0.0118538, 0.915499, -0.402147, 0.833658, 0.231126, 0.501592, -5.26866, -2.41447, 3.0471)
+light_energy = 2.909
+spot_range = 25.0723
+spot_angle = 24.6086
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.043, 0, 0, 0, 0.043, 0, 0, 0, 0.043, 3.667, 2.283, -1.011)
-billboard = 1
-texture = ExtResource("9_07o48")
+[node name="CloudLayer" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 0.0754312, -0.997151, 0, 0.997151, 0.0754312, 47.65, 15.351, -144.575)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_fmlgt")
+surface_material_override/0 = SubResource("ShaderMaterial_ct7fm")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.394, 20.224, -90.981)
+[node name="CloudLayer2" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 0.0754312, -0.997151, 0, 0.997151, 0.0754312, 47.65, 16.346, -144.575)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_fmlgt")
+surface_material_override/0 = SubResource("ShaderMaterial_7x2dq")
+
+[node name="CloudLayer3" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 0.0754312, -0.997151, 0, 0.997151, 0.0754312, 47.65, 17.131, -144.575)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_fmlgt")
+surface_material_override/0 = SubResource("ShaderMaterial_aocws")
+
+[node name="FlyJumperSprite" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 0.999658, 0.0261769, 0, -0.0261769, 0.999658, 3.492, 2.256, -1.07)
+material_override = SubResource("StandardMaterial3D_myhq6")
+mesh = SubResource("QuadMesh_h6fq6")
+skeleton = NodePath("../..")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 0.999658, 0.0261769, 0, -0.0261769, 0.999658, 21.394, 17.8355, -91.4793)
 amount = 16
 lifetime = 40.0
 preprocess = 20.0
 process_material = SubResource("ParticleProcessMaterial_6yx2j")
 draw_pass_1 = SubResource("SphereMesh_0nlak")
 
-[node name="ShipPath" type="Path3D" parent="."]
+[node name="ShipPath" type="Path3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 0.999658, 0.0261769, 0, -0.0261769, 0.999658, 0, 0, 0)
 curve = SubResource("Curve3D_fp35m")
 
-[node name="ShipPathFollow" type="PathFollow3D" parent="ShipPath"]
-transform = Transform3D(0.976471, 0.00609666, -0.214878, -0.00411274, 0.999628, 0.00968223, 0.214925, -0.00857047, 0.976443, 20.0892, 8.26165, -2.33655)
-progress = 46.9766
+[node name="ShipPathFollow" type="PathFollow3D" parent="Mesh/ShipPath"]
+transform = Transform3D(0.720928, -0.00626473, -0.692767, 0.00509252, 0.999665, -0.0037435, 0.692777, -0.000829123, 0.720945, -4.26982, 8.82345, 41.2894)
+progress = 493.977
 script = ExtResource("10_1xi2c")
 enabled_in_editor = true
 follow_speed = 0.007
 starting_ratio = 0.9
 process_type = 1
 
-[node name="ShipPathTransform" type="RemoteTransform3D" parent="ShipPath/ShipPathFollow"]
-remote_path = NodePath("../../../Mesh/ShipHighPoly")
+[node name="ShipPathTransform" type="RemoteTransform3D" parent="Mesh/ShipPath/ShipPathFollow"]
+remote_path = NodePath("../../../ShipHighPoly")
 
-[node name="MinorShipPath01" type="Path3D" parent="."]
+[node name="MinorShipPath01" type="Path3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 0.999658, 0.0261769, 0, -0.0261769, 0.999658, 0, 0, 0)
 curve = SubResource("Curve3D_eb8kv")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="MinorShipPath01"]
-transform = Transform3D(0.0696507, 0.128148, 0.989141, 0.208847, 0.96769, -0.140077, -0.9753, 0.216369, 0.0406437, 29.3973, 9.27078, -60.2553)
-progress = 34.0867
+[node name="PathFollow3D" type="PathFollow3D" parent="Mesh/MinorShipPath01"]
+transform = Transform3D(0.0418508, 0.103355, -0.993592, -0.966686, 0.254927, -0.0141995, 0.251868, 0.961251, 0.110598, 50.8221, 3.85561, -50.0172)
+progress = 132.887
 script = ExtResource("10_1xi2c")
 enabled_in_editor = true
 follow_speed = 0.02
 
-[node name="ShipLowPoly01" type="MeshInstance3D" parent="MinorShipPath01/PathFollow3D"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-mesh = ExtResource("10_8dokw")
-skeleton = NodePath("../../..")
+[node name="ShipLowPoly01" parent="Mesh/MinorShipPath01/PathFollow3D" instance=ExtResource("13_gesu7")]
+skeleton = NodePath("../../../..")
 
-[node name="MinorShipPath02" type="Path3D" parent="."]
+[node name="MinorShipPath02" type="Path3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 0.999658, 0.0261769, 0, -0.0261769, 0.999658, 0, 0, 0)
 curve = SubResource("Curve3D_6xlxh")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="MinorShipPath02"]
-transform = Transform3D(0.0476915, -0.0309362, -0.998211, -0.159778, 0.98619, -0.0382005, 0.985821, 0.161335, 0.0420995, 56.4131, 6.88046, -86.9993)
-progress = 162.319
+[node name="PathFollow3D" type="PathFollow3D" parent="Mesh/MinorShipPath02"]
+transform = Transform3D(-0.476212, -0.0737559, -0.876036, -0.169167, 0.985322, 0.00899356, 0.862706, 0.152498, -0.481807, -5.29645, 4.98342, -92.0366)
+progress = 100.017
 script = ExtResource("10_1xi2c")
 enabled_in_editor = true
 follow_speed = 0.02
 starting_ratio = 0.6
 
-[node name="ShipLowPoly01" type="MeshInstance3D" parent="MinorShipPath02/PathFollow3D"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-mesh = ExtResource("10_8dokw")
-skeleton = NodePath("../../..")
+[node name="ShipLowPoly02" parent="Mesh/MinorShipPath02/PathFollow3D" instance=ExtResource("13_gesu7")]
+skeleton = NodePath("../../../..")
 
-[node name="MinorShipPath03" type="Path3D" parent="."]
+[node name="MinorShipPath03" type="Path3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 0.999658, 0.0261769, 0, -0.0261769, 0.999658, 0, 0, 0)
 curve = SubResource("Curve3D_javkk")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="MinorShipPath03"]
-transform = Transform3D(0.085374, 0.0632997, -0.994187, 0.0266011, 0.997306, 0.0657857, 0.995847, -0.0320668, 0.0834745, -4.82879, 8.11574, -79.3276)
-progress = 3.08312
+[node name="PathFollow3D" type="PathFollow3D" parent="Mesh/MinorShipPath03"]
+transform = Transform3D(0.38777, 0.0467245, 0.920411, 0.0662068, 0.99455, -0.0783839, -0.919211, 0.0913439, 0.382631, 12.4866, 6.36395, -63.1856)
+progress = 63.496
 script = ExtResource("10_1xi2c")
 enabled_in_editor = true
 follow_speed = 0.02
 starting_ratio = 0.8
 
-[node name="ShipLowPoly01" type="MeshInstance3D" parent="MinorShipPath03/PathFollow3D"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-mesh = ExtResource("10_8dokw")
-skeleton = NodePath("../../..")
+[node name="ShipLowPoly03" parent="Mesh/MinorShipPath03/PathFollow3D" instance=ExtResource("13_gesu7")]
+skeleton = NodePath("../../../..")
 
-[node name="BGMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_8orrs")
-autoplay = true
+[node name="CrowdSoundsContainer" type="Node3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 0.999658, 0.0261769, 0, -0.0261769, 0.999658, -12.546, -0.916192, -34.988)
 
-[node name="CrowdSoundsContainer" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.546, 0, -35)
-
-[node name="CrowdSounds" type="AudioStreamPlayer3D" parent="CrowdSoundsContainer"]
+[node name="CrowdSounds" type="AudioStreamPlayer3D" parent="Mesh/CrowdSoundsContainer"]
 stream = ExtResource("13_dx7oi")
 
-[node name="CrowdSounds02" type="AudioStreamPlayer3D" parent="CrowdSoundsContainer"]
+[node name="CrowdSounds02" type="AudioStreamPlayer3D" parent="Mesh/CrowdSoundsContainer"]
 stream = ExtResource("13_dx7oi")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CrowdSoundsContainer"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mesh/CrowdSoundsContainer"]
 libraries = {
 "": SubResource("AnimationLibrary_23no1")
 }
 autoplay = "crowd_sounds_crossfade"
 
-[node name="WashingMachineSoundsContainer" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -23)
+[node name="WashingMachineSoundsContainer" type="Node3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 0.999658, 0.0261769, 0, -0.0261769, 0.999658, 20, -0.602069, -22.9921)
 
-[node name="WashingMachineCrunchedSound" type="AudioStreamPlayer3D" parent="WashingMachineSoundsContainer"]
+[node name="WashingMachineCrunchedSound" type="AudioStreamPlayer3D" parent="Mesh/WashingMachineSoundsContainer"]
 stream = ExtResource("14_w7ctf")
 
-[node name="WashingMachineCrunchedSound02" type="AudioStreamPlayer3D" parent="WashingMachineSoundsContainer"]
+[node name="WashingMachineCrunchedSound02" type="AudioStreamPlayer3D" parent="Mesh/WashingMachineSoundsContainer"]
 stream = ExtResource("14_w7ctf")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="WashingMachineSoundsContainer"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mesh/WashingMachineSoundsContainer"]
 libraries = {
 "": SubResource("AnimationLibrary_vfxeh")
 }
 autoplay = "washing_machine_sounds_crossfade"
 
+[node name="tentamech" parent="Mesh" instance=ExtResource("17_vgre0")]
+transform = Transform3D(-0.405233, 0, 0.642951, 0, 0.76, 0, -0.642951, 0, -0.405233, 4.249, 1.663, -1.835)
+
+[node name="Tentamech" parent="Mesh/tentamech/TentamechArmature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("18_owkcu")
+surface_material_override/1 = ExtResource("19_ut3l5")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_exvfj")
+camera_attributes = SubResource("CameraAttributesPractical_c36qy")
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_8orrs")
+autoplay = true
+
 [editable path="Mesh"]
+[editable path="Mesh/tentamech"]

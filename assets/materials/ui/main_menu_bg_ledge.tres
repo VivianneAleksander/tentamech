@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bxcvsmkyq4lp3"]
+
+[ext_resource type="Texture2D" uid="uid://bxawj2ktx6ggt" path="res://assets/materials/textures/main_menu_bg_perch_tex.png" id="1_8meb6"]
+
+[resource]
+disable_fog = true
+albedo_texture = ExtResource("1_8meb6")

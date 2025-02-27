@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://b8qt3xeftip3n"]
+
+[ext_resource type="Shader" path="res://assets/shaders/spatial/medium_sky_scrapers].gdshader" id="1_cxndx"]
+[ext_resource type="Texture2D" uid="uid://ccfn46keldaf" path="res://assets/materials/textures/main_menu_bg_skyscraper_texture.png" id="2_axduw"]
+
+[sub_resource type="Gradient" id="Gradient_xj8fa"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.463235, 0.67402, 0.808824)
+colors = PackedColorArray(0.773589, 0.109891, 0.772891, 1, 0.338806, 0.799794, 1, 1, 0.596209, 0.463474, 1, 1, 0.940109, 0.306314, 0.552812, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kibow"]
+gradient = SubResource("Gradient_xj8fa")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_cxndx")
+shader_parameter/metallic = 0.785
+shader_parameter/roughness = 0.115
+shader_parameter/rim = 1.91
+shader_parameter/rim_tint = 0.0
+shader_parameter/clearcoat = 1.0
+shader_parameter/clearcoat_gloss = 0.0
+shader_parameter/anisotropy = 0.0
+shader_parameter/emission = 0.51
+shader_parameter/skyscraper_tex = ExtResource("2_axduw")
+shader_parameter/skyscraper_color = SubResource("GradientTexture1D_kibow")

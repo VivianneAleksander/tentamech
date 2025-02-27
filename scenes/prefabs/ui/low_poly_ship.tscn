@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2gwt5hr0mv3p"]
+
+[ext_resource type="ArrayMesh" uid="uid://q5ur6sb67877" path="res://assets/meshes/ui/main_menu_bg_ship_low_poly.res" id="1_q54ab"]
+
+[node name="ShipLowPoly01" type="MeshInstance3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = ExtResource("1_q54ab")
+skeleton = NodePath("../../..")

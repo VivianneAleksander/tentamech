@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scenes/levels/audio_stream_looper.gd" id="3_8h8kp"]
 [ext_resource type="AudioStream" uid="uid://ckxpu3sohhua8" path="res://assets/sound/music/radioactive orgasmic glow opening.mp3" id="5_4212j"]
 [ext_resource type="Script" path="res://scripts/util/audio_fade_in_out.gd" id="6_7olkh"]
-[ext_resource type="PackedScene" uid="uid://bk18yspkip810" path="res://scenes/prefabs/enemies/hive.tscn" id="6_hcnt7"]
+[ext_resource type="PackedScene" uid="uid://dmacpy5lq41ek" path="res://scenes/prefabs/enemies/needler.tscn" id="6_usesf"]
 
 [node name="Level01" type="Node3D"]
 script = ExtResource("1_q6xpr")
@@ -23,14 +23,5 @@ fade_in_time = Vector2(0, 3)
 fade_out_time = Vector2(0, 0)
 fade_dec = Vector2(-80, -15)
 
-[node name="Hive" parent="." instance=ExtResource("6_hcnt7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2214, 0, 0)
-
-[node name="AITaskmaster" parent="Hive" index="5" node_paths=PackedStringArray("target")]
-target = NodePath("../../HiveTarget01")
-
-[node name="HiveTarget01" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.51578, -4.85368, 0)
-
-[editable path="Hive"]
-[editable path="Hive/Mesh"]
+[node name="Needler" parent="." instance=ExtResource("6_usesf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9392, 0.293241, 9.53674e-07)

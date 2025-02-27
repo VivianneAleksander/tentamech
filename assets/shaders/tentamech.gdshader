@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix, depth_draw_always, cull_back, shadows_disabled, diffuse_toon, specular_toon;
+render_mode blend_mix, depth_draw_always, cull_back, shadows_disabled, diffuse_toon, specular_toon, fog_disabled;
 
 uniform bool unshaded = false;
 uniform vec4 albedo : source_color;
