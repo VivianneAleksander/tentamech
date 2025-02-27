@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://db2jbfgf2fkl6"]
+
+[ext_resource type="Shader" path="res://assets/shaders/canvas_item/dust.gdshader" id="1_u5fap"]
+
+[sub_resource type="Gradient" id="Gradient_6hjdu"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.64133, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qr4v6"]
+gradient = SubResource("Gradient_6hjdu")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ybax4"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d4ydn"]
+seamless = true
+noise = SubResource("FastNoiseLite_ybax4")
+
+[resource]
+shader = ExtResource("1_u5fap")
+shader_parameter/speed = 0.003
+shader_parameter/scale = 0.32
+shader_parameter/direction = Vector2(1, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_d4ydn")
+shader_parameter/color = SubResource("GradientTexture1D_qr4v6")

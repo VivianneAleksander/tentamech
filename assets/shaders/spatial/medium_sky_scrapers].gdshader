@@ -13,7 +13,7 @@ uniform float rim_tint = 1.0;
 uniform float clearcoat = 0.0;
 uniform float clearcoat_gloss = 1.0;
 
-uniform float anisotropy = 0.0; 
+uniform float anisotropy = 0.0;
 
 uniform float emission = 0.0;
 

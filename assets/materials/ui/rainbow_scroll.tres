@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://b2bq4dudipm5s"]
+
+[ext_resource type="Shader" path="res://assets/shaders/canvas_item/rainbow_scroll.gdshader" id="1_v4o7o"]
+
+[sub_resource type="Gradient" id="Gradient_g8gps"]
+offsets = PackedFloat32Array(0, 0.194774, 0.413302, 0.686461, 1)
+colors = PackedColorArray(0.999982, 0.0337328, 0.329814, 1, 0.696404, 0.648536, 0, 1, 0.173169, 0.77247, 1.15514e-06, 1, 2.88785e-06, 0.481794, 0.676155, 1, 1, 0.0352941, 0.329412, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x8ve5"]
+gradient = SubResource("Gradient_g8gps")
+
+[resource]
+shader = ExtResource("1_v4o7o")
+shader_parameter/wiggle_radius = 2.0
+shader_parameter/wiggle_speed = 3.0
+shader_parameter/angle = 0.16
+shader_parameter/speed = -0.315
+shader_parameter/colors = SubResource("GradientTexture1D_x8ve5")

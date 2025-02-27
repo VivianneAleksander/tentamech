@@ -17,7 +17,7 @@ void vertex() {
 void fragment() {
 	float sample = texture(noise, UV * uv_scale + (normalize(direction) * TIME * speed)).r;
 	if (sample >= shelf){ discard; }
-	
+
 	float depth = FRAGCOORD.z * depth_scale * 1000.0;
 	ALBEDO = color.rgb * COLOR.rgb;
 	ALPHA = color.a * COLOR.a * depth;

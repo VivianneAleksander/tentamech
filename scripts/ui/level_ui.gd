@@ -11,6 +11,8 @@ class_name LevelUI
 @onready var score_multiplier := $Control/ScoreMultiplierDisplay/ScoreMultiplierLabel as Label
 @onready var score_multiplier_bar := $Control/ScoreDisplay/ScoreMultiplierBar as ProgressBar
 
+@onready var multiplier_bar_mat : Material = preload("res://assets/materials/ui/rainbow_scroll.tres")
+
 signal game_reset_checkpoint
 signal game_quit
 
@@ -32,6 +34,10 @@ func update_score_multiplier(val : int) -> void:
 
 func update_score_multiplier_bar(val : float) -> void:
 	score_multiplier_bar.value = val
+	if score_multiplier_bar.value >= 100.0:
+		score_multiplier_bar.material = multiplier_bar_mat
+	else:
+		score_multiplier_bar.material = null
 
 func game_over() -> void:
 	game_over_timer.start()

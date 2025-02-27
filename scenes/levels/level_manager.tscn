@@ -1,12 +1,90 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1bfgmno2ti3t"]
+[gd_scene load_steps=29 format=3 uid="uid://d1bfgmno2ti3t"]
 
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="1_j71gy"]
 [ext_resource type="Material" uid="uid://vyf86xb3f3kf" path="res://assets/materials/post_processing.tres" id="2_4r104"]
+[ext_resource type="Shader" path="res://assets/shaders/canvas_item/stars.gdshader" id="3_8pgbi"]
 [ext_resource type="Script" uid="uid://d2w0i0n3fgpgu" path="res://scripts/util/screenshot_grabber.gd" id="3_gr2cs"]
+[ext_resource type="Shader" path="res://assets/shaders/canvas_item/dust.gdshader" id="4_aei1r"]
 [ext_resource type="PackedScene" uid="uid://ciqe08etvhqlc" path="res://scenes/prefabs/tentamech.tscn" id="4_e5pap"]
 [ext_resource type="PackedScene" uid="uid://dm5w0d6n66uia" path="res://scenes/prefabs/ui/level_ui.tscn" id="5_kwpxm"]
 [ext_resource type="PackedScene" uid="uid://c8oq5yx625dfi" path="res://scenes/levels/level_01.tscn" id="6_5sdgn"]
 [ext_resource type="Script" path="res://scripts/score_manager.gd" id="7_r10yb"]
+
+[sub_resource type="Environment" id="Environment_chwol"]
+background_mode = 3
+glow_enabled = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_actgx"]
+
+[sub_resource type="Gradient" id="Gradient_0rhdh"]
+offsets = PackedFloat32Array(0.00692841, 1)
+colors = PackedColorArray(0.0174731, 1.72925e-05, 0.0865729, 1, 0.0838331, 8.57329e-05, 0.251144, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xxve6"]
+gradient = SubResource("Gradient_0rhdh")
+fill_from = Vector2(0.166667, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_n01cg"]
+diffuse_texture = SubResource("GradientTexture2D_xxve6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8yp6d"]
+shader = ExtResource("3_8pgbi")
+shader_parameter/speed = 0.2
+
+[sub_resource type="Gradient" id="Gradient_u5das"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.643705, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ewos4"]
+gradient = SubResource("Gradient_u5das")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ybax4"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d4ydn"]
+seamless = true
+noise = SubResource("FastNoiseLite_ybax4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lk17j"]
+shader = ExtResource("4_aei1r")
+shader_parameter/speed = 0.002
+shader_parameter/scale = 0.365
+shader_parameter/direction = Vector2(-1, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_d4ydn")
+shader_parameter/color = SubResource("GradientTexture1D_ewos4")
+
+[sub_resource type="Gradient" id="Gradient_0vm66"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.581948, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xbrd2"]
+gradient = SubResource("Gradient_0vm66")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dck8q"]
+shader = ExtResource("4_aei1r")
+shader_parameter/speed = 0.007
+shader_parameter/scale = 0.2
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/noise = SubResource("NoiseTexture2D_d4ydn")
+shader_parameter/color = SubResource("GradientTexture1D_xbrd2")
+
+[sub_resource type="Gradient" id="Gradient_ailoi"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.695962, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_53yc4"]
+gradient = SubResource("Gradient_ailoi")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_olm43"]
+seamless = true
+noise = SubResource("FastNoiseLite_ybax4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_su6r4"]
+shader = ExtResource("4_aei1r")
+shader_parameter/speed = 0.007
+shader_parameter/scale = 0.1
+shader_parameter/direction = Vector2(1, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_olm43")
+shader_parameter/color = SubResource("GradientTexture1D_53yc4")
 
 [sub_resource type="QuadMesh" id="QuadMesh_1u7qv"]
 material = ExtResource("2_4r104")
@@ -18,6 +96,66 @@ script = ExtResource("1_j71gy")
 camera3D = NodePath("Camera3D")
 groups_to_monitor = Array[StringName]([&"Enemies", &"Bullets"])
 levels = Array[PackedScene]([ExtResource("6_5sdgn")])
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_chwol")
+camera_attributes = SubResource("CameraAttributesPractical_actgx")
+
+[node name="Control" type="Control" parent="WorldEnvironment"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DeepSpace" type="TextureRect" parent="WorldEnvironment/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_n01cg")
+
+[node name="Stars" type="ColorRect" parent="WorldEnvironment/Control"]
+material = SubResource("ShaderMaterial_8yp6d")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dust3" type="ColorRect" parent="WorldEnvironment/Control"]
+material = SubResource("ShaderMaterial_lk17j")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.75, 0.2375, 0.321569)
+
+[node name="Dust2" type="ColorRect" parent="WorldEnvironment/Control"]
+material = SubResource("ShaderMaterial_dck8q")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.708, 0.72, 0.247059)
+
+[node name="Dust" type="ColorRect" parent="WorldEnvironment/Control"]
+material = SubResource("ShaderMaterial_su6r4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.84, 0.5124, 0.56154, 0.572549)
 
 [node name="LevelUI" parent="." instance=ExtResource("5_kwpxm")]
 
@@ -40,9 +178,8 @@ transform = Transform3D(1, 0, 0, 0, 0.42352, 0.905887, 0, -0.905887, 0.42352, 0,
 
 [node name="ScoreManager" type="Node" parent="."]
 script = ExtResource("7_r10yb")
-score_multiplier_progress_speed = 600.0
-score_multiplier_decay_speed = 40.0
-score_multiplier_decay_delay = 5.0
+score_multiplier_decay_speed = 30.0
+score_multiplier_decay_delay = 3.0
 
 [connection signal="game_quit" from="LevelUI" to="." method="_on_level_ui_game_quit"]
 [connection signal="game_reset_checkpoint" from="LevelUI" to="." method="reset_checkpoint"]

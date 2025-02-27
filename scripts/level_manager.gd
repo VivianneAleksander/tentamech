@@ -127,5 +127,6 @@ func _on_level_ui_game_quit() -> void:
 
 func _on_enemy_death(enemy : AreaCharacter3D) -> void:
 	if not "score_value" in enemy: return
+	if not "score_multiplier_value" in enemy: return
 	
-	score_manager.add_score(enemy.score_value)
+	score_manager.add_score(enemy.score_value, enemy.score_multiplier_value)

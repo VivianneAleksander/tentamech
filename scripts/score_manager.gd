@@ -1,8 +1,6 @@
 extends Node
 class_name ScoreManager
 
-## How much progress is added to the score multiplier bar whenever the player gains score.
-@export var score_multiplier_progress_speed : float = 30.0
 ## How quickly the score multiplier bar decays to zero, in seconds.
 @export var score_multiplier_decay_speed : float = 0.25
 ## How long the bar should wait each time the player gains score before beginning to decay, in seconds.
@@ -16,8 +14,10 @@ var score : int = 0 :
 			score_lost.emit()
 		elif value > score:
 			score_gained.emit()
-		score = clampi(value, 0, int(pow(10, 10)))
+		score = clampi(value, 0, score_max)
 		score_value_changed.emit(score)
+
+var score_max : int = int(9.9999 * pow(10, 9))
 
 var score_multiplier_idx : int = 0 :
 	get:
@@ -58,7 +58,7 @@ var score_multiplier_progress : float = 0.0 :
 		if score_multiplier_progress >= score_multiplier_max:
 			score_multiplier_progress_changed.emit(100)
 		else:
-			score_multiplier_progress_changed.emit(fmod(score_multiplier_progress, 100))
+			score_multiplier_progress_changed.emit(fmod(score_multiplier_progress, 100) - 0.01)
 
 var score_multiplier_max : float :
 	get:
@@ -84,10 +84,10 @@ func _ready() -> void:
 	score = 0
 	score_multiplier_progress = 0.0
 
-func add_score(add : int) -> void:
+func add_score(add : int, mult : float = 0.0) -> void:
 	score += add * score_multiplier
 	
-	add_score_multiplier(score_multiplier_progress_speed)
+	add_score_multiplier(mult)
 
 func add_score_multiplier(val : float) -> void:
 	score_multiplier_progress += val
