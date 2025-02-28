@@ -24,4 +24,7 @@ fade_out_time = Vector2(0, 0)
 fade_dec = Vector2(-80, -15)
 
 [node name="Needler" parent="." instance=ExtResource("6_usesf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9392, 0.293241, 9.53674e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.21999, 0.448331, 0)
+
+[node name="Needler2" parent="." instance=ExtResource("6_usesf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2846, 3.40541, 0)

@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://w1gwd3vule72"]
+
+[ext_resource type="PackedScene" uid="uid://ccms4re0dq53k" path="res://scenes/prefabs/enemies/enemy_base.tscn" id="1_rnt3a"]
+[ext_resource type="PackedScene" uid="uid://ctk3us5sut6ip" path="res://assets/meshes/enemies/crawler_head.glb" id="2_502lt"]
+[ext_resource type="Material" uid="uid://cbhljgwmh48nd" path="res://assets/materials/enemies/crawler.tres" id="3_6rrpa"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_727j5"]
+radius = 0.615
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mn3nv"]
+radius = 0.185
+
+[node name="CrawlerHead" instance=ExtResource("1_rnt3a")]
+
+[node name="CollisionShape3D" parent="Hurtbox" index="0"]
+shape = SubResource("SphereShape3D_727j5")
+
+[node name="CollisionShape3D" parent="Hitbox" index="0"]
+shape = SubResource("SphereShape3D_mn3nv")
+
+[node name="Mesh" parent="." index="4" instance=ExtResource("2_502lt")]
+
+[node name="Skeleton3D" parent="Mesh/CrawlerArmature" index="0"]
+bones/0/rotation = Quaternion(0.707107, -0.707107, -1.20821e-07, 1.09583e-07)
+bones/1/rotation = Quaternion(0.0242386, -0.0180886, 0.801063, 0.597815)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(0.0242386, 0.0180888, -0.801063, 0.597815)
+bones/2/scale = Vector3(1, 1, 1)
+
+[node name="CrawlerHead" parent="Mesh/CrawlerArmature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_6rrpa")
+
+[editable path="Mesh"]

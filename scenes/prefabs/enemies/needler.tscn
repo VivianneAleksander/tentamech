@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://dmacpy5lq41ek"]
+[gd_scene load_steps=74 format=3 uid="uid://dmacpy5lq41ek"]
 
 [ext_resource type="PackedScene" uid="uid://ccms4re0dq53k" path="res://scenes/prefabs/enemies/enemy_base.tscn" id="1_sven7"]
 [ext_resource type="PackedScene" uid="uid://cinndwls1qq0g" path="res://assets/meshes/enemies/needler.glb" id="2_hyv4p"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/enemies/avoid_level_bounds_rule.gd" id="8_w7nqv"]
 [ext_resource type="Script" path="res://scripts/enemies/speed_cap.gd" id="9_1ewlp"]
 [ext_resource type="Script" path="res://scripts/util/bean_counter.gd" id="13_0lntd"]
+[ext_resource type="Script" path="res://scripts/enemies/avoid_other_entities_rule.gd" id="13_obekw"]
 [ext_resource type="Script" path="res://scripts/bullets/bullet_spawner.gd" id="14_sdvm7"]
 [ext_resource type="PackedScene" uid="uid://n5285sd5xops" path="res://scenes/prefabs/bullets/bullet_sphere.tscn" id="15_i8t7o"]
 [ext_resource type="Script" path="res://scripts/util/audio_randomizer.gd" id="17_mcm3u"]
@@ -414,15 +415,15 @@ transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 
 bones/0/rotation = Quaternion(0, 0.945837, 0, -0.324643)
 bones/1/position = Vector3(1.85695e-08, -0.0895808, 1.95181e-08)
 bones/1/rotation = Quaternion(-1.40602e-07, 0.707107, 0.707107, -1.37679e-07)
-bones/2/rotation = Quaternion(0.802663, -0.136059, -0.288023, -0.504245)
+bones/2/rotation = Quaternion(0.800174, -0.130509, -0.281841, -0.513084)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.161439, -0.264077, -0.371069, 0.875505)
-bones/4/rotation = Quaternion(0.21875, 0.865815, 0.341767, 0.29276)
+bones/3/rotation = Quaternion(0.152968, -0.266422, -0.351992, 0.88415)
+bones/4/rotation = Quaternion(0.228153, 0.862874, 0.340485, 0.295744)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.819297, 0.26153, 0.434048, -0.268246)
-bones/6/rotation = Quaternion(0.345673, 0.169933, 0.758673, 0.525402)
+bones/5/rotation = Quaternion(0.819692, 0.258729, 0.430682, -0.275095)
+bones/6/rotation = Quaternion(0.343039, 0.172301, 0.753447, 0.533812)
 bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(0.0967161, 0.893258, 0.422808, -0.118192)
+bones/7/rotation = Quaternion(0.0943285, 0.893171, 0.423369, -0.118773)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(1.19342, -2.12038, -0.760746)
 bones/9/position = Vector3(-1.10741, -1.30107, -0.69927)
@@ -431,7 +432,7 @@ bones/9/position = Vector3(-1.10741, -1.30107, -0.69927)
 surface_material_override/0 = ExtResource("3_wwpxt")
 
 [node name="GunLAttachment" type="BoneAttachment3D" parent="Mesh/NeedlerArmature/Skeleton3D" index="1"]
-transform = Transform3D(0.155334, -0.767261, 0.622239, -0.679088, -0.540389, -0.496808, 0.717433, -0.345384, -0.604979, -0.474847, -2.13384, 1.33184)
+transform = Transform3D(0.155334, -0.767261, 0.622239, -0.679088, -0.540389, -0.496808, 0.717433, -0.345384, -0.604979, -0.474999, -2.15581, 1.32903)
 bone_name = "Gun.L"
 bone_idx = 4
 
@@ -439,7 +440,7 @@ bone_idx = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9426, 0)
 
 [node name="GunRAttachment" type="BoneAttachment3D" parent="Mesh/NeedlerArmature/Skeleton3D" index="2"]
-transform = Transform3D(-0.80699, -0.0184456, -0.590277, 0.538395, -0.433722, -0.722507, -0.242689, -0.900858, 0.35994, 1.30348, -1.31412, -0.129875)
+transform = Transform3D(-0.80699, -0.0184454, -0.590277, 0.538395, -0.433721, -0.722507, -0.242689, -0.900858, 0.35994, 1.30333, -1.33609, -0.132692)
 bone_name = "Gun.R"
 bone_idx = 7
 
@@ -497,6 +498,10 @@ min_distance = 5.0
 [node name="AlignWithTargetAxisRule" type="Node" parent="AITaskmaster" index="3"]
 script = ExtResource("8_mo7xj")
 min_distance = 0.5
+
+[node name="AvoidOtherEntitiesRule" type="Node" parent="AITaskmaster" index="4"]
+script = ExtResource("13_obekw")
+apply_rule = false
 
 [node name="FrictionApplicator" type="Node" parent="." index="6" node_paths=PackedStringArray("primary")]
 process_physics_priority = 1

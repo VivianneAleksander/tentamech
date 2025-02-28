@@ -17,7 +17,7 @@ var score : int = 0 :
 		score = clampi(value, 0, score_max)
 		score_value_changed.emit(score)
 
-var score_max : int = int(9.9999 * pow(10, 9))
+var score_max : int = int(9.9999 * pow(10, 11))
 
 var score_multiplier_idx : int = 0 :
 	get:
@@ -107,5 +107,6 @@ func start_score_multiplier_decay() -> void:
 func stop_timers_and_tweeners() -> void:
 	if score_multiplier_decay_tween and score_multiplier_decay_tween.is_valid():
 		score_multiplier_decay_tween.kill()
-	
-	score_multiplier_decay_delay_timer = null
+	if score_multiplier_decay_delay_timer:
+		score_multiplier_decay_delay_timer.timeout.disconnect(start_score_multiplier_decay)
+		score_multiplier_decay_delay_timer = null

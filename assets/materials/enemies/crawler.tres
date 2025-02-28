@@ -1,0 +1,33 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://cbhljgwmh48nd"]
+
+[ext_resource type="Shader" path="res://assets/shaders/tentamech.gdshader" id="1_rf4ba"]
+[ext_resource type="Texture2D" uid="uid://51rqd1afh4hy" path="res://assets/materials/textures/crawler_tex.png" id="2_x08tl"]
+
+[sub_resource type="Gradient" id="Gradient_a7fjg"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.983607)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qhbpk"]
+gradient = SubResource("Gradient_a7fjg")
+
+[sub_resource type="Gradient" id="Gradient_rytbr"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.295082)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wdq6n"]
+gradient = SubResource("Gradient_rytbr")
+
+[resource]
+render_priority = 1
+shader = ExtResource("1_rf4ba")
+shader_parameter/unshaded = false
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/solid_albedo = Color(0, 0, 0, 1)
+shader_parameter/use_solid_albedo = false
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = null
+shader_parameter/normal_scale = null
+shader_parameter/texture_albedo = ExtResource("2_x08tl")
+shader_parameter/fresnel_gradient = SubResource("GradientTexture1D_qhbpk")
+shader_parameter/light_gradient = SubResource("GradientTexture1D_wdq6n")

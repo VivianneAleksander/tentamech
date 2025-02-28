@@ -27,7 +27,7 @@ func update_engergy(val : float) -> void:
 	energy_bar.value = val * energy_bar.max_value
 
 func update_score(val : int) -> void:
-	score_display.text = "Score: " + str(val).lpad(9, "0")
+	score_display.text = "Score: " + str(val).lpad(11, "0")
 
 func update_score_multiplier(val : int) -> void:
 	score_multiplier.text = "x" + str(val)

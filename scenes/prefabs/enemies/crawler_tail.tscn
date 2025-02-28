@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://bp5pxksl668eu"]
+
+[ext_resource type="PackedScene" uid="uid://ccms4re0dq53k" path="res://scenes/prefabs/enemies/enemy_base.tscn" id="1_k4h8e"]
+[ext_resource type="PackedScene" uid="uid://ck18os6w5ko8j" path="res://assets/meshes/enemies/crawler_tail.glb" id="2_6wdco"]
+[ext_resource type="Material" uid="uid://cbhljgwmh48nd" path="res://assets/materials/enemies/crawler.tres" id="3_dt00k"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nustc"]
+radius = 0.21
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e47kk"]
+radius = 0.115
+
+[node name="CrawlerTail" instance=ExtResource("1_k4h8e")]
+
+[node name="CollisionShape3D" parent="Hurtbox" index="0"]
+shape = SubResource("SphereShape3D_nustc")
+
+[node name="CollisionShape3D" parent="Hitbox" index="0"]
+shape = SubResource("SphereShape3D_e47kk")
+
+[node name="Mesh" parent="." index="4" instance=ExtResource("2_6wdco")]
+
+[node name="CrawlerTail" parent="Mesh" index="0"]
+surface_material_override/0 = ExtResource("3_dt00k")
+
+[editable path="Mesh"]
