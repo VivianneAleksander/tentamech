@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://d1bfgmno2ti3t"]
+[gd_scene load_steps=45 format=3 uid="uid://d1bfgmno2ti3t"]
 
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="1_j71gy"]
 [ext_resource type="Material" uid="uid://vyf86xb3f3kf" path="res://assets/materials/post_processing.tres" id="2_4r104"]
@@ -9,11 +9,17 @@
 [ext_resource type="Shader" path="res://assets/shaders/canvas_item/dust.gdshader" id="4_aei1r"]
 [ext_resource type="PackedScene" uid="uid://ciqe08etvhqlc" path="res://scenes/prefabs/tentamech.tscn" id="4_e5pap"]
 [ext_resource type="PackedScene" uid="uid://dm5w0d6n66uia" path="res://scenes/prefabs/ui/level_ui.tscn" id="5_kwpxm"]
+[ext_resource type="Texture2D" uid="uid://22es3q4cyn7x" path="res://assets/sprites/ui/weird_planet.tres" id="6_0j2qc"]
 [ext_resource type="PackedScene" uid="uid://c8oq5yx625dfi" path="res://scenes/levels/level_01.tscn" id="6_5sdgn"]
 [ext_resource type="Texture2D" uid="uid://iyv01y78g1ik" path="res://assets/sprites/ui/ring_planet.tres" id="7_2o4ni"]
 [ext_resource type="Texture2D" uid="uid://dormhf8amvhvu" path="res://assets/sprites/ui/big_planet.tres" id="7_i0bnb"]
 [ext_resource type="Script" path="res://scripts/score_manager.gd" id="7_r10yb"]
 [ext_resource type="Texture2D" uid="uid://thtefmhe5x52" path="res://assets/sprites/ui/moon_planet.tres" id="9_8qtws"]
+[ext_resource type="Script" path="res://scripts/ui/screen_looper.gd" id="9_vwct5"]
+[ext_resource type="AudioStream" uid="uid://ckxpu3sohhua8" path="res://assets/sound/music/radioactive orgasmic glow opening.mp3" id="16_0ya0u"]
+[ext_resource type="Script" path="res://scenes/levels/audio_stream_looper.gd" id="17_gaj30"]
+[ext_resource type="AudioStream" uid="uid://bwr1ybx6cbtj2" path="res://assets/sound/music/radioactive orgasmic glow body.mp3" id="18_vv84c"]
+[ext_resource type="Script" path="res://scripts/util/audio_fade_in_out.gd" id="19_5dyur"]
 
 [sub_resource type="Environment" id="Environment_chwol"]
 background_mode = 3
@@ -105,6 +111,115 @@ shader_parameter/direction = Vector2(1, 1)
 shader_parameter/noise = SubResource("NoiseTexture2D_olm43")
 shader_parameter/color = SubResource("GradientTexture1D_53yc4")
 
+[sub_resource type="Animation" id="Animation_dhmi0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BigPlanet:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-147, 321)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MoonPlanet01:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(328, 393)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MoonPlanet02:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(414, 379)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WeirdPlanet:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(934, 127)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RingPlanet:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(319, 244)]
+}
+
+[sub_resource type="Animation" id="Animation_7qrhn"]
+resource_name = "big_planet_slide"
+length = 40.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BigPlanet:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 40),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-147, 321), Vector2(-546, 321)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MoonPlanet01:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 16.6333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(328, 393), Vector2(-132, 393)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MoonPlanet02:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 14.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(414, 379), Vector2(-58, 379)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e7tcf"]
+_data = {
+"RESET": SubResource("Animation_dhmi0"),
+"big_planet_slide": SubResource("Animation_7qrhn")
+}
+
 [sub_resource type="QuadMesh" id="QuadMesh_1u7qv"]
 material = ExtResource("2_4r104")
 flip_faces = true
@@ -146,6 +261,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="WeirdPlanet" type="TextureRect" parent="WorldEnvironment/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.11458
+anchor_top = 0.205247
+anchor_right = 2.125
+anchor_bottom = 0.237654
+offset_left = -1502.0
+offset_top = -6.00006
+offset_right = -1493.0
+offset_bottom = -6.00006
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_0j2qc")
+expand_mode = 1
+script = ExtResource("9_vwct5")
+ratio1 = Vector2(1.1, 0.2)
+ratio2 = Vector2(-0.1, 0.2)
+speed = 0.001
+progress = 0.13
+parent_size = Vector2(1152, 648)
+metadata/_edit_use_anchors_ = true
+
 [node name="Dust3" type="ColorRect" parent="WorldEnvironment/Control"]
 material = SubResource("ShaderMaterial_lk17j")
 layout_mode = 1
@@ -169,14 +307,24 @@ color = Color(0, 0.708, 0.72, 0.247059)
 [node name="RingPlanet" type="TextureRect" parent="WorldEnvironment/Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.27691
-anchor_top = 0.376543
-anchor_right = 0.367188
-anchor_bottom = 0.436728
+anchor_left = 1.7702
+anchor_top = -0.197531
+anchor_right = 1.86047
+anchor_bottom = -0.137346
+offset_left = -1720.27
+offset_top = 372.0
+offset_right = -1720.27
+offset_bottom = 372.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_2o4ni")
 expand_mode = 1
+script = ExtResource("9_vwct5")
+ratio1 = Vector2(1.1, 0.4)
+ratio2 = Vector2(-0.2, 0.4)
+speed = 0.002
+progress = 0.4
+parent_size = Vector2(1152, 648)
 metadata/_edit_use_anchors_ = true
 
 [node name="Dust" type="ColorRect" parent="WorldEnvironment/Control"]
@@ -192,10 +340,14 @@ color = Color(0.84, 0.5124, 0.56154, 0.572549)
 [node name="BigPlanet" type="TextureRect" parent="WorldEnvironment/Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.127604
+anchor_left = -0.473958
 anchor_top = 0.49537
-anchor_right = 0.33941
+anchor_right = -0.00694431
 anchor_bottom = 1.32562
+offset_left = 399.0
+offset_top = 0.000244141
+offset_right = 399.0
+offset_bottom = 0.000244141
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_i0bnb")
@@ -205,10 +357,14 @@ metadata/_edit_use_anchors_ = true
 [node name="MoonPlanet02" type="TextureRect" parent="WorldEnvironment/Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.359375
+anchor_left = -0.0503472
 anchor_top = 0.584877
-anchor_right = 0.398438
+anchor_right = -0.0112842
 anchor_bottom = 0.651235
+offset_left = 472.0
+offset_top = -0.000305176
+offset_right = 472.0
+offset_bottom = -0.000305176
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_8qtws")
@@ -218,15 +374,25 @@ metadata/_edit_use_anchors_ = true
 [node name="MoonPlanet01" type="TextureRect" parent="WorldEnvironment/Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.284722
+anchor_left = -0.114583
 anchor_top = 0.606481
-anchor_right = 0.388021
+anchor_right = -0.0112844
 anchor_bottom = 0.790123
+offset_left = 460.0
+offset_top = 0.000305176
+offset_right = 460.0
+offset_bottom = 0.000305176
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_8qtws")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WorldEnvironment/Control"]
+libraries = {
+"": SubResource("AnimationLibrary_e7tcf")
+}
+autoplay = "big_planet_slide"
 
 [node name="LevelUI" parent="." instance=ExtResource("5_kwpxm")]
 
@@ -251,6 +417,19 @@ transform = Transform3D(1, 0, 0, 0, 0.42352, 0.905887, 0, -0.905887, 0.42352, 0,
 script = ExtResource("7_r10yb")
 score_multiplier_decay_speed = 30.0
 score_multiplier_decay_delay = 3.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." groups=["AudioTracks"]]
+stream = ExtResource("16_0ya0u")
+volume_db = -80.0
+autoplay = true
+script = ExtResource("17_gaj30")
+audio = Array[AudioStream]([ExtResource("16_0ya0u"), ExtResource("18_vv84c")])
+
+[node name="AudioFadeInOut" type="Node" parent="AudioStreamPlayer"]
+script = ExtResource("19_5dyur")
+fade_in_time = Vector2(0, 3)
+fade_out_time = Vector2(0, 0)
+fade_dec = Vector2(-80, -15)
 
 [connection signal="game_quit" from="LevelUI" to="." method="_on_level_ui_game_quit"]
 [connection signal="game_reset_checkpoint" from="LevelUI" to="." method="reset_checkpoint"]

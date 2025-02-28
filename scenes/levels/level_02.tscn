@@ -1,30 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://na8slj3kaavc"]
+[gd_scene load_steps=3 format=3 uid="uid://na8slj3kaavc"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_fxeaw"]
-[ext_resource type="AudioStream" uid="uid://ckxpu3sohhua8" path="res://assets/sound/music/radioactive orgasmic glow opening.mp3" id="2_nt0wo"]
-[ext_resource type="Script" path="res://scenes/levels/audio_stream_looper.gd" id="3_0hg8i"]
-[ext_resource type="AudioStream" uid="uid://bwr1ybx6cbtj2" path="res://assets/sound/music/radioactive orgasmic glow body.mp3" id="4_omsvr"]
-[ext_resource type="Script" path="res://scripts/util/audio_fade_in_out.gd" id="5_7156v"]
 [ext_resource type="PackedScene" uid="uid://dmacpy5lq41ek" path="res://scenes/prefabs/enemies/needler.tscn" id="6_6w4e3"]
 
-[node name="Level01" type="Node3D"]
+[node name="Level02" type="Node3D"]
 script = ExtResource("1_fxeaw")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." groups=["AudioTracks"]]
-stream = ExtResource("2_nt0wo")
-volume_db = -80.0
-autoplay = true
-script = ExtResource("3_0hg8i")
-audio = Array[AudioStream]([ExtResource("2_nt0wo"), ExtResource("4_omsvr")])
-
-[node name="AudioFadeInOut" type="Node" parent="AudioStreamPlayer"]
-script = ExtResource("5_7156v")
-fade_in_time = Vector2(0, 3)
-fade_out_time = Vector2(0, 0)
-fade_dec = Vector2(-80, -15)
-
 [node name="Needler" parent="." instance=ExtResource("6_6w4e3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.21999, 0.448331, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3965, -2.29108, 0)
 
 [node name="Needler2" parent="." instance=ExtResource("6_6w4e3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2846, 3.40541, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.92102, 2.19508, 0)

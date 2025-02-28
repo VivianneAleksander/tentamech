@@ -17,10 +17,10 @@ float rand(vec2 st) {
 void fragment() {
 	vec2 uv_mod1 = fract(UV * scale1 + vec2(TIME * speed1) * normalize(dir1));
 	float sample = texture(noise1, uv_mod1).x;
-	
+
 	vec2 uv_mod2 = fract(UV + vec2(TIME * speed2) * normalize(dir2));
 	float rand_val = rand(uv_mod2) * scale2;
-	
+
 	if (rand_val <= shelf)
 	{
 		discard;
