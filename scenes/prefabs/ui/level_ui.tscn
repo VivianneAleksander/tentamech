@@ -16,31 +16,31 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_gld3b"]
 viewport_path = NodePath("Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport")
 
-[sub_resource type="Resource" id="Resource_1b6m7"]
+[sub_resource type="Resource" id="Resource_2x05i"]
 script = ExtResource("5_v6a3h")
 frequency = 1.0
 damping = 1.0
 reaction = 1.0
 
-[sub_resource type="Resource" id="Resource_5kxu1"]
+[sub_resource type="Resource" id="Resource_g1lpi"]
 script = ExtResource("5_v6a3h")
 frequency = 1.0
 damping = 1.0
 reaction = 1.0
 
-[sub_resource type="Resource" id="Resource_dqrjh"]
+[sub_resource type="Resource" id="Resource_wjjm2"]
 script = ExtResource("5_v6a3h")
 frequency = 1.0
 damping = 5.0
 reaction = 1.0
 
-[sub_resource type="Resource" id="Resource_y3yhh"]
+[sub_resource type="Resource" id="Resource_dy84l"]
 script = ExtResource("5_v6a3h")
 frequency = 1.0
 damping = 5.0
 reaction = 1.0
 
-[sub_resource type="Resource" id="Resource_mywyo"]
+[sub_resource type="Resource" id="Resource_3gspc"]
 script = ExtResource("5_v6a3h")
 frequency = 1.0
 damping = 0.5
@@ -49,31 +49,31 @@ reaction = 100.0
 [sub_resource type="ViewportTexture" id="ViewportTexture_jcbkf"]
 viewport_path = NodePath("Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport")
 
-[sub_resource type="Resource" id="Resource_g28yd"]
+[sub_resource type="Resource" id="Resource_xbmqf"]
 script = ExtResource("5_v6a3h")
 frequency = 1.0
 damping = 1.0
 reaction = 1.0
 
-[sub_resource type="Resource" id="Resource_4wqte"]
+[sub_resource type="Resource" id="Resource_dwtxq"]
 script = ExtResource("5_v6a3h")
 frequency = 1.0
 damping = 1.0
 reaction = 1.0
 
-[sub_resource type="Resource" id="Resource_4xb8g"]
+[sub_resource type="Resource" id="Resource_md1v8"]
 script = ExtResource("5_v6a3h")
 frequency = 1.0
 damping = 5.0
 reaction = 1.0
 
-[sub_resource type="Resource" id="Resource_vxlo6"]
+[sub_resource type="Resource" id="Resource_4omm6"]
 script = ExtResource("5_v6a3h")
 frequency = 1.0
 damping = 5.0
 reaction = 1.0
 
-[sub_resource type="Resource" id="Resource_x70jk"]
+[sub_resource type="Resource" id="Resource_fh5ps"]
 script = ExtResource("5_v6a3h")
 frequency = 1.0
 damping = 0.5
@@ -926,7 +926,7 @@ visible = false
 visible = false
 
 [node name="HeadStayAt" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/Piloting/PilotingSkeleton/SoupStack" index="6"]
-easing = SubResource("Resource_1b6m7")
+easing = SubResource("Resource_2x05i")
 
 [node name="BicepLeft" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/Piloting/PilotingSkeleton/BodyRoot/Torso" index="0"]
 rotation = -0.172705
@@ -1066,39 +1066,6 @@ scale = Vector2(0.999993, 0.999993)
 rotation = 0.00225898
 scale = Vector2(0.999995, 0.999995)
 
-[node name="Tail01" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot" index="0"]
-position = Vector2(30.1378, -73.3308)
-
-[node name="Tail02" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01" index="0"]
-position = Vector2(18.6509, -77.1826)
-
-[node name="Tail03" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02" index="0"]
-position = Vector2(3.21783, -79.1406)
-
-[node name="Tail04" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03" index="0"]
-position = Vector2(-37.6241, -66.5576)
-
-[node name="Tail05" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04" index="0"]
-position = Vector2(-72.9182, 14.076)
-
-[node name="Tail06" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05" index="0"]
-position = Vector2(-52.4914, 59.3875)
-
-[node name="Tail07" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06" index="0"]
-position = Vector2(-45.376, 65.2368)
-
-[node name="Tail08" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07" index="0"]
-position = Vector2(-38.7099, -15.7084)
-
-[node name="Tail09" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08" index="0"]
-position = Vector2(17.6786, -77.0278)
-
-[node name="Tail10" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09" index="0"]
-position = Vector2(39.3936, -68.759)
-
-[node name="Tail11" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10" index="0"]
-position = Vector2(56.0408, -55.9935)
-
 [node name="BicepLeft" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Torso" index="0"]
 rotation = -0.0280214
 scale = Vector2(0.999987, 0.999987)
@@ -1153,16 +1120,16 @@ visible = true
 visible = false
 
 [node name="HeadStayAt" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/SoupStack" index="3"]
-easing = SubResource("Resource_5kxu1")
+easing = SubResource("Resource_g1lpi")
 
 [node name="Tail01StayAt" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/SoupStack" index="4"]
-easing = SubResource("Resource_dqrjh")
+easing = SubResource("Resource_wjjm2")
 
 [node name="Tail02StayAt" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/SoupStack" index="5"]
-easing = SubResource("Resource_y3yhh")
+easing = SubResource("Resource_dy84l")
 
 [node name="TailTipJiggle" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/SoupStack" index="7"]
-easing = SubResource("Resource_mywyo")
+easing = SubResource("Resource_3gspc")
 
 [node name="BicepRight" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/BodyRoot/Torso" index="0"]
 rotation = 0.00493073
@@ -1225,12 +1192,6 @@ points = [null, NodePath("../../../TailPathNode01"), NodePath("../../../TailPath
 
 [node name="Head" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton" index="2"]
 position = Vector2(748.213, 1092.73)
-
-[node name="EyeRight" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/Head" index="0"]
-position = Vector2(51.322, -58.4366)
-
-[node name="EyeLeft" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/Head" index="1"]
-position = Vector2(234.378, -44.6716)
 
 [node name="TailPathNode01" parent="Control/FaceCams/FaceCam/FaceCamMargin/FaceCamContainer/FaceCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton" index="6"]
 position = Vector2(501.836, 274.177)
@@ -1296,7 +1257,7 @@ visible = false
 visible = false
 
 [node name="HeadStayAt" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/Piloting/PilotingSkeleton/SoupStack" index="6"]
-easing = SubResource("Resource_g28yd")
+easing = SubResource("Resource_xbmqf")
 
 [node name="BicepLeft" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/Piloting/PilotingSkeleton/BodyRoot/Torso" index="0"]
 rotation = -0.172705
@@ -1439,39 +1400,6 @@ scale = Vector2(0.999993, 0.999993)
 rotation = 0.00225898
 scale = Vector2(0.999995, 0.999995)
 
-[node name="Tail01" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot" index="0"]
-position = Vector2(30.1378, -73.3308)
-
-[node name="Tail02" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01" index="0"]
-position = Vector2(18.6509, -77.1826)
-
-[node name="Tail03" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02" index="0"]
-position = Vector2(3.21783, -79.1406)
-
-[node name="Tail04" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03" index="0"]
-position = Vector2(-37.6241, -66.5576)
-
-[node name="Tail05" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04" index="0"]
-position = Vector2(-72.9182, 14.076)
-
-[node name="Tail06" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05" index="0"]
-position = Vector2(-52.4914, 59.3875)
-
-[node name="Tail07" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06" index="0"]
-position = Vector2(-45.376, 65.2368)
-
-[node name="Tail08" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07" index="0"]
-position = Vector2(-38.7099, -15.7084)
-
-[node name="Tail09" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08" index="0"]
-position = Vector2(17.6786, -77.0278)
-
-[node name="Tail10" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09" index="0"]
-position = Vector2(39.3936, -68.759)
-
-[node name="Tail11" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Waist/TailRoot/Tail01/Tail02/Tail03/Tail04/Tail05/Tail06/Tail07/Tail08/Tail09/Tail10" index="0"]
-position = Vector2(56.0408, -55.9935)
-
 [node name="BicepLeft" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/BackView/BackViewSkeleton/BodyRoot/Torso" index="0"]
 rotation = -0.0280214
 scale = Vector2(0.999987, 0.999987)
@@ -1523,16 +1451,16 @@ position = Vector2(-53.1573, 109.392)
 visible = false
 
 [node name="HeadStayAt" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/SoupStack" index="3"]
-easing = SubResource("Resource_4wqte")
+easing = SubResource("Resource_dwtxq")
 
 [node name="Tail01StayAt" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/SoupStack" index="4"]
-easing = SubResource("Resource_4xb8g")
+easing = SubResource("Resource_md1v8")
 
 [node name="Tail02StayAt" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/SoupStack" index="5"]
-easing = SubResource("Resource_vxlo6")
+easing = SubResource("Resource_4omm6")
 
 [node name="TailTipJiggle" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/SoupStack" index="7"]
-easing = SubResource("Resource_x70jk")
+easing = SubResource("Resource_fh5ps")
 
 [node name="BicepRight" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/BodyRoot/Torso" index="0"]
 rotation = 0.00493073
@@ -1595,12 +1523,6 @@ points = [null, NodePath("../../../TailPathNode01"), NodePath("../../../TailPath
 
 [node name="Head" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton" index="2"]
 position = Vector2(748.213, 1092.73)
-
-[node name="EyeRight" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/Head" index="0"]
-position = Vector2(51.322, -58.4366)
-
-[node name="EyeLeft" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton/Head" index="1"]
-position = Vector2(234.378, -44.6716)
 
 [node name="TailPathNode01" parent="Control/FaceCams/ButtCam/ButtCamMargins/ButtCamContainer/ButtCamTexture/SubViewport/FlyJumper/FrontView/FrontViewSkeleton" index="6"]
 position = Vector2(501.836, 274.177)

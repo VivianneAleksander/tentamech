@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://d1bfgmno2ti3t"]
+[gd_scene load_steps=36 format=3 uid="uid://d1bfgmno2ti3t"]
 
 [ext_resource type="Script" path="res://scripts/level_manager.gd" id="1_j71gy"]
 [ext_resource type="Material" uid="uid://vyf86xb3f3kf" path="res://assets/materials/post_processing.tres" id="2_4r104"]
@@ -10,7 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://ciqe08etvhqlc" path="res://scenes/prefabs/tentamech.tscn" id="4_e5pap"]
 [ext_resource type="PackedScene" uid="uid://dm5w0d6n66uia" path="res://scenes/prefabs/ui/level_ui.tscn" id="5_kwpxm"]
 [ext_resource type="PackedScene" uid="uid://c8oq5yx625dfi" path="res://scenes/levels/level_01.tscn" id="6_5sdgn"]
+[ext_resource type="Texture2D" uid="uid://iyv01y78g1ik" path="res://assets/sprites/ui/ring_planet.tres" id="7_2o4ni"]
+[ext_resource type="Texture2D" uid="uid://dormhf8amvhvu" path="res://assets/sprites/ui/big_planet.tres" id="7_i0bnb"]
 [ext_resource type="Script" path="res://scripts/score_manager.gd" id="7_r10yb"]
+[ext_resource type="Texture2D" uid="uid://thtefmhe5x52" path="res://assets/sprites/ui/moon_planet.tres" id="9_8qtws"]
 
 [sub_resource type="Environment" id="Environment_chwol"]
 background_mode = 3
@@ -29,9 +32,23 @@ fill_from = Vector2(0.166667, 1)
 [sub_resource type="CanvasTexture" id="CanvasTexture_n01cg"]
 diffuse_texture = SubResource("GradientTexture2D_xxve6")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kamhx"]
+noise_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8l6wa"]
+seamless = true
+noise = SubResource("FastNoiseLite_kamhx")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8yp6d"]
 shader = ExtResource("3_8pgbi")
-shader_parameter/speed = 0.2
+shader_parameter/shelf = 0.998
+shader_parameter/speed1 = 0.1
+shader_parameter/scale1 = 2.0
+shader_parameter/dir1 = Vector2(1, 1)
+shader_parameter/speed2 = 0.0
+shader_parameter/scale2 = 1.0
+shader_parameter/dir2 = Vector2(-1, 1)
+shader_parameter/noise1 = SubResource("NoiseTexture2D_8l6wa")
 
 [sub_resource type="Gradient" id="Gradient_u5das"]
 interpolation_mode = 2
@@ -149,6 +166,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.708, 0.72, 0.247059)
 
+[node name="RingPlanet" type="TextureRect" parent="WorldEnvironment/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.27691
+anchor_top = 0.376543
+anchor_right = 0.367188
+anchor_bottom = 0.436728
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_2o4ni")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="Dust" type="ColorRect" parent="WorldEnvironment/Control"]
 material = SubResource("ShaderMaterial_su6r4")
 layout_mode = 1
@@ -158,6 +188,45 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.84, 0.5124, 0.56154, 0.572549)
+
+[node name="BigPlanet" type="TextureRect" parent="WorldEnvironment/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.127604
+anchor_top = 0.49537
+anchor_right = 0.33941
+anchor_bottom = 1.32562
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_i0bnb")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MoonPlanet02" type="TextureRect" parent="WorldEnvironment/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.359375
+anchor_top = 0.584877
+anchor_right = 0.398438
+anchor_bottom = 0.651235
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_8qtws")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MoonPlanet01" type="TextureRect" parent="WorldEnvironment/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.284722
+anchor_top = 0.606481
+anchor_right = 0.388021
+anchor_bottom = 0.790123
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_8qtws")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="LevelUI" parent="." instance=ExtResource("5_kwpxm")]
 
