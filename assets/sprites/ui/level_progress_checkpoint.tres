@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://dlcbep0hk78o1"]
+
+[ext_resource type="Texture2D" uid="uid://bft5yombybfip" path="res://assets/sprites/ui/level_progress_bar.svg" id="1_uioe6"]
+
+[resource]
+atlas = ExtResource("1_uioe6")
+region = Rect2(59.6173, 62.6868, 47.0748, 47.923)

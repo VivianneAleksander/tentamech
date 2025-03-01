@@ -1,6 +1,10 @@
-[gd_resource type="Theme" load_steps=10 format=4 uid="uid://dxj8bc86a2lmm"]
+[gd_resource type="Theme" load_steps=13 format=4 uid="uid://dxj8bc86a2lmm"]
 
 [ext_resource type="FontFile" uid="uid://blswv5hns6gor" path="res://assets/fonts/Xolonium-Regular.otf" id="1_p3ixe"]
+[ext_resource type="Texture2D" uid="uid://bk36xik4ggt44" path="res://assets/sprites/ui/level_progress_player.tres" id="2_nssjt"]
+[ext_resource type="Texture2D" uid="uid://d0o2o5dlcs4hd" path="res://assets/sprites/ui/level_progress_level.tres" id="3_1rqde"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wdgs0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_anhum"]
 content_margin_left = 4.0
@@ -869,6 +873,10 @@ corner_detail = 5
 Button/font_sizes/font_size = 31
 Button/fonts/font = ExtResource("1_p3ixe")
 HBoxContainer/constants/separation = 2
+HSlider/constants/center_grabber = 1
+HSlider/icons/grabber_disabled = ExtResource("2_nssjt")
+HSlider/icons/tick = ExtResource("3_1rqde")
+HSlider/styles/slider = SubResource("StyleBoxEmpty_wdgs0")
 Label/constants/outline_size = 12
 Label/font_sizes/font_size = 27
 Label/fonts/font = ExtResource("1_p3ixe")

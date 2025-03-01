@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dplxxkr1j8lra"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_0siea"]
+[ext_resource type="PackedScene" uid="uid://dmacpy5lq41ek" path="res://scenes/prefabs/enemies/needler.tscn" id="2_t7ycy"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_0siea")
+
+[node name="Needler" parent="." instance=ExtResource("2_t7ycy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
+
+[node name="Needler2" parent="." instance=ExtResource("2_t7ycy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -1, 0)

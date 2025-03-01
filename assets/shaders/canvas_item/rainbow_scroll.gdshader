@@ -5,6 +5,8 @@ uniform float wiggle_speed = 1.0;
 uniform float angle = 1.0;
 uniform float speed = 1.0;
 uniform sampler2D colors : source_color;
+uniform vec4 mask_color : source_color;
+uniform bool use_mask = false;
 
 void vertex() {
 	float wave = TIME * wiggle_speed;
@@ -12,11 +14,13 @@ void vertex() {
 }
 
 void fragment() {
-	vec2 uv_mod = vec2(fract(UV.x + (TIME * speed) - (UV.y * angle)), UV.y);
-	vec4 color = texture(colors, uv_mod);
-	float a = ceil(COLOR.a);
-	COLOR = color;
-	COLOR.a = a;
+	if (!use_mask || COLOR != mask_color){
+		vec2 uv_mod = vec2(fract(UV.x + (TIME * speed) - (UV.y * angle)), UV.y);
+		vec4 color = texture(colors, uv_mod);
+		float a = ceil(COLOR.a);
+		COLOR = color;
+		COLOR.a = a;
+	}
 }
 
 //void light() {

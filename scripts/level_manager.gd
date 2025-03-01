@@ -16,6 +16,7 @@ var level_margin_calculated_half : Vector3
 @onready var level_manager_prefab := preload("res://scenes/levels/level_manager.tscn")
 @export var levels : Array[PackedScene]
 @export var current_level_index : int = 0
+		
 var current_level : Level
 var current_checkpoint : int = 0
 #endregion
@@ -27,6 +28,8 @@ var current_checkpoint : int = 0
 var game_is_over : bool = false
 
 static var level_bounds : AABB = AABB()
+
+signal level_completed
 
 func _ready():
 	# This constrains the mouse to the viewport, but only in the release build, so I
@@ -42,6 +45,7 @@ func _ready():
 	player.character_died.connect(game_over.unbind(1))
 	player.health_component.health_value_changed.connect(level_ui.update_health)
 	player.energy_component.energy_value_changed.connect(level_ui.update_engergy)
+	level_ui.update_level_count(levels.size() - 1)
 		
 func _process(delta: float) -> void:
 	pass
@@ -54,6 +58,9 @@ func _physics_process(delta) -> void:
 	
 	for g in groups_to_monitor:
 		constrain_group(g)
+	
+	if not get_tree().get_nodes_in_group("Enemies").any(func(x : EnemyBase) -> bool: return not x.dead):
+		next_level()
 
 func calculate_level_bounds():
 	if not camera3D: 
@@ -87,8 +94,9 @@ func start_level(idx : int) -> Level:
 			return null
 		var level : Level = levels[idx].instantiate() as Level
 		add_child(level)
-		level.level_completed.connect(next_level)
 		for enemy : EnemyBase in get_tree().get_nodes_in_group("Enemies"):
+			if enemy.character_died.is_connected(_on_enemy_death):
+				continue
 			enemy.character_died.connect(_on_enemy_death)
 		
 		return level as Level
@@ -96,7 +104,9 @@ func start_level(idx : int) -> Level:
 func next_level() -> void:
 	if game_is_over: return
 	current_level_index += 1
-	start_level(current_level_index)
+	level_ui.update_level_progress(float(current_level_index) / (levels.size()))
+	level_completed.emit()
+	current_level = start_level(current_level_index)
 
 func reset_checkpoint() -> void:
 	get_tree().call_group("Enemies", "queue_free")

@@ -11,6 +11,8 @@ class_name LevelUI
 @onready var score_multiplier := $Control/ScoreMultiplierDisplay/ScoreMultiplierLabel as Label
 @onready var score_multiplier_bar := $Control/ScoreDisplay/ScoreMultiplierBar as ProgressBar
 
+@onready var level_progress_bar := $Control/LevelProgressBar/HSlider as HSlider
+
 @onready var multiplier_bar_mat : Material = preload("res://assets/materials/ui/rainbow_scroll.tres")
 
 signal game_reset_checkpoint
@@ -38,6 +40,12 @@ func update_score_multiplier_bar(val : float) -> void:
 		score_multiplier_bar.material = multiplier_bar_mat
 	else:
 		score_multiplier_bar.material = null
+
+func update_level_count(val : int) -> void:
+	level_progress_bar.tick_count = val + 2
+
+func update_level_progress(val : float) -> void:
+	level_progress_bar.value = level_progress_bar.max_value * val
 
 func game_over() -> void:
 	game_over_timer.start()
