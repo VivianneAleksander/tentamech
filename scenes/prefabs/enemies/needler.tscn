@@ -255,10 +255,10 @@ states/NeedlerIdle02/node = SubResource("AnimationNodeAnimation_x6w8w")
 states/NeedlerIdle02/position = Vector2(611, 95)
 states/Start/position = Vector2(498, -23)
 transitions = ["NeedlerIdle", "NeedlerFire", SubResource("AnimationNodeStateMachineTransition_omxx7"), "NeedlerFire", "NeedlerIdle", SubResource("AnimationNodeStateMachineTransition_2dx4o"), "Start", "NeedlerIdle", SubResource("AnimationNodeStateMachineTransition_vgfbq"), "NeedlerFire", "NeedlerFireLoop-01", SubResource("AnimationNodeStateMachineTransition_3m6n6"), "NeedlerFireLoop-01", "NeedlerIdle", SubResource("AnimationNodeStateMachineTransition_xlqtq"), "NeedlerFireLoop-02", "NeedlerFireLoop-01", SubResource("AnimationNodeStateMachineTransition_g0qca"), "NeedlerFireLoop-01", "NeedlerFireLoop-02", SubResource("AnimationNodeStateMachineTransition_ijuo7"), "NeedlerFireLoop-02", "NeedlerIdle", SubResource("AnimationNodeStateMachineTransition_ogkyh"), "NeedlerIdle", "NeedlerIdle02", SubResource("AnimationNodeStateMachineTransition_nx4xx"), "NeedlerIdle02", "NeedlerIdle", SubResource("AnimationNodeStateMachineTransition_2efh7"), "NeedlerIdle02", "NeedlerFire02", SubResource("AnimationNodeStateMachineTransition_7ajeq"), "NeedlerFire02", "NeedlerFireLoop02-01", SubResource("AnimationNodeStateMachineTransition_sca0l"), "NeedlerFireLoop02-01", "NeedlerFireLoop02-02", SubResource("AnimationNodeStateMachineTransition_5uuml"), "NeedlerFireLoop02-02", "NeedlerFireLoop02-01", SubResource("AnimationNodeStateMachineTransition_c24b3"), "NeedlerFire02", "NeedlerIdle02", SubResource("AnimationNodeStateMachineTransition_yalrd"), "NeedlerFireLoop02-01", "NeedlerIdle02", SubResource("AnimationNodeStateMachineTransition_3fk3u"), "NeedlerFireLoop02-02", "NeedlerIdle02", SubResource("AnimationNodeStateMachineTransition_mb18r"), "NeedlerFire", "NeedlerFire02", SubResource("AnimationNodeStateMachineTransition_g1ec7"), "NeedlerFire02", "NeedlerFire", SubResource("AnimationNodeStateMachineTransition_d1sor"), "NeedlerFireLoop-01", "NeedlerFireLoop02-01", SubResource("AnimationNodeStateMachineTransition_tx830"), "NeedlerFireLoop02-01", "NeedlerFireLoop-01", SubResource("AnimationNodeStateMachineTransition_u8sdn"), "NeedlerFireLoop-02", "NeedlerFireLoop02-02", SubResource("AnimationNodeStateMachineTransition_kxpug"), "NeedlerFireLoop02-02", "NeedlerFireLoop-02", SubResource("AnimationNodeStateMachineTransition_jcnhn"), "NeedlerIdle", "NeedlerHurt", SubResource("AnimationNodeStateMachineTransition_q2fq2"), "NeedlerFire", "NeedlerHurt", SubResource("AnimationNodeStateMachineTransition_2jt7i"), "NeedlerFireLoop-01", "NeedlerHurt", SubResource("AnimationNodeStateMachineTransition_ql1it"), "NeedlerFireLoop-02", "NeedlerHurt", SubResource("AnimationNodeStateMachineTransition_6ilum"), "NeedlerIdle02", "NeedlerHurt02", SubResource("AnimationNodeStateMachineTransition_vivax"), "NeedlerFire02", "NeedlerHurt02", SubResource("AnimationNodeStateMachineTransition_wpnqv"), "NeedlerFireLoop02-01", "NeedlerHurt02", SubResource("AnimationNodeStateMachineTransition_wpxd5"), "NeedlerFireLoop02-02", "NeedlerHurt02", SubResource("AnimationNodeStateMachineTransition_0f4y8"), "NeedlerHurt02", "End", SubResource("AnimationNodeStateMachineTransition_flxah"), "NeedlerHurt", "End", SubResource("AnimationNodeStateMachineTransition_7rlgq")]
-graph_offset = Vector2(8, -62)
+graph_offset = Vector2(328, 37)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cavjr"]
-graph_offset = Vector2(-243, 206)
+graph_offset = Vector2(-336.987, 58.4079)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_lbfv3")
 nodes/StateMachine/position = Vector2(-80, 160)
 node_connections = [&"output", 0, &"StateMachine"]
@@ -413,26 +413,28 @@ transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 
 
 [node name="Skeleton3D" parent="Mesh/NeedlerArmature" index="0"]
 bones/0/rotation = Quaternion(0, 0.945837, 0, -0.324643)
-bones/1/position = Vector3(-2.48987e-08, 0.0740334, 1.95181e-08)
+bones/1/position = Vector3(3.47104e-10, -0.0432779, 1.95181e-08)
 bones/1/rotation = Quaternion(-1.40602e-07, 0.707107, 0.707107, -1.37679e-07)
-bones/2/rotation = Quaternion(0.798835, -0.129333, -0.280591, -0.516143)
+bones/2/rotation = Quaternion(0.79828, -0.128956, -0.279821, -0.517513)
 bones/2/scale = Vector3(1, 1, 1)
-bones/3/rotation = Quaternion(0.145536, -0.269226, -0.33448, 0.891325)
-bones/4/rotation = Quaternion(0.243, 0.858709, 0.33604, 0.301075)
+bones/3/rotation = Quaternion(0.148566, -0.268456, -0.341283, 0.888474)
+bones/4/rotation = Quaternion(0.234245, 0.861396, 0.337731, 0.298436)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.824999, 0.253837, 0.423596, -0.274793)
-bones/6/rotation = Quaternion(0.336776, 0.170208, 0.7496, 0.543793)
+bones/5/rotation = Quaternion(0.821472, 0.255115, 0.425995, -0.280407)
+bones/6/rotation = Quaternion(0.339171, 0.173547, 0.748201, 0.543175)
 bones/6/scale = Vector3(1, 1, 1)
-bones/7/rotation = Quaternion(0.0843409, 0.889862, 0.433581, -0.114187)
+bones/7/rotation = Quaternion(0.0896775, 0.892172, 0.426713, -0.117909)
 bones/7/scale = Vector3(1, 1, 1)
-bones/8/position = Vector3(1.21087, -1.98631, -0.769231)
-bones/9/position = Vector3(-1.09223, -1.1879, -0.720286)
+bones/8/position = Vector3(1.19725, -2.12381, -0.755663)
+bones/9/position = Vector3(-1.10687, -1.31683, -0.699568)
 
 [node name="NeedlerMesh" parent="Mesh/NeedlerArmature/Skeleton3D" index="0"]
+instance_shader_parameters/solid_albedo = Color(1, 1, 1, 1)
+instance_shader_parameters/use_solid_albedo = false
 surface_material_override/0 = ExtResource("3_wwpxt")
 
 [node name="GunLAttachment" type="BoneAttachment3D" parent="Mesh/NeedlerArmature/Skeleton3D" index="1"]
-transform = Transform3D(0.155319, -0.767253, 0.622253, -0.679086, -0.540391, -0.496809, 0.717438, -0.345399, -0.604964, -0.481053, -1.99916, 1.35444)
+transform = Transform3D(0.155323, -0.767255, 0.62225, -0.679086, -0.540391, -0.496809, 0.717437, -0.345396, -0.604968, -0.482226, -2.11798, 1.33275)
 bone_name = "Gun.L"
 bone_idx = 4
 
@@ -440,7 +442,7 @@ bone_idx = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9426, 0)
 
 [node name="GunRAttachment" type="BoneAttachment3D" parent="Mesh/NeedlerArmature/Skeleton3D" index="2"]
-transform = Transform3D(-0.806994, -0.0184553, -0.590271, 0.538393, -0.433724, -0.722507, -0.242681, -0.900857, 0.359949, 1.30456, -1.1964, -0.100174)
+transform = Transform3D(-0.806996, -0.0184597, -0.590269, 0.538392, -0.433725, -0.722508, -0.242677, -0.900856, 0.359953, 1.30322, -1.31386, -0.125719)
 bone_name = "Gun.R"
 bone_idx = 7
 
@@ -501,7 +503,9 @@ min_distance = 0.5
 
 [node name="AvoidOtherEntitiesRule" type="Node" parent="AITaskmaster" index="4"]
 script = ExtResource("13_obekw")
-apply_rule = false
+max_distance = 2.0
+acceleration = 10.0
+type = 1
 
 [node name="FrictionApplicator" type="Node" parent="." index="6" node_paths=PackedStringArray("primary")]
 process_physics_priority = 1

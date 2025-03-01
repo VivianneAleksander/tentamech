@@ -1,10 +1,9 @@
 shader_type spatial;
 render_mode blend_mix, depth_draw_always, cull_back, shadows_disabled, diffuse_toon, specular_toon, fog_disabled;
 
-uniform bool unshaded = false;
 uniform vec4 albedo : source_color;
-uniform vec4 solid_albedo : source_color;
-uniform bool use_solid_albedo = false;
+instance uniform vec4 solid_albedo : source_color = vec4(1.0);
+instance uniform bool use_solid_albedo = false;
 uniform sampler2D texture_albedo : source_color,filter_nearest,repeat_enable;
 uniform sampler2D fresnel_gradient;
 uniform sampler2D light_gradient;
@@ -42,7 +41,7 @@ void fragment() {
 }
 
 void light() {
-	if (use_solid_albedo || unshaded){
+	if (use_solid_albedo){
 		DIFFUSE_LIGHT = vec3(1.0, 1.0, 1.0);
 	} else {
 		float fres = fresnel(0.1, NORMAL, VIEW);

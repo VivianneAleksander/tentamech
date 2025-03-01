@@ -20,10 +20,7 @@ gradient = SubResource("Gradient_rytbr")
 [resource]
 render_priority = 1
 shader = ExtResource("2_2f7di")
-shader_parameter/unshaded = false
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/solid_albedo = Color(0, 0, 0, 1)
-shader_parameter/use_solid_albedo = false
 shader_parameter/specular = 0.0
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = null
